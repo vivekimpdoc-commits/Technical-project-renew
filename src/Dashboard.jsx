@@ -3,17 +3,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import { 
   Building2, Users, FileSignature, 
   MapPin, Shield, Building, ChevronDown, 
-  AlertTriangle, Phone, ExternalLink, LogOut, Menu, X
+  AlertTriangle, Phone, ExternalLink, LogOut, Menu, X, Lightbulb
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
 import AllMembers from './AllMembers';
 import MainDashboard from './MainDashboard';
+import TopicIdeas from './TopicIdeas';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('tracker');
   const [members, setMembers] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [ideas, setIdeas] = useState([
+    { id: 1, title: 'AI Driven Traffic Management', description: 'Using computer vision for real-time traffic light optimization at major intersections.', category: 'Innovation', status: 'New', date: '2026-07-06', impact: 'Reduce average wait times by 25% and decrease accidents.', resources: 'Camera feeds, AI Processing Unit, Cloud Storage.' },
+    { id: 2, title: 'Cybercrime Reporting Portal', description: 'A simplified portal for citizens to quickly report digital fraud with evidence uploads.', category: 'Software Dev', status: 'Approved', date: '2026-07-05', impact: 'Increase reporting efficiency and citizen trust.', resources: 'Web hosting, Secure Database, Support Team.' }
+  ]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const acronym = [
@@ -107,12 +112,19 @@ export default function Dashboard() {
             <FileSignature className="nav-icon" size={20} />
             Project Tracker
           </div>
+          <div 
+            className={`sidebar-nav-item ${activeTab === 'ideas' ? 'active' : ''}`}
+            onClick={() => handleTabChange('ideas')}
+          >
+            <Lightbulb className="nav-icon" size={20} />
+            Idea for Topic
+          </div>
         </aside>
 
         {/* Main Content Area */}
         <main className="main-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           {activeTab === 'dashboard' && (
-            <MainDashboard members={members} projects={projects} />
+            <MainDashboard members={members} projects={projects} ideas={ideas} />
           )}
           
           {activeTab === 'members' && (
@@ -121,6 +133,10 @@ export default function Dashboard() {
 
           {activeTab === 'tracker' && (
             <ProjectTracker members={members} projects={projects} setProjects={setProjects} />
+          )}
+
+          {activeTab === 'ideas' && (
+            <TopicIdeas ideas={ideas} setIdeas={setIdeas} />
           )}
         </main>
       </div>

@@ -1,11 +1,13 @@
 import React from 'react';
-import { Users, FolderKanban, ShieldCheck, Activity, BarChart3, Clock } from 'lucide-react';
+import { Users, FolderKanban, ShieldCheck, Activity, BarChart3, Clock, Lightbulb } from 'lucide-react';
 import './MainDashboard.css';
 
-export default function MainDashboard({ members = [], projects = [] }) {
+export default function MainDashboard({ members = [], projects = [], ideas = [] }) {
   // Compute some quick statistics
   const totalMembers = members.length;
   const totalProjects = projects.length;
+  const totalIdeas = ideas.length;
+  const approvedIdeas = ideas.filter(i => i.status === 'Approved').length;
   
   // Get recent 5 projects
   const recentProjects = [...projects].sort((a, b) => b.id - a.id).slice(0, 5);
@@ -21,7 +23,7 @@ export default function MainDashboard({ members = [], projects = [] }) {
       </div>
 
       {/* Top Statistics Cards */}
-      <div className="stats-grid">
+      <div className="stats-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
         <div className="stat-card stat-members">
           <div className="stat-icon-wrapper">
             <Users size={28} />
@@ -52,6 +54,17 @@ export default function MainDashboard({ members = [], projects = [] }) {
             <h3>Active Teams</h3>
             <p className="stat-number">{uniqueTeams}</p>
             <span className="stat-label">Engaged in Operations</span>
+          </div>
+        </div>
+
+        <div className="stat-card stat-ideas" style={{ borderTopColor: '#eab308' }}>
+          <div className="stat-icon-wrapper" style={{ color: '#eab308', background: '#fef9c3' }}>
+            <Lightbulb size={28} />
+          </div>
+          <div className="stat-content">
+            <h3>Total Ideas</h3>
+            <p className="stat-number">{totalIdeas}</p>
+            <span className="stat-label">{approvedIdeas} Approved</span>
           </div>
         </div>
       </div>

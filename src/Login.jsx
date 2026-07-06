@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Shield, Lock, User, ArrowRight, ArrowLeft, Building2, MapPin } from 'lucide-react';
+import { Shield, Lock, User, ArrowRight, ArrowLeft, Building2, Lightbulb } from 'lucide-react';
 import './Login.css';
 
 export default function Login() {
@@ -26,21 +26,21 @@ export default function Login() {
             <h1 className="login-brand-title">KARTAVYA <span>(कर्तव्य)</span></h1>
           </div>
           <p className="login-brand-subtitle">
-            Secure access portal for Uttar Pradesh Police Special Duty Management System.
+            Secure access portal for UP Police Technical Project & Resource Management System.
           </p>
           
           <div className="login-features">
             <div className="login-feature-item">
               <Building2 size={20} color="#3b82f6" />
-              <span>Multi-level administrative access control</span>
+              <span>Centralized project allocation and tracking</span>
             </div>
             <div className="login-feature-item">
               <Shield size={20} color="#10b981" />
-              <span>End-to-end encrypted communications</span>
+              <span>Resource and team directory management</span>
             </div>
             <div className="login-feature-item">
-              <MapPin size={20} color="#f59e0b" />
-              <span>Real-time duty tracking and management</span>
+              <Lightbulb size={20} color="#f59e0b" />
+              <span>Idea brainstorming and innovation tracking</span>
             </div>
           </div>
         </div>
