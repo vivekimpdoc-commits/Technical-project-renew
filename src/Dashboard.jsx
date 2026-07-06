@@ -123,7 +123,7 @@ export default function Dashboard() {
         {/* Main Content Area */}
         <main className="main-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           {activeTab === 'dashboard' && (
-            <MainDashboard members={members} projects={projects} ideas={ideas} />
+            <MainDashboard members={members} projects={projects} ideas={ideas} setActiveTab={setActiveTab} />
           )}
           
           {activeTab === 'members' && (

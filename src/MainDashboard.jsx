@@ -2,7 +2,7 @@ import React from 'react';
 import { Users, FolderKanban, ShieldCheck, Activity, BarChart3, Clock, Lightbulb } from 'lucide-react';
 import './MainDashboard.css';
 
-export default function MainDashboard({ members = [], projects = [], ideas = [] }) {
+export default function MainDashboard({ members = [], projects = [], ideas = [], setActiveTab }) {
   // Compute some quick statistics
   const totalMembers = members.length;
   const totalProjects = projects.length;
@@ -76,7 +76,7 @@ export default function MainDashboard({ members = [], projects = [], ideas = [] 
         <div className="dash-panel">
           <div className="panel-header">
             <h3><Activity size={18} /> Recently Allocated Projects</h3>
-            <a href="#" className="view-all-link">View Tracker</a>
+            <a href="#" className="view-all-link" onClick={(e) => { e.preventDefault(); if(setActiveTab) setActiveTab('tracker'); }}>View Tracker</a>
           </div>
           <div className="panel-content">
             {recentProjects.length === 0 ? (
