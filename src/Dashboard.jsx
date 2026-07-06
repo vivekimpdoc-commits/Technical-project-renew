@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
   Building2, Users, FileSignature, 
-  MapPin, Shield, Building, ChevronDown, 
-  AlertTriangle, Phone, ExternalLink, LogOut, Menu, X, Lightbulb
+  Shield, LogOut, Menu, X, Lightbulb
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';

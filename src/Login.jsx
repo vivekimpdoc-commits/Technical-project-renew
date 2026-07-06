@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Shield, Lock, User, ArrowRight, ArrowLeft, Building2, Lightbulb } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Shield, Lock, User, ArrowRight, Building2, Lightbulb } from 'lucide-react';
 import './Login.css';
 
 export default function Login() {
