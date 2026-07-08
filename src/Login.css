@@ -1,7 +1,7 @@
 .login-container {
   min-height: 100vh;
   display: flex;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: #ffffff;
   position: relative;
   overflow: hidden;
   font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
@@ -15,7 +15,7 @@
   width: 50vw;
   height: 50vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, rgba(37,99,235,0) 70%);
+  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(37,99,235,0) 70%);
   pointer-events: none;
 }
 
@@ -26,7 +26,7 @@
   width: 60vw;
   height: 60vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(239,68,68,0.1) 0%, rgba(239,68,68,0) 70%);
+  background: radial-gradient(circle, rgba(239,68,68,0.05) 0%, rgba(239,68,68,0) 70%);
   pointer-events: none;
 }
 
@@ -44,7 +44,7 @@
 /* Left side branding */
 .login-brand {
   flex: 1;
-  color: white;
+  color: #1e3a8a;
   padding-right: 4rem;
   display: none;
 }
@@ -68,14 +68,14 @@
   font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  background: linear-gradient(to right, #ffffff, #cbd5e1);
+  background: linear-gradient(to right, #1e3a8a, #2563eb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .login-brand-subtitle {
   font-size: 1.25rem;
-  color: #94a3b8;
+  color: #3b82f6;
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -91,25 +91,25 @@
   align-items: center;
   gap: 0.75rem;
   font-size: 0.875rem;
-  color: #cbd5e1;
+  color: #1e3a8a;
   font-weight: 500;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(37, 99, 235, 0.05);
   border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 /* Right side login form */
 .login-form-container {
   width: 100%;
   max-width: 440px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #ffffff;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   border-radius: 1.25rem;
   padding: 3rem 2.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.15);
   margin: 0 auto;
 }
 
@@ -119,14 +119,14 @@
 }
 
 .login-form-header h2 {
-  color: white;
+  color: #1e3a8a;
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .login-form-header p {
-  color: #94a3b8;
+  color: #3b82f6;
   font-size: 0.875rem;
 }
 
@@ -136,7 +136,7 @@
 
 .login-label {
   display: block;
-  color: #cbd5e1;
+  color: #1e3a8a;
   font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -151,31 +151,32 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #64748b;
+  color: #3b82f6;
   pointer-events: none;
 }
 
 .login-input {
   width: 100%;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f8fafc;
+  border: 1px solid rgba(37, 99, 235, 0.2);
   border-radius: 0.5rem;
   padding: 0.875rem 1rem 0.875rem 3rem;
-  color: white;
+  color: #1e3a8a;
   font-size: 1rem;
   outline: none;
   transition: all 0.2s ease;
   font-family: inherit;
+  box-sizing: border-box;
 }
 
 .login-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  background: rgba(15, 23, 42, 0.8);
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  background: #ffffff;
 }
 
 .login-input::placeholder {
-  color: #475569;
+  color: #94a3b8;
 }
 
 .login-options {
@@ -190,7 +191,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #cbd5e1;
+  color: #1e3a8a;
   cursor: pointer;
 }
 
@@ -209,7 +210,7 @@
 }
 
 .login-forgot-link:hover {
-  color: #60a5fa;
+  color: #2563eb;
 }
 
 .login-submit-btn {
@@ -248,7 +249,7 @@
 .login-back-btn {
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: #3b82f6;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -259,5 +260,5 @@
 }
 
 .login-back-btn:hover {
-  color: white;
+  color: #1d4ed8;
 }

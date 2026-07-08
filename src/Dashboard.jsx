@@ -2,16 +2,34 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Building2, Users, FileSignature, 
-  Shield, LogOut, Menu, X, Lightbulb
+  Shield, LogOut, Menu, X, Lightbulb,
+  UserCheck, LineChart, BrainCircuit, Clock4,
+  CheckCircle, Medal, Radar, FileText,
+  ShieldAlert, Database, Settings as SettingsIcon,
+  History, Command, BookOpen, Activity
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
 import AllMembers from './AllMembers';
-import MainDashboard from './MainDashboard';
-import TopicIdeas from './TopicIdeas';
+import ThaneLevelDashboard from './ThaneLevelDashboard';
+import DistrictLevelDashboard from './DistrictLevelDashboard';
+import OfficerPerformance from './pages/OfficerPerformance';
+import InvestigationAnalytics from './pages/InvestigationAnalytics';
+import AIInvestigation from './pages/AIInvestigation';
+import DelayAnalysis from './pages/DelayAnalysis';
+import InvestigationQuality from './pages/InvestigationQuality';
+import OfficerRanking from './pages/OfficerRanking';
+import PredictiveIntelligence from './pages/PredictiveIntelligence';
+import Reports from './pages/Reports';
+import UserManagement from './pages/UserManagement';
+import RoleManagement from './pages/RoleManagement';
+import MasterData from './pages/MasterData';
+import SettingsPage from './pages/Settings';
+import AuditLogs from './pages/AuditLogs';
+import AICommandCenter from './pages/AICommandCenter';
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState('tracker');
+  const [activeTab, setActiveTab] = useState('step-up');
   const [members, setMembers] = useState([]);
   const [projects, setProjects] = useState([]);
   const [ideas, setIdeas] = useState([
@@ -20,21 +38,18 @@ export default function Dashboard() {
   ]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const acronym = [
-    { letter: 'K', text: 'कानून और व्यवस्था' },
-    { letter: 'A', text: 'आपातकालीन प्रबंधन' },
-    { letter: 'R', text: 'रिस्पांस और रिपोर्टिंग' },
-    { letter: 'T', text: 'तत्परता और त्वरित कार्रवाई' },
-    { letter: 'A', text: 'अधिकार और कर्तव्यों का संतुलन' },
-    { letter: 'V', text: 'विश्वसनीयता और निष्पक्षता' },
-    { letter: 'Y', text: 'योजनाबद्ध कार्यवाही' },
-    { letter: 'A', text: 'आदर्श पालन और आचरण' }
-  ];
+
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setIsMobileMenuOpen(false); // Close sidebar on mobile after select
   };
+
+  const navItems = [
+    { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen },
+    { id: 'thane-level', label: 'Thane (Police Station) Level (पुलिस थाना स्तर)', icon: Shield },
+    { id: 'district-level', label: 'District (SP/SSP Office) Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 }
+  ];
 
   return (
     <div className="app-container">
@@ -49,9 +64,9 @@ export default function Dashboard() {
 
         <div className="header-title-container">
           <Shield className="header-icon" size={32} />
-          <h1 className="header-title">KARTAVYA <span>(कर्तव्य)</span></h1>
+          <h1 className="header-title">UP Police AI Investigation <span>(Command Center)</span></h1>
         </div>
-        <p className="header-subtitle">Technical Project Management & Resource Tracker (तकनीकी परियोजना प्रबंधन एवं रिसोर्स ट्रैकर) | Innovation - Integration - Implementation (नवाचार - एकीकरण - कार्यान्वयन)</p>
+        <p className="header-subtitle">Advanced Analytics & Investigative Intelligence Platform | Innovation - Integration - Implementation</p>
         
         {/* Logout Button */}
         <Link to="/" style={{
@@ -89,72 +104,41 @@ export default function Dashboard() {
         )}
 
         {/* Sidebar */}
-        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
-          <div 
-            className={`sidebar-nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
-            onClick={() => handleTabChange('dashboard')}
-          >
-            <Building2 className="nav-icon" size={20} />
-            Dashboard
-          </div>
-          <div 
-            className={`sidebar-nav-item ${activeTab === 'members' ? 'active' : ''}`}
-            onClick={() => handleTabChange('members')}
-          >
-            <Users className="nav-icon" size={20} />
-            All Members
-          </div>
-          <div 
-            className={`sidebar-nav-item ${activeTab === 'tracker' ? 'active' : ''}`}
-            onClick={() => handleTabChange('tracker')}
-          >
-            <FileSignature className="nav-icon" size={20} />
-            Project Tracker
-          </div>
-          <div 
-            className={`sidebar-nav-item ${activeTab === 'ideas' ? 'active' : ''}`}
-            onClick={() => handleTabChange('ideas')}
-          >
-            <Lightbulb className="nav-icon" size={20} />
-            Idea for Topic
-          </div>
+        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`} style={{ overflowY: 'auto' }}>
+          {navItems.map((item) => (
+            <div 
+              key={item.id}
+              className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+              onClick={() => handleTabChange(item.id)}
+            >
+              <item.icon className="nav-icon" size={20} />
+              {item.label}
+            </div>
+          ))}
         </aside>
 
         {/* Main Content Area */}
-        <main className="main-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          {activeTab === 'dashboard' && (
-            <MainDashboard members={members} projects={projects} ideas={ideas} setActiveTab={setActiveTab} />
+        <main className="main-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', overflowY: 'auto', width: '100%' }}>
+          {activeTab === 'step-up' && (
+            <div style={{ padding: '2rem', width: '100%', maxWidth: '1200px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                <BookOpen size={32} color="#2563eb" />
+                <h2 style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a' }}>Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)</h2>
+              </div>
+              <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+                <p style={{ color: '#475569', fontSize: '1.1rem' }}>यहाँ "स्टेप अप साक्षरता सॉफ्टवेयर" का विवरण और डैशबोर्ड दिखाई देगा...</p>
+              </div>
+            </div>
           )}
-          
-          {activeTab === 'members' && (
-            <AllMembers members={members} setMembers={setMembers} />
-          )}
-
-          {activeTab === 'tracker' && (
-            <ProjectTracker members={members} projects={projects} setProjects={setProjects} />
-          )}
-
-          {activeTab === 'ideas' && (
-            <TopicIdeas ideas={ideas} setIdeas={setIdeas} />
-          )}
+          {activeTab === 'thane-level' && <ThaneLevelDashboard projects={projects} />}
+          {activeTab === 'district-level' && <DistrictLevelDashboard />}
         </main>
       </div>
 
       {/* Footer */}
-      <footer className="app-footer">
-        <h4 className="footer-heading">Kartavya Stands For</h4>
-        
-        <div className="acronym-container">
-          {acronym.map((item, index) => (
-            <div key={index} className="acronym-badge">
-              <span className="acronym-letter">{item.letter}</span>
-              <span className="acronym-text">- {item.text}</span>
-            </div>
-          ))}
-        </div>
-        
-        <div className="footer-copyright">
-          © 2026 UP Police Technical Project & Resource Management System
+      <footer className="app-footer" style={{ padding: '2rem 1rem', textAlign: 'center' }}>
+        <div className="footer-copyright" style={{ marginTop: '0', fontSize: '0.9rem', color: '#94a3b8' }}>
+          © 2026 UP Police AI Investigation Command Center. All Rights Reserved.
         </div>
       </footer>
     </div>
