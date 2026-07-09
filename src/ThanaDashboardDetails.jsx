@@ -292,8 +292,8 @@ export default function ThanaDashboardDetails({ project, onBack }) {
                   const Icon = step.icon;
                   return (
                     <div key={step.id} className="tech-category-card" style={{ cursor: 'pointer', textAlign: 'center' }}>
-                      <div style={{ background: `${step.color}15`, padding: '1rem', borderRadius: '50%', marginBottom: '1rem', display: 'inline-block' }}>
-                        <Icon size={36} color={step.color} />
+                      <div style={{ background: `${step.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem', display: 'inline-block' }}>
+                        <Icon size={24} color={step.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{step.title}</h4>
                       <p style={{ margin: 0, color: '#64748b' }}>{step.subtitle}</p>
@@ -312,8 +312,8 @@ export default function ThanaDashboardDetails({ project, onBack }) {
                   const Icon = resource.icon;
                   return (
                     <div key={resource.id} className="tech-category-card" style={{ cursor: 'pointer', textAlign: 'center' }}>
-                      <div style={{ background: `${resource.color}15`, padding: '1rem', borderRadius: '50%', marginBottom: '1rem', display: 'inline-block' }}>
-                        <Icon size={36} color={resource.color} />
+                      <div style={{ background: `${resource.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem', display: 'inline-block' }}>
+                        <Icon size={24} color={resource.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{resource.title}</h4>
                     </div>
@@ -331,8 +331,8 @@ export default function ThanaDashboardDetails({ project, onBack }) {
                   const Icon = evaluation.icon;
                   return (
                     <div key={evaluation.id} className="tech-category-card" onClick={() => setSelectedEvaluation(evaluation.id)} style={{ cursor: 'pointer', textAlign: 'center' }}>
-                      <div style={{ background: `${evaluation.color}15`, padding: '1rem', borderRadius: '50%', marginBottom: '1rem', display: 'inline-block' }}>
-                        <Icon size={36} color={evaluation.color} />
+                      <div style={{ background: `${evaluation.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem', display: 'inline-block' }}>
+                        <Icon size={24} color={evaluation.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{evaluation.title}</h4>
                       <p style={{ margin: 0, color: '#64748b' }}>{evaluation.subtitle}</p>

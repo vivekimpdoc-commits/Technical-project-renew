@@ -506,15 +506,15 @@
 /* Tech Stack Styles */
 .tech-stack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
 .tech-category-card {
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 1.25rem 1rem;
   transition: all 0.2s;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
 }

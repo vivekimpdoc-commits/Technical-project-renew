@@ -7,6 +7,12 @@ import ArmouryAIDetails from './ArmouryAIDetails';
 import MalkhanaTrackerDetails from './MalkhanaTrackerDetails';
 import SmartRosterDetails from './SmartRosterDetails';
 import SafetyAIDetails from './SafetyAIDetails';
+import AutonomousLinkerDetails from './AutonomousLinkerDetails';
+import AIPolygraphDetails from './AIPolygraphDetails';
+import CDRSemanticSearchDetails from './CDRSemanticSearchDetails';
+import VRCrimeSceneDetails from './VRCrimeSceneDetails';
+import DarkWebMonitorDetails from './DarkWebMonitorDetails';
+import LipReadingAIDetails from './LipReadingAIDetails';
 
 export default function ProjectDetailsView({ project, onBack }) {
   if (project?.id === 2) {
@@ -31,6 +37,30 @@ export default function ProjectDetailsView({ project, onBack }) {
 
   if (project?.id === 7) {
     return <SafetyAIDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 401) {
+    return <AutonomousLinkerDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 402) {
+    return <AIPolygraphDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 403) {
+    return <CDRSemanticSearchDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 404) {
+    return <VRCrimeSceneDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 405) {
+    return <DarkWebMonitorDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 406) {
+    return <LipReadingAIDetails project={project} onBack={onBack} />;
   }
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -1037,11 +1067,11 @@ export default function ProjectDetailsView({ project, onBack }) {
                     <div 
                       key={step.id}
                       className="tech-category-card"
-                      style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '2rem' }}
+                      style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '1.25rem 1rem' }}
                       onClick={() => setSelectedGuideStep(step.id)}
                     >
-                      <div style={{ background: `${step.color}15`, padding: '1rem', borderRadius: '50%', marginBottom: '1.25rem' }}>
-                        <Icon size={36} color={step.color} />
+                      <div style={{ background: `${step.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
+                        <Icon size={24} color={step.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem', fontWeight: 'bold' }}>{step.title}</h4>
                       <p style={{ margin: 0, color: '#64748b', fontSize: '0.95rem' }}>{step.subtitle}</p>
@@ -1066,11 +1096,11 @@ export default function ProjectDetailsView({ project, onBack }) {
                     <div 
                       key={resource.id}
                       className="tech-category-card"
-                      style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '2rem' }}
+                      style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '1.25rem 1rem' }}
                       onClick={() => setSelectedResource(resource.id)}
                     >
-                      <div style={{ background: `${resource.color}15`, padding: '1rem', borderRadius: '50%', marginBottom: '1.25rem' }}>
-                        <Icon size={36} color={resource.color} />
+                      <div style={{ background: `${resource.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
+                        <Icon size={24} color={resource.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem', fontWeight: 'bold' }}>{resource.title}</h4>
                       <p style={{ margin: 0, color: '#64748b', fontSize: '0.95rem' }}>{resource.subtitle}</p>
@@ -1095,11 +1125,11 @@ export default function ProjectDetailsView({ project, onBack }) {
                     <div 
                       key={evaluation.id}
                       className="tech-category-card"
-                      style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '2rem' }}
+                      style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '1.25rem 1rem' }}
                       onClick={() => setSelectedEvaluation(evaluation.id)}
                     >
-                      <div style={{ background: `${evaluation.color}15`, padding: '1rem', borderRadius: '50%', marginBottom: '1.25rem' }}>
-                        <Icon size={36} color={evaluation.color} />
+                      <div style={{ background: `${evaluation.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
+                        <Icon size={24} color={evaluation.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem', fontWeight: 'bold' }}>{evaluation.title}</h4>
                       <p style={{ margin: 0, color: '#64748b', fontSize: '0.95rem' }}>{evaluation.subtitle}</p>

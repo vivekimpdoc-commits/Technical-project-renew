@@ -13,6 +13,7 @@ import ProjectTracker from './ProjectTracker';
 import AllMembers from './AllMembers';
 import ThaneLevelDashboard from './ThaneLevelDashboard';
 import DistrictLevelDashboard from './DistrictLevelDashboard';
+import PoliceFunctioningDashboard from './PoliceFunctioningDashboard';
 import OfficerPerformance from './pages/OfficerPerformance';
 import InvestigationAnalytics from './pages/InvestigationAnalytics';
 import AIInvestigation from './pages/AIInvestigation';
@@ -47,6 +48,7 @@ export default function Dashboard() {
 
   const navItems = [
     { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen },
+    { id: 'police-functioning', label: 'AI पुलिस की कार्यप्रणाली (Police Functioning)', icon: BrainCircuit },
     { id: 'thane-level', label: 'Thane (Police Station) Level (पुलिस थाना स्तर)', icon: Shield },
     { id: 'district-level', label: 'District (SP/SSP Office) Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 }
   ];
@@ -130,6 +132,7 @@ export default function Dashboard() {
               </div>
             </div>
           )}
+          {activeTab === 'police-functioning' && <PoliceFunctioningDashboard />}
           {activeTab === 'thane-level' && <ThaneLevelDashboard projects={projects} />}
           {activeTab === 'district-level' && <DistrictLevelDashboard />}
         </main>
