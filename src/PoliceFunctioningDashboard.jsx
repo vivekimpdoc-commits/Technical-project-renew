@@ -13,12 +13,12 @@ export default function PoliceFunctioningDashboard() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const displayProjects = [
-    { id: 301, name: 'अपराध जांच और डिजिटल फॉरेंसिक (Crime Investigation & Forensics)', status: 'Active', date: '2026-07-09', icon: Search },
-    { id: 302, name: 'स्मार्ट सर्विलांस और वीडियो एनालिटिक्स (Smart Surveillance & AI Analytics)', status: 'Active', date: '2026-07-09', icon: Video },
-    { id: 303, name: 'कानून व्यवस्था और फील्ड पुलिसिंग (Law Enforcement & Field Policing)', status: 'New', date: '2026-07-09', icon: Shield },
-    { id: 304, name: 'प्रशासनिक कार्य और ऑटोमेशन (Police Administration & Automation)', status: 'Pending', date: '2026-07-09', icon: FileText },
-    { id: 305, name: 'डेटा सुरक्षा और पारदर्शिता (Data Integrity & Transparency)', status: 'New', date: '2026-07-09', icon: Database },
-    { id: 306, name: 'ट्रैफिक और नागरिक शिकायत निवारण (Traffic & Public Grievance)', status: 'Active', date: '2026-07-09', icon: Car },
+    { id: 301, name: 'अपराध जांच और डिजिटल फॉरेंसिक (Crime Investigation & Forensics)', status: 'Active', date: '2026-07-09', icon: Search, color: '#3b82f6' },
+    { id: 302, name: 'स्मार्ट सर्विलांस और वीडियो एनालिटिक्स (Smart Surveillance & AI Analytics)', status: 'Active', date: '2026-07-09', icon: Video, color: '#10b981' },
+    { id: 303, name: 'कानून व्यवस्था और फील्ड पुलिसिंग (Law Enforcement & Field Policing)', status: 'New', date: '2026-07-09', icon: Shield, color: '#f59e0b' },
+    { id: 304, name: 'प्रशासनिक कार्य और ऑटोमेशन (Police Administration & Automation)', status: 'Pending', date: '2026-07-09', icon: FileText, color: '#ec4899' },
+    { id: 305, name: 'डेटा सुरक्षा और पारदर्शिता (Data Integrity & Transparency)', status: 'New', date: '2026-07-09', icon: Database, color: '#8b5cf6' },
+    { id: 306, name: 'ट्रैफिक और नागरिक शिकायत निवारण (Traffic & Public Grievance)', status: 'Active', date: '2026-07-09', icon: Car, color: '#14b8a6' },
   ];
 
   if (selectedProject?.id === 301) {
@@ -80,12 +80,27 @@ export default function PoliceFunctioningDashboard() {
         {displayProjects.map(proj => {
           const Icon = proj.icon || Folder;
           return (
-            <div key={proj.id} className="thane-project-card">
+            <div key={proj.id} className="thane-project-card" style={{
+              borderTop: `4px solid ${proj.color}`,
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+              e.currentTarget.style.boxShadow = `0 10px 25px -5px ${proj.color}66, 0 0 20px ${proj.color}33`;
+              e.currentTarget.style.borderColor = proj.color;
+              e.currentTarget.style.zIndex = 10;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.05)';
+              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.zIndex = 1;
+            }}>
               <div className="thane-card-header">
-                <div style={{ background: '#f1f5f9', padding: '0.5rem', borderRadius: '0.5rem' }}>
-                  <Icon size={24} className="thane-folder-icon" style={{ margin: 0 }} />
+                <div style={{ background: `${proj.color}15`, padding: '0.6rem', borderRadius: '0.5rem', color: proj.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Icon size={24} />
                 </div>
-                <span className={`thane-status-badge ${proj.status.toLowerCase()}`}>{proj.status}</span>
+                <span className="thane-status-badge" style={{ background: `${proj.color}15`, color: proj.color, border: `1px solid ${proj.color}40`, fontWeight: 'bold' }}>{proj.status}</span>
               </div>
               <h3 className="thane-card-title">{proj.name}</h3>
               <div className="thane-card-footer">

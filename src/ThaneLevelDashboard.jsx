@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Folder, ChevronDown, Clock } from 'lucide-react';
+import { Folder, ChevronDown, Clock, Mic, Activity, BookOpen, Package, Box, Calendar, Lock } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 import ProjectDetailsView from './ProjectDetailsView';
 
@@ -9,13 +9,13 @@ export default function ThaneLevelDashboard({ projects = [] }) {
 
   // Dummy projects if none passed
   const displayProjects = projects.length > 0 ? projects : [
-    { id: 1, name: 'आवाज से FIR ड्राफ्टिंग (Crime GPT/Copilot)', status: 'Active', date: '2026-07-01' },
-    { id: 2, name: 'थाना डैशबोर्ड (Real-time Tracker)', status: 'Pending', date: '2026-07-05' },
-    { id: 3, name: 'डिजिटल बीट बुक (Guardian AI)', status: 'Completed', date: '2026-06-20' },
-    { id: 4, name: 'स्मार्ट इन्वेंटरी मैनेजर (Armoury AI)', status: 'New', date: '2026-07-08' },
-    { id: 5, name: 'AI-आधारित मालखाना ट्रैकर (Inventory Monitor)', status: 'New', date: '2026-07-08' },
-    { id: 6, name: 'AI-आधारित ड्यूटी रोस्टर (Smart Scheduling)', status: 'New', date: '2026-07-08' },
-    { id: 7, name: 'स्मार्ट लॉकअप गार्ड (Safety AI)', status: 'New', date: '2026-07-08' },
+    { id: 1, name: 'आवाज से FIR ड्राफ्टिंग (Crime GPT/Copilot)', status: 'Active', date: '2026-07-01', icon: Mic, color: '#3b82f6' },
+    { id: 2, name: 'थाना डैशबोर्ड (Real-time Tracker)', status: 'Pending', date: '2026-07-05', icon: Activity, color: '#10b981' },
+    { id: 3, name: 'डिजिटल बीट बुक (Guardian AI)', status: 'Completed', date: '2026-06-20', icon: BookOpen, color: '#f59e0b' },
+    { id: 4, name: 'स्मार्ट इन्वेंटरी मैनेजर (Armoury AI)', status: 'New', date: '2026-07-08', icon: Package, color: '#ec4899' },
+    { id: 5, name: 'AI-आधारित मालखाना ट्रैकर (Inventory Monitor)', status: 'New', date: '2026-07-08', icon: Box, color: '#8b5cf6' },
+    { id: 6, name: 'AI-आधारित ड्यूटी रोस्टर (Smart Scheduling)', status: 'New', date: '2026-07-08', icon: Calendar, color: '#14b8a6' },
+    { id: 7, name: 'स्मार्ट लॉकअप गार्ड (Safety AI)', status: 'New', date: '2026-07-08', icon: Lock, color: '#ef4444' },
   ];
 
   if (selectedProject) {
@@ -60,24 +60,45 @@ export default function ThaneLevelDashboard({ projects = [] }) {
       </div>
 
       <div className="thane-projects-grid">
-        {displayProjects.map(proj => (
-          <div key={proj.id} className="thane-project-card">
-            <div className="thane-card-header">
-              <Folder size={24} className="thane-folder-icon" />
-              <span className={`thane-status-badge ${proj.status.toLowerCase()}`}>{proj.status}</span>
+        {displayProjects.map(proj => {
+          const Icon = proj.icon || Folder;
+          const projColor = proj.color || '#3b82f6';
+          return (
+            <div key={proj.id} className="thane-project-card" style={{
+              borderTop: `4px solid ${projColor}`,
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+              e.currentTarget.style.boxShadow = `0 10px 25px -5px ${projColor}66, 0 0 20px ${projColor}33`;
+              e.currentTarget.style.borderColor = projColor;
+              e.currentTarget.style.zIndex = 10;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.05)';
+              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.zIndex = 1;
+            }}>
+              <div className="thane-card-header">
+                <div style={{ background: `${projColor}15`, padding: '0.6rem', borderRadius: '0.5rem', color: projColor, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Icon size={24} />
+                </div>
+                <span className="thane-status-badge" style={{ background: `${projColor}15`, color: projColor, border: `1px solid ${projColor}40`, fontWeight: 'bold' }}>{proj.status}</span>
+              </div>
+              <h3 className="thane-card-title">{proj.name}</h3>
+              <div className="thane-card-footer">
+                <span className="thane-date"><Clock size={14} /> {proj.date}</span>
+                <button 
+                  className="thane-view-btn"
+                  onClick={() => setSelectedProject(proj)}
+                >
+                  View Details
+                </button>
+              </div>
             </div>
-            <h3 className="thane-card-title">{proj.name}</h3>
-            <div className="thane-card-footer">
-              <span className="thane-date"><Clock size={14} /> {proj.date}</span>
-              <button 
-                className="thane-view-btn"
-                onClick={() => setSelectedProject(proj)}
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

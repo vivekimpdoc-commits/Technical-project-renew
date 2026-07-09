@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  ArrowLeft, Database, Server, Settings, Lock, Network, Shield, HardDrive, FileText, Activity, BrainCircuit, Code, Layers, FileSignature, CheckCircle
+  ArrowLeft, Database, Server, Settings, Lock, Network, Shield, HardDrive, FileText, Activity, BrainCircuit, Code, Layers, FileSignature, CheckCircle, Zap
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
