@@ -36,9 +36,9 @@ export default function ThaneLevelDashboard({ projects = [] }) {
 
       <div className="thane-menu-bar">
         <div className="thane-menu-tabs">
-          <button className="thane-tab active">Projects Menu</button>
-          <button className="thane-tab">Resources</button>
-          <button className="thane-tab">Reports</button>
+          <button className="thane-tab active">Projects (परियोजनाएं)</button>
+          <button className="thane-tab">Resources (संसाधन)</button>
+          <button className="thane-tab">Reports (रिपोर्ट्स)</button>
         </div>
         
         <div className="thane-dropdown-wrapper">

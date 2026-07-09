@@ -392,9 +392,11 @@ body {
 }
 
 .sidebar-nav-item:hover {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: white;
+  color: #2563eb;
   transform: translateX(4px);
+  border-color: #93c5fd;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), inset 0 0 8px rgba(59, 130, 246, 0.1);
 }
 
 .sidebar-nav-item.active {

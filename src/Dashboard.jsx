@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Building2, Users, FileSignature, 
+import {
+  Building2, Users, FileSignature,
   Shield, LogOut, Menu, X, Lightbulb,
   UserCheck, LineChart, BrainCircuit, Clock4,
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
-  History, Command, BookOpen, Activity
+  History, Command, BookOpen, Activity, Layout
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
@@ -14,6 +14,8 @@ import AllMembers from './AllMembers';
 import ThaneLevelDashboard from './ThaneLevelDashboard';
 import DistrictLevelDashboard from './DistrictLevelDashboard';
 import PoliceFunctioningDashboard from './PoliceFunctioningDashboard';
+import StepUpLiteracyDashboard from './StepUpLiteracyDashboard';
+import FrontendDetails from './FrontendDetails';
 import OfficerPerformance from './pages/OfficerPerformance';
 import InvestigationAnalytics from './pages/InvestigationAnalytics';
 import AIInvestigation from './pages/AIInvestigation';
@@ -48,16 +50,17 @@ export default function Dashboard() {
 
   const navItems = [
     { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen },
-    { id: 'police-functioning', label: 'AI पुलिस की कार्यप्रणाली (Police Functioning)', icon: BrainCircuit },
-    { id: 'thane-level', label: 'Thane (Police Station) Level (पुलिस थाना स्तर)', icon: Shield },
-    { id: 'district-level', label: 'District (SP/SSP Office) Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 }
+    { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit },
+    { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield },
+    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 },
+    { id: 'frontend', label: 'Frontend Design (फ्रंटएंड डिज़ाइन)', icon: Layout }
   ];
 
   return (
     <div className="app-container">
       {/* Header */}
       <header className="app-header" style={{ position: 'relative' }}>
-        <button 
+        <button
           className="mobile-menu-toggle"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -69,7 +72,7 @@ export default function Dashboard() {
           <h1 className="header-title">UP Police AI Investigation <span>(Command Center)</span></h1>
         </div>
         <p className="header-subtitle">Advanced Analytics & Investigative Intelligence Platform | Innovation - Integration - Implementation</p>
-        
+
         {/* Logout Button */}
         <Link to="/" style={{
           position: 'absolute',
@@ -89,8 +92,8 @@ export default function Dashboard() {
           border: '1px solid rgba(255,255,255,0.2)',
           transition: 'all 0.2s'
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
         >
           <LogOut size={16} />
           Logout
@@ -99,7 +102,7 @@ export default function Dashboard() {
 
       {/* Dashboard Layout with Sidebar */}
       <div className="dashboard-layout">
-        
+
         {/* Mobile Overlay */}
         {isMobileMenuOpen && (
           <div className="sidebar-overlay" onClick={() => setIsMobileMenuOpen(false)}></div>
@@ -108,7 +111,7 @@ export default function Dashboard() {
         {/* Sidebar */}
         <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`} style={{ overflowY: 'auto' }}>
           {navItems.map((item) => (
-            <div 
+            <div
               key={item.id}
               className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
               onClick={() => handleTabChange(item.id)}
@@ -122,15 +125,10 @@ export default function Dashboard() {
         {/* Main Content Area */}
         <main className="main-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', overflowY: 'auto', width: '100%' }}>
           {activeTab === 'step-up' && (
-            <div style={{ padding: '2rem', width: '100%', maxWidth: '1200px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                <BookOpen size={32} color="#2563eb" />
-                <h2 style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a' }}>Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)</h2>
-              </div>
-              <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
-                <p style={{ color: '#475569', fontSize: '1.1rem' }}>यहाँ "स्टेप अप साक्षरता सॉफ्टवेयर" का विवरण और डैशबोर्ड दिखाई देगा...</p>
-              </div>
-            </div>
+            <StepUpLiteracyDashboard />
+          )}
+          {activeTab === 'frontend' && (
+            <FrontendDetails />
           )}
           {activeTab === 'police-functioning' && <PoliceFunctioningDashboard />}
           {activeTab === 'thane-level' && <ThaneLevelDashboard projects={projects} />}
