@@ -13,6 +13,11 @@ import CDRSemanticSearchDetails from './CDRSemanticSearchDetails';
 import VRCrimeSceneDetails from './VRCrimeSceneDetails';
 import DarkWebMonitorDetails from './DarkWebMonitorDetails';
 import LipReadingAIDetails from './LipReadingAIDetails';
+import CCTVSummarizerDetails from './CCTVSummarizerDetails';
+import VMMRDetails from './VMMRDetails';
+import PredictiveBehavioralDetails from './PredictiveBehavioralDetails';
+import CrowdMeterDetails from './CrowdMeterDetails';
+import VisualAuditorDetails from './VisualAuditorDetails';
 
 export default function ProjectDetailsView({ project, onBack }) {
   if (project?.id === 2) {
@@ -61,6 +66,26 @@ export default function ProjectDetailsView({ project, onBack }) {
 
   if (project?.id === 406) {
     return <LipReadingAIDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 407) {
+    return <CCTVSummarizerDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 408) {
+    return <VMMRDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 409) {
+    return <PredictiveBehavioralDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 410) {
+    return <CrowdMeterDetails project={project} onBack={onBack} />;
+  }
+
+  if (project?.id === 411) {
+    return <VisualAuditorDetails project={project} onBack={onBack} />;
   }
 
   const [activeTab, setActiveTab] = useState('overview');

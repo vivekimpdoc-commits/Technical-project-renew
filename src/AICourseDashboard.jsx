@@ -163,14 +163,14 @@ export default function AICourseDashboard() {
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', width: '100%' }}>
       
       {/* Header Section */}
-      <div style={{ textAlign: 'center', marginBottom: '3rem', background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
-        <div style={{ display: 'inline-flex', padding: '1.5rem', background: 'linear-gradient(135deg, #3b82f6, #2563eb)', borderRadius: '50%', color: 'white', marginBottom: '1.5rem', boxShadow: '0 10px 25px rgba(59, 130, 246, 0.4)' }}>
-          <GraduationCap size={48} />
+      <div style={{ textAlign: 'center', marginBottom: '2rem', background: 'white', padding: '1.5rem 2rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
+        <div style={{ display: 'inline-flex', padding: '1rem', background: 'linear-gradient(135deg, #3b82f6, #2563eb)', borderRadius: '50%', color: 'white', marginBottom: '1rem', boxShadow: '0 8px 20px rgba(59, 130, 246, 0.4)' }}>
+          <GraduationCap size={32} />
         </div>
-        <h1 style={{ fontSize: '2.5rem', color: '#0f172a', marginBottom: '0.5rem', fontWeight: '800' }}>
+        <h1 style={{ fontSize: '1.8rem', color: '#0f172a', marginBottom: '0.25rem', fontWeight: '800' }}>
           Course: AI Model Development
         </h1>
-        <h2 style={{ fontSize: '1.5rem', color: '#3b82f6', fontWeight: '600' }}>
+        <h2 style={{ fontSize: '1.2rem', color: '#3b82f6', fontWeight: '600', margin: 0 }}>
           Beginner to Advanced
         </h2>
       </div>
