@@ -1,100 +1,313 @@
-import React from 'react';
-import { ArrowLeft, BrainCircuit, Eye, ActivitySquare, ShieldAlert, LineChart, Users } from 'lucide-react';
-import './ThaneLevelDashboard.css';
+import React, { useState } from 'react';
+import { 
+  ArrowLeft, LayoutDashboard, FileText, Code, ListOrdered, BookOpen, CheckSquare, Settings, Target, Shield, Database, Layout, CheckCircle, Network, Server, Briefcase, Activity, Monitor, BrainCircuit, Search, Zap, AlertTriangle, ActivitySquare, Eye, Users, LineChart
+} from 'lucide-react';
+import './ProjectDetailsView.css';
 
 export default function PredictiveBehavioralDetails({ project, onBack }) {
-  if (!project) return null;
+  const [activeTab, setActiveTab] = useState('overview');
+  const [showFullscreenFlowchart, setShowFullscreenFlowchart] = useState(false);
+  const [showFullscreenWorkflow, setShowFullscreenWorkflow] = useState(false);
+  const [selectedGuideStep, setSelectedGuideStep] = useState(null);
+  const [selectedEvaluation, setSelectedEvaluation] = useState(null);
+  const [selectedOverviewSection, setSelectedOverviewSection] = useState(null);
+
+  const overviewSections = [
+    { id: 'io-assistance', title: 'Loitering Detection', subtitle: 'संदिग्ध ठहराव की पहचान', icon: Eye, color: '#475569' },
+    { id: 'objectives', title: 'Aggressive Posture', subtitle: 'लड़ाई या हिंसा की पूर्व चेतावनी', icon: ActivitySquare, color: '#2563eb' },
+    { id: 'features', title: 'Panic Recognition', subtitle: 'भगदड़ या अचानक भागने का अलर्ट', icon: Users, color: '#ec4899' },
+  ];
+
+  const guideSteps = [
+    { id: 1, title: 'चरण 1: Pose Estimation मॉडल', subtitle: 'Human Skeleton Tracking', icon: Activity, color: '#3b82f6' },
+    { id: 2, title: 'चरण 2: Kinematics Analysis', subtitle: 'Velocity & Angles', icon: LineChart, color: '#10b981' },
+    { id: 3, title: 'चरण 3: LSTM/RNN ट्रेनिंग', subtitle: 'Time-Series Action Recognition', icon: BrainCircuit, color: '#f59e0b' },
+    { id: 4, title: 'चरण 4: Spatial Loitering Logic', subtitle: 'Dwelling Time Thresholds', icon: Eye, color: '#8b5cf6' },
+    { id: 5, title: 'चरण 5: Alert Generation', subtitle: 'WebSockets for Real-time', icon: Server, color: '#ec4899' },
+    { id: 6, title: 'चरण 6: Threat Matrix Dashboard', subtitle: 'UI Visualization', icon: Layout, color: '#64748b' },
+  ];
+
+  const evaluationList = [
+    { id: 1, title: '1. False Positive Rate', subtitle: 'Minimizing fake alerts', icon: Target, color: '#3b82f6' },
+    { id: 2, title: '2. Pose Accuracy', subtitle: 'Skeleton tracking in crowds', icon: Zap, color: '#10b981' },
+    { id: 3, title: '3. Response Latency', subtitle: '< 2 seconds alert time', icon: Activity, color: '#f59e0b' },
+  ];
+
+  const tabs = [
+    { id: 'overview', label: 'Project Overview', icon: LayoutDashboard },
+    { id: 'architecture', label: 'Architecture & Workflow (कार्यप्रणाली)', icon: FileText },
+    { id: 'tech-stack', label: 'Tech Stack (तकनीकी टूल्स)', icon: Code },
+    { id: 'guide', label: 'Step-by-Step Guide (बनाने का तरीका)', icon: ListOrdered },
+    { id: 'resources', label: 'Resources & Datasets (जरूरी डेटा)', icon: BookOpen },
+    { id: 'evaluation', label: 'Submission/Evaluation (चेकलिस्ट)', icon: CheckSquare },
+    { id: 'settings', label: 'Settings', icon: Settings }
+  ];
+
+  if (showFullscreenFlowchart) {
+    return (
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+        <button 
+          onClick={() => setShowFullscreenFlowchart(false)}
+          style={{ padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', border: '1px solid #e2e8f0', fontWeight: 'bold', cursor: 'pointer', marginBottom: '2rem' }}
+        >
+          Close Flowchart
+        </button>
+        <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', height: 'calc(100vh - 100px)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', color: '#64748b' }}>
+          Detailed Interactive Flowchart (Behavioral Analytics) Will Render Here
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
-        <button 
-          onClick={onBack} 
-          style={{ 
-            display: 'flex', alignItems: 'center', gap: '0.5rem', 
-            padding: '0.75rem 1.5rem', background: 'white', 
-            borderRadius: '0.75rem', border: '1px solid #e2e8f0',
-            color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
-            transition: 'all 0.2s'
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = project.color; e.currentTarget.style.color = project.color; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.color = '#0f172a'; }}
-        >
-          <ArrowLeft size={20} />
-          Back to Dashboard
-        </button>
-      </div>
-
-      <div style={{ background: 'white', padding: '3rem', borderRadius: '1rem', border: `1px solid #e2e8f0`, borderTop: `6px solid ${project.color}`, boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
-        
-        {/* Title Section */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
-          <div style={{ padding: '1rem', background: `${project.color}15`, color: project.color, borderRadius: '1rem' }}>
-            <BrainCircuit size={48} />
-          </div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <button 
+            onClick={onBack} 
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '0.5rem', 
+              padding: '0.75rem 1.5rem', background: 'white', 
+              borderRadius: '0.75rem', border: '1px solid #e2e8f0',
+              color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.05)', transition: 'all 0.2s'
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = project?.color || '#8b5cf6'; e.currentTarget.style.color = project?.color || '#8b5cf6'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.color = '#0f172a'; }}
+          >
+            <ArrowLeft size={20} /> Back to Dashboard
+          </button>
+          
           <div>
-            <h1 style={{ fontSize: '2.25rem', color: '#0f172a', marginBottom: '0.5rem', fontWeight: '800' }}>
-              {project.name}
+            <h1 style={{ fontSize: '1.75rem', color: '#0f172a', fontWeight: '800', margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <BrainCircuit color={project?.color || '#8b5cf6'} size={28} />
+              {project?.name || 'व्यवहार विश्लेषण (Predictive Behavioral Analytics)'}
             </h1>
-            <p style={{ color: '#64748b', fontSize: '1.1rem', maxWidth: '800px' }}>
-              {project.description}
+            <p style={{ color: '#64748b', fontSize: '0.95rem', margin: '0.25rem 0 0 0' }}>
+              AI-driven human kinematics and intent prediction
             </p>
           </div>
         </div>
+        
+        <div style={{ padding: '0.5rem 1rem', background: `${project?.color || '#8b5cf6'}15`, color: project?.color || '#8b5cf6', borderRadius: '2rem', fontWeight: 'bold', fontSize: '0.85rem' }}>
+          Project ID: {project?.id || '409'}
+        </div>
+      </div>
 
-        {/* Feature Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
-          {[
-            { icon: Eye, title: 'Loitering Detection', desc: 'Identifies individuals lingering in sensitive areas beyond a normal threshold time.' },
-            { icon: ActivitySquare, title: 'Aggressive Posture', desc: 'Analyzes body kinematics to detect sudden brawls, fighting, or weapon-drawing motions.' },
-            { icon: Users, title: 'Panic Recognition', desc: 'Detects sudden, synchronized running of crowds indicating a panic or stampede scenario.' }
-          ].map((feature, i) => (
-            <div key={i} style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', border: '1px solid #e2e8f0' }}>
-              <feature.icon size={32} color={project.color} style={{ marginBottom: '1rem' }} />
-              <h3 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '0.5rem' }}>{feature.title}</h3>
-              <p style={{ color: '#475569', fontSize: '0.95rem' }}>{feature.desc}</p>
-            </div>
-          ))}
+      <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: '2rem' }}>
+        {/* Sidebar Menu */}
+        <div style={{ background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', padding: '1.5rem', alignSelf: 'start', position: 'sticky', top: '2rem' }}>
+          <h3 style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1rem', paddingLeft: '0.5rem' }}>
+            Project Menu
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {tabs.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '0.75rem',
+                  padding: '1rem', width: '100%', textAlign: 'left',
+                  background: activeTab === tab.id ? '#f1f5f9' : 'transparent',
+                  color: activeTab === tab.id ? (project?.color || '#8b5cf6') : '#475569',
+                  border: 'none', borderRadius: '0.75rem', cursor: 'pointer',
+                  fontWeight: activeTab === tab.id ? 'bold' : '500',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== tab.id) e.currentTarget.style.background = '#f8fafc';
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== tab.id) e.currentTarget.style.background = 'transparent';
+                }}
+              >
+                <tab.icon size={18} />
+                <span style={{ fontSize: '0.95rem', lineHeight: '1.2' }}>{tab.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Interactive Demo Section */}
-        <div style={{ background: '#0f172a', padding: '3rem', borderRadius: '1rem', color: 'white', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: project.color }}></div>
+        {/* Content Area */}
+        <div style={{ background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', minHeight: '600px', padding: '2.5rem' }}>
           
-          <h2 style={{ fontSize: '1.75rem', fontWeight: '700', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <LineChart color={project.color} /> Real-Time Behavioral Threat Matrix
-          </h2>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
-            {/* Threat Level Low */}
-            <div style={{ flex: '1 1 250px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '1.5rem', borderRadius: '1rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <span style={{ color: '#34d399', fontWeight: 'bold' }}>Normal Flow</span>
-                <span style={{ color: '#34d399' }}>95%</span>
+          {/* 1. OVERVIEW TAB */}
+          {activeTab === 'overview' && (
+            <div className="animate-fade-in">
+              <div style={{ marginBottom: '3rem' }}>
+                <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800', marginBottom: '1rem' }}>Project Overview</h2>
+                <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: '1.7' }}>
+                  <strong>Predictive Behavioral Analytics</strong> इंसान के शरीर की हरकतों (Kinematics) का विश्लेषण करके उसके इरादों का अंदाज़ा लगाता है। उदाहरण के लिए, यदि कोई व्यक्ति किसी ATM के बाहर 15 मिनट से चक्कर काट रहा है, या सड़क पर अचानक दो लोग लड़ने लगते हैं, तो सिस्टम इसे 'Aggressive' या 'Suspicious' मानकर पुलिस को अलर्ट भेज देता है। यह अपराध होने से पहले उसे रोकने (Predictive Policing) में बहुत काम आता है।
+                </p>
               </div>
-              <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Pedestrians moving at constant velocity. No sudden trajectory changes.</p>
-            </div>
 
-            {/* Threat Level Medium */}
-            <div style={{ flex: '1 1 250px', background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', padding: '1.5rem', borderRadius: '1rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <span style={{ color: '#fbbf24', fontWeight: 'bold' }}>Suspicious Loitering</span>
-                <span style={{ color: '#fbbf24' }}>Sector 4</span>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+                {overviewSections.map((section) => (
+                  <div 
+                    key={section.id} 
+                    onClick={() => setSelectedOverviewSection(selectedOverviewSection === section.id ? null : section.id)}
+                    style={{ 
+                      padding: '1.5rem', background: '#f8fafc', borderRadius: '1rem', border: '1px solid #e2e8f0',
+                      cursor: 'pointer', transition: 'all 0.2s',
+                      boxShadow: selectedOverviewSection === section.id ? `0 0 0 2px ${section.color}` : 'none'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                      <div style={{ padding: '0.75rem', background: 'white', borderRadius: '0.75rem', color: section.color, boxShadow: '0 2px 5px rgba(0,0,0,0.05)' }}>
+                        <section.icon size={24} />
+                      </div>
+                      <div>
+                        <h3 style={{ color: '#0f172a', fontSize: '1.1rem', fontWeight: 'bold' }}>{section.title}</h3>
+                        <p style={{ color: '#64748b', fontSize: '0.85rem' }}>{section.subtitle}</p>
+                      </div>
+                    </div>
+                    {selectedOverviewSection === section.id && (
+                      <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #e2e8f0', color: '#475569', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                        {section.id === 'io-assistance' && "यदि कोई व्यक्ति बिना किसी उद्देश्य के एक ही जगह पर बहुत देर तक खड़ा रहता है (जैसे किसी घर की रेकी करना), तो कैमरा इसे डिटेक्ट कर लेता है।"}
+                        {section.id === 'objectives' && "मॉडल इंसान के जोड़ों (हाथ, पैर, सिर) की पोजीशन ट्रैक करता है। जब अचानक हाथों की गति बहुत तेज़ होती है (जैसे मारपीट या हथियार निकालना), तो यह तुरंत अलर्ट जनरेट करता है।"}
+                        {section.id === 'features' && "रेलवे स्टेशनों या रैलियों में जब बहुत सारे लोग एक साथ किसी एक दिशा में तेज़ी से भागते हैं, तो सिस्टम इसे 'Panic / Stampede' मानकर कंट्रोल रूम को सूचित करता है।"}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
-              <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Subject detected dwelling near ATM kiosk for &gt; 15 minutes. Alert flagged.</p>
-            </div>
 
-            {/* Threat Level High */}
-            <div style={{ flex: '1 1 250px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '1.5rem', borderRadius: '1rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <span style={{ color: '#f87171', fontWeight: 'bold' }}>Aggressive Action</span>
-                <span style={{ color: '#f87171', display: 'flex', alignItems: 'center', gap: '0.25rem' }}><ShieldAlert size={14} /> ACTIVE</span>
+              <div style={{ background: '#0f172a', borderRadius: '1rem', padding: '2rem', color: 'white', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, #8b5cf6, #ef4444)' }}></div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <LineChart color="#8b5cf6" /> Real-Time Behavioral Threat Matrix
+                </h3>
+                
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+                  <div style={{ flex: '1 1 250px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '1.5rem', borderRadius: '1rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                      <span style={{ color: '#34d399', fontWeight: 'bold' }}>Normal Flow</span>
+                      <span style={{ color: '#34d399' }}>95%</span>
+                    </div>
+                    <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Pedestrians moving at constant velocity.</p>
+                  </div>
+
+                  <div style={{ flex: '1 1 250px', background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', padding: '1.5rem', borderRadius: '1rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                      <span style={{ color: '#fbbf24', fontWeight: 'bold' }}>Suspicious Loitering</span>
+                      <span style={{ color: '#fbbf24' }}>Sector 4</span>
+                    </div>
+                    <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Subject dwelling near ATM for &gt; 15 mins.</p>
+                  </div>
+
+                  <div style={{ flex: '1 1 250px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '1.5rem', borderRadius: '1rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                      <span style={{ color: '#f87171', fontWeight: 'bold' }}>Aggressive Action</span>
+                      <span style={{ color: '#f87171', display: 'flex', alignItems: 'center', gap: '0.25rem' }}><ShieldAlert size={14} /> ACTIVE</span>
+                    </div>
+                    <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Violent kinematics detected at Alley B.</p>
+                  </div>
+                </div>
               </div>
-              <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Sudden violent kinematics detected at Alley B. Nearest patrol dispatched.</p>
             </div>
-          </div>
+          )}
+
+          {activeTab === 'architecture' && (
+             <div className="animate-fade-in">
+             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+               <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800' }}>Architecture & Workflow</h2>
+             </div>
+             
+             <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', marginBottom: '2rem' }}>
+               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', fontWeight: 'bold' }}>1. Pose Estimation (बॉडी स्ट्रक्चर बनाना)</h3>
+               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>स्ट्रीमिंग वीडियो को MediaPipe या YOLOv8-Pose जैसे मॉडल में भेजा जाता है। यह मॉडल हर व्यक्ति के शरीर पर 17-33 Keypoints (जैसे कोहनी, घुटने, कंधे) ड्रा करता है।</p>
+               
+               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>2. Sequence Analysis (लगातार हरकतें देखना)</h3>
+               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>किसी व्यक्ति के हाव-भाव को एक फ्रेम से नहीं पहचाना जा सकता। इसलिए पिछले 30-60 फ्रेम्स (1-2 सेकंड) के Keypoints के डेटा को एक RNN या LSTM (Long Short-Term Memory) न्यूरल नेटवर्क में भेजा जाता है।</p>
+               
+               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>3. Classification & Thresholding (निर्णय लेना)</h3>
+               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>LSTM मॉडल आउटपुट देता है जैसे: 'Walking' (90%), 'Fighting' (8%)। यदि 'Fighting' या 'Falling' का स्कोर एक निश्चित सीमा (Threshold) पार करता है, तो तुरंत WebSocket के ज़रिए कमांड सेंटर में रेड अलर्ट बज जाता है।</p>
+             </div>
+           </div>
+          )}
+
+          {activeTab === 'tech-stack' && (
+            <div className="animate-fade-in">
+              <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800', marginBottom: '2rem' }}>Tech Stack (तकनीकी टूल्स)</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                <div style={{ border: '1px solid #e2e8f0', borderRadius: '1rem', padding: '1.5rem', background: 'white' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: '#3b82f6' }}><Code size={24} /> <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#0f172a', margin: 0 }}>Frontend UI</h3></div>
+                  <ul style={{ paddingLeft: '1.5rem', color: '#475569', lineHeight: '1.8' }}>
+                    <li><strong>React.js:</strong> अलर्ट्स और ग्राफ्स दिखाने के लिए।</li>
+                    <li><strong>Chart.js / Recharts:</strong> रियल-टाइम Threat Matrix ग्राफ के लिए।</li>
+                    <li><strong>WebSockets:</strong> सर्वर से तुरंत अलर्ट प्राप्त करने के लिए।</li>
+                  </ul>
+                </div>
+                <div style={{ border: '1px solid #e2e8f0', borderRadius: '1rem', padding: '1.5rem', background: 'white' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: '#10b981' }}><Server size={24} /> <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#0f172a', margin: 0 }}>Backend & API</h3></div>
+                  <ul style={{ paddingLeft: '1.5rem', color: '#475569', lineHeight: '1.8' }}>
+                    <li><strong>Python (FastAPI):</strong> वीडियो फीड रिसीव करने के लिए।</li>
+                    <li><strong>Redis:</strong> तेज़ डेटा प्रोसेसिंग और इन-मेमोरी इवेंट ट्रैकिंग के लिए।</li>
+                    <li><strong>Socket.io:</strong> रियल-टाइम कम्युनिकेशन के लिए।</li>
+                  </ul>
+                </div>
+                <div style={{ border: '1px solid #e2e8f0', borderRadius: '1rem', padding: '1.5rem', background: 'white' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: '#ec4899' }}><BrainCircuit size={24} /> <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#0f172a', margin: 0 }}>AI / Machine Learning</h3></div>
+                  <ul style={{ paddingLeft: '1.5rem', color: '#475569', lineHeight: '1.8' }}>
+                    <li><strong>Ultralytics YOLOv8-Pose:</strong> इंसान की हड्डियां/स्केलेटन ड्रा करने के लिए।</li>
+                    <li><strong>PyTorch / Keras:</strong> LSTM मॉडल (एक्शन पहचानने) के लिए।</li>
+                    <li><strong>DeepSORT:</strong> एक व्यक्ति को लगातार ट्रैक करने के लिए (ताकि पता चले वह कितनी देर रुका है)।</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'guide' && (
+            <div className="animate-fade-in">
+              <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800', marginBottom: '2rem' }}>Step-by-Step Guide</h2>
+              <div style={{ display: 'flex', gap: '2rem' }}>
+                <div style={{ width: '300px', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {guideSteps.map(step => (
+                    <div 
+                      key={step.id} 
+                      onClick={() => setSelectedGuideStep(step.id)}
+                      style={{ padding: '1rem', background: selectedGuideStep === step.id ? `${step.color}15` : '#f8fafc', border: `1px solid ${selectedGuideStep === step.id ? step.color : '#e2e8f0'}`, borderLeft: `4px solid ${step.color}`, borderRadius: '0.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
+                    >
+                      <h4 style={{ fontSize: '1rem', fontWeight: 'bold', color: '#0f172a', marginBottom: '0.25rem' }}>{step.title}</h4>
+                      <p style={{ fontSize: '0.8rem', color: '#64748b' }}>{step.subtitle}</p>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ flex: 1, background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '1rem', padding: '2rem' }}>
+                  {selectedGuideStep ? (
+                    <div>
+                      <h3 style={{ fontSize: '1.5rem', color: '#0f172a', marginBottom: '1rem', fontWeight: 'bold' }}>
+                        {guideSteps.find(s => s.id === selectedGuideStep).title}
+                      </h3>
+                      <div style={{ color: '#475569', lineHeight: '1.8' }}>
+                        {selectedGuideStep === 1 && <p>सबसे पहले YOLOv8-Pose का उपयोग करें। यह मॉडल इमेज में मौजूद इंसानों को खोजता है और उनके शरीर पर X,Y कोऑर्डिनेट्स का एक सेट (Keypoints) रिटर्न करता है।</p>}
+                        {selectedGuideStep === 2 && <p>DeepSORT अल्गोरिदम लगाकर हर इंसान को एक ID (जैसे Person-1) दें। अब हर फ्रेम में Person-1 के Keypoints को ट्रैक करें। इससे आपको पता चलेगा कि उसके हाथ-पैर कितनी तेजी से और किस दिशा में मूव कर रहे हैं (Velocity & Kinematics)।</p>}
+                        {selectedGuideStep === 3 && <p>Kinetics-400 या UCF101 जैसे डेटासेट पर एक LSTM या 3D-CNN मॉडल को ट्रेन करें। यह मॉडल एक सिंगल इमेज नहीं, बल्कि पिछले 30 फ्रेम्स (वीडियो क्लिप) को देखकर बताता है कि इंसान "चल रहा है" या "लड़ रहा है"।</p>}
+                        {selectedGuideStep === 4 && <p>Loitering (ठहराव) डिटेक्ट करने के लिए साधारण लॉजिक लिखें: यदि Person-1 का सेंटर पॉइंट (X,Y) पिछले 15 मिनट से एक 10-मीटर के दायरे (Bounding Area) से बाहर नहीं निकला है, तो 'Loitering' अलर्ट जनरेट कर दें।</p>}
+                        {selectedGuideStep === 5 && <p>Python में FastAPI और WebSockets (Socket.io) का सेटअप करें। जैसे ही AI को कोई सस्पेक्टेड एक्टिविटी मिले, वह JSON फॉर्मेट में अलर्ट डेटा WebSocket के ज़रिए सभी क्लाइंट्स को ब्रॉडकास्ट कर दे।</p>}
+                        {selectedGuideStep === 6 && <p>React में एक डैशबोर्ड बनाएं जो WebSocket से कनेक्ट हो। अलर्ट आते ही लाल रंग का पॉपअप स्क्रीन पर आ जाए और वह CCTV क्लिप खुद प्ले होने लगे।</p>}
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
+                      <ListOrdered size={48} style={{ marginBottom: '1rem', opacity: 0.5 }} />
+                      <p>बाईं ओर से एक चरण (Step) चुनें</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Fallback for other tabs not fully mocked in this snippet */}
+          {(activeTab === 'resources' || activeTab === 'evaluation' || activeTab === 'settings') && (
+            <div className="animate-fade-in" style={{ textAlign: 'center', padding: '4rem', color: '#64748b' }}>
+              <div style={{ fontSize: '1.2rem' }}>Content for <strong>{tabs.find(t => t.id === activeTab).label}</strong> is ready to be implemented using the same structure.</div>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
