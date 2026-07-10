@@ -1,0 +1,154 @@
+import React from 'react';
+import { 
+  ArrowLeft, BrainCircuit, Bot, Code, Cpu, TestTube, Lightbulb
+} from 'lucide-react';
+import './ThaneLevelDashboard.css';
+
+export default function AIInSoftwareEngineering({ onBack }) {
+  const models = [
+    {
+      id: 1,
+      title: 'AI Code Assistants',
+      subtitle: 'कोडिंग में मदद',
+      icon: Code,
+      color: '#10b981',
+      items: [
+        'GitHub Copilot, Tabnine जैसे टूल्स जो कोड लिखते समय अगली लाइन का सुझाव देते हैं।',
+        'डेवलपर्स के काम करने की स्पीड कई गुना बढ़ जाती है।',
+        'यह आपके लिखे हुए कोड को समझकर खुद ही कोड लिख सकता है।'
+      ]
+    },
+    {
+      id: 2,
+      title: 'Automated Code Review',
+      subtitle: 'कोड की जाँच',
+      icon: Cpu,
+      color: '#3b82f6',
+      items: [
+        'AI टूल्स जैसे DeepCode या SonarQube कोड में गलतियाँ ढूँढते हैं।',
+        'यह इंसानों से भी पहले बता देता है कि कोड में सिक्योरिटी की कमी है या नहीं।',
+        'यह कोड को और बेहतर और साफ़ बनाने के सुझाव देता है।'
+      ]
+    },
+    {
+      id: 3,
+      title: 'AI in Testing',
+      subtitle: 'स्मार्ट टेस्टिंग',
+      icon: TestTube,
+      color: '#f59e0b',
+      items: [
+        'AI खुद समझ जाता है कि कोड में कहाँ बग (Bug) हो सकता है और वहीं टेस्ट करता है।',
+        'यह ऑटोमैटिक रूप से टेस्ट केस (Test Cases) भी जेनरेट कर सकता है।',
+        'Mabl और Testim जैसे टूल्स AI का इस्तेमाल करके वेबसाइट्स टेस्ट करते हैं।'
+      ]
+    },
+    {
+      id: 4,
+      title: 'Predictive Analytics',
+      subtitle: 'भविष्यवाणी',
+      icon: Lightbulb,
+      color: '#8b5cf6',
+      items: [
+        'AI पुराने प्रोजेक्ट्स के डेटा को देखकर बताता है कि नया प्रोजेक्ट कितने दिन में पूरा होगा।',
+        'यह यह भी बता सकता है कि प्रोजेक्ट के फेल होने का कितना रिस्क है।',
+        'इससे मैनेजर्स को सही निर्णय लेने में मदद मिलती है।'
+      ]
+    },
+    {
+      id: 5,
+      title: 'AI Chatbots for Support',
+      subtitle: 'यूज़र हेल्प',
+      icon: Bot,
+      color: '#ec4899',
+      items: [
+        'सॉफ्टवेयर के अंदर ही AI चैटबॉट्स होते हैं (जैसे ChatGPT)।',
+        'अगर यूज़र को सॉफ्टवेयर चलाने में कोई दिक्कत आ रही है, तो चैटबॉट तुरंत मदद करता है।',
+        'इससे कस्टमर सपोर्ट टीम का बहुत सारा काम कम हो जाता है।'
+      ]
+    },
+    {
+      id: 6,
+      title: 'Generative AI for UI',
+      subtitle: 'डिज़ाइनिंग',
+      icon: BrainCircuit,
+      color: '#14b8a6',
+      items: [
+        'Midjourney या DALL-E जैसे टूल्स से वेबसाइट के लिए इमेजेज और ग्राफिक्स बनाए जाते हैं।',
+        'कुछ नए AI टूल्स सिर्फ टेक्स्ट (Prompt) पढ़कर पूरी वेबसाइट का डिज़ाइन (HTML/CSS) बना देते हैं।',
+        'v0 (Vercel) इसका एक बेहतरीन उदाहरण है।'
+      ]
+    }
+  ];
+
+  return (
+    <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
+        <button 
+          onClick={onBack} 
+          style={{ 
+            display: 'flex', alignItems: 'center', gap: '0.5rem', 
+            padding: '0.75rem 1.5rem', background: 'white', 
+            borderRadius: '0.75rem', border: '1px solid #e2e8f0',
+            color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#10b981'; e.currentTarget.style.color = '#059669'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.color = '#0f172a'; }}
+        >
+          <ArrowLeft size={18} /> Back to Advanced SDLC
+        </button>
+        <div>
+          <h2 style={{ margin: '0', fontSize: '1.75rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <BrainCircuit size={28} color="#10b981" />
+            एआई का इस्तेमाल (AI in Software Engineering)
+          </h2>
+          <p style={{ margin: '0.25rem 0 0 0', color: '#64748b' }}>
+            कोडिंग, टेस्टिंग, और ऑपरेशन्स में AI टूल्स का प्रयोग करके काम को तेज़ और स्मार्ट बनाना।
+          </p>
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+        {models.map(box => {
+          const Icon = box.icon;
+          return (
+            <div key={box.id} style={{
+              background: 'white', borderRadius: '0.75rem', padding: '1.5rem',
+              border: '1px solid #e2e8f0', borderTop: `4px solid ${box.color}`,
+              boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+              display: 'flex', flexDirection: 'column',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+              e.currentTarget.style.boxShadow = `0 10px 25px -5px ${box.color}66, 0 0 20px ${box.color}33`;
+              e.currentTarget.style.borderColor = box.color;
+              e.currentTarget.style.zIndex = 10;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.05)';
+              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.zIndex = 1;
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                <div style={{ background: `${box.color}15`, padding: '0.6rem', borderRadius: '0.5rem', color: box.color }}>
+                  <Icon size={24} />
+                </div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: '1.05rem', color: '#0f172a', fontWeight: 'bold' }}>{box.title}</h3>
+                  <p style={{ margin: '0.15rem 0 0 0', color: '#64748b', fontSize: '0.85rem' }}>{box.subtitle}</p>
+                </div>
+              </div>
+              <ul style={{ margin: 0, paddingLeft: '1.2rem', color: '#334155', fontSize: '0.9rem', lineHeight: '1.5', flex: 1 }}>
+                {box.items.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: '0.4rem' }}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

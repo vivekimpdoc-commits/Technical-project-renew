@@ -52,8 +52,7 @@ export default function Dashboard() {
     { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen },
     { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit },
     { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield },
-    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 },
-    { id: 'frontend', label: 'Frontend Design (फ्रंटएंड डिज़ाइन)', icon: Layout }
+    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 }
   ];
 
   return (

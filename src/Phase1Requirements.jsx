@@ -8,29 +8,29 @@ export default function Phase1Requirements({ onBack }) {
   const reqData = [
     {
       id: 1,
-      title: '1. Business Requirements',
-      subtitle: 'व्यावसायिक आवश्यकताएँ',
+      title: '1. Project Goals & Objectives',
+      subtitle: 'प्रोजेक्ट का मुख्य उद्देश्य',
       icon: Target,
       color: '#3b82f6',
       items: [
-        'सॉफ्टवेयर का उद्देश्य क्या है?',
-        'कौन-सी समस्या को हल करना है?',
-        'अपेक्षित परिणाम क्या हैं?',
-        'सफलता को कैसे मापा जाएगा?'
+        'AI आधारित स्मार्ट पुलिसिंग (Smart Policing) सिस्टम का निर्माण।',
+        'अपराध की भविष्यवाणी और केस की जांच को फास्ट करना।',
+        'पुलिस रिकॉर्ड्स और FIR का डिजिटल/सुरक्षित मैनेजमेंट।',
+        'आम जनता के लिए त्वरित न्याय (Quick Justice) सुनिश्चित करना।'
       ],
-      example: 'उदाहरण: पुलिस विभाग के लिए Investigation Management System बनाना।'
+      example: 'लक्ष्य: यूपी पुलिस (UP Police) के लिए एक एडवांस्ड AI इन्वेस्टिगेशन सिस्टम बनाना।'
     },
     {
       id: 2,
-      title: '2. Stakeholder Requirements',
-      subtitle: 'हितधारकों की आवश्यकताएँ',
+      title: '2. Police Department Users',
+      subtitle: 'सिस्टम को चलाने वाले अधिकारी (Roles)',
       icon: Users,
       color: '#10b981',
       items: [
-        'कौन-कौन लोग सिस्टम का उपयोग करेंगे?',
-        'Admin, Officer, Supervisor',
-        'Data Entry Operator',
-        'Citizen, Management'
+        'State Level Admin (DGP / IG Level)',
+        'District Officers (SP / DSP Level)',
+        'Thane Level (SHO / Inspector Level)',
+        'Investigation Officers (IO) & Beat Constables'
       ]
     },
     {
