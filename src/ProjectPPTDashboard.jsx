@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import {
-  ChevronLeft, ChevronRight, Presentation, BookOpen, Search,
-  Layout, Code, Activity, Server, Shield, Brain, Target,
+import { 
+  ChevronLeft, ChevronRight, Presentation, BookOpen, Search, 
+  Layout, Code, Activity, Server, Shield, Brain, Target, 
   GraduationCap, Lightbulb, ShieldAlert, Cpu, Lock, Globe,
-  Eye, TrendingUp, Users, CheckCircle, Maximize, Minimize
+  Eye, TrendingUp, Users, CheckCircle, Maximize, Minimize,
+  Building, Building2, Map, Bot, FileText, Siren, Briefcase, Network
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
@@ -14,7 +15,7 @@ export default function ProjectPPTDashboard() {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   // -------------------------
-  // STEP UP LITERACY SLIDES
+  // 1. STEP UP LITERACY SLIDES
   // -------------------------
   const slides = [
     {
@@ -36,7 +37,8 @@ export default function ProjectPPTDashboard() {
         "हमारी इंजीनियरिंग प्रक्रिया के 10 अलग-अलग चरणों को देखने के लिए 'Next' (अगली स्लाइड) बटन का उपयोग करें।"
       ],
       icon: Presentation,
-      color: "#3b82f6"
+      color: "#3b82f6",
+      image: "/assets/step_up_intro_1783686424622.png"
     },
     {
       id: 2,
@@ -57,7 +59,8 @@ export default function ProjectPPTDashboard() {
         "सुरक्षा जोखिम: भौतिक फाइलों (Physical files) के खोने, खराब होने या चोरी होने का खतरा रहता है।"
       ],
       icon: Search,
-      color: "#ef4444"
+      color: "#ef4444",
+      image: "/assets/step_up_police_1783686435426.png"
     },
     {
       id: 3,
@@ -141,7 +144,8 @@ export default function ProjectPPTDashboard() {
         "API इंटीग्रेशन: विज़ुअल फ्रंटेंड को बैकेंड सर्वर के साथ निर्बाध रूप से जोड़ना।"
       ],
       icon: Code,
-      color: "#ec4899"
+      color: "#ec4899",
+      image: "/assets/step_up_dev_1783686446734.png"
     },
     {
       id: 7,
@@ -230,7 +234,7 @@ export default function ProjectPPTDashboard() {
   ];
 
   // -------------------------
-  // AI COURSE SLIDES
+  // 2. AI COURSE SLIDES
   // -------------------------
   const aiCourseSlides = [
     {
@@ -252,7 +256,8 @@ export default function ProjectPPTDashboard() {
         "इस ट्रेनिंग प्रोग्राम के 10 विस्तृत मॉड्यूल देखने के लिए आगे बढ़ें।"
       ],
       icon: GraduationCap,
-      color: "#8b5cf6"
+      color: "#8b5cf6",
+      image: "/assets/ai_course_intro_1783686457100.png"
     },
     {
       id: 2,
@@ -315,7 +320,8 @@ export default function ProjectPPTDashboard() {
         "वीडियो संक्षिप्तीकरण: 24 घंटे की सुरक्षा फुटेज को सिर्फ 5 मिनट के सारांश में बदलना।"
       ],
       icon: Eye,
-      color: "#10b981"
+      color: "#10b981",
+      image: "/assets/ai_course_vision_1783686468295.png"
     },
     {
       id: 5,
@@ -357,7 +363,8 @@ export default function ProjectPPTDashboard() {
         "मौसमी रुझान: मौसम, त्योहारों या छुट्टियों का अपराध दर पर क्या प्रभाव पड़ता है, इसका विश्लेषण।"
       ],
       icon: Target,
-      color: "#8b5cf6"
+      color: "#8b5cf6",
+      image: "/assets/ai_course_predictive_1783686478570.png"
     },
     {
       id: 7,
@@ -445,7 +452,354 @@ export default function ProjectPPTDashboard() {
     }
   ];
 
-  const activeSlides = activePpt === 'step-up' ? slides : aiCourseSlides;
+  // -------------------------
+  // 3. AI POLICE FUNCTIONING
+  // -------------------------
+  const aiPoliceSlides = [
+    {
+      id: 1,
+      titleEn: "AI Police Functioning",
+      titleHi: "AI पुलिस की कार्यप्रणाली",
+      subtitleEn: "How AI transforms daily police operations",
+      subtitleHi: "AI दैनिक पुलिस कार्यों को कैसे बदल रहा है",
+      contentEn: [
+        "Welcome to the presentation on AI-Driven Police Functioning.",
+        "We explore how Artificial Intelligence is integrated into everyday law enforcement.",
+        "From smart patrolling to automated reporting, AI is changing the landscape of policing.",
+        "Let's see the key technological advancements."
+      ],
+      contentHi: [
+        "AI-संचालित पुलिस कार्यप्रणाली की प्रस्तुति में आपका स्वागत है।",
+        "हम देखेंगे कि आर्टिफिशियल इंटेलिजेंस (AI) को रोज़मर्रा के पुलिस कार्यों में कैसे जोड़ा जा रहा है।",
+        "स्मार्ट पेट्रोलिंग से लेकर ऑटोमैटिक रिपोर्टिंग तक, AI पुलिसिंग के परिदृश्य को बदल रहा है।",
+        "आइए कुछ प्रमुख तकनीकी प्रगतियों को देखें।"
+      ],
+      icon: Bot,
+      color: "#3b82f6",
+      image: "/assets/ai_course_predictive_1783686478570.png"
+    },
+    {
+      id: 2,
+      titleEn: "Smart Patrolling & Drones",
+      titleHi: "स्मार्ट पेट्रोलिंग और AI ड्रोन",
+      subtitleEn: "Eyes in the sky and on the ground",
+      subtitleHi: "आसमान और ज़मीन पर चौकन्नी नज़र",
+      contentEn: [
+        "AI Drones: Autonomous drones mapping crowds and detecting unusual activities during festivals.",
+        "Smart Vehicles: Patrol cars equipped with 360-degree AI cameras for automatic number plate reading.",
+        "Route Optimization: AI suggesting the fastest and safest routes for quick emergency response.",
+        "Real-time Alerts: Instant notifications sent to patrol units if a wanted criminal is detected nearby."
+      ],
+      contentHi: [
+        "AI ड्रोन: त्योहारों के दौरान भीड़ की मैपिंग और असामान्य गतिविधियों का पता लगाने वाले ऑटोमैटिक ड्रोन।",
+        "स्मार्ट वाहन: नंबर प्लेट को अपने आप पढ़ने के लिए 360-डिग्री AI कैमरों से लैस गश्ती (Patrol) गाड़ियाँ।",
+        "मार्ग अनुकूलन (Route Optimization): आपातकाल में जल्दी पहुँचने के लिए AI द्वारा सबसे तेज़ रास्तों का सुझाव।",
+        "रियल-टाइम अलर्ट: यदि कोई वांछित अपराधी (Wanted criminal) आसपास है तो गश्ती इकाई को तुरंत सूचना।"
+      ],
+      icon: Siren,
+      color: "#ef4444"
+    },
+    {
+      id: 3,
+      titleEn: "Automated FIR & Digital Records",
+      titleHi: "ऑटोमैटिक FIR और डिजिटल रिकॉर्ड्स",
+      subtitleEn: "Eliminating manual paperwork",
+      subtitleHi: "कागजी कार्रवाई (Paperwork) को खत्म करना",
+      contentEn: [
+        "Voice-to-Text FIR: Officers can dictate the incident and AI automatically drafts a formal FIR.",
+        "Multilingual Support: AI translates statements given in local dialects into standard Hindi/English.",
+        "Digital Vault: All case files, evidence, and statements stored securely on the blockchain cloud.",
+        "Auto-categorization: AI assigns IPC sections automatically based on the description of the crime."
+      ],
+      contentHi: [
+        "वॉयस-टू-टेक्स्ट FIR: अधिकारी घटना बोलकर बताते हैं और AI अपने आप औपचारिक FIR टाइप कर देता है।",
+        "बहुभाषी समर्थन (Multilingual): AI स्थानीय बोलियों में दिए गए बयानों को मानक हिंदी/अंग्रेजी में अनुवाद करता है।",
+        "डिजिटल वॉल्ट: सभी केस फाइलें, सबूत और बयान ब्लॉकचेन क्लाउड पर सुरक्षित रूप से जमा होते हैं।",
+        "ऑटो-कैटेगराइजेशन: अपराध के विवरण के आधार पर AI अपने आप सही IPC धाराएं (Sections) लगा देता है।"
+      ],
+      icon: FileText,
+      color: "#10b981"
+    },
+    {
+      id: 4,
+      titleEn: "Real-time Crime Dashboard",
+      titleHi: "रियल-टाइम क्राइम डैशबोर्ड",
+      subtitleEn: "Centralized monitoring for quick action",
+      subtitleHi: "त्वरित कार्रवाई के लिए केंद्रीय निगरानी",
+      contentEn: [
+        "Live Heatmaps: Visual representation of crime rates across the city updated by the minute.",
+        "Resource Tracker: Tracking the GPS location of every officer and vehicle on duty.",
+        "Incident Triage: AI prioritizes emergency calls, ensuring severe crimes get immediate attention.",
+        "Predictive Alerts: Warning officers about potential clashes before they escalate."
+      ],
+      contentHi: [
+        "लाइव हीटमैप्स: पूरे शहर में अपराध दर का विज़ुअल ग्राफ़ (Visual Graph) जो हर मिनट अपडेट होता है।",
+        "संसाधन ट्रैकर (Resource Tracker): ड्यूटी पर मौजूद हर अधिकारी और वाहन की GPS लोकेशन ट्रैक करना।",
+        "घटना प्राथमिकता (Triage): AI आपातकालीन कॉलों को प्राथमिकता देता है, ताकि गंभीर अपराधों पर तुरंत ध्यान दिया जा सके।",
+        "भविष्यवाणी अलर्ट: संभावित संघर्ष या दंगों के बढ़ने से पहले अधिकारियों को चेतावनी देना।"
+      ],
+      icon: Layout,
+      color: "#f59e0b"
+    },
+    {
+      id: 5,
+      titleEn: "Public Grievance Redressal",
+      titleHi: "जन शिकायत निवारण (Public Grievance)",
+      subtitleEn: "AI Chatbots for public assistance",
+      subtitleHi: "जनता की सहायता के लिए AI चैटबॉट्स",
+      contentEn: [
+        "24/7 AI Chatbots: Citizens can report minor issues or ask for help via WhatsApp AI bots.",
+        "Status Tracking: Public can track the status of their FIRs or passport verifications online.",
+        "Feedback Analysis: AI analyzes citizen feedback to grade the performance of different police stations.",
+        "Automated Follow-ups: The system automatically messages victims to update them on case progress."
+      ],
+      contentHi: [
+        "24/7 AI चैटबॉट्स: नागरिक WhatsApp AI बॉट्स के ज़रिए छोटी-मोटी समस्याएँ दर्ज़ करा सकते हैं।",
+        "स्थिति ट्रैकिंग (Status Tracking): जनता अपनी FIR या पासपोर्ट वेरिफिकेशन का स्टेटस ऑनलाइन ट्रैक कर सकती है।",
+        "फीडबैक विश्लेषण: AI विभिन्न थानों के प्रदर्शन (Performance) को ग्रेड देने के लिए नागरिक फीडबैक का विश्लेषण करता है।",
+        "स्वचालित फॉलो-अप: सिस्टम अपने आप पीड़ितों को मैसेज भेजकर केस की प्रगति (Progress) की जानकारी देता है।"
+      ],
+      icon: Users,
+      color: "#8b5cf6"
+    }
+  ];
+
+  // -------------------------
+  // 4. THANE LEVEL OPERATIONS
+  // -------------------------
+  const thaneLevelSlides = [
+    {
+      id: 1,
+      titleEn: "Thane (Police Station) Level Operations",
+      titleHi: "थाना (Police Station) स्तर के ऑपरेशन्स",
+      subtitleEn: "Ground zero of law enforcement",
+      subtitleHi: "कानून व्यवस्था का जमीनी स्तर",
+      contentEn: [
+        "The Police Station (Thane) is the primary unit of law enforcement.",
+        "This presentation covers the daily operations, duties, and technology used at the local level.",
+        "From public dealing to localized investigations, the Thane is the heart of policing.",
+        "Let's explore how a modern police station functions."
+      ],
+      contentHi: [
+        "पुलिस स्टेशन (थाना) कानून व्यवस्था की प्राथमिक (Primary) इकाई है।",
+        "यह प्रेजेंटेशन स्थानीय स्तर पर दैनिक कार्यों, ड्यूटी और उपयोग की जाने वाली तकनीक को कवर करती है।",
+        "जनता से सीधे संपर्क से लेकर स्थानीय जांच तक, थाना पुलिसिंग का मुख्य केंद्र है।",
+        "आइए देखें कि एक आधुनिक थाना कैसे काम करता है।"
+      ],
+      icon: Building,
+      color: "#14b8a6",
+      image: "/assets/step_up_police_1783686435426.png"
+    },
+    {
+      id: 2,
+      titleEn: "Daily Station Diary & Roster",
+      titleHi: "दैनिक स्टेशन डायरी और ड्यूटी रोस्टर",
+      subtitleEn: "Managing the workforce locally",
+      subtitleHi: "स्थानीय स्तर पर कार्यबल का प्रबंधन",
+      contentEn: [
+        "General Diary (GD): Digital recording of every single event, departure, and arrival at the station.",
+        "Duty Roster: Automated software assigning day/night shifts fairly among constables and officers.",
+        "Weapon Issued: Digital tracking of firearms and ammunition handed out for duty.",
+        "Vehicle Logs: Maintaining strict digital logs of fuel and mileage for patrol cars."
+      ],
+      contentHi: [
+        "जनरल डायरी (GD): थाने में होने वाली हर घटना, प्रस्थान और आगमन का डिजिटल रिकॉर्ड।",
+        "ड्यूटी रोस्टर: कॉन्स्टेबल और अधिकारियों के बीच दिन/रात की शिफ्ट बाँटने वाला ऑटोमैटिक सॉफ्टवेयर।",
+        "हथियार जारी करना (Weapon Issue): ड्यूटी के लिए दिए गए हथियारों और गोलियों की डिजिटल ट्रैकिंग।",
+        "वाहन लॉग: गश्ती कारों के लिए ईंधन (Fuel) और माइलेज का सख्त डिजिटल लॉग बनाए रखना।"
+      ],
+      icon: Briefcase,
+      color: "#f59e0b"
+    },
+    {
+      id: 3,
+      titleEn: "FIR Registration & Investigation",
+      titleHi: "FIR पंजीकरण और जांच (Investigation)",
+      subtitleEn: "The core duty of a police station",
+      subtitleHi: "थाने का मुख्य कर्तव्य",
+      contentEn: [
+        "Complaint Reception: Welcoming citizens at the Help Desk and recording their initial statements.",
+        "FIR Generation: Creating formal First Information Reports using the digital CCTNS system.",
+        "Investigating Officer (IO) Assignment: The SHO assigns cases to sub-inspectors based on workload.",
+        "Evidence Collection: Gathering physical evidence, witness statements, and CCTV footage locally."
+      ],
+      contentHi: [
+        "शिकायत प्राप्ति: हेल्प डेस्क पर नागरिकों का स्वागत करना और उनके शुरुआती बयान दर्ज़ करना।",
+        "FIR जनरेशन: डिजिटल CCTNS सिस्टम का उपयोग करके औपचारिक (Formal) 'प्रथम सूचना रिपोर्ट' बनाना।",
+        "जांच अधिकारी (IO) की नियुक्ति: SHO काम के बोझ (Workload) के आधार पर सब-इंस्पेक्टरों को केस सौंपते हैं।",
+        "सबूत इकट्ठा करना: भौतिक सबूत, गवाहों के बयान और CCTV फुटेज स्थानीय स्तर पर इकट्ठा करना।"
+      ],
+      icon: Search,
+      color: "#ef4444"
+    },
+    {
+      id: 4,
+      titleEn: "Local Patrolling & Beat Management",
+      titleHi: "स्थानीय पेट्रोलिंग और बीट (Beat) मैनेजमेंट",
+      subtitleEn: "Maintaining visible police presence",
+      subtitleHi: "पुलिस की दृश्यता (Presence) बनाए रखना",
+      contentEn: [
+        "Beat System: Dividing the police station's area into smaller beats for intensive monitoring.",
+        "Foot Patrolling: Constables walking through sensitive or crowded areas to build public trust.",
+        "Night PCR Patrols: Police Control Room vans securing the streets during night hours.",
+        "Verification: Regular checking of criminals with history sheets living in the beat area."
+      ],
+      contentHi: [
+        "बीट सिस्टम (Beat System): गहन निगरानी के लिए थाने के क्षेत्र को छोटी 'बीट्स' में बाँटना।",
+        "पैदल गश्त (Foot Patrolling): जनता का विश्वास जीतने के लिए संवेदनशील या भीड़भाड़ वाले इलाकों में कॉन्स्टेबल की पैदल गश्त।",
+        "नाइट PCR पेट्रोलिंग: रात के समय सड़कों को सुरक्षित करने वाली पुलिस कंट्रोल रूम की गाड़ियाँ।",
+        "वेरिफिकेशन: बीट क्षेत्र में रहने वाले हिस्ट्रीशीटर (पुराने अपराधियों) की नियमित जाँच।"
+      ],
+      icon: Map,
+      color: "#8b5cf6"
+    },
+    {
+      id: 5,
+      titleEn: "Community Policing",
+      titleHi: "कम्युनिटी पुलिसिंग (Community Policing)",
+      subtitleEn: "Building bridges with the public",
+      subtitleHi: "जनता के साथ बेहतर संबंध बनाना",
+      contentEn: [
+        "Peace Committees (Aman Committee): Regular meetings with local religious and community leaders.",
+        "Awareness Campaigns: Educating youth about drug abuse and cyber safety in local schools.",
+        "Senior Citizen Care: Special initiatives to regularly visit and assist elderly residents living alone.",
+        "Dispute Resolution: Solving minor neighborhood quarrels amicably without filing formal cases."
+      ],
+      contentHi: [
+        "शांति समितियाँ (अमन कमेटी): स्थानीय धार्मिक और सामुदायिक नेताओं के साथ नियमित बैठकें।",
+        "जागरूकता अभियान: स्थानीय स्कूलों में युवाओं को नशीली दवाओं (Drugs) और साइबर सुरक्षा के बारे में शिक्षित करना।",
+        "वरिष्ठ नागरिक देखभाल: अकेले रहने वाले बुजुर्गों से नियमित रूप से मिलने और उनकी सहायता करने की विशेष पहल।",
+        "विवाद समाधान: पड़ोस के छोटे-मोटे झगड़ों को औपचारिक केस दर्ज़ किए बिना शांति से सुलझाना।"
+      ],
+      icon: Users,
+      color: "#3b82f6"
+    }
+  ];
+
+  // -------------------------
+  // 5. DISTRICT LEVEL OPERATIONS
+  // -------------------------
+  const districtLevelSlides = [
+    {
+      id: 1,
+      titleEn: "District (SP/SSP Office) Operations",
+      titleHi: "ज़िला (SP/SSP कार्यालय) स्तर के ऑपरेशन्स",
+      subtitleEn: "Command and control of the entire district",
+      subtitleHi: "पूरे ज़िले का कमान और नियंत्रण",
+      contentEn: [
+        "Welcome to the District Level Operations overview.",
+        "The SP/SSP office is the central nervous system of law enforcement for a district.",
+        "It handles high-level analytics, resource distribution, and inter-departmental coordination.",
+        "Let's look at how the entire district is managed."
+      ],
+      contentHi: [
+        "ज़िला स्तर के ऑपरेशन्स के अवलोकन में आपका स्वागत है।",
+        "SP/SSP कार्यालय किसी भी ज़िले की कानून व्यवस्था का मुख्य नियंत्रण केंद्र (Central Hub) होता है।",
+        "यह उच्च-स्तरीय एनालिटिक्स, संसाधनों के वितरण और अंतर-विभागीय समन्वय को संभालता है।",
+        "आइए देखें कि पूरे ज़िले का प्रबंधन कैसे किया जाता है।"
+      ],
+      icon: Building2,
+      color: "#6366f1",
+      image: "/assets/step_up_intro_1783686424622.png"
+    },
+    {
+      id: 2,
+      titleEn: "District Crime Monitoring",
+      titleHi: "ज़िला अपराध निगरानी (Crime Monitoring)",
+      subtitleEn: "Macro-level analysis and strategy",
+      subtitleHi: "व्यापक स्तर पर विश्लेषण और रणनीति",
+      contentEn: [
+        "Crime Review Meetings (Crime Goashthi): Monthly analysis of crime graphs across all police stations.",
+        "Special Task Forces (SOG/Crime Branch): Dedicated teams handling complex, unsolved, or organized crimes.",
+        "Data Analytics: Using district-wide data to identify emerging crime trends and syndicates.",
+        "Performance Evaluation: Grading SHOs (Station House Officers) based on their crime resolution rate."
+      ],
+      contentHi: [
+        "अपराध समीक्षा बैठकें (क्राइम गोष्ठी): सभी थानों के अपराध ग्राफ का मासिक विश्लेषण (Monthly Review)।",
+        "स्पेशल टास्क फोर्स (SOG/क्राइम ब्रांच): जटिल, अनसुलझे या संगठित (Organized) अपराधों को संभालने वाली विशेष टीमें।",
+        "डेटा एनालिटिक्स: उभरते अपराध के रुझानों और गैंग्स की पहचान करने के लिए ज़िला-स्तरीय डेटा का उपयोग।",
+        "प्रदर्शन मूल्यांकन: केस सुलझाने की दर के आधार पर थाना प्रभारियों (SHOs) को ग्रेड देना।"
+      ],
+      icon: Activity,
+      color: "#f43f5e"
+    },
+    {
+      id: 3,
+      titleEn: "Resource Allocation",
+      titleHi: "संसाधन आवंटन (Resource Allocation)",
+      subtitleEn: "Distributing manpower and funds",
+      subtitleHi: "जनशक्ति (Manpower) और फंड का वितरण",
+      contentEn: [
+        "Force Deployment: Moving armed reserves (PAC) to sensitive zones during elections or festivals.",
+        "Budget Management: Distributing funds for station maintenance, fuel, and new technology.",
+        "Fleet Management: Assigning new vehicles and tracking the health of the entire district's police fleet.",
+        "Transfer & Postings: Managing the logistics of transferring officers between different stations."
+      ],
+      contentHi: [
+        "फोर्स की तैनाती (Deployment): चुनाव या त्योहारों के दौरान संवेदनशील (Sensitive) क्षेत्रों में सशस्त्र बलों (PAC) को भेजना।",
+        "बजट प्रबंधन: थानों के रखरखाव, ईंधन और नई तकनीक के लिए फंड (Funds) का वितरण करना।",
+        "फ्लीट मैनेजमेंट: नए वाहन सौंपना और पूरे जिले के पुलिस वाहनों की स्थिति पर नज़र रखना।",
+        "तबादला और पोस्टिंग (Transfer): विभिन्न थानों के बीच अधिकारियों के तबादले की प्रक्रिया (Logistics) का प्रबंधन करना।"
+      ],
+      icon: Network,
+      color: "#0ea5e9"
+    },
+    {
+      id: 4,
+      titleEn: "Inter-District Coordination",
+      titleHi: "अंतर-ज़िला समन्वय (Inter-District Coordination)",
+      subtitleEn: "Working beyond borders",
+      subtitleHi: "सीमाओं के पार काम करना",
+      contentEn: [
+        "Border Sealing: Coordinating with neighboring districts to set up barricades for fleeing criminals.",
+        "Intelligence Sharing: Secure communication channels to share data about inter-state gangs.",
+        "Joint Operations: Conducting massive raids requiring police forces from multiple districts.",
+        "Highway Patrols: Integrated monitoring of long highways that cross multiple jurisdictions."
+      ],
+      contentHi: [
+        "सीमा सील करना (Border Sealing): भागते अपराधियों को पकड़ने के लिए पड़ोसी ज़िलों के साथ समन्वय कर बैरिकेड्स लगाना।",
+        "खुफिया जानकारी साझा करना: अंतर-राज्यीय गैंग्स (Gangs) के बारे में डेटा साझा करने के लिए सुरक्षित संचार माध्यम।",
+        "संयुक्त अभियान (Joint Operations): कई ज़िलों की पुलिस फोर्स के साथ मिलकर बड़ी छापेमारी (Raids) करना।",
+        "हाईवे पेट्रोलिंग: लंबे राजमार्गों (Highways) की एकीकृत निगरानी जो कई ज़िलों से होकर गुज़रते हैं।"
+      ],
+      icon: Shield,
+      color: "#8b5cf6"
+    },
+    {
+      id: 5,
+      titleEn: "Media & Public Relations",
+      titleHi: "मीडिया और जनसंपर्क (Public Relations)",
+      subtitleEn: "Managing the district's public image",
+      subtitleHi: "ज़िले में पुलिस की छवि का प्रबंधन",
+      contentEn: [
+        "Press Conferences: Addressing the media to reveal breakthroughs in major high-profile cases.",
+        "Social Media Handles: Actively managing the District Police Twitter/Facebook to quash fake news.",
+        "Public Advisories: Issuing warnings about new cyber frauds or traffic diversions.",
+        "Transparency: Ensuring the public feels safe and informed about the police's actions."
+      ],
+      contentHi: [
+        "प्रेस कॉन्फ्रेंस: प्रमुख और हाई-प्रोफाइल मामलों के सुलझने की जानकारी मीडिया को देना।",
+        "सोशल मीडिया हैंडल: फेक न्यूज़ (Fake news) को रोकने के लिए ज़िला पुलिस के ट्विटर/फेसबुक का सक्रिय प्रबंधन।",
+        "सार्वजनिक परामर्श (Advisories): नए साइबर फ्रॉड या ट्रैफिक डायवर्जन के बारे में जनता को चेतावनी जारी करना।",
+        "पारदर्शिता (Transparency): यह सुनिश्चित करना कि जनता पुलिस की कार्रवाइयों के बारे में सुरक्षित और सूचित महसूस करे।"
+      ],
+      icon: Presentation,
+      color: "#10b981"
+    }
+  ];
+
+  const getActiveSlides = () => {
+    switch(activePpt) {
+      case 'step-up': return slides;
+      case 'ai-course': return aiCourseSlides;
+      case 'ai-functioning': return aiPoliceSlides;
+      case 'thane-level': return thaneLevelSlides;
+      case 'district-level': return districtLevelSlides;
+      default: return slides;
+    }
+  };
+
+  const activeSlides = getActiveSlides();
 
   const nextSlide = () => {
     if (currentSlide < activeSlides.length - 1) {
@@ -463,27 +817,27 @@ export default function ProjectPPTDashboard() {
   const CurrentIcon = current.icon;
 
   return (
-    <div className="dashboard-container" style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', padding: '2rem' }}>
-
+    <div className="dashboard-container">
+      
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <div style={{ background: '#3b82f615', padding: '1rem', borderRadius: '1rem' }}>
+      <div className="ppt-header-row">
+        <div className="ppt-header-content" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="ppt-header-icon-box" style={{ background: '#3b82f615', padding: '1rem', borderRadius: '1rem' }}>
             <Presentation size={32} color="#3b82f6" />
           </div>
           <div>
-            <h2 style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a' }}>
+            <h2 className="ppt-header-title" style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a' }}>
               {language === 'en' ? 'Project PPT' : 'प्रोजेक्ट पीपीटी'}
             </h2>
-            <p style={{ margin: '0.25rem 0 0 0', color: '#64748b' }}>
+            <p className="ppt-header-subtitle" style={{ margin: '0.25rem 0 0 0', color: '#64748b' }}>
               {language === 'en' ? 'Interactive Presentations & Training Modules' : 'इंटरैक्टिव प्रेजेंटेशन और ट्रेनिंग मॉड्यूल'}
             </p>
           </div>
         </div>
 
         {/* Language Toggle */}
-        <div style={{ display: 'flex', background: '#f1f5f9', borderRadius: '0.75rem', padding: '0.25rem' }}>
-          <button
+        <div className="language-toggle" style={{ display: 'flex', background: '#f1f5f9', borderRadius: '0.75rem', padding: '0.25rem' }}>
+          <button 
             onClick={() => setLanguage('en')}
             style={{
               padding: '0.5rem 1.25rem', borderRadius: '0.5rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
@@ -495,7 +849,7 @@ export default function ProjectPPTDashboard() {
           >
             English
           </button>
-          <button
+          <button 
             onClick={() => setLanguage('hi')}
             style={{
               padding: '0.5rem 1.25rem', borderRadius: '0.5rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
@@ -511,155 +865,149 @@ export default function ProjectPPTDashboard() {
       </div>
 
       {/* PPT Selection Tabs */}
-      <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-        <button
+      <div className="ppt-tabs-row" style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+        <button 
           onClick={() => { setActivePpt('step-up'); setCurrentSlide(0); }}
           style={{
-            padding: '1rem 2rem', borderRadius: '1rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
+            padding: '1rem 1.5rem', borderRadius: '1rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
             background: activePpt === 'step-up' ? '#3b82f6' : 'white',
             color: activePpt === 'step-up' ? 'white' : '#64748b',
             boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
-            transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.1rem'
+            transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem'
           }}
         >
-          <BookOpen size={20} />
-          {language === 'en' ? 'Step Up Literacy PPT' : 'स्टेप अप साक्षरता PPT'}
+          <BookOpen size={18} />
+          {language === 'en' ? 'Step Up PPT' : 'स्टेप अप PPT'}
         </button>
-        <button
+
+        <button 
           onClick={() => { setActivePpt('ai-course'); setCurrentSlide(0); }}
           style={{
-            padding: '1rem 2rem', borderRadius: '1rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
+            padding: '1rem 1.5rem', borderRadius: '1rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
             background: activePpt === 'ai-course' ? '#3b82f6' : 'white',
             color: activePpt === 'ai-course' ? 'white' : '#64748b',
             boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
-            transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.1rem'
+            transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem'
           }}
         >
-          <GraduationCap size={20} />
-          {language === 'en' ? 'AI Course PPT' : 'AI कोर्स PPT'}
+          <GraduationCap size={18} />
+          {language === 'en' ? 'AI Course' : 'AI कोर्स PPT'}
+        </button>
+
+        <button 
+          onClick={() => { setActivePpt('ai-functioning'); setCurrentSlide(0); }}
+          style={{
+            padding: '1rem 1.5rem', borderRadius: '1rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
+            background: activePpt === 'ai-functioning' ? '#3b82f6' : 'white',
+            color: activePpt === 'ai-functioning' ? 'white' : '#64748b',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
+            transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem'
+          }}
+        >
+          <Bot size={18} />
+          {language === 'en' ? 'AI Police Ops' : 'AI पुलिसिंग PPT'}
+        </button>
+
+        <button 
+          onClick={() => { setActivePpt('thane-level'); setCurrentSlide(0); }}
+          style={{
+            padding: '1rem 1.5rem', borderRadius: '1rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
+            background: activePpt === 'thane-level' ? '#3b82f6' : 'white',
+            color: activePpt === 'thane-level' ? 'white' : '#64748b',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
+            transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem'
+          }}
+        >
+          <Building size={18} />
+          {language === 'en' ? 'Thane Level' : 'थाना स्तर PPT'}
+        </button>
+
+        <button 
+          onClick={() => { setActivePpt('district-level'); setCurrentSlide(0); }}
+          style={{
+            padding: '1rem 1.5rem', borderRadius: '1rem', border: 'none', fontWeight: 'bold', cursor: 'pointer',
+            background: activePpt === 'district-level' ? '#3b82f6' : 'white',
+            color: activePpt === 'district-level' ? 'white' : '#64748b',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
+            transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem'
+          }}
+        >
+          <Building2 size={18} />
+          {language === 'en' ? 'District Level' : 'ज़िला स्तर PPT'}
         </button>
       </div>
-
+      
       {/* PPT Viewer Area */}
-      <div style={{
-        background: 'white',
-        borderRadius: isFullscreen ? '0' : '1.5rem',
-        boxShadow: isFullscreen ? 'none' : '0 10px 40px rgba(0,0,0,0.08)',
-        border: isFullscreen ? 'none' : '1px solid #e2e8f0',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: isFullscreen ? '100vh' : '600px',
-        position: isFullscreen ? 'fixed' : 'relative',
-        top: isFullscreen ? '0' : 'auto',
-        left: isFullscreen ? '0' : 'auto',
-        right: isFullscreen ? '0' : 'auto',
-        bottom: isFullscreen ? '0' : 'auto',
-        width: isFullscreen ? '100vw' : '100%',
-        height: isFullscreen ? '100vh' : 'auto',
-        zIndex: isFullscreen ? 9999 : 1
-      }}>
-
+      <div className={`ppt-viewer-container ${isFullscreen ? 'fullscreen' : ''}`}>
+        
         {/* Fullscreen Toggle Button (Inside PPT Area) */}
-        <button
+        <button 
+          className="fullscreen-toggle"
           onClick={() => setIsFullscreen(!isFullscreen)}
-          style={{
-            position: 'absolute',
-            top: '1.5rem',
-            right: '1.5rem',
-            background: 'rgba(15, 23, 42, 0.1)',
-            color: '#0f172a',
-            border: 'none',
-            padding: '0.75rem',
-            borderRadius: '50%',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.2s',
-            zIndex: 10
-          }}
           title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
-          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(15, 23, 42, 0.2)'}
-          onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(15, 23, 42, 0.1)'}
         >
           {isFullscreen ? <Minimize size={24} /> : <Maximize size={24} />}
         </button>
 
         {/* Slide Content */}
-        <div className="animate-fade-in" key={current.id} style={{ flex: 1, padding: '4rem', display: 'flex', flexDirection: 'column' }}>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '3rem', borderBottom: `3px solid ${current.color}33`, paddingBottom: '1.5rem' }}>
-            <div style={{ background: `${current.color}15`, padding: '1.5rem', borderRadius: '1.5rem' }}>
-              <CurrentIcon size={48} color={current.color} />
+        <div className={`animate-fade-in ppt-slide-content ${current.image ? 'has-image' : ''}`} key={current.id}>
+          
+          {/* Left Text Side */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div className="slide-header" style={{ borderBottom: `3px solid ${current.color}33` }}>
+              <div className="slide-icon-box" style={{ background: `${current.color}15` }}>
+                <CurrentIcon size={48} color={current.color} />
+              </div>
+              <div>
+                <h1 className="ppt-slide-title">
+                  {language === 'en' ? current.titleEn : current.titleHi}
+                </h1>
+                <h3 className="ppt-slide-subtitle" style={{ color: current.color }}>
+                  {language === 'en' ? current.subtitleEn : current.subtitleHi}
+                </h3>
+              </div>
             </div>
-            <div>
-              <h1 style={{ margin: '0 0 0.5rem 0', fontSize: '2.5rem', color: '#0f172a', fontWeight: '800' }}>
-                {language === 'en' ? current.titleEn : current.titleHi}
-              </h1>
-              <h3 style={{ margin: 0, fontSize: '1.25rem', color: current.color, fontWeight: '600' }}>
-                {language === 'en' ? current.subtitleEn : current.subtitleHi}
-              </h3>
+
+            <div style={{ flex: 1 }}>
+              <ul className="slide-list">
+                {(language === 'en' ? current.contentEn : current.contentHi).map((point, idx) => (
+                  <li key={idx} className="slide-list-item">
+                    <div className="list-dot" style={{ background: current.color }}></div>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          <div style={{ flex: 1 }}>
-            <ul style={{ margin: 0, paddingLeft: '1.5rem', listStyleType: 'none' }}>
-              {(language === 'en' ? current.contentEn : current.contentHi).map((point, idx) => (
-                <li key={idx} style={{
-                  marginBottom: '1.5rem',
-                  fontSize: '1.2rem',
-                  color: '#334155',
-                  lineHeight: '1.6',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '1rem'
-                }}>
-                  <div style={{
-                    width: '10px', height: '10px', borderRadius: '50%',
-                    background: current.color, marginTop: '0.6rem', flexShrink: 0
-                  }}></div>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Right Image Side (Optional) */}
+          {current.image && (
+            <div className="ppt-image-container">
+              <img src={current.image} alt="Slide visual" />
+            </div>
+          )}
         </div>
 
         {/* PPT Controls Bar */}
-        <div style={{
-          background: '#f8fafc',
-          padding: '1rem 2rem',
-          borderTop: '1px solid #e2e8f0',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
-
-          <button
+        <div className="ppt-controls-bar">
+          
+          <button 
+            className="ppt-nav-btn prev"
             onClick={prevSlide}
             disabled={currentSlide === 0}
-            style={{
-              display: 'flex', alignItems: 'center', gap: '0.5rem',
-              padding: '0.75rem 1.5rem', borderRadius: '0.75rem',
-              background: currentSlide === 0 ? '#e2e8f0' : 'white',
-              color: currentSlide === 0 ? '#94a3b8' : '#0f172a',
-              border: '1px solid #cbd5e1', cursor: currentSlide === 0 ? 'not-allowed' : 'pointer',
-              fontWeight: 'bold', transition: 'all 0.2s'
-            }}
           >
-            <ChevronLeft size={20} /> {language === 'en' ? 'Previous Slide' : 'पिछली स्लाइड'}
+            <ChevronLeft size={20} /> {language === 'en' ? 'Previous' : 'पिछला'}
           </button>
 
           {/* Slide Indicators */}
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '400px' }}>
             {activeSlides.map((_, idx) => (
-              <div
+              <div 
                 key={idx}
                 onClick={() => setCurrentSlide(idx)}
-                style={{
-                  width: idx === currentSlide ? '30px' : '10px',
-                  height: '10px',
+                style={{ 
+                  width: idx === currentSlide ? '30px' : '10px', 
+                  height: '10px', 
                   borderRadius: '5px',
                   background: idx === currentSlide ? '#3b82f6' : '#cbd5e1',
                   cursor: 'pointer',
@@ -670,19 +1018,12 @@ export default function ProjectPPTDashboard() {
             ))}
           </div>
 
-          <button
+          <button 
+            className="ppt-nav-btn next"
             onClick={nextSlide}
             disabled={currentSlide === activeSlides.length - 1}
-            style={{
-              display: 'flex', alignItems: 'center', gap: '0.5rem',
-              padding: '0.75rem 1.5rem', borderRadius: '0.75rem',
-              background: currentSlide === activeSlides.length - 1 ? '#e2e8f0' : '#3b82f6',
-              color: currentSlide === activeSlides.length - 1 ? '#94a3b8' : 'white',
-              border: 'none', cursor: currentSlide === activeSlides.length - 1 ? 'not-allowed' : 'pointer',
-              fontWeight: 'bold', transition: 'all 0.2s'
-            }}
           >
-            {language === 'en' ? 'Next Slide' : 'अगली स्लाइड'} <ChevronRight size={20} />
+            {language === 'en' ? 'Next' : 'अगला'} <ChevronRight size={20} />
           </button>
 
         </div>
