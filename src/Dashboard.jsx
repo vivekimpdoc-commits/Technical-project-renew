@@ -63,14 +63,13 @@ export default function Dashboard() {
     <div className="app-container">
       {/* Header */}
       <header className="app-header" style={{ position: 'relative' }}>
-        <button
-          className="mobile-menu-toggle"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
         <div className="header-title-container">
+          <button
+            className="mobile-menu-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
           <Shield className="header-icon" size={32} />
           <h1 className="header-title">UP Police AI Investigation <span>(Command Center)</span></h1>
         </div>
