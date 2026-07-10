@@ -11,6 +11,7 @@ import ModuleDetail from './ModuleDetail';
 export default function AICourseDashboard() {
   const [activeTab, setActiveTab] = useState('modules');
   const [selectedModuleId, setSelectedModuleId] = useState(null);
+  const [isPopupMaximized, setIsPopupMaximized] = useState(false);
   const courseModules = [
     {
       id: 1,
@@ -154,13 +155,58 @@ export default function AICourseDashboard() {
     'Monitoring System', 'Security & Governance', 'Maintenance & Support'
   ];
 
-  if (selectedModuleId) {
-    const selectedModuleData = courseModules.find(m => m.id === selectedModuleId);
-    return <ModuleDetail module={selectedModuleData} onBack={() => setSelectedModuleId(null)} />;
-  }
-
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', width: '100%' }}>
+      
+      {/* Modal Popup for Module Detail */}
+      {selectedModuleId && (
+        <div style={{ 
+          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', 
+          background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(4px)', 
+          zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', 
+          padding: isPopupMaximized ? '1rem' : '2rem' 
+        }}>
+          <div className="animate-fade-in" style={{ 
+            background: '#f8fafc', width: '100%', 
+            maxWidth: isPopupMaximized ? '98%' : '1000px', 
+            height: isPopupMaximized ? '96vh' : '75vh', 
+            overflowY: 'auto', 
+            borderRadius: isPopupMaximized ? '0.75rem' : '1.5rem', 
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+            position: 'relative',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+          }}>
+            <div style={{ position: 'absolute', top: '1rem', right: '1.5rem', display: 'flex', gap: '0.75rem', zIndex: 100 }}>
+              <button 
+                onClick={() => setIsPopupMaximized(!isPopupMaximized)} 
+                style={{ 
+                  background: '#e2e8f0', color: '#0f172a', border: 'none', 
+                  padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold', 
+                  cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                  boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+                }}
+              >
+                {isPopupMaximized ? '🗗 Restore' : '🗖 Maximize'}
+              </button>
+              <button 
+                onClick={() => { setSelectedModuleId(null); setIsPopupMaximized(false); }} 
+                style={{ 
+                  background: '#ef4444', color: 'white', border: 'none', 
+                  padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold', 
+                  cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                  boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+                }}
+              >
+                ✕ Close
+              </button>
+            </div>
+            <ModuleDetail 
+              module={courseModules.find(m => m.id === selectedModuleId)} 
+              onBack={() => { setSelectedModuleId(null); setIsPopupMaximized(false); }} 
+            />
+          </div>
+        </div>
+      )}
       
       {/* Header Section */}
       <div style={{ textAlign: 'center', marginBottom: '2rem', background: 'white', padding: '1.5rem 2rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
@@ -242,14 +288,28 @@ export default function AICourseDashboard() {
                     Click to View Details
                   </span>
                 </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <div style={{ display: 'grid', gap: '0.5rem' }}>
                   {module.items.map((item, index) => (
-                    <li key={index} style={{ color: '#475569', fontSize: '0.95rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
-                      <span style={{ color: module.color, marginTop: '2px' }}>•</span>
-                      {item}
-                    </li>
+                    <div 
+                      key={index} 
+                      style={{ 
+                        background: '#f8fafc', 
+                        border: '1px solid #e2e8f0', 
+                        padding: '0.5rem 0.75rem', 
+                        borderRadius: '0.5rem', 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: '0.5rem',
+                        fontSize: '0.85rem',
+                        color: '#334155',
+                        fontWeight: '500'
+                      }}
+                    >
+                      <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: module.color, flexShrink: 0 }}></div>
+                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ))}
           </div>

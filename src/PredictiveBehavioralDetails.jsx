@@ -301,10 +301,75 @@ export default function PredictiveBehavioralDetails({ project, onBack }) {
             </div>
           )}
 
-          {/* Fallback for other tabs not fully mocked in this snippet */}
-          {(activeTab === 'resources' || activeTab === 'evaluation' || activeTab === 'settings') && (
-            <div className="animate-fade-in" style={{ textAlign: 'center', padding: '4rem', color: '#64748b' }}>
-              <div style={{ fontSize: '1.2rem' }}>Content for <strong>{tabs.find(t => t.id === activeTab).label}</strong> is ready to be implemented using the same structure.</div>
+          {activeTab === 'resources' && (
+            <div className="animate-fade-in">
+              <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800', marginBottom: '2rem' }}>Resources & Datasets</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Database size={20} color={project?.color || '#8b5cf6'} /> Datasets</h3>
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: 0, margin: 0, listStyle: 'none' }}>
+                    <li style={{ background: 'white', padding: '1rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
+                      <strong>Kinetics-400:</strong> <span style={{ color: '#64748b', fontSize: '0.9rem' }}>Large-scale high-quality dataset of URL links to up to 650,000 video clips that cover 400 human action classes.</span>
+                    </li>
+                    <li style={{ background: 'white', padding: '1rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
+                      <strong>UCF101:</strong> <span style={{ color: '#64748b', fontSize: '0.9rem' }}>Action recognition data set of realistic action videos.</span>
+                    </li>
+                  </ul>
+                </div>
+                <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><BookOpen size={20} color={project?.color || '#8b5cf6'} /> Libraries</h3>
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: 0, margin: 0, listStyle: 'none' }}>
+                    <li style={{ background: 'white', padding: '1rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
+                      <strong>YOLOv8-Pose:</strong> <span style={{ color: '#64748b', fontSize: '0.9rem' }}>Pose estimation and tracking from Ultralytics.</span>
+                    </li>
+                    <li style={{ background: 'white', padding: '1rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
+                      <strong>DeepSORT:</strong> <span style={{ color: '#64748b', fontSize: '0.9rem' }}>Real-time object tracking for assigning unique IDs.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'evaluation' && (
+            <div className="animate-fade-in">
+              <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800', marginBottom: '2rem' }}>Submission / Evaluation Checklist</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {evaluationList.map(item => (
+                  <div key={item.id} style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', border: '1px solid #e2e8f0' }}>
+                    <div style={{ marginTop: '0.2rem' }}><CheckCircle color={item.color} size={24} /></div>
+                    <div>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#0f172a', marginBottom: '0.25rem' }}>{item.title}</h4>
+                      <p style={{ color: '#475569', fontSize: '0.95rem' }}>{item.subtitle}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'settings' && (
+            <div className="animate-fade-in">
+              <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800', marginBottom: '2rem' }}>Project Settings</h2>
+              <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0' }}>
+                <p style={{ color: '#64748b', marginBottom: '2rem' }}>कॉन्फ़िगरेशन सेटिंग्स केवल एडमिनिस्ट्रेटर (SP/SSP) द्वारा बदली जा सकती हैं।</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '1.5rem', borderBottom: '1px solid #e2e8f0' }}>
+                    <div>
+                      <h4 style={{ fontWeight: 'bold', color: '#0f172a' }}>Loitering Threshold</h4>
+                      <p style={{ fontSize: '0.85rem', color: '#64748b' }}>कितनी देर एक ही जगह रुकने पर अलर्ट देना है?</p>
+                    </div>
+                    <select style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1' }}><option>5 Minutes</option><option selected>15 Minutes</option><option>30 Minutes</option></select>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <h4 style={{ fontWeight: 'bold', color: '#0f172a' }}>Aggression Sensitivity</h4>
+                      <p style={{ fontSize: '0.85rem', color: '#64748b' }}>लड़ाई या तेज़ हरकतों को पकड़ने की संवेदनशीलता।</p>
+                    </div>
+                    <select style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1' }}><option selected>High (Less False Positives)</option><option>Medium</option></select>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
