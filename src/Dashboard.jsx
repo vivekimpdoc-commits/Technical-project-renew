@@ -6,7 +6,7 @@ import {
   UserCheck, LineChart, BrainCircuit, Clock4,
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
-  History, Command, BookOpen, Activity, Layout
+  History, Command, BookOpen, Activity, Layout, GraduationCap
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
@@ -18,6 +18,7 @@ import StepUpLiteracyDashboard from './StepUpLiteracyDashboard';
 import FrontendDetails from './FrontendDetails';
 import OfficerPerformance from './pages/OfficerPerformance';
 import InvestigationAnalytics from './pages/InvestigationAnalytics';
+import AICourseDashboard from './AICourseDashboard';
 import AIInvestigation from './pages/AIInvestigation';
 import DelayAnalysis from './pages/DelayAnalysis';
 import InvestigationQuality from './pages/InvestigationQuality';
@@ -50,6 +51,7 @@ export default function Dashboard() {
 
   const navItems = [
     { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen },
+    { id: 'ai-course', label: 'Artificial Intelligence (AI) Course (आर्टिफिशियल इंटेलिजेंस (AI) कोर्स)', icon: GraduationCap },
     { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit },
     { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield },
     { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 }
@@ -125,6 +127,9 @@ export default function Dashboard() {
         <main className="main-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', overflowY: 'auto', width: '100%' }}>
           {activeTab === 'step-up' && (
             <StepUpLiteracyDashboard />
+          )}
+          {activeTab === 'ai-course' && (
+            <AICourseDashboard />
           )}
           {activeTab === 'frontend' && (
             <FrontendDetails />
