@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
-  ArrowLeft, Layers, Box, Cpu, Share2, Link, Code, Zap
+  ArrowLeft, Layers, Server, Combine, Blocks, Network, Boxes, CloudCog
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
 export default function SoftwareArchitecture({ onBack }) {
+  const [expandedCard, setExpandedCard] = useState(null);
   const models = [
     {
       id: 1,
       title: 'Monolithic Architecture',
       subtitle: 'The All-in-One Approach',
-      icon: Box,
+      icon: Boxes,
       color: '#3b82f6',
       items: [
         'पूरा सॉफ्टवेयर एक ही बड़े कोडबेस (Codebase) में लिखा जाता है।',
@@ -23,7 +24,7 @@ export default function SoftwareArchitecture({ onBack }) {
       id: 2,
       title: 'Microservices Architecture',
       subtitle: 'छोटे-छोटे स्वतंत्र हिस्से',
-      icon: Share2,
+      icon: Combine,
       color: '#10b981',
       items: [
         'सॉफ्टवेयर को छोटे-छोटे हिस्सों (Services) में बांट दिया जाता है (जैसे Login Service, Payment Service)।',
@@ -36,7 +37,7 @@ export default function SoftwareArchitecture({ onBack }) {
       id: 3,
       title: 'Serverless Architecture',
       subtitle: 'No Server Management',
-      icon: Cpu,
+      icon: CloudCog,
       color: '#f59e0b',
       items: [
         'डेवलपर्स को सर्वर सेटअप या मैनेज करने की कोई ज़रूरत नहीं होती।',
@@ -49,7 +50,7 @@ export default function SoftwareArchitecture({ onBack }) {
       id: 4,
       title: 'Event-Driven Architecture',
       subtitle: 'रिएक्टिव सिस्टम',
-      icon: Zap,
+      icon: Network,
       color: '#ec4899',
       items: [
         'सिस्टम "इवेंट्स" (Events) पर काम करता है। (जैसे यूज़र ने बटन दबाया = एक इवेंट)।',
@@ -61,7 +62,7 @@ export default function SoftwareArchitecture({ onBack }) {
       id: 5,
       title: 'API-First Design',
       subtitle: 'Connecting Everything',
-      icon: Link,
+      icon: Blocks,
       color: '#8b5cf6',
       items: [
         'यूज़र इंटरफ़ेस (UI) बनाने से पहले API डिज़ाइन की जाती है।',
@@ -73,7 +74,7 @@ export default function SoftwareArchitecture({ onBack }) {
       id: 6,
       title: 'Clean Architecture',
       subtitle: 'Maintainable Code',
-      icon: Code,
+      icon: Server,
       color: '#14b8a6',
       items: [
         'कोड को अलग-अलग लेयर्स (Layers) में लिखा जाता है (UI, Business Logic, Database)।',
@@ -111,43 +112,70 @@ export default function SoftwareArchitecture({ onBack }) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '3rem', alignItems: 'flex-start' }}>
         {models.map(box => {
-          const Icon = box.icon;
+          const Icon = box.icon || Server;
           return (
             <div key={box.id} style={{
-              background: 'white', borderRadius: '0.75rem', padding: '1.5rem',
+              background: 'white', borderRadius: '1rem', padding: '1.5rem',
               border: '1px solid #e2e8f0', borderTop: `4px solid ${box.color}`,
-              boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
               display: 'flex', flexDirection: 'column',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+              transition: 'transform 0.3s, box-shadow 0.3s'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
-              e.currentTarget.style.boxShadow = `0 10px 25px -5px ${box.color}66, 0 0 20px ${box.color}33`;
-              e.currentTarget.style.borderColor = box.color;
-              e.currentTarget.style.zIndex = 10;
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = `0 10px 25px ${box.color}33`;
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'none';
-              e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.05)';
-              e.currentTarget.style.borderColor = '#e2e8f0';
-              e.currentTarget.style.zIndex = 1;
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.02)';
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <div style={{ background: `${box.color}15`, padding: '0.6rem', borderRadius: '0.5rem', color: box.color }}>
-                  <Icon size={24} />
+              <div 
+                onClick={() => setExpandedCard(expandedCard === box.id ? null : box.id)}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ background: `${box.color}15`, padding: '0.75rem', borderRadius: '0.75rem', color: box.color }}>
+                    <Icon size={24} />
+                  </div>
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#0f172a', fontWeight: 'bold', lineHeight: '1.3' }}>{box.title}</h3>
+                    <p style={{ margin: '0.2rem 0 0 0', color: '#64748b', fontSize: '0.85rem' }}>{box.subtitle}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 style={{ margin: 0, fontSize: '1.05rem', color: '#0f172a', fontWeight: 'bold' }}>{box.title}</h3>
-                  <p style={{ margin: '0.15rem 0 0 0', color: '#64748b', fontSize: '0.85rem' }}>{box.subtitle}</p>
-                </div>
+                <span style={{ color: box.color, fontWeight: 'bold', fontSize: '1.5rem', lineHeight: '1' }}>
+                  {expandedCard === box.id ? '−' : '+'}
+                </span>
               </div>
-              <ul style={{ margin: 0, paddingLeft: '1.2rem', color: '#334155', fontSize: '0.9rem', lineHeight: '1.5', flex: 1 }}>
-                {box.items.map((item, idx) => (
-                  <li key={idx} style={{ marginBottom: '0.4rem' }}>{item}</li>
-                ))}
-              </ul>
+
+              {expandedCard === box.id && (
+                <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
+                    {box.items.map((item, idx) => (
+                      <div key={idx} style={{ 
+                        background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
+                        borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                        fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                      }}>
+                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
+                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <button style={{
+                    width: '100%', padding: '0.75rem', background: box.color, color: 'white',
+                    border: 'none', borderRadius: '0.5rem', fontWeight: 'bold', fontSize: '0.95rem',
+                    cursor: 'pointer', transition: 'opacity 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = 0.9}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = 1}
+                  >
+                    Click to View Details
+                  </button>
+                </div>
+              )}
             </div>
           );
         })}

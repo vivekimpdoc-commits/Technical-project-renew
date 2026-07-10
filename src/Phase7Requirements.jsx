@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
-  ArrowLeft, Shield, Wrench, Clock, Activity, HeadphonesIcon, Settings, Target, Database, FileText, BrainCircuit, CloudLightning, LineChart, Server, ListOrdered, CheckCircle, PenTool, RefreshCw, ShieldAlert, FileSignature, Layers
+  ArrowLeft, Shield, Wrench, Clock, Activity, HeadphonesIcon, Settings, Target, Database, FileText, BrainCircuit, CloudLightning, CheckCircle, FileSignature, Layers
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
 export default function Phase7Requirements({ onBack }) {
+  const [expandedCard, setExpandedCard] = useState(null);
+
   const reqData = [
     {
       id: 1,
@@ -35,7 +37,7 @@ export default function Phase7Requirements({ onBack }) {
       id: 3,
       title: 'Adaptive Maintenance',
       subtitle: 'बदलाव के अनुसार ढालना',
-      icon: RefreshCw,
+      icon: Wrench,
       color: '#f59e0b',
       items: [
         'OS Upgrade & Browser Compatibility',
@@ -116,10 +118,6 @@ export default function Phase7Requirements({ onBack }) {
     }
   ];
 
-  const tools = [
-    'Jira Service Management', 'ServiceNow', 'Zendesk', 'Grafana', 'Prometheus', 'Elastic Stack'
-  ];
-
   const deliverables = [
     'Maintenance Plan & Support SOP',
     'Incident Management Process',
@@ -144,7 +142,6 @@ export default function Phase7Requirements({ onBack }) {
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
       
-      {/* Header with Back Button */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
         <button 
           onClick={onBack} 
@@ -155,8 +152,6 @@ export default function Phase7Requirements({ onBack }) {
             color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
             boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#3b82f6'; e.currentTarget.style.color = '#2563eb'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.color = '#0f172a'; }}
         >
           <ArrowLeft size={18} /> Back to Phases
         </button>
@@ -171,44 +166,70 @@ export default function Phase7Requirements({ onBack }) {
         </div>
       </div>
 
-      {/* Grid of Boxes */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem', marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '3rem', alignItems: 'flex-start' }}>
         {reqData.map(box => {
           const Icon = box.icon;
           return (
             <div key={box.id} style={{
-              background: 'white', borderRadius: '0.75rem', padding: '1.25rem',
+              background: 'white', borderRadius: '1rem', padding: '1.5rem',
               border: '1px solid #e2e8f0', borderTop: `4px solid ${box.color}`,
-              boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
               display: 'flex', flexDirection: 'column',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
-              e.currentTarget.style.boxShadow = `0 10px 25px -5px ${box.color}66, 0 0 20px ${box.color}33`;
-              e.currentTarget.style.borderColor = box.color;
-              e.currentTarget.style.zIndex = 10;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'none';
-              e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.05)';
-              e.currentTarget.style.borderColor = '#e2e8f0';
-              e.currentTarget.style.zIndex = 1;
+              transition: 'transform 0.3s, box-shadow 0.3s'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                <div style={{ background: `${box.color}15`, padding: '0.5rem', borderRadius: '0.5rem', color: box.color }}>
-                  <Icon size={20} />
+              {/* Header (Clickable) */}
+              <div 
+                onClick={() => setExpandedCard(expandedCard === box.id ? null : box.id)}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ background: `${box.color}15`, padding: '0.75rem', borderRadius: '0.75rem', color: box.color }}>
+                    <Icon size={24} />
+                  </div>
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#0f172a', fontWeight: 'bold', lineHeight: '1.3' }}>{box.title}</h3>
+                    <p style={{ margin: '0.2rem 0 0 0', color: '#64748b', fontSize: '0.85rem' }}>{box.subtitle}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 style={{ margin: 0, fontSize: '0.95rem', color: '#0f172a', fontWeight: 'bold' }}>{box.title}</h3>
-                  <p style={{ margin: '0.1rem 0 0 0', color: '#64748b', fontSize: '0.8rem' }}>{box.subtitle}</p>
-                </div>
+                <span style={{ color: box.color, fontWeight: 'bold', fontSize: '1.5rem', lineHeight: '1' }}>
+                  {expandedCard === box.id ? '−' : '+'}
+                </span>
               </div>
-              <ul style={{ margin: 0, paddingLeft: '1.2rem', color: '#334155', fontSize: '0.85rem', lineHeight: '1.4', flex: 1 }}>
-                {box.items.map((item, idx) => (
-                  <li key={idx} style={{ marginBottom: '0.3rem' }}>{item}</li>
-                ))}
-              </ul>
+
+              {/* Expanded Content */}
+              {expandedCard === box.id && (
+                <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
+                    {box.items.map((item, idx) => (
+                      <div key={idx} style={{ 
+                        background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
+                        borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                        fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                      }}>
+                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
+                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {box.example && (
+                    <div style={{ marginBottom: '1.5rem', padding: '0.75rem', background: '#f1f5f9', borderRadius: '0.5rem', fontSize: '0.85rem', color: '#475569', fontStyle: 'italic', borderLeft: `3px solid ${box.color}` }}>
+                      {box.example}
+                    </div>
+                  )}
+                  
+                  {/* View Details Button */}
+                  <button style={{
+                    width: '100%', padding: '0.75rem', background: box.color, color: 'white',
+                    border: 'none', borderRadius: '0.5rem', fontWeight: 'bold', fontSize: '0.95rem',
+                    cursor: 'pointer', transition: 'opacity 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = 0.9}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = 1}
+                  >
+                    Click to View Details
+                  </button>
+                </div>
+              )}
             </div>
           );
         })}

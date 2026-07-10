@@ -11,6 +11,7 @@ import ModuleDetail from './ModuleDetail';
 export default function AICourseDashboard() {
   const [activeTab, setActiveTab] = useState('modules');
   const [selectedModuleId, setSelectedModuleId] = useState(null);
+  const [expandedDashboardCard, setExpandedDashboardCard] = useState(null);
   const [isPopupMaximized, setIsPopupMaximized] = useState(false);
   const courseModules = [
     {
@@ -251,7 +252,7 @@ export default function AICourseDashboard() {
           <h3 style={{ fontSize: '1.75rem', color: '#0f172a', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <BookOpen color="#3b82f6" /> Course Modules
           </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '3rem', alignItems: 'flex-start' }}>
             {courseModules.map((module) => (
               <div key={module.id} style={{
                 background: 'white',
@@ -261,7 +262,8 @@ export default function AICourseDashboard() {
                 borderTop: `4px solid ${module.color}`,
                 boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
                 transition: 'transform 0.3s, box-shadow 0.3s',
-                cursor: 'pointer'
+                display: 'flex',
+                flexDirection: 'column'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-5px)';
@@ -271,9 +273,12 @@ export default function AICourseDashboard() {
                 e.currentTarget.style.transform = 'none';
                 e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.02)';
               }}
-              onClick={() => setSelectedModuleId(module.id)}
               >
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                {/* Header (Click to expand accordion) */}
+                <div 
+                  onClick={() => setExpandedDashboardCard(expandedDashboardCard === module.id ? null : module.id)}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}
+                >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <div style={{ padding: '0.75rem', background: `${module.color}15`, color: module.color, borderRadius: '0.75rem' }}>
                       <module.icon size={24} />
@@ -283,33 +288,60 @@ export default function AICourseDashboard() {
                     </h4>
                   </div>
                 </div>
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <span style={{ fontSize: '0.75rem', background: `${module.color}15`, color: module.color, padding: '0.3rem 0.75rem', borderRadius: '1rem', fontWeight: 'bold' }}>
-                    Click to View Details
-                  </span>
-                </div>
-                <div style={{ display: 'grid', gap: '0.5rem' }}>
-                  {module.items.map((item, index) => (
-                    <div 
-                      key={index} 
-                      style={{ 
-                        background: '#f8fafc', 
-                        border: '1px solid #e2e8f0', 
-                        padding: '0.5rem 0.75rem', 
-                        borderRadius: '0.5rem', 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: '0.5rem',
-                        fontSize: '0.85rem',
-                        color: '#334155',
-                        fontWeight: '500'
-                      }}
-                    >
-                      <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: module.color, flexShrink: 0 }}></div>
-                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item}</span>
+
+                {/* Expanded Content */}
+                {expandedDashboardCard === module.id && (
+                  <div className="animate-fade-in" style={{ marginTop: '1.5rem', borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem' }}>
+                    <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                      {module.items.map((item, index) => (
+                        <div 
+                          key={index} 
+                          style={{ 
+                            background: '#f8fafc', 
+                            border: '1px solid #e2e8f0', 
+                            padding: '0.5rem 0.75rem', 
+                            borderRadius: '0.5rem', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            gap: '0.5rem',
+                            fontSize: '0.85rem',
+                            color: '#334155',
+                            fontWeight: '500'
+                          }}
+                        >
+                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: module.color, flexShrink: 0 }}></div>
+                          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                    
+                    {/* Highlighted 'Click to View Details' Button */}
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); setSelectedModuleId(module.id); }}
+                      style={{
+                        width: '100%',
+                        padding: '0.75rem',
+                        background: module.color,
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '0.5rem',
+                        fontWeight: 'bold',
+                        fontSize: '0.95rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.5rem',
+                        boxShadow: `0 4px 10px ${module.color}66`,
+                        transition: 'opacity 0.2s'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
+                      onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                    >
+                      <BookOpen size={18} /> Click to View Detailed Modules
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>

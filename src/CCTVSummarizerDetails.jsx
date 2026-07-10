@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   ArrowLeft, LayoutDashboard, FileText, Code, ListOrdered, BookOpen, CheckSquare, Settings, Target, Shield, Database, Layout, CheckCircle, Network, Server, Briefcase, Activity, Monitor, BrainCircuit, Search, Zap, AlertTriangle, Video, Clock, Filter, HardDrive, Cpu, FastForward
 } from 'lucide-react';
 import './ProjectDetailsView.css';
@@ -47,7 +47,7 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
   if (showFullscreenFlowchart) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button 
+        <button
           onClick={() => setShowFullscreenFlowchart(false)}
           style={{ padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', border: '1px solid #e2e8f0', fontWeight: 'bold', cursor: 'pointer', marginBottom: '2rem' }}
         >
@@ -65,11 +65,11 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <button 
-            onClick={onBack} 
-            style={{ 
-              display: 'flex', alignItems: 'center', gap: '0.5rem', 
-              padding: '0.75rem 1.5rem', background: 'white', 
+          <button
+            onClick={onBack}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '0.5rem',
+              padding: '0.75rem 1.5rem', background: 'white',
               borderRadius: '0.75rem', border: '1px solid #e2e8f0',
               color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
               boxShadow: '0 1px 3px rgba(0,0,0,0.05)', transition: 'all 0.2s'
@@ -79,7 +79,7 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
           >
             <ArrowLeft size={20} /> Back to Dashboard
           </button>
-          
+
           <div>
             <h1 style={{ fontSize: '1.75rem', color: '#0f172a', fontWeight: '800', margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <Video color={project?.color || '#3b82f6'} size={28} />
@@ -90,7 +90,7 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
             </p>
           </div>
         </div>
-        
+
         <div style={{ padding: '0.5rem 1rem', background: `${project?.color || '#3b82f6'}15`, color: project?.color || '#3b82f6', borderRadius: '2rem', fontWeight: 'bold', fontSize: '0.85rem' }}>
           Project ID: {project?.id || '407'}
         </div>
@@ -132,7 +132,7 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
 
         {/* Content Area */}
         <div style={{ background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', minHeight: '600px', padding: '2.5rem' }}>
-          
+
           {/* 1. OVERVIEW TAB */}
           {activeTab === 'overview' && (
             <div className="animate-fade-in">
@@ -145,10 +145,10 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
                 {overviewSections.map((section) => (
-                  <div 
-                    key={section.id} 
+                  <div
+                    key={section.id}
                     onClick={() => setSelectedOverviewSection(selectedOverviewSection === section.id ? null : section.id)}
-                    style={{ 
+                    style={{
                       padding: '1.5rem', background: '#f8fafc', borderRadius: '1rem', border: '1px solid #e2e8f0',
                       cursor: 'pointer', transition: 'all 0.2s',
                       boxShadow: selectedOverviewSection === section.id ? `0 0 0 2px ${section.color}` : 'none'
@@ -179,7 +179,7 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <BrainCircuit color="#3b82f6" /> AI Processing Workflow
                 </h3>
-                
+
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
                   <div style={{ textAlign: 'center', flex: 1, minWidth: '150px' }}>
                     <div style={{ background: 'rgba(255,255,255,0.1)', width: '60px', height: '60px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
@@ -188,9 +188,9 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
                     <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>1. Raw Input</div>
                     <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>24h Footage (10GB)</div>
                   </div>
-                  
+
                   <div style={{ color: '#3b82f6' }}>➔</div>
-                  
+
                   <div style={{ textAlign: 'center', flex: 1, minWidth: '150px' }}>
                     <div style={{ background: 'rgba(59,130,246,0.2)', border: '1px solid #3b82f6', width: '60px', height: '60px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem', color: '#3b82f6' }}>
                       <Filter size={24} />
@@ -225,25 +225,25 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
 
           {/* Add other tabs like Architecture, Tech Stack, Guide, etc. following similar pattern... */}
           {activeTab === 'architecture' && (
-             <div className="animate-fade-in">
-             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-               <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800' }}>Architecture & Workflow</h2>
-               <button onClick={() => setShowFullscreenFlowchart(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#f1f5f9', color: '#475569', border: '1px solid #cbd5e1', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', cursor: 'pointer' }}>
-                 <Layout size={16} /> View Full Diagram
-               </button>
-             </div>
-             
-             <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', marginBottom: '2rem' }}>
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', fontWeight: 'bold' }}>1. Video Ingestion Layer (फीड ग्रहण)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>RTSP स्ट्रीम या अपलोड की गई MP4 फाइल्स को सिस्टम में लिया जाता है। OpenCV का उपयोग करके वीडियो को फ्रेम्स में तोड़ा जाता है।</p>
-               
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>2. AI Inference Engine (AI प्रोसेसिंग)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>YOLOv8 या Faster R-CNN मॉडल हर N-वें फ्रेम (जैसे हर 5वें फ्रेम) का विश्लेषण करता है ताकि प्रोसेसिंग तेज हो। यह इंसान या गाड़ी का bounding box डिटेक्ट करता है।</p>
-               
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>3. Logic & Stitching Layer (क्लिप्स जोड़ना)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>जिन फ्रेम्स में ऑब्जेक्ट डिटेक्ट होता है, उन टाइमस्टैम्प्स (जैसे 12:04:10 से 12:04:30) को एक लिस्ट में सेव किया जाता है। फिर FFmpeg का उपयोग करके इन सभी टाइम-सेगमेंट्स को मुख्य वीडियो से काटकर एक नई वीडियो फ़ाइल में जोड़ (Stitch) दिया जाता है।</p>
-             </div>
-           </div>
+            <div className="animate-fade-in">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800' }}>Architecture & Workflow</h2>
+                <button onClick={() => setShowFullscreenFlowchart(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#f1f5f9', color: '#475569', border: '1px solid #cbd5e1', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', cursor: 'pointer' }}>
+                  <Layout size={16} /> View Full Diagram
+                </button>
+              </div>
+
+              <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', marginBottom: '2rem' }}>
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', fontWeight: 'bold' }}>1. Video Ingestion Layer (फीड ग्रहण)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>RTSP स्ट्रीम या अपलोड की गई MP4 फाइल्स को सिस्टम में लिया जाता है। OpenCV का उपयोग करके वीडियो को फ्रेम्स में तोड़ा जाता है।</p>
+
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>2. AI Inference Engine (AI प्रोसेसिंग)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>YOLOv8 या Faster R-CNN मॉडल हर N-वें फ्रेम (जैसे हर 5वें फ्रेम) का विश्लेषण करता है ताकि प्रोसेसिंग तेज हो। यह इंसान या गाड़ी का bounding box डिटेक्ट करता है।</p>
+
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>3. Logic & Stitching Layer (क्लिप्स जोड़ना)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>जिन फ्रेम्स में ऑब्जेक्ट डिटेक्ट होता है, उन टाइमस्टैम्प्स (जैसे 12:04:10 से 12:04:30) को एक लिस्ट में सेव किया जाता है। फिर FFmpeg का उपयोग करके इन सभी टाइम-सेगमेंट्स को मुख्य वीडियो से काटकर एक नई वीडियो फ़ाइल में जोड़ (Stitch) दिया जाता है।</p>
+              </div>
+            </div>
           )}
 
           {activeTab === 'tech-stack' && (
@@ -284,8 +284,8 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
               <div style={{ display: 'flex', gap: '2rem' }}>
                 <div style={{ width: '300px', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {guideSteps.map(step => (
-                    <div 
-                      key={step.id} 
+                    <div
+                      key={step.id}
                       onClick={() => setSelectedGuideStep(step.id)}
                       style={{ padding: '1rem', background: selectedGuideStep === step.id ? `${step.color}15` : '#f8fafc', border: `1px solid ${selectedGuideStep === step.id ? step.color : '#e2e8f0'}`, borderLeft: `4px solid ${step.color}`, borderRadius: '0.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
                     >

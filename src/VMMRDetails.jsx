@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   ArrowLeft, LayoutDashboard, FileText, Code, ListOrdered, BookOpen, CheckSquare, Settings, Target, Shield, Database, Layout, CheckCircle, Network, Server, Briefcase, Activity, Monitor, BrainCircuit, Search, Zap, AlertTriangle, Car, Camera, Crosshair, MapPin
 } from 'lucide-react';
 import './ProjectDetailsView.css';
@@ -47,7 +47,7 @@ export default function VMMRDetails({ project, onBack }) {
   if (showFullscreenFlowchart) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button 
+        <button
           onClick={() => setShowFullscreenFlowchart(false)}
           style={{ padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', border: '1px solid #e2e8f0', fontWeight: 'bold', cursor: 'pointer', marginBottom: '2rem' }}
         >
@@ -65,11 +65,11 @@ export default function VMMRDetails({ project, onBack }) {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <button 
-            onClick={onBack} 
-            style={{ 
-              display: 'flex', alignItems: 'center', gap: '0.5rem', 
-              padding: '0.75rem 1.5rem', background: 'white', 
+          <button
+            onClick={onBack}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '0.5rem',
+              padding: '0.75rem 1.5rem', background: 'white',
               borderRadius: '0.75rem', border: '1px solid #e2e8f0',
               color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
               boxShadow: '0 1px 3px rgba(0,0,0,0.05)', transition: 'all 0.2s'
@@ -79,7 +79,7 @@ export default function VMMRDetails({ project, onBack }) {
           >
             <ArrowLeft size={20} /> Back to Dashboard
           </button>
-          
+
           <div>
             <h1 style={{ fontSize: '1.75rem', color: '#0f172a', fontWeight: '800', margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <Car color={project?.color || '#10b981'} size={28} />
@@ -90,7 +90,7 @@ export default function VMMRDetails({ project, onBack }) {
             </p>
           </div>
         </div>
-        
+
         <div style={{ padding: '0.5rem 1rem', background: `${project?.color || '#10b981'}15`, color: project?.color || '#10b981', borderRadius: '2rem', fontWeight: 'bold', fontSize: '0.85rem' }}>
           Project ID: {project?.id || '408'}
         </div>
@@ -132,7 +132,7 @@ export default function VMMRDetails({ project, onBack }) {
 
         {/* Content Area */}
         <div style={{ background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', minHeight: '600px', padding: '2.5rem' }}>
-          
+
           {/* 1. OVERVIEW TAB */}
           {activeTab === 'overview' && (
             <div className="animate-fade-in">
@@ -145,10 +145,10 @@ export default function VMMRDetails({ project, onBack }) {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
                 {overviewSections.map((section) => (
-                  <div 
-                    key={section.id} 
+                  <div
+                    key={section.id}
                     onClick={() => setSelectedOverviewSection(selectedOverviewSection === section.id ? null : section.id)}
-                    style={{ 
+                    style={{
                       padding: '1.5rem', background: '#f8fafc', borderRadius: '1rem', border: '1px solid #e2e8f0',
                       cursor: 'pointer', transition: 'all 0.2s',
                       boxShadow: selectedOverviewSection === section.id ? `0 0 0 2px ${section.color}` : 'none'
@@ -179,7 +179,7 @@ export default function VMMRDetails({ project, onBack }) {
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <Car color="#10b981" /> VMMR Analysis Process
                 </h3>
-                
+
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
                   <div style={{ textAlign: 'center', flex: 1, minWidth: '150px' }}>
                     <div style={{ background: 'rgba(255,255,255,0.1)', width: '60px', height: '60px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
@@ -188,9 +188,9 @@ export default function VMMRDetails({ project, onBack }) {
                     <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>1. Image Capture</div>
                     <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Raw CCTV Frame</div>
                   </div>
-                  
+
                   <div style={{ color: '#10b981' }}>➔</div>
-                  
+
                   <div style={{ textAlign: 'center', flex: 1, minWidth: '150px' }}>
                     <div style={{ background: 'rgba(16,185,129,0.2)', border: '1px solid #10b981', width: '60px', height: '60px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem', color: '#10b981' }}>
                       <Target size={24} />
@@ -224,25 +224,25 @@ export default function VMMRDetails({ project, onBack }) {
           )}
 
           {activeTab === 'architecture' && (
-             <div className="animate-fade-in">
-             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-               <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800' }}>Architecture & Workflow</h2>
-               <button onClick={() => setShowFullscreenFlowchart(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#f1f5f9', color: '#475569', border: '1px solid #cbd5e1', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', cursor: 'pointer' }}>
-                 <Layout size={16} /> View Full Diagram
-               </button>
-             </div>
-             
-             <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', marginBottom: '2rem' }}>
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', fontWeight: 'bold' }}>1. Vehicle Detection (वाहन खोजना)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>स्ट्रीमिंग वीडियो में से YOLO (You Only Look Once) एल्गोरिदम का उपयोग करके फ्रेम में मौजूद सभी वाहनों को क्रॉप किया जाता है। इससे बैकग्राउंड का शोर हट जाता है।</p>
-               
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>2. Multi-Label Classification (वर्गीकरण)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>क्रॉप की गई इमेज को एक डीप CNN (Convolutional Neural Network) जैसे EfficientNet में भेजा जाता है। यह नेटवर्क एक साथ 3 प्रेडिक्शन करता है: Make (ब्रांड), Model (कार का प्रकार), और Color (रंग)।</p>
-               
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>3. Database & Matching (डेटाबेस मिलान)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>जब किसी क्राइम सीन पर कोई बिना नंबर प्लेट की गाड़ी दिखती है, तो सिस्टम उसके फीचर्स को Elasticsearch वेक्टर डेटाबेस में सेव कर देता है। बाद में उसी 'Make/Model/Color' को शहर के अन्य कैमरों में सर्च किया जा सकता है।</p>
-             </div>
-           </div>
+            <div className="animate-fade-in">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800' }}>Architecture & Workflow</h2>
+                <button onClick={() => setShowFullscreenFlowchart(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#f1f5f9', color: '#475569', border: '1px solid #cbd5e1', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', cursor: 'pointer' }}>
+                  <Layout size={16} /> View Full Diagram
+                </button>
+              </div>
+
+              <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', marginBottom: '2rem' }}>
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', fontWeight: 'bold' }}>1. Vehicle Detection (वाहन खोजना)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>स्ट्रीमिंग वीडियो में से YOLO (You Only Look Once) एल्गोरिदम का उपयोग करके फ्रेम में मौजूद सभी वाहनों को क्रॉप किया जाता है। इससे बैकग्राउंड का शोर हट जाता है।</p>
+
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>2. Multi-Label Classification (वर्गीकरण)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>क्रॉप की गई इमेज को एक डीप CNN (Convolutional Neural Network) जैसे EfficientNet में भेजा जाता है। यह नेटवर्क एक साथ 3 प्रेडिक्शन करता है: Make (ब्रांड), Model (कार का प्रकार), और Color (रंग)।</p>
+
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>3. Database & Matching (डेटाबेस मिलान)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>जब किसी क्राइम सीन पर कोई बिना नंबर प्लेट की गाड़ी दिखती है, तो सिस्टम उसके फीचर्स को Elasticsearch वेक्टर डेटाबेस में सेव कर देता है। बाद में उसी 'Make/Model/Color' को शहर के अन्य कैमरों में सर्च किया जा सकता है।</p>
+              </div>
+            </div>
           )}
 
           {activeTab === 'tech-stack' && (
@@ -283,8 +283,8 @@ export default function VMMRDetails({ project, onBack }) {
               <div style={{ display: 'flex', gap: '2rem' }}>
                 <div style={{ width: '300px', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {guideSteps.map(step => (
-                    <div 
-                      key={step.id} 
+                    <div
+                      key={step.id}
                       onClick={() => setSelectedGuideStep(step.id)}
                       style={{ padding: '1rem', background: selectedGuideStep === step.id ? `${step.color}15` : '#f8fafc', border: `1px solid ${selectedGuideStep === step.id ? step.color : '#e2e8f0'}`, borderLeft: `4px solid ${step.color}`, borderRadius: '0.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
                     >

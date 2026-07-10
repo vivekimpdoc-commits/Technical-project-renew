@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   ArrowLeft, LayoutDashboard, FileText, Code, ListOrdered, BookOpen, CheckSquare, Settings, Target, Shield, Database, Layout, CheckCircle, Network, Server, Briefcase, Activity, Monitor, BrainCircuit, Search, Zap, AlertTriangle, Users, Maximize, Map
 } from 'lucide-react';
 import './ProjectDetailsView.css';
@@ -46,7 +46,7 @@ export default function CrowdMeterDetails({ project, onBack }) {
   if (showFullscreenFlowchart) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button 
+        <button
           onClick={() => setShowFullscreenFlowchart(false)}
           style={{ padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', border: '1px solid #e2e8f0', fontWeight: 'bold', cursor: 'pointer', marginBottom: '2rem' }}
         >
@@ -64,11 +64,11 @@ export default function CrowdMeterDetails({ project, onBack }) {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <button 
-            onClick={onBack} 
-            style={{ 
-              display: 'flex', alignItems: 'center', gap: '0.5rem', 
-              padding: '0.75rem 1.5rem', background: 'white', 
+          <button
+            onClick={onBack}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '0.5rem',
+              padding: '0.75rem 1.5rem', background: 'white',
               borderRadius: '0.75rem', border: '1px solid #e2e8f0',
               color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
               boxShadow: '0 1px 3px rgba(0,0,0,0.05)', transition: 'all 0.2s'
@@ -78,7 +78,7 @@ export default function CrowdMeterDetails({ project, onBack }) {
           >
             <ArrowLeft size={20} /> Back to Dashboard
           </button>
-          
+
           <div>
             <h1 style={{ fontSize: '1.75rem', color: '#0f172a', fontWeight: '800', margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <Users color={project?.color || '#f59e0b'} size={28} />
@@ -89,7 +89,7 @@ export default function CrowdMeterDetails({ project, onBack }) {
             </p>
           </div>
         </div>
-        
+
         <div style={{ padding: '0.5rem 1rem', background: `${project?.color || '#f59e0b'}15`, color: project?.color || '#f59e0b', borderRadius: '2rem', fontWeight: 'bold', fontSize: '0.85rem' }}>
           Project ID: {project?.id || '410'}
         </div>
@@ -131,7 +131,7 @@ export default function CrowdMeterDetails({ project, onBack }) {
 
         {/* Content Area */}
         <div style={{ background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', minHeight: '600px', padding: '2.5rem' }}>
-          
+
           {/* 1. OVERVIEW TAB */}
           {activeTab === 'overview' && (
             <div className="animate-fade-in">
@@ -144,10 +144,10 @@ export default function CrowdMeterDetails({ project, onBack }) {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
                 {overviewSections.map((section) => (
-                  <div 
-                    key={section.id} 
+                  <div
+                    key={section.id}
                     onClick={() => setSelectedOverviewSection(selectedOverviewSection === section.id ? null : section.id)}
-                    style={{ 
+                    style={{
                       padding: '1.5rem', background: '#f8fafc', borderRadius: '1rem', border: '1px solid #e2e8f0',
                       cursor: 'pointer', transition: 'all 0.2s',
                       boxShadow: selectedOverviewSection === section.id ? `0 0 0 2px ${section.color}` : 'none'
@@ -178,12 +178,12 @@ export default function CrowdMeterDetails({ project, onBack }) {
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <Map color="#f59e0b" /> Live Festival Crowd Monitor
                 </h3>
-                
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem' }}>
                   <div>
                     <p style={{ color: '#94a3b8' }}>Sector: Main Temple Square | Camera: Node-42</p>
                   </div>
-                  
+
                   <div style={{ background: 'rgba(255,255,255,0.1)', padding: '1rem 1.5rem', borderRadius: '0.75rem', textAlign: 'center' }}>
                     <div style={{ fontSize: '0.85rem', color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.25rem' }}>Live Count</div>
                     <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#f59e0b', lineHeight: '1' }}>14,592</div>
@@ -226,22 +226,22 @@ export default function CrowdMeterDetails({ project, onBack }) {
           )}
 
           {activeTab === 'architecture' && (
-             <div className="animate-fade-in">
-             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-               <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800' }}>Architecture & Workflow</h2>
-             </div>
-             
-             <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', marginBottom: '2rem' }}>
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', fontWeight: 'bold' }}>1. Density Map Generation (हीटमैप बनाना)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>YOLO जैसे मॉडल एक-एक व्यक्ति पर बॉक्स बनाते हैं जो भीड़ में काम नहीं करता। इसकी जगह CSRNet (Congested Scene Recognition Network) का उपयोग किया जाता है। यह इमेज को एक Density Map में बदल देता है, जिसके पिक्सल्स को जोड़कर कुल भीड़ की गिनती मिल जाती है।</p>
-               
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>2. Optical Flow (गति की दिशा)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>गिनती के अलावा, यह जानना भी ज़रूरी है कि भीड़ किस दिशा में जा रही है। Lucas-Kanade अल्गोरिदम का उपयोग करके पिक्सल्स के मूवमेंट की गति और दिशा निकाली जाती है (Flow Vectors)।</p>
-               
-               <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>3. Pressure & Threshold Analysis (दबाव की गणना)</h3>
-               <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>डेंसिटी (Density) और गति (Flow) को मिलाकर "दबाव" की गणना की जाती है। यदि 5 लोगों प्रति वर्ग मीटर (5 px/m²) से अधिक घनत्व हो और Flow Rate शून्य हो जाए, तो सिस्टम इसे खतरनाक मानकर अलर्ट ट्रिगर करता है।</p>
-             </div>
-           </div>
+            <div className="animate-fade-in">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                <h2 style={{ fontSize: '1.8rem', color: '#0f172a', fontWeight: '800' }}>Architecture & Workflow</h2>
+              </div>
+
+              <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', marginBottom: '2rem' }}>
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', fontWeight: 'bold' }}>1. Density Map Generation (हीटमैप बनाना)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>YOLO जैसे मॉडल एक-एक व्यक्ति पर बॉक्स बनाते हैं जो भीड़ में काम नहीं करता। इसकी जगह CSRNet (Congested Scene Recognition Network) का उपयोग किया जाता है। यह इमेज को एक Density Map में बदल देता है, जिसके पिक्सल्स को जोड़कर कुल भीड़ की गिनती मिल जाती है।</p>
+
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>2. Optical Flow (गति की दिशा)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>गिनती के अलावा, यह जानना भी ज़रूरी है कि भीड़ किस दिशा में जा रही है। Lucas-Kanade अल्गोरिदम का उपयोग करके पिक्सल्स के मूवमेंट की गति और दिशा निकाली जाती है (Flow Vectors)।</p>
+
+                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '1.5rem', marginTop: '2rem', fontWeight: 'bold' }}>3. Pressure & Threshold Analysis (दबाव की गणना)</h3>
+                <p style={{ color: '#475569', marginBottom: '1rem', lineHeight: '1.6' }}>डेंसिटी (Density) और गति (Flow) को मिलाकर "दबाव" की गणना की जाती है। यदि 5 लोगों प्रति वर्ग मीटर (5 px/m²) से अधिक घनत्व हो और Flow Rate शून्य हो जाए, तो सिस्टम इसे खतरनाक मानकर अलर्ट ट्रिगर करता है।</p>
+              </div>
+            </div>
           )}
 
           {activeTab === 'tech-stack' && (
@@ -282,8 +282,8 @@ export default function CrowdMeterDetails({ project, onBack }) {
               <div style={{ display: 'flex', gap: '2rem' }}>
                 <div style={{ width: '300px', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {guideSteps.map(step => (
-                    <div 
-                      key={step.id} 
+                    <div
+                      key={step.id}
                       onClick={() => setSelectedGuideStep(step.id)}
                       style={{ padding: '1rem', background: selectedGuideStep === step.id ? `${step.color}15` : '#f8fafc', border: `1px solid ${selectedGuideStep === step.id ? step.color : '#e2e8f0'}`, borderLeft: `4px solid ${step.color}`, borderRadius: '0.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
                     >
