@@ -67,7 +67,9 @@ export default function OpenSourceGit({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to Masterclass</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to Masterclass
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><GitBranch size={32} color="#f59e0b" /> Open Source & Version Control (गिट और ओपन सोर्स)</h2>
         <p className="thane-subtitle">Mastering code collaboration, version control, and contributing to the global developer community.</p>

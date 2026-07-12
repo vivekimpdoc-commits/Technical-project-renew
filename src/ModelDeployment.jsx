@@ -67,7 +67,9 @@ export default function ModelDeployment({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to MLOps</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to MLOps
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><Activity size={32} color="#10b981" /> Model Deployment (AI को लाइव करना)</h2>
         <p className="thane-subtitle">Deploying trained AI models to production — from Docker containers to edge devices.</p>

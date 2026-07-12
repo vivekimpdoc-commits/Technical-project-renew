@@ -67,7 +67,9 @@ export default function EnterpriseCloud({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to Advanced AI Command</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to Advanced AI Command
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><Cloud size={32} color="#3b82f6" /> Enterprise Cloud Architecture (क्लाउड आर्किटेक्चर)</h2>
         <p className="thane-subtitle">Building robust, scalable, and highly available infrastructure for national-level deployment.</p>

@@ -67,7 +67,9 @@ export default function SystemDesign({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to Masterclass</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to Masterclass
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><Network size={32} color="#8b5cf6" /> System Design (सिस्टम डिज़ाइन)</h2>
         <p className="thane-subtitle">Architecting applications capable of handling millions of users and terabytes of data.</p>

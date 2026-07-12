@@ -48,7 +48,7 @@ export default function StepUpLiteracyDetails() {
   if (showFullscreenFlowchart) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenFlowchart(false)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
         <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>AI Project Lifecycle Flow</h3>
@@ -72,7 +72,7 @@ export default function StepUpLiteracyDetails() {
   if (showFullscreenWorkflow) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenWorkflow(false)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setShowFullscreenWorkflow(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
         <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>Workflow Details (मुख्य चरण)</h3>
@@ -103,7 +103,7 @@ export default function StepUpLiteracyDetails() {
     const SecIcon = sec.icon;
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedOverviewSection(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setSelectedOverviewSection(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Project Overview
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -155,7 +155,7 @@ export default function StepUpLiteracyDetails() {
   if (selectedGuideStep !== null) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedGuideStep(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>
+        <button onClick={() => setSelectedGuideStep(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>
           <ArrowLeft size={18} /> Back
         </button>
         <div className="workflow-container"><h3 style={{ textAlign: 'center' }}>Refer to Architecture section for guide details.</h3></div>
@@ -166,7 +166,7 @@ export default function StepUpLiteracyDetails() {
   if (selectedEvaluation !== null) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>
           <ArrowLeft size={18} /> Back
         </button>
         <div className="workflow-container"><h3 style={{ textAlign: 'center' }}>Evaluation Metrics active.</h3></div>

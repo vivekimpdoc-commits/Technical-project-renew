@@ -65,20 +65,9 @@ export default function CCTVSummarizerDetails({ project, onBack }) {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <button
-            onClick={onBack}
-            style={{
-              display: 'flex', alignItems: 'center', gap: '0.5rem',
-              padding: '0.75rem 1.5rem', background: 'white',
-              borderRadius: '0.75rem', border: '1px solid #e2e8f0',
-              color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.05)', transition: 'all 0.2s'
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = project?.color || '#3b82f6'; e.currentTarget.style.color = project?.color || '#3b82f6'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.color = '#0f172a'; }}
-          >
-            <ArrowLeft size={20} /> Back to Dashboard
-          </button>
+          <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to Dashboard
+        </button>
 
           <div>
             <h1 style={{ fontSize: '1.75rem', color: '#0f172a', fontWeight: '800', margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>

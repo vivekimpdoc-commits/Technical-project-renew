@@ -67,7 +67,9 @@ export default function CareerPathsRoles({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to Masterclass</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to Masterclass
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><Briefcase size={32} color="#10b981" /> Career Paths & Roles (करियर विकल्प)</h2>
         <p className="thane-subtitle">Understanding the different engineering roles and their responsibilities.</p>

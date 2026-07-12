@@ -162,7 +162,7 @@ export default function SDLCModels({ onBack }) {
     
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedDetail(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setSelectedDetail(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to SDLC Models
         </button>
         
@@ -243,18 +243,7 @@ export default function SDLCModels({ onBack }) {
       
       {/* Header with Back Button */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
-        <button 
-          onClick={onBack} 
-          style={{ 
-            display: 'flex', alignItems: 'center', gap: '0.5rem', 
-            padding: '0.75rem 1.5rem', background: 'white', 
-            borderRadius: '0.75rem', border: '1px solid #e2e8f0',
-            color: '#0f172a', fontWeight: 'bold', cursor: 'pointer',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#3b82f6'; e.currentTarget.style.color = '#2563eb'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.color = '#0f172a'; }}
-        >
+        <button onClick={onBack} className="thane-back-btn">
           <ArrowLeft size={18} /> Back to SDLC
         </button>
         <div>

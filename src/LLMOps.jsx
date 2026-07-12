@@ -67,7 +67,9 @@ export default function LLMOps({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to MLOps</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to MLOps
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><BrainCircuit size={32} color="#ec4899" /> LLMOps (ChatGPT जैसे मॉडल्स का मैनेजमेंट)</h2>
         <p className="thane-subtitle">Managing Large Language Models in production — RAG, Vector DBs, Prompt Engineering & Fine-tuning.</p>

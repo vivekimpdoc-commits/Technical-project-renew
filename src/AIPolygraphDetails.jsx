@@ -49,7 +49,7 @@ export default function AIPolygraphDetails({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenFlowchart(false)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
@@ -91,7 +91,7 @@ export default function AIPolygraphDetails({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenWorkflow(false)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
@@ -130,7 +130,7 @@ export default function AIPolygraphDetails({ project, onBack }) {
     const StepIcon = step.icon;
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedGuideStep(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setSelectedGuideStep(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Step-by-Step Guide
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -191,7 +191,7 @@ export default function AIPolygraphDetails({ project, onBack }) {
     const EvalIcon = evalItem.icon;
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -264,7 +264,7 @@ export default function AIPolygraphDetails({ project, onBack }) {
     const SecIcon = sec.icon;
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedOverviewSection(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setSelectedOverviewSection(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Project Overview
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -398,7 +398,7 @@ export default function AIPolygraphDetails({ project, onBack }) {
   return (
     <div className="project-details-container">
       <div className="details-header-bar">
-        <button onClick={onBack} className="back-button">
+        <button onClick={onBack} className="thane-back-btn">
           <ArrowLeft size={18} /> Back to Dashboard
         </button>
         <div className="details-header-content">

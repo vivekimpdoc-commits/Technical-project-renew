@@ -67,7 +67,9 @@ export default function CyberSecurityForensics({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to Advanced AI Command</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to Advanced AI Command
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><ShieldAlert size={32} color="#ef4444" /> AI Cyber Security & Forensics (साइबर सुरक्षा)</h2>
         <p className="thane-subtitle">Advanced digital forensics, deepfake detection, and enterprise zero-trust security architecture.</p>

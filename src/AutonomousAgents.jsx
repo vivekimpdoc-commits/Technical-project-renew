@@ -67,7 +67,9 @@ export default function AutonomousAgents({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to Advanced AI Command</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to Advanced AI Command
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><Bot size={32} color="#8b5cf6" /> Autonomous AI Agents (ऑटोनोमस AI एजेंट्स)</h2>
         <p className="thane-subtitle">Next-generation AI that doesn't just answer questions, but autonomously executes complex physical and digital tasks.</p>

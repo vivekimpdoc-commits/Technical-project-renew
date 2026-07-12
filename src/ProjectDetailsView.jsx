@@ -136,7 +136,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenFlowchart(false)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
@@ -242,7 +242,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenWorkflow(false)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
@@ -350,7 +350,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFrontendDetails(false)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Tech Stack
@@ -405,7 +405,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowBackendDetails(false)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Tech Stack
@@ -449,7 +449,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowAiDetails(false)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Tech Stack
@@ -500,7 +500,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowDatabaseDetails(false)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Tech Stack
@@ -546,7 +546,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setSelectedGuideStep(null)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Step-by-Step Guide
@@ -686,7 +686,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setSelectedResource(null)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Resources
@@ -794,7 +794,7 @@ export default function ProjectDetailsView({ project, onBack }) {
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setSelectedEvaluation(null)} 
-          className="back-button" 
+          className="thane-back-btn" 
           style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Submission / Evaluation
@@ -864,7 +864,7 @@ export default function ProjectDetailsView({ project, onBack }) {
   return (
     <div className="project-details-container">
       <div className="details-header-bar">
-        <button className="back-button" onClick={onBack}>
+        <button className="thane-back-btn" onClick={onBack}>
           <ArrowLeft size={18} /> Back to Projects
         </button>
         <div className="details-header-content">

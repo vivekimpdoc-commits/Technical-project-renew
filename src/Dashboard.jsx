@@ -154,35 +154,44 @@ export default function Dashboard() {
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
           
-          {/* Stylized UP Police Crest */}
-          <svg width="55" height="55" viewBox="0 0 100 100" style={{ filter: 'drop-shadow(0 0 6px rgba(245, 158, 11, 0.4))', marginRight: '0.75rem' }}>
-            <circle cx="50" cy="50" r="45" fill="none" stroke="#d97706" strokeWidth="2.5" />
-            <circle cx="50" cy="50" r="41" fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="3 2" />
-            <path d="M50 20 C65 20, 70 30, 70 45 C70 65, 50 80, 50 80 C50 80, 30 65, 30 45 C30 30, 35 20, 50 20 Z" fill="rgba(185, 28, 28, 0.2)" stroke="#d97706" strokeWidth="2" />
-            <path d="M38 45 C38 40, 48 35, 48 45 C48 50, 42 53, 38 45 Z" fill="none" stroke="#f59e0b" strokeWidth="2" />
-            <path d="M62 45 C62 40, 52 35, 52 45 C52 50, 58 53, 62 45 Z" fill="none" stroke="#f59e0b" strokeWidth="2" />
-            <path d="M35 32 Q50 40 65 32" fill="none" stroke="#f59e0b" strokeWidth="2" />
-            <line x1="50" y1="28" x2="50" y2="40" stroke="#f59e0b" strokeWidth="2.5" />
-            <polygon points="50,42 47,38 53,38" fill="#f59e0b" />
-            <polygon points="50,11 52,15 56,15 53,17 54,21 50,19 46,21 47,17 44,15 48,15" fill="#f59e0b" />
-          </svg>
+          {/* Clickable Logo & Title for Home Navigation */}
+          <div 
+            onClick={() => setActiveTab('overview')} 
+            style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', transition: 'opacity 0.2s' }}
+            onMouseEnter={(e) => e.currentTarget.style.opacity = '0.8'}
+            onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            title="Go to Home"
+          >
+            {/* Stylized UP Police Crest */}
+            <svg width="55" height="55" viewBox="0 0 100 100" style={{ filter: 'drop-shadow(0 0 6px rgba(245, 158, 11, 0.4))', marginRight: '0.75rem' }}>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#d97706" strokeWidth="2.5" />
+              <circle cx="50" cy="50" r="41" fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="3 2" />
+              <path d="M50 20 C65 20, 70 30, 70 45 C70 65, 50 80, 50 80 C50 80, 30 65, 30 45 C30 30, 35 20, 50 20 Z" fill="rgba(185, 28, 28, 0.2)" stroke="#d97706" strokeWidth="2" />
+              <path d="M38 45 C38 40, 48 35, 48 45 C48 50, 42 53, 38 45 Z" fill="none" stroke="#f59e0b" strokeWidth="2" />
+              <path d="M62 45 C62 40, 52 35, 52 45 C52 50, 58 53, 62 45 Z" fill="none" stroke="#f59e0b" strokeWidth="2" />
+              <path d="M35 32 Q50 40 65 32" fill="none" stroke="#f59e0b" strokeWidth="2" />
+              <line x1="50" y1="28" x2="50" y2="40" stroke="#f59e0b" strokeWidth="2.5" />
+              <polygon points="50,42 47,38 53,38" fill="#f59e0b" />
+              <polygon points="50,11 52,15 56,15 53,17 54,21 50,19 46,21 47,17 44,15 48,15" fill="#f59e0b" />
+            </svg>
 
-          {/* Title Text */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-            <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#f59e0b', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-              UP Police Academy & AI Command
-            </span>
-            <span style={{ 
-              fontSize: '1.45rem', 
-              fontWeight: '900', 
-              background: 'linear-gradient(to right, #00d2ff, #00d2ff, #ffffff)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              letterSpacing: '0.05em',
-              display: 'inline-block'
-            }}>
-              K.A.V.A.C.H. AI PORTAL
-            </span>
+            {/* Title Text */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+              <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#f59e0b', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                UP Police Academy & AI Command
+              </span>
+              <span style={{ 
+                fontSize: '1.45rem', 
+                fontWeight: '900', 
+                background: 'linear-gradient(to right, #00d2ff, #00d2ff, #ffffff)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                letterSpacing: '0.05em',
+                display: 'inline-block'
+              }}>
+                K.A.V.A.C.H. AI PORTAL
+              </span>
+            </div>
           </div>
         </div>
 

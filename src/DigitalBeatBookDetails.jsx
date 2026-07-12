@@ -52,7 +52,7 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
   if (showFullscreenFlowchart) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenFlowchart(false)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
         <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>डिजिटल बीट बुक (Guardian AI) आर्किटेक्चर</h3>
@@ -90,7 +90,7 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
   if (showFrontendDetails) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFrontendDetails(false)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -111,7 +111,7 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
   if (showBackendDetails) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowBackendDetails(false)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -144,7 +144,7 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
     const EvaluationIcon = evaluation.icon;
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -189,7 +189,7 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
   return (
     <div className="project-details-container">
       <div className="details-header-bar">
-        <button onClick={onBack} className="back-button">
+        <button onClick={onBack} className="thane-back-btn">
           <ArrowLeft size={20} /> Back to Dashboard
         </button>
         <div className="project-header-info">

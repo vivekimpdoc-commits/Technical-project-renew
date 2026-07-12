@@ -67,7 +67,9 @@ export default function MonitoringDriftAnalysis({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to MLOps</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to MLOps
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><BarChart3 size={32} color="#f59e0b" /> Monitoring & Drift Analysis (AI की निगरानी)</h2>
         <p className="thane-subtitle">Ensuring AI models stay accurate over time with drift detection, A/B testing, and auto-retraining.</p>

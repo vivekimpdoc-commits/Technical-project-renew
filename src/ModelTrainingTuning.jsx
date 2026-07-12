@@ -67,7 +67,9 @@ export default function ModelTrainingTuning({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to MLOps</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to MLOps
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><Cpu size={32} color="#8b5cf6" /> Model Training & Tuning (मॉडल ट्रेनिंग)</h2>
         <p className="thane-subtitle">Training AI models on powerful hardware with optimized hyperparameters and distributed computing.</p>

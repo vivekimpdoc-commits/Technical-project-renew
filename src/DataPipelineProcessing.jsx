@@ -67,7 +67,9 @@ export default function DataPipelineProcessing({ onBack }) {
         </div>
       )}
 
-      <button onClick={onBack} className="thane-back-btn" style={{ marginBottom: '1rem' }}><ArrowLeft size={20} /> Back to MLOps</button>
+      <button onClick={onBack} className="thane-back-btn">
+          <ArrowLeft size={20} /> Back to MLOps
+        </button>
       <div className="thane-header">
         <h2 className="thane-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'center' }}><Database size={32} color="#0ea5e9" /> Data Pipeline & Processing (डेटा पाइपलाइन)</h2>
         <p className="thane-subtitle">Building robust data pipelines to collect, clean, version, and validate data for ML models.</p>

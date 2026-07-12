@@ -41,8 +41,7 @@ export default function DLiccDashboard({ onBack }) {
       <div className="thane-header" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
         <button 
           onClick={onBack} 
-          className="back-button"
-          style={{ marginBottom: '1rem' }}
+          className="thane-back-btn"
         >
           <ArrowLeft size={20} /> Back to Dashboard
         </button>
