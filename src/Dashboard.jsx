@@ -202,13 +202,13 @@ export default function Dashboard() {
           <Link to="/" style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
+            gap: '0.4rem',
             background: 'linear-gradient(135deg, #ef4444, #dc2626)',
             color: 'white',
             textDecoration: 'none',
-            padding: '0.5rem 1.25rem',
+            padding: '0.35rem 1rem',
             borderRadius: '2rem',
-            fontSize: '0.9rem',
+            fontSize: '0.75rem',
             fontWeight: '700',
             border: '1px solid #f87171',
             transition: 'all 0.2s',
@@ -217,7 +217,7 @@ export default function Dashboard() {
             onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 15px rgba(220, 38, 38, 0.4)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(220, 38, 38, 0.3)'; }}
           >
-            <LogOut size={16} />
+            <LogOut size={14} />
             Logout
           </Link>
 
@@ -239,9 +239,9 @@ export default function Dashboard() {
                 border: 'none',
                 background: currentLanguage === 'en' ? 'linear-gradient(135deg, #f59e0b, #d97706)' : 'transparent',
                 color: currentLanguage === 'en' ? '#fff' : '#cbd5e1',
-                padding: '0.4rem 1rem',
+                padding: '0.3rem 0.75rem',
                 borderRadius: '1.5rem',
-                fontSize: '0.9rem',
+                fontSize: '0.7rem',
                 fontWeight: '800',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
@@ -258,9 +258,9 @@ export default function Dashboard() {
                 border: 'none',
                 background: currentLanguage === 'hi' ? 'linear-gradient(135deg, #f59e0b, #d97706)' : 'transparent',
                 color: currentLanguage === 'hi' ? '#fff' : '#cbd5e1',
-                padding: '0.4rem 1rem',
+                padding: '0.3rem 0.75rem',
                 borderRadius: '1.5rem',
-                fontSize: '0.9rem',
+                fontSize: '0.7rem',
                 fontWeight: '800',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
@@ -293,17 +293,17 @@ export default function Dashboard() {
           {/* Fixed Top Controls Area - Tactical Blue Welcome Badge */}
           <div style={{
             padding: '1rem 0.75rem',
-            borderBottom: '1px solid #cbd5e1',
-            background: 'linear-gradient(135deg, #1e293b, #0f172a)',
-            color: 'white',
+            borderBottom: '1px solid #e2e8f0',
+            background: 'linear-gradient(135deg, #eef4ff, #dbeafe)',
+            color: '#0f172a',
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
             borderLeft: '4px solid #3b82f6',
-            boxShadow: 'inset 0 0 12px rgba(0,0,0,0.3)'
+            boxShadow: '0 2px 8px rgba(59, 130, 246, 0.08)'
           }}>
             <div style={{
-              background: 'rgba(59, 130, 246, 0.15)',
+              background: 'rgba(59, 130, 246, 0.12)',
               color: '#2563eb',
               padding: '0.5rem',
               borderRadius: '50%',
@@ -311,15 +311,15 @@ export default function Dashboard() {
               alignItems: 'center',
               justifyContent: 'center',
               flexShrink: 0,
-              boxShadow: '0 0 8px rgba(59, 130, 246, 0.3)'
+              boxShadow: '0 0 6px rgba(59, 130, 246, 0.15)'
             }}>
               <UserCheck size={18} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
-              <span className="notranslate" translate="no" style={{ fontSize: '0.7rem', fontWeight: '800', color: '#60a5fa', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              <span className="notranslate" translate="no" style={{ fontSize: '0.7rem', fontWeight: '800', color: '#d946ef', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 AI OPERATIVE COMMANDER
               </span>
-              <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#ffffff', letterSpacing: '0.02em' }}>
+              <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#1e3a8a', letterSpacing: '0.02em' }}>
                 K.A.V.A.C.H. HUB ONLINE
               </span>
             </div>
