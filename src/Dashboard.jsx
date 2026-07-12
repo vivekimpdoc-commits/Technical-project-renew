@@ -7,7 +7,7 @@ import {
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
   History, Command, BookOpen, Activity, Layout, GraduationCap, Presentation,
-  Code, Briefcase, GitBranch, Network
+  Code, Briefcase, GitBranch, Network, GlobeLock
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
@@ -35,6 +35,7 @@ import AICommandCenter from './pages/AICommandCenter';
 import ProjectPPTDashboard from './ProjectPPTDashboard';
 import SoftwareMasterclassDashboard from './SoftwareMasterclassDashboard';
 import MLOpsDashboard from './MLOpsDashboard';
+import AdvancedAICyberDashboard from './AdvancedAICyberDashboard';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('step-up');
@@ -61,7 +62,8 @@ export default function Dashboard() {
     { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 },
     { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation },
     { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code },
-    { id: 'mlops', label: 'AI Operations - MLOps (AI ऑपरेशन्स)', icon: Activity }
+    { id: 'mlops', label: 'AI Operations - MLOps (AI ऑपरेशन्स)', icon: Activity },
+    { id: 'advanced-ai', label: 'Advanced AI & Cyber Command (एडवांस्ड AI)', icon: GlobeLock }
   ];
 
   return (
@@ -146,6 +148,7 @@ export default function Dashboard() {
           {activeTab === 'project-ppt' && <ProjectPPTDashboard />}
           {activeTab === 'masterclass' && <SoftwareMasterclassDashboard />}
           {activeTab === 'mlops' && <MLOpsDashboard />}
+          {activeTab === 'advanced-ai' && <AdvancedAICyberDashboard />}
         </main>
       </div>
 
