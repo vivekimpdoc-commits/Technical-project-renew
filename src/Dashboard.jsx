@@ -40,6 +40,38 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const [stepUpSubTab, setStepUpSubTab] = useState('phases');
   const [members, setMembers] = useState([]);
+  
+  const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem('appLanguage') || 'en');
+
+  const changeLanguage = (lang) => {
+    setCurrentLanguage(lang);
+    localStorage.setItem('appLanguage', lang);
+    
+    // Trigger Google Translate hidden dropdown
+    const selectEl = document.querySelector('.goog-te-combo');
+    if (selectEl) {
+      selectEl.value = lang;
+      selectEl.dispatchEvent(new Event('change'));
+    } else {
+      // Fallback: Set cookie and reload if select is not loaded yet
+      document.cookie = `googtrans=/en/${lang}; path=/`;
+      window.location.reload();
+    }
+  };
+
+  React.useEffect(() => {
+    const savedLang = localStorage.getItem('appLanguage') || 'en';
+    // Wait for the google translate dropdown to load
+    const interval = setInterval(() => {
+      const selectEl = document.querySelector('.goog-te-combo');
+      if (selectEl) {
+        selectEl.value = savedLang;
+        selectEl.dispatchEvent(new Event('change'));
+        clearInterval(interval);
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
   const [resetTriggers, setResetTriggers] = useState({
     'step-up': 0,
     'thane-level': 0,
@@ -149,32 +181,87 @@ export default function Dashboard() {
           UP Police Advanced AI & Security Operations Command
         </p>
 
-        {/* Logout Button */}
-        <Link to="/" style={{
+        {/* Top Right Controls (Language Switcher & Logout) */}
+        <div style={{
           position: 'absolute',
           top: '2rem',
           right: '2.5rem',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.5rem',
-          background: 'rgba(255,255,255,0.1)',
-          color: 'white',
-          textDecoration: 'none',
-          padding: '0.6rem 1.25rem',
-          borderRadius: '2rem',
-          fontSize: '0.9rem',
-          fontWeight: '600',
-          backdropFilter: 'blur(4px)',
-          border: '1px solid rgba(255,255,255,0.2)',
-          transition: 'all 0.2s',
-          boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
-        }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
-        >
-          <LogOut size={16} />
-          Logout
-        </Link>
+          gap: '1rem',
+          zIndex: 20
+        }}>
+          {/* Language Selector */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: 'rgba(255,255,255,0.08)',
+            padding: '0.25rem',
+            borderRadius: '2rem',
+            border: '1px solid rgba(255,255,255,0.15)',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+            backdropFilter: 'blur(4px)'
+          }}>
+            <button
+              onClick={() => changeLanguage('en')}
+              style={{
+                border: 'none',
+                background: currentLanguage === 'en' ? '#3b82f6' : 'transparent',
+                color: 'white',
+                padding: '0.4rem 1rem',
+                borderRadius: '1.5rem',
+                fontSize: '0.8rem',
+                fontWeight: '700',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: currentLanguage === 'en' ? '0 2px 6px rgba(59, 130, 246, 0.4)' : 'none'
+              }}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => changeLanguage('hi')}
+              style={{
+                border: 'none',
+                background: currentLanguage === 'hi' ? '#3b82f6' : 'transparent',
+                color: 'white',
+                padding: '0.4rem 1rem',
+                borderRadius: '1.5rem',
+                fontSize: '0.8rem',
+                fontWeight: '700',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: currentLanguage === 'hi' ? '0 2px 6px rgba(59, 130, 246, 0.4)' : 'none'
+              }}
+            >
+              हिंदी
+            </button>
+          </div>
+
+          {/* Logout Button */}
+          <Link to="/" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            background: 'rgba(255,255,255,0.1)',
+            color: 'white',
+            textDecoration: 'none',
+            padding: '0.6rem 1.25rem',
+            borderRadius: '2rem',
+            fontSize: '0.9rem',
+            fontWeight: '600',
+            backdropFilter: 'blur(4px)',
+            border: '1px solid rgba(255,255,255,0.2)',
+            transition: 'all 0.2s',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+          }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
+          >
+            <LogOut size={16} />
+            Logout
+          </Link>
+        </div>
       </header>
 
       {/* Dashboard Layout with Sidebar */}
