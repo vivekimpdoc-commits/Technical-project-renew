@@ -6,7 +6,7 @@ import {
   UserCheck, LineChart, BrainCircuit, Clock4,
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
-  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home
+  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home, ShieldCheck
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
@@ -108,6 +108,14 @@ export default function Dashboard() {
       if (tab === 'step-up') {
         setStepUpSubTab(subTab);
       }
+      if (tab === 'overview') {
+        // Collapse all sections when going back to Home
+        setExpandedSections({
+          Education: false,
+          Operations: false,
+          Administrative: false
+        });
+      }
     }
     setIsMobileMenuOpen(false); // Close sidebar on mobile after select
   };
@@ -121,147 +129,147 @@ export default function Dashboard() {
   }, [activeTab]);
 
   const navItems = [
-    { id: 'overview', label: 'Home (मुख्य पृष्ठ)', icon: Home, color: '#3b82f6', category: 'General' },
-    { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen, color: '#64748b', category: 'Education' },
-    { id: 'ai-course', label: 'Artificial Intelligence (AI) Course (आर्टिफिशियल इंटेलिजेंस (AI) कोर्स)', icon: GraduationCap, color: '#3b82f6', category: 'Education' },
-    { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code, color: '#0ea5e9', category: 'Education' },
+    { id: 'overview', label: 'Home (मुख्य पृष्ठ)', icon: Home, color: '#2563eb', category: 'General' },
+    { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen, color: '#d946ef', category: 'Education' },
+    { id: 'ai-course', label: 'Artificial Intelligence (AI) Course (आर्टिफिशियल इंटेलिजेंस (AI) कोर्स)', icon: GraduationCap, color: '#2563eb', category: 'Education' },
+    { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code, color: '#06b6d4', category: 'Education' },
     { id: 'mlops', label: 'AI Operations - MLOps (AI ऑपरेशन्स)', icon: Activity, color: '#8b5cf6', category: 'Operations' },
-    { id: 'advanced-ai', label: 'Advanced AI & Cyber Command (एडवांस्ड AI)', icon: GlobeLock, color: '#10b981', category: 'Operations' },
+    { id: 'advanced-ai', label: 'Advanced AI & Cyber Command (एडवांस्ड AI)', icon: GlobeLock, color: '#06b6d4', category: 'Operations' },
     { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit, color: '#f59e0b', category: 'Operations' },
     { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield, color: '#ef4444', category: 'Administrative' },
-    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#b91c1c', category: 'Administrative' },
-    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: '#475569', category: 'Administrative' }
+    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#0ea5e9', category: 'Administrative' },
+    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: '#64748b', category: 'Administrative' }
   ];
 
   return (
     <div className="app-container">
-      <header className="app-header" style={{
-        position: 'relative',
-        background: 'linear-gradient(135deg, #0a1931, #15305b)',
-        borderBottom: '4px solid #b91c1c',
-        padding: '2rem 2.5rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.3)',
-        color: 'white',
-        minHeight: '180px'
-      }}>
-        <div className="header-title-container" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <header className="app-header">
+        {/* Left Section: Brand & Seal */}
+        <div className="header-brand" style={{ flexShrink: 0, minWidth: "280px" }}>
           <button
             className="mobile-menu-toggle"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            style={{ border: 'none', background: 'none', color: 'white', cursor: 'pointer' }}
+            style={{ border: 'none', background: 'none', color: 'white', cursor: 'pointer', padding: 0 }}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
+          
+          {/* Stylized UP Police Crest */}
+          <svg width="55" height="55" viewBox="0 0 100 100" style={{ filter: 'drop-shadow(0 0 6px rgba(245, 158, 11, 0.4))', marginRight: '0.75rem' }}>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#d97706" strokeWidth="2.5" />
+            <circle cx="50" cy="50" r="41" fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="3 2" />
+            <path d="M50 20 C65 20, 70 30, 70 45 C70 65, 50 80, 50 80 C50 80, 30 65, 30 45 C30 30, 35 20, 50 20 Z" fill="rgba(185, 28, 28, 0.2)" stroke="#d97706" strokeWidth="2" />
+            <path d="M38 45 C38 40, 48 35, 48 45 C48 50, 42 53, 38 45 Z" fill="none" stroke="#f59e0b" strokeWidth="2" />
+            <path d="M62 45 C62 40, 52 35, 52 45 C52 50, 58 53, 62 45 Z" fill="none" stroke="#f59e0b" strokeWidth="2" />
+            <path d="M35 32 Q50 40 65 32" fill="none" stroke="#f59e0b" strokeWidth="2" />
+            <line x1="50" y1="28" x2="50" y2="40" stroke="#f59e0b" strokeWidth="2.5" />
+            <polygon points="50,42 47,38 53,38" fill="#f59e0b" />
+            <polygon points="50,11 52,15 56,15 53,17 54,21 50,19 46,21 47,17 44,15 48,15" fill="#f59e0b" />
+          </svg>
 
-          {/* Emblem Badge for K.A.V.A.C.H. */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-            padding: '0.6rem 1.35rem',
-            borderRadius: '0.85rem',
-            boxShadow: '0 4px 12px rgba(245, 158, 11, 0.4)',
-            border: '1px solid rgba(255, 255, 255, 0.25)',
-            transform: 'scale(1.05)',
-            flexShrink: 0
-          }}>
-            <Shield size={24} fill="white" color="white" />
-            <span style={{ fontSize: '1.35rem', fontWeight: '900', color: 'white', letterSpacing: '0.05em' }}>K.A.V.A.C.H. AI</span>
+          {/* Title Text */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+            <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#f59e0b', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+              UP Police Academy & AI Command
+            </span>
+            <span style={{ 
+              fontSize: '1.45rem', 
+              fontWeight: '900', 
+              background: 'linear-gradient(to right, #00d2ff, #00d2ff, #ffffff)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              letterSpacing: '0.05em',
+              display: 'inline-block'
+            }}>
+              K.A.V.A.C.H. AI PORTAL
+            </span>
           </div>
-
-          <h1 className="header-title" style={{ fontSize: '1.85rem', fontWeight: '800', margin: 0, letterSpacing: '0.03em', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-            <span style={{ fontWeight: '800', fontSize: '1.85rem', opacity: 1 }}>Knowledge, Automation, Vision, & Analytics for Command Hub</span>
-          </h1>
         </div>
-        <p className="header-subtitle" style={{ margin: '1.25rem 0 0 0', color: '#94a3b8', fontSize: '1rem', fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
-          UP Police Advanced AI & Security Operations Command
-        </p>
 
-        {/* Top Right Controls (Language Switcher & Logout) */}
-        <div style={{
-          position: 'absolute',
-          top: '2rem',
-          right: '2.5rem',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '1rem',
-          zIndex: 20
-        }}>
-          {/* Language Selector */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            background: 'rgba(255,255,255,0.08)',
-            padding: '0.25rem',
-            borderRadius: '2rem',
-            border: '1px solid rgba(255,255,255,0.15)',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-            backdropFilter: 'blur(4px)'
-          }}>
-            <button
-              onClick={() => changeLanguage('en')}
-              style={{
-                border: 'none',
-                background: currentLanguage === 'en' ? '#3b82f6' : 'transparent',
-                color: 'white',
-                padding: '0.4rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.8rem',
-                fontWeight: '700',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                boxShadow: currentLanguage === 'en' ? '0 2px 6px rgba(59, 130, 246, 0.4)' : 'none'
-              }}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => changeLanguage('hi')}
-              style={{
-                border: 'none',
-                background: currentLanguage === 'hi' ? '#3b82f6' : 'transparent',
-                color: 'white',
-                padding: '0.4rem 1rem',
-                borderRadius: '1.5rem',
-                fontSize: '0.8rem',
-                fontWeight: '700',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                boxShadow: currentLanguage === 'hi' ? '0 2px 6px rgba(59, 130, 246, 0.4)' : 'none'
-              }}
-            >
-              हिंदी
-            </button>
-          </div>
+        {/* Center Section: Academic / Strategic Description */}
+        <div className="header-tagline-container" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+          <span style={{ fontSize: '0.95rem', fontWeight: '600', color: '#cbd5e1', textAlign: 'center', fontStyle: 'italic' }}>
+            "Knowledge, Automation, Vision, & Analytics for Command Hub"
+          </span>
+          <span style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            Investigation & Operational Training Platform
+          </span>
+        </div>
 
+        {/* Right Section: Controls */}
+        <div className="header-controls" style={{ flexShrink: 0, display: 'flex', justifyContent: 'flex-end', gap: '1.25rem' }}>
           {/* Logout Button */}
           <Link to="/" style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'rgba(255,255,255,0.08)',
+            background: 'linear-gradient(135deg, #ef4444, #dc2626)',
             color: 'white',
             textDecoration: 'none',
-            padding: '0.6rem 1.25rem',
+            padding: '0.5rem 1.25rem',
             borderRadius: '2rem',
             fontSize: '0.9rem',
             fontWeight: '700',
-            backdropFilter: 'blur(4px)',
-            border: '1px solid rgba(255,255,255,0.2)',
+            border: '1px solid #f87171',
             transition: 'all 0.2s',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+            boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)'
           }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 15px rgba(220, 38, 38, 0.4)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(220, 38, 38, 0.3)'; }}
           >
             <LogOut size={16} />
             Logout
           </Link>
+
+          {/* Language Selector */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: 'rgba(0,0,0,0.4)',
+            padding: '0.25rem',
+            borderRadius: '2rem',
+            border: '1px solid rgba(255,255,255,0.15)',
+            boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.3)',
+          }}>
+            <button
+              className="notranslate"
+              translate="no"
+              onClick={() => changeLanguage('en')}
+              style={{
+                border: 'none',
+                background: currentLanguage === 'en' ? 'linear-gradient(135deg, #f59e0b, #d97706)' : 'transparent',
+                color: currentLanguage === 'en' ? '#fff' : '#cbd5e1',
+                padding: '0.4rem 1rem',
+                borderRadius: '1.5rem',
+                fontSize: '0.9rem',
+                fontWeight: '800',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: currentLanguage === 'en' ? '0 2px 8px rgba(245, 158, 11, 0.5)' : 'none'
+              }}
+            >
+              EN
+            </button>
+            <button
+              className="notranslate"
+              translate="no"
+              onClick={() => changeLanguage('hi')}
+              style={{
+                border: 'none',
+                background: currentLanguage === 'hi' ? 'linear-gradient(135deg, #f59e0b, #d97706)' : 'transparent',
+                color: currentLanguage === 'hi' ? '#fff' : '#cbd5e1',
+                padding: '0.4rem 1rem',
+                borderRadius: '1.5rem',
+                fontSize: '0.9rem',
+                fontWeight: '800',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: currentLanguage === 'hi' ? '0 2px 8px rgba(245, 158, 11, 0.5)' : 'none'
+              }}
+            >
+              हिंदी
+            </button>
+          </div>
         </div>
       </header>
 
@@ -274,339 +282,411 @@ export default function Dashboard() {
         )}
 
         {/* Sidebar */}
-        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`} style={{ overflowY: 'auto', padding: '1.5rem 0.75rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-
-          {/* General Tab */}
-          {navItems.filter(i => i.category === 'General').map((item) => (
-            <div
-              key={item.id}
-              className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
-              onClick={() => handleTabChange(item.id)}
-              style={{
-                borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
-                background: activeTab === item.id ? `${item.color}15` : 'transparent',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                padding: '0.75rem 1rem',
-                gap: '0.75rem',
-                cursor: 'pointer',
-                borderRadius: '0.5rem'
-              }}
-              onMouseEnter={(e) => {
-                if (activeTab !== item.id) {
-                  e.currentTarget.style.background = '#f1f5f9';
-                  e.currentTarget.style.borderLeft = `4px solid #cbd5e1`;
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeTab !== item.id) {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.borderLeft = '4px solid transparent';
-                }
-              }}
-            >
-              <div style={{
-                background: activeTab === item.id ? `linear-gradient(135deg, ${item.color}, ${item.color}dd)` : `${item.color}15`,
-                padding: '0.6rem',
-                borderRadius: '0.6rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: activeTab === item.id ? 'white' : item.color,
-                boxShadow: activeTab === item.id ? `0 4px 12px ${item.color}66` : 'none',
-                transform: activeTab === item.id ? 'scale(1.05)' : 'scale(1)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}>
-                <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
-              </div>
-              <span style={{
-                fontWeight: activeTab === item.id ? '700' : '500',
-                color: activeTab === item.id ? item.color : '#475569',
-                fontSize: '0.95rem',
-                transition: 'color 0.3s ease'
-              }}>
-                {item.label}
+        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`} style={{ 
+          height: '100%',
+          display: 'flex', 
+          flexDirection: 'column', 
+          background: '#ffffff',
+          borderRight: '1px solid #e2e8f0',
+          padding: 0
+        }}>
+          {/* Fixed Top Controls Area - Tactical Blue Welcome Badge */}
+          <div style={{
+            padding: '1rem 0.75rem',
+            borderBottom: '1px solid #cbd5e1',
+            background: 'linear-gradient(135deg, #1e293b, #0f172a)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            borderLeft: '4px solid #3b82f6',
+            boxShadow: 'inset 0 0 12px rgba(0,0,0,0.3)'
+          }}>
+            <div style={{
+              background: 'rgba(59, 130, 246, 0.15)',
+              color: '#2563eb',
+              padding: '0.5rem',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+              boxShadow: '0 0 8px rgba(59, 130, 246, 0.3)'
+            }}>
+              <UserCheck size={18} />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
+              <span className="notranslate" translate="no" style={{ fontSize: '0.7rem', fontWeight: '800', color: '#60a5fa', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                AI OPERATIVE COMMANDER
+              </span>
+              <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#ffffff', letterSpacing: '0.02em' }}>
+                K.A.V.A.C.H. HUB ONLINE
               </span>
             </div>
-          ))}
-
-          {/* Group 1: Education */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <div 
-              onClick={() => toggleSection('Education')}
-              style={{ 
-                fontSize: '0.8rem', 
-                fontWeight: '800', 
-                color: '#2563eb', 
-                background: '#2563eb10', 
-                padding: '0.75rem 1rem', 
-                borderRadius: '0.5rem',
-                borderLeft: '4px solid #2563eb',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                cursor: 'pointer',
-                userSelect: 'none',
-                boxShadow: '0 2px 4px rgba(37, 99, 235, 0.05)',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#2563eb15';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#2563eb10';
-                e.currentTarget.style.transform = 'none';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <div style={{ background: '#2563eb20', padding: '0.4rem', borderRadius: '0.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2563eb' }}>
-                  <GraduationCap size={16} />
-                </div>
-                <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em' }}>Education & IT Capacity</span>
-              </div>
-              <ChevronDown size={14} style={{ transform: expandedSections.Education ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#2563eb' }} />
-            </div>
-            {expandedSections.Education && navItems.filter(i => i.category === 'Education').map((item) => (
-              <div
-                key={item.id}
-                className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => handleTabChange(item.id)}
-                style={{
-                  borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
-                  background: activeTab === item.id ? `${item.color}15` : 'transparent',
-                  transition: 'all 0.2s ease',
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '0.75rem 1rem',
-                  gap: '0.75rem',
-                  cursor: 'pointer',
-                  borderRadius: '0.5rem'
-                }}
-                onMouseEnter={(e) => {
-                  if (activeTab !== item.id) {
-                    e.currentTarget.style.background = '#f1f5f9';
-                    e.currentTarget.style.borderLeft = `4px solid #cbd5e1`;
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeTab !== item.id) {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.borderLeft = '4px solid transparent';
-                  }
-                }}
-              >
-                <div style={{
-                  background: activeTab === item.id ? `linear-gradient(135deg, ${item.color}, ${item.color}dd)` : `${item.color}15`,
-                  padding: '0.6rem',
-                  borderRadius: '0.6rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: activeTab === item.id ? 'white' : item.color,
-                  boxShadow: activeTab === item.id ? `0 4px 12px ${item.color}66` : 'none',
-                  transform: activeTab === item.id ? 'scale(1.05)' : 'scale(1)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}>
-                  <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
-                </div>
-                <span style={{
-                  fontWeight: activeTab === item.id ? '700' : '500',
-                  color: activeTab === item.id ? item.color : '#475569',
-                  fontSize: '0.95rem',
-                  transition: 'color 0.3s ease'
-                }}>
-                  {item.label}
-                </span>
-              </div>
-            ))}
           </div>
 
-          {/* Group 2: Operations */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <div 
-              onClick={() => toggleSection('Operations')}
-              style={{ 
-                fontSize: '0.8rem', 
-                fontWeight: '800', 
-                color: '#0d9488', 
-                background: '#0d948810', 
-                padding: '0.75rem 1rem', 
-                borderRadius: '0.5rem',
-                borderLeft: '4px solid #0d9488',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                cursor: 'pointer',
-                userSelect: 'none',
-                boxShadow: '0 2px 4px rgba(13, 148, 136, 0.05)',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#0d948815';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#0d948810';
-                e.currentTarget.style.transform = 'none';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <div style={{ background: '#0d948820', padding: '0.4rem', borderRadius: '0.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0d9488' }}>
-                  <BrainCircuit size={16} />
-                </div>
-                <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em' }}>AI & Operations Command</span>
-              </div>
-              <ChevronDown size={14} style={{ transform: expandedSections.Operations ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#0d9488' }} />
-            </div>
-            {expandedSections.Operations && navItems.filter(i => i.category === 'Operations').map((item) => (
-              <div
-                key={item.id}
-                className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => handleTabChange(item.id)}
-                style={{
-                  borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
-                  background: activeTab === item.id ? `${item.color}15` : 'transparent',
-                  transition: 'all 0.2s ease',
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '0.75rem 1rem',
-                  gap: '0.75rem',
-                  cursor: 'pointer',
-                  borderRadius: '0.5rem'
-                }}
-                onMouseEnter={(e) => {
-                  if (activeTab !== item.id) {
-                    e.currentTarget.style.background = '#f1f5f9';
-                    e.currentTarget.style.borderLeft = `4px solid #cbd5e1`;
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeTab !== item.id) {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.borderLeft = '4px solid transparent';
-                  }
-                }}
-              >
-                <div style={{
-                  background: activeTab === item.id ? `linear-gradient(135deg, ${item.color}, ${item.color}dd)` : `${item.color}15`,
-                  padding: '0.6rem',
-                  borderRadius: '0.6rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: activeTab === item.id ? 'white' : item.color,
-                  boxShadow: activeTab === item.id ? `0 4px 12px ${item.color}66` : 'none',
-                  transform: activeTab === item.id ? 'scale(1.05)' : 'scale(1)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}>
-                  <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
-                </div>
-                <span style={{
-                  fontWeight: activeTab === item.id ? '700' : '500',
-                  color: activeTab === item.id ? item.color : '#475569',
-                  fontSize: '0.95rem',
-                  transition: 'color 0.3s ease'
-                }}>
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
+          {/* Scrollable Nav Area */}
+          <div style={{ flex: 1, overflowY: 'auto', padding: '1.5rem 0.75rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {(() => {
+              const isEducationActive = expandedSections.Education || navItems.filter(i => i.category === 'Education').some(i => i.id === activeTab);
+              const isOperationsActive = expandedSections.Operations || navItems.filter(i => i.category === 'Operations').some(i => i.id === activeTab);
+              const isAdministrativeActive = expandedSections.Administrative || navItems.filter(i => i.category === 'Administrative').some(i => i.id === activeTab);
 
-          {/* Group 3: Administrative */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <div 
-              onClick={() => toggleSection('Administrative')}
-              style={{ 
-                fontSize: '0.8rem', 
-                fontWeight: '800', 
-                color: '#dc2626', 
-                background: '#dc262610', 
-                padding: '0.75rem 1rem', 
-                borderRadius: '0.5rem',
-                borderLeft: '4px solid #dc2626',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                cursor: 'pointer',
-                userSelect: 'none',
-                boxShadow: '0 2px 4px rgba(220, 38, 38, 0.05)',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#dc262615';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#dc262610';
-                e.currentTarget.style.transform = 'none';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <div style={{ background: '#dc262620', padding: '0.4rem', borderRadius: '0.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#dc2626' }}>
-                  <Building2 size={16} />
-                </div>
-                <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em' }}>Administrative & Field Levels</span>
-              </div>
-              <ChevronDown size={14} style={{ transform: expandedSections.Administrative ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#dc2626' }} />
-            </div>
-            {expandedSections.Administrative && navItems.filter(i => i.category === 'Administrative').map((item) => (
-              <div
-                key={item.id}
-                className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => handleTabChange(item.id)}
-                style={{
-                  borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
-                  background: activeTab === item.id ? `${item.color}15` : 'transparent',
-                  transition: 'all 0.2s ease',
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '0.75rem 1rem',
-                  gap: '0.75rem',
-                  cursor: 'pointer',
-                  borderRadius: '0.5rem'
-                }}
-                onMouseEnter={(e) => {
-                  if (activeTab !== item.id) {
-                    e.currentTarget.style.background = '#f1f5f9';
-                    e.currentTarget.style.borderLeft = `4px solid #cbd5e1`;
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeTab !== item.id) {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.borderLeft = '4px solid transparent';
-                  }
-                }}
-              >
-                <div style={{
-                  background: activeTab === item.id ? `linear-gradient(135deg, ${item.color}, ${item.color}dd)` : `${item.color}15`,
-                  padding: '0.6rem',
-                  borderRadius: '0.6rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: activeTab === item.id ? 'white' : item.color,
-                  boxShadow: activeTab === item.id ? `0 4px 12px ${item.color}66` : 'none',
-                  transform: activeTab === item.id ? 'scale(1.05)' : 'scale(1)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}>
-                  <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
-                </div>
-                <span style={{
-                  fontWeight: activeTab === item.id ? '700' : '500',
-                  color: activeTab === item.id ? item.color : '#475569',
-                  fontSize: '0.95rem',
-                  transition: 'color 0.3s ease'
-                }}>
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
+              return (
+                <>
+                  {/* General Tab (Home) */}
+                  {navItems.filter(i => i.category === 'General').map((item) => (
+                    <div
+                      key={item.id}
+                      className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+                      onClick={() => handleTabChange(item.id)}
+                      style={{
+                          background: activeTab === item.id ? 'rgba(37, 99, 235, 0.06)' : 'transparent',
+                          color: activeTab === item.id ? '#1e40af' : '#475569',
+                          transition: 'all 0.2s ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                          padding: '0.7rem 1rem',
+                          gap: '0.75rem',
+                          cursor: 'pointer',
+                          borderRadius: '0.5rem',
+                          borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
+                          boxShadow: activeTab === item.id ? '0 2px 8px rgba(0,0,0,0.04)' : 'none'
+                        }}
+                      onMouseEnter={(e) => {
+                        if (activeTab !== item.id) {
+                          e.currentTarget.style.background = '#f1f5f9';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (activeTab !== item.id) {
+                          e.currentTarget.style.background = 'transparent';
+                        }
+                      }}
+                    >
+                      <div style={{
+                          background: activeTab === item.id ? item.color : '#f1f5f9',
+                          padding: '0.5rem',
+                          borderRadius: '0.5rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: activeTab === item.id ? 'white' : item.color,
+                          transition: 'all 0.2s',
+                          boxShadow: activeTab === item.id ? `0 2px 6px ${item.color}60` : 'none'
+                        }}>
+                        <item.icon size={16} strokeWidth={2} />
+                      </div>
+                      <span style={{
+                        fontWeight: activeTab === item.id ? '700' : '600',
+                        fontSize: '0.9rem',
+                        transition: 'color 0.3s ease'
+                      }}>
+                        {item.label}
+                      </span>
+                    </div>
+                  ))}
 
+                  {/* Group 1: Education */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                    <div 
+                      onClick={() => toggleSection('Education')}
+                      style={{ 
+                        fontSize: '0.9rem', 
+                        fontWeight: '800', 
+                        color: '#2563eb', 
+                        background: isEducationActive ? '#2563eb05' : '#f8fafc', 
+                        padding: '1.05rem 1.25rem', 
+                        borderRadius: '0.5rem',
+                        border: '1px solid #cbd5e1',
+                        borderLeft: isEducationActive ? '4px solid #2563eb' : '4px solid transparent',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        cursor: 'pointer',
+                        userSelect: 'none',
+                        boxShadow: '0 1px 3px rgba(37, 99, 235, 0.05)',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#f1f5f9';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = isEducationActive ? '#2563eb05' : '#f8fafc';
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <div style={{ 
+                          background: '#2563eb15', 
+                          padding: '0.6rem', 
+                          borderRadius: '0.5rem', 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          justifyContent: 'center', 
+                          color: '#2563eb',
+                          transition: 'all 0.2s'
+                        }}>
+                          <GraduationCap size={18} />
+                        </div>
+                        <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>Education & IT Capacity</span>
+                      </div>
+                      <ChevronDown size={18} style={{ transform: expandedSections.Education ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#2563eb' }} />
+                    </div>
+                    {expandedSections.Education && navItems.filter(i => i.category === 'Education').map((item) => (
+                      <div
+                        key={item.id}
+                        className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+                        onClick={() => handleTabChange(item.id)}
+                        style={{
+                          marginLeft: '0.75rem',
+                          background: activeTab === item.id ? 'rgba(37, 99, 235, 0.06)' : 'transparent',
+                          color: activeTab === item.id ? '#1e40af' : '#475569',
+                          transition: 'all 0.2s ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                          padding: '0.7rem 1rem',
+                          gap: '0.75rem',
+                          cursor: 'pointer',
+                          borderRadius: '0.5rem',
+                          borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
+                          boxShadow: activeTab === item.id ? '0 2px 8px rgba(0,0,0,0.04)' : 'none'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (activeTab !== item.id) {
+                            e.currentTarget.style.background = '#f1f5f9';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (activeTab !== item.id) {
+                            e.currentTarget.style.background = 'transparent';
+                          }
+                        }}
+                      >
+                        <div style={{
+                          background: activeTab === item.id ? item.color : '#f1f5f9',
+                          padding: '0.5rem',
+                          borderRadius: '0.5rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: activeTab === item.id ? 'white' : item.color,
+                          transition: 'all 0.2s',
+                          boxShadow: activeTab === item.id ? `0 2px 6px ${item.color}60` : 'none'
+                        }}>
+                          <item.icon size={16} strokeWidth={2} />
+                        </div>
+                        <span style={{
+                          fontWeight: activeTab === item.id ? '700' : '600',
+                          fontSize: '0.9rem',
+                          transition: 'color 0.3s ease'
+                        }}>
+                          {item.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Group 2: Operations */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                    <div 
+                      onClick={() => toggleSection('Operations')}
+                      style={{ 
+                        fontSize: '0.9rem', 
+                        fontWeight: '800', 
+                        color: '#0d9488', 
+                        background: isOperationsActive ? '#0d948805' : '#f8fafc', 
+                        padding: '1.05rem 1.25rem', 
+                        borderRadius: '0.5rem',
+                        border: '1px solid #cbd5e1',
+                        borderLeft: isOperationsActive ? '4px solid #0d9488' : '4px solid transparent',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        cursor: 'pointer',
+                        userSelect: 'none',
+                        boxShadow: '0 1px 3px rgba(13, 148, 136, 0.05)',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#f1f5f9';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = isOperationsActive ? '#0d948805' : '#f8fafc';
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <div style={{ 
+                          background: '#0d948815', 
+                          padding: '0.6rem', 
+                          borderRadius: '0.5rem', 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          justifyContent: 'center', 
+                          color: '#0d9488',
+                          transition: 'all 0.2s'
+                        }}>
+                          <BrainCircuit size={18} />
+                        </div>
+                        <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>AI & Operations Command</span>
+                      </div>
+                      <ChevronDown size={18} style={{ transform: expandedSections.Operations ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#0d9488' }} />
+                    </div>
+                    {expandedSections.Operations && navItems.filter(i => i.category === 'Operations').map((item) => (
+                      <div
+                        key={item.id}
+                        className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+                        onClick={() => handleTabChange(item.id)}
+                        style={{
+                          marginLeft: '0.75rem',
+                          background: activeTab === item.id ? 'rgba(37, 99, 235, 0.06)' : 'transparent',
+                          color: activeTab === item.id ? '#1e40af' : '#475569',
+                          transition: 'all 0.2s ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                          padding: '0.7rem 1rem',
+                          gap: '0.75rem',
+                          cursor: 'pointer',
+                          borderRadius: '0.5rem',
+                          borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
+                          boxShadow: activeTab === item.id ? '0 2px 8px rgba(0,0,0,0.04)' : 'none'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (activeTab !== item.id) {
+                            e.currentTarget.style.background = '#f1f5f9';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (activeTab !== item.id) {
+                            e.currentTarget.style.background = 'transparent';
+                          }
+                        }}
+                      >
+                        <div style={{
+                          background: activeTab === item.id ? item.color : '#f1f5f9',
+                          padding: '0.5rem',
+                          borderRadius: '0.5rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: activeTab === item.id ? 'white' : item.color,
+                          transition: 'all 0.2s',
+                          boxShadow: activeTab === item.id ? `0 2px 6px ${item.color}60` : 'none'
+                        }}>
+                          <item.icon size={16} strokeWidth={2} />
+                        </div>
+                        <span style={{
+                          fontWeight: activeTab === item.id ? '700' : '600',
+                          fontSize: '0.9rem',
+                          transition: 'color 0.3s ease'
+                        }}>
+                          {item.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Group 3: Administrative */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                    <div 
+                      onClick={() => toggleSection('Administrative')}
+                      style={{ 
+                        fontSize: '0.9rem', 
+                        fontWeight: '800', 
+                        color: '#dc2626', 
+                        background: isAdministrativeActive ? '#dc262605' : '#f8fafc', 
+                        padding: '1.05rem 1.25rem', 
+                        borderRadius: '0.5rem',
+                        border: '1px solid #cbd5e1',
+                        borderLeft: isAdministrativeActive ? '4px solid #dc2626' : '4px solid transparent',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        cursor: 'pointer',
+                        userSelect: 'none',
+                        boxShadow: '0 1px 3px rgba(220, 38, 38, 0.05)',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#f1f5f9';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = isAdministrativeActive ? '#dc262605' : '#f8fafc';
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <div style={{ 
+                          background: '#dc262615', 
+                          padding: '0.6rem', 
+                          borderRadius: '0.5rem', 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          justifyContent: 'center', 
+                          color: '#dc2626',
+                          transition: 'all 0.2s'
+                        }}>
+                          <Building2 size={18} />
+                        </div>
+                        <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>Administrative & Field Levels</span>
+                      </div>
+                      <ChevronDown size={18} style={{ transform: expandedSections.Administrative ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#dc2626' }} />
+                    </div>
+                    {expandedSections.Administrative && navItems.filter(i => i.category === 'Administrative').map((item) => (
+                      <div
+                        key={item.id}
+                        className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+                        onClick={() => handleTabChange(item.id)}
+                        style={{
+                          marginLeft: '0.75rem',
+                          background: activeTab === item.id ? 'rgba(37, 99, 235, 0.06)' : 'transparent',
+                          color: activeTab === item.id ? '#1e40af' : '#475569',
+                          transition: 'all 0.2s ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                          padding: '0.7rem 1rem',
+                          gap: '0.75rem',
+                          cursor: 'pointer',
+                          borderRadius: '0.5rem',
+                          borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
+                          boxShadow: activeTab === item.id ? '0 2px 8px rgba(0,0,0,0.04)' : 'none'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (activeTab !== item.id) {
+                            e.currentTarget.style.background = '#f1f5f9';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (activeTab !== item.id) {
+                            e.currentTarget.style.background = 'transparent';
+                          }
+                        }}
+                      >
+                        <div style={{
+                          background: activeTab === item.id ? item.color : '#f1f5f9',
+                          padding: '0.5rem',
+                          borderRadius: '0.5rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: activeTab === item.id ? 'white' : item.color,
+                          transition: 'all 0.2s',
+                          boxShadow: activeTab === item.id ? `0 2px 6px ${item.color}60` : 'none'
+                        }}>
+                          <item.icon size={16} strokeWidth={2} />
+                        </div>
+                        <span style={{
+                          fontWeight: activeTab === item.id ? '700' : '600',
+                          fontSize: '0.9rem',
+                          transition: 'color 0.3s ease'
+                        }}>
+                          {item.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              );
+            })()}
+          </div>
         </aside>
 
         {/* Main Content Area */}
