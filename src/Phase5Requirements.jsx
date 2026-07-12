@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  ArrowLeft, CheckSquare, ShieldCheck, Activity, Target, Database, Layout, SearchCode, MonitorSmartphone, BrainCircuit, RefreshCw, FileText, PenTool, CheckCircle, Bug, ListOrdered
+  ArrowLeft, Search, TestTube, CheckSquare, ShieldAlert, Cpu, Activity, Database, Target, Smartphone, Bug, Shield, CheckCircle, Network, Users, Code, Server, Zap, HardDrive, Filter, Info
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
@@ -11,142 +11,150 @@ export default function Phase5Requirements({ onBack }) {
   const reqData = [
     {
       id: 1,
-      title: 'QA Planning & Requirement Testing',
-      subtitle: 'योजना और आवश्यकता परीक्षण',
-      icon: Target,
+      title: 'Functional Testing (कार्यात्मक परीक्षण)',
+      subtitle: 'सिस्टम के हर फीचर की जांच',
+      icon: CheckSquare,
       color: '#3b82f6',
       items: [
-        'टेस्ट प्लानिंग (QA Planning): सॉफ्टवेयर को कैसे, कब और कहाँ टेस्ट करना है, इसकी पूरी स्ट्रेटेजी (Strategy) बनाना।',
-        'रिक्वायरमेंट टेस्टिंग (Requirement Testing): यह जाँचना कि क्या सॉफ्टवेयर ने पुलिस विभाग की हर एक ज़रूरत (जैसे FIR दर्ज करना) को पूरा किया है या नहीं।'
+        'मॉड्यूल टेस्टिंग (Unit Testing): क्या लॉगिन, FIR सर्च और रिपोर्ट बनाने वाले अलग-अलग बटन सही काम कर रहे हैं?',
+        'इंटीग्रेशन टेस्टिंग (Integration): क्या फ्रंटएंड (UI) से डाला गया डेटा बैकएंड (Database) में सही तरीके से सेव हो रहा है?',
+        'एंड-टू-एंड (E2E Testing): पुलिसकर्मी के लॉगिन करने से लेकर केस रिपोर्ट डाउनलोड करने तक की पूरी प्रक्रिया की जांच।'
       ],
-      example: 'लक्ष्य: टेस्टिंग शुरू करने से पहले एक पक्की रूपरेखा तैयार करना ताकि कोई भी बग (Bug) छूटे नहीं।'
+      example: 'लक्ष्य: यह पक्का करना कि सॉफ्टवेयर में मौजूद हर एक बटन और फीचर अपनी तय जिम्मेदारी सही से निभा रहा है।',
+      deepDive: [
+        {
+          heading: 'ऑटोमेटेड टेस्टिंग (Automated Testing)',
+          content: 'Selenium या Cypress जैसे टूल्स से ऑटोमैटिक टेस्ट लिखे जाएंगे जो हर बार नया कोड आने पर खुद चेक करेंगे कि कोई पुराना फीचर तो नहीं टूट गया।'
+        },
+        {
+          heading: 'रिग्रेशन टेस्टिंग (Regression)',
+          content: 'अगर हम सिस्टम में AI चैट फीचर जोड़ते हैं, तो यह चेक किया जाएगा कि कहीं उसके कारण सर्च फीचर ने काम करना तो बंद नहीं कर दिया।'
+        }
+      ]
     },
     {
       id: 2,
-      title: 'Functional & Unit Testing',
-      subtitle: 'फंक्शन और कोड टेस्टिंग',
-      icon: SearchCode,
-      color: '#10b981',
+      title: 'Security & Penetration Testing',
+      subtitle: 'हैकिंग से बचाव की जांच',
+      icon: ShieldAlert,
+      color: '#ef4444',
       items: [
-        'फंक्शनल टेस्टिंग (Functional): सॉफ्टवेयर का हर एक बटन, फॉर्म और लिंक (जैसे- लॉगिन, रिपोर्ट डाउनलोड) सही से काम कर रहा है या नहीं, यह चेक करना।',
-        'यूनिट टेस्टिंग (Unit Testing): कोड के हर छोटे से छोटे हिस्से (Unit) को अलग-अलग चेक करना कि उसमें कोई तकनीकी गलती तो नहीं है।'
+        'पेनिट्रेशन टेस्टिंग (Pen-testing): एथिकल हैकर्स द्वारा सिस्टम को हैक करने की कोशिश करना ताकि कमज़ोरियां (Vulnerabilities) पकड़ी जा सकें।',
+        'डेटा एन्क्रिप्शन जांच (Data Security): यह देखना कि क्या हैकर पुलिस डेटाबेस से FIR या सबूत चुरा सकता है?',
+        'एक्सेस कंट्रोल जांच (RBAC Test): क्या एक कांस्टेबल चालाकी से SP के लेवल की रिपोर्ट देख सकता है?'
       ],
-      example: 'लक्ष्य: यह सुनिश्चित करना कि सिस्टम का हर एक फीचर ठीक उसी तरह काम करे जैसा तय किया गया था।'
+      example: 'लक्ष्य: लाइव होने से पहले सिस्टम को 100% हैक-प्रूफ (Hack-proof) बनाना।',
+      deepDive: [
+        {
+          heading: 'VAPT (Vulnerability Assessment)',
+          content: 'सरकारी नियमों (CERT-In) के अनुसार सर्वर, नेटवर्क और एप्लीकेशन तीनों स्तरों पर सुरक्षा की गहन जाँच की जाएगी।'
+        },
+        {
+          heading: 'DDoS सिमुलेशन (DDoS)',
+          content: 'सिस्टम पर जानबूझकर लाखों फर्जी रिक्वेस्ट भेजी जाएंगी यह देखने के लिए कि क्या सिस्टम ऐसी स्थिति में क्रैश होता है या हमलावरों को ब्लॉक करता है।'
+        }
+      ]
     },
     {
       id: 3,
-      title: 'System & UAT Testing',
-      subtitle: 'सिस्टम और यूजर टेस्टिंग',
-      icon: CheckSquare,
+      title: 'Performance & Load Testing',
+      subtitle: 'सिस्टम की रफ़्तार और ताकत',
+      icon: Activity,
       color: '#f59e0b',
       items: [
-        'सिस्टम टेस्टिंग (System Testing): पूरा सॉफ्टवेयर (फ्रंटएंड + बैकएंड + डेटाबेस) एक साथ जुड़कर सही आउटपुट दे रहा है या नहीं।',
-        'यूज़र टेस्टिंग (UAT): असली पुलिस अधिकारियों (Users) द्वारा सॉफ्टवेयर का इस्तेमाल करवा कर उनका फीडबैक (Feedback) लेना।'
+        'लोड टेस्टिंग (Load Testing): अगर 50,000 पुलिसकर्मी एक साथ लॉगिन करें, तो क्या सिस्टम की रफ़्तार (Speed) धीमी होगी?',
+        'स्ट्रेस टेस्टिंग (Stress Testing): सर्वर पर इतना लोड डालना कि वह क्रैश हो जाए, ताकि उसकी अधिकतम क्षमता (Maximum limit) पता चल सके।',
+        'रिस्पॉन्स टाइम (Response Time): 2G या 3G नेटवर्क पर डैशबोर्ड कितनी जल्दी खुलता है?'
       ],
-      example: 'लक्ष्य: लाइव (Live) करने से पहले खुद क्लाइंट (UP Police) से हरी झंडी (Sign-off) लेना।'
+      example: 'लक्ष्य: सॉफ्टवेयर को इतना मज़बूत बनाना कि इमरजेंसी या हाई-ट्रैफिक में वह कभी क्रैश न हो।',
+      deepDive: [
+        {
+          heading: 'JMeter लोड टेस्ट (JMeter)',
+          content: 'Apache JMeter टूल का उपयोग करके 1 लाख वर्चुअल यूजर्स बनाए जाएंगे जो एक साथ केस सर्च करेंगे, ताकि असली ट्रैफिक का अनुमान लग सके।'
+        },
+        {
+          heading: 'पीक-ऑवर परफॉरमेंस (Peak-hour)',
+          content: 'अक्सर सुबह के समय जब सारे पुलिसकर्मी अपनी रिपोर्ट डालते हैं, तब सर्वर पर सबसे ज्यादा लोड होता है। यह टेस्ट उस स्थिति की नक़ल करेगा।'
+        }
+      ]
     },
     {
       id: 4,
-      title: 'Regression & Compatibility',
-      subtitle: 'पुराने फीचर्स और डिवाइस सपोर्ट',
-      icon: RefreshCw,
-      color: '#ec4899',
+      title: 'AI Model Testing',
+      subtitle: 'आर्टिफिशियल इंटेलिजेंस की जांच',
+      icon: BrainCircuit,
+      color: '#8b5cf6',
       items: [
-        'रिग्रेशन (Regression): यह जाँचना कि किसी नए अपडेट के आने से पुराने काम कर रहे फीचर्स खराब तो नहीं हो गए।',
-        'कम्पैटिबिलिटी (Compatibility): सॉफ्टवेयर क्या मोबाइल, टैबलेट, कंप्यूटर और अलग-अलग ब्राउज़र्स (Chrome, Edge) पर सही से खुल रहा है?'
+        'एक्यूरेसी टेस्टिंग (Accuracy): क्या फेशियल रिकग्निशन (चेहरा पहचानने वाला AI) 95% से ज्यादा सटीक है?',
+        'पूर्वाग्रह की जांच (Bias Testing): क्या AI किसी विशेष धर्म, जाति या इलाके के लोगों को गलत तरीके से अपराधी बता रहा है?',
+        'प्रेडिक्शन टेस्टिंग (Prediction): क्या AI द्वारा बताए गए हॉटस्पॉट्स (जहां अपराध होने वाला है) असल में सही साबित हो रहे हैं?'
       ],
-      example: 'लक्ष्य: सॉफ्टवेयर हर डिवाइस और हर अपडेट के बाद बिना रुके सुचारू रूप से चले।'
+      example: 'लक्ष्य: AI को इतना समझदार और निष्पक्ष (Unbiased) बनाना कि वह पुलिस को सही सलाह दे सके।',
+      deepDive: [
+        {
+          heading: 'फॉल्स पॉजिटिव टेस्ट (False Positives)',
+          content: 'सिस्टम कितनी बार किसी निर्दोष नागरिक के चेहरे को अपराधी से मैच कर देता है, इसकी सख़्त जाँच होगी। यह 1% से भी कम होना चाहिए।'
+        },
+        {
+          heading: 'रियल-वर्ल्ड डेटा टेस्टिंग (Real Data)',
+          content: 'AI मॉडल को लेबोरेटरी के डेटा पर नहीं, बल्कि यूपी के असली (Masked) पुराने केसों के डेटा पर टेस्ट किया जाएगा।'
+        }
+      ]
     },
     {
       id: 5,
-      title: 'Performance Testing',
-      subtitle: 'रफ़्तार और लोड क्षमता',
-      icon: Activity,
-      color: '#8b5cf6',
+      title: 'User Acceptance Testing (UAT)',
+      subtitle: 'असली पुलिसकर्मियों द्वारा जांच',
+      icon: Users,
+      color: '#10b981',
       items: [
-        'लोड टेस्टिंग (Load Testing): अगर 10,000 पुलिसकर्मी एक साथ लॉगिन करें, तो क्या सिस्टम स्लो (Slow) होगा?',
-        'स्ट्रेस टेस्टिंग (Stress Testing): सर्वर की वह सीमा (Limit) जाँचना जिस पर पहुँच कर वह क्रैश हो जाता है, ताकि उसे और मज़बूत बनाया जा सके।'
+        'बीटा टेस्टिंग (Beta Testing): सॉफ्टवेयर को कुछ चुनिंदा थानों (जैसे- 5 थाने) में असली केस दर्ज करने के लिए दिया जाएगा।',
+        'फीडबैक (Feedback Loop): असली पुलिसकर्मी बताएंगे कि सॉफ्टवेयर चलाने में आसान है या नहीं, और क्या बदलाव चाहिए।',
+        'UI/UX जांच: क्या रात के समय मोबाइल पर काम करते हुए सिपाही की आँखों पर ज़ोर पड़ रहा है?'
       ],
-      example: 'लक्ष्य: किसी बड़ी घटना के समय, जब बहुत ज़्यादा लोग सिस्टम यूज़ करें, तब भी यह क्रैश न हो।'
+      example: 'लक्ष्य: जो सॉफ्टवेयर इस्तेमाल करेगा, उसी से चेक करवाना कि क्या यह उनके काम का है।',
+      deepDive: [
+        {
+          heading: 'पायलट रन (Pilot Run)',
+          content: 'कम से कम 100 पुलिसकर्मियों को 2 हफ्ते तक सॉफ्टवेयर इस्तेमाल करने दिया जाएगा और उनका अनुभव रिकॉर्ड किया जाएगा।'
+        },
+        {
+          heading: 'UAT साइन-ऑफ़ (Sign-off)',
+          content: 'जब पुलिस के आला अधिकारी और फील्ड ऑफिसर लिखित में देंगे कि सॉफ्टवेयर सही काम कर रहा है, तभी इसे पूरे राज्य में लॉन्च किया जाएगा।'
+        }
+      ]
     },
     {
       id: 6,
-      title: 'Security Testing',
-      subtitle: 'सुरक्षा परीक्षण',
-      icon: ShieldCheck,
-      color: '#ef4444',
+      title: 'Compatibility Testing',
+      subtitle: 'हर डिवाइस और नेटवर्क पर जांच',
+      icon: Smartphone,
+      color: '#ec4899',
       items: [
-        'वल्नेरेबिलिटी स्कैन (Vulnerability): सिस्टम में मौजूद उन कमज़ोरियों को खोजना जिनका फायदा हैकर्स उठा सकते हैं।',
-        'पेनेट्रेशन टेस्टिंग (Pen-Testing): एथिकल हैकर्स द्वारा जानबूझकर सिस्टम को हैक करने की कोशिश करना (सुरक्षा जाँचने के लिए)।'
+        'क्रॉस-ब्राउज़र (Browsers): क्या सॉफ्टवेयर Chrome, Firefox और Safari पर एक जैसा दिखता है?',
+        'क्रॉस-डिवाइस (Devices): क्या यह 5 साल पुराने एंड्रॉयड फोन और नए आईफोन (iPhone) पर सही से चलता है?',
+        'नेटवर्क (Network): क्या यह गाँव के कमजोर इंटरनेट (Slow network) में भी बिना अटके काम करता है?'
       ],
-      example: 'लक्ष्य: पुलिस के संवेदनशील डेटाबेस को साइबर हमलों (Cyber Attacks) से अभेद्य बनाना।'
-    },
-    {
-      id: 7,
-      title: 'Database & API Testing',
-      subtitle: 'डेटाबेस और API जांच',
-      icon: Database,
-      color: '#14b8a6',
-      items: [
-        'डेटाबेस टेस्टिंग (DB Test): दर्ज की गई FIR क्या सही टेबल में, बिना डेटा लॉस के सेव हो रही है?',
-        'API टेस्टिंग (API Test): फ्रंटएंड और बैकएंड के बीच जो डेटा भेजा जा रहा है, क्या वह सही फॉर्मेट में और सुरक्षित है?'
-      ],
-      example: 'लक्ष्य: अंदरूनी डेटा स्ट्रक्चर (Data Structure) में कोई गड़बड़ी या लीकेज न हो।'
-    },
-    {
-      id: 8,
-      title: 'UI/UX & Data Quality Testing',
-      subtitle: 'डिज़ाइन और डेटा शुद्धता',
-      icon: Layout,
-      color: '#f97316',
-      items: [
-        'UI/UX टेस्टिंग (Design): क्या सॉफ्टवेयर देखने में अच्छा है? क्या बटन्स सही जगह पर हैं और यूज़र्स के लिए आसान हैं?',
-        'डेटा क्वालिटी (Data Quality): क्या सर्च करने पर गलत, डुप्लीकेट या आधा-अधूरा रिकॉर्ड तो नहीं आ रहा?'
-      ],
-      example: 'लक्ष्य: सॉफ्टवेयर इतना आसान हो कि एक नया पुलिसकर्मी भी उसे बिना ट्रेनिंग के समझ सके।'
-    },
-    {
-      id: 9,
-      title: 'AI System Testing',
-      subtitle: 'आर्टिफिशियल इंटेलिजेंस टेस्टिंग',
-      icon: BrainCircuit,
-      color: '#6366f1',
-      items: [
-        'मॉडल एक्यूरेसी (Model Accuracy): AI जो अपराधियों की भविष्यवाणी कर रहा है, वह कितनी सटीक (Accurate) है?',
-        'बायस टेस्टिंग (Bias Testing): क्या AI किसी खास इलाके या समुदाय के खिलाफ गलत परिणाम (False Positives) तो नहीं दे रहा?'
-      ],
-      example: 'लक्ष्य: AI के नतीजों को 100% निष्पक्ष (Unbiased) और भरोसेमंद बनाना।'
-    },
-    {
-      id: 10,
-      title: 'Automation & Metrics',
-      subtitle: 'ऑटोमेशन और रिपोर्ट्स',
-      icon: MonitorSmartphone,
-      color: '#06b6d4',
-      items: [
-        'ऑटोमेशन (Automation Testing): इंसानों के बजाय सॉफ्टवेयर (जैसे Selenium) से टेस्टिंग करवाना ताकि काम जल्दी हो।',
-        'टेस्टिंग रिपोर्ट्स (Metrics): कितने टेस्ट पास हुए, कितने फेल हुए और कितने बग्स (Bugs) मिले—इसकी पूरी रिपोर्ट।'
-      ],
-      example: 'लक्ष्य: समय बचाने के लिए मैन्युअल काम कम करना और ऑटोमैटिक टेस्टिंग को बढ़ाना।'
+      example: 'लक्ष्य: पुलिस का हर जवान, चाहे उसके पास कैसा भी फोन हो, सॉफ्टवेयर का इस्तेमाल कर सके।',
+      deepDive: [
+        {
+          heading: 'लेगेसी हार्डवेयर सपोर्ट (Legacy PCs)',
+          content: 'ज़्यादातर थानों में पुराने कंप्यूटर होते हैं। सिस्टम को ऐसे टेस्ट किया जाएगा कि वह 2GB RAM वाले पुराने कंप्यूटर पर भी स्मूथ चले।'
+        },
+        {
+          heading: 'रेस्पॉन्सिव डिज़ाइन (Responsive UI)',
+          content: 'टेबलेट, डेस्कटॉप और मोबाइल स्क्रीन के साइज़ को बदलकर चेक किया जाएगा कि कोई बटन या टेक्स्ट स्क्रीन से बाहर तो नहीं जा रहा।'
+        }
+      ]
     }
   ];
 
   const tools = [
-    'Selenium',
-    'Postman',
-    'Apache JMeter',
-    'Playwright',
-    'SonarQube',
-    'OWASP ZAP'
-  ];
-
-  const deliverables = [
-    'Test Strategy Document & Test Plan',
-    'Test Cases & Test Scripts',
-    'Requirement Traceability Matrix (RTM)',
-    'Bug Reports & Automation Scripts',
-    'Performance & Security Test Report',
-    'UAT Sign-off & Final QA Certification'
+    { cat: 'Automation', tool: 'Selenium, Cypress, Playwright' },
+    { cat: 'Performance', tool: 'JMeter, Gatling, k6' },
+    { cat: 'Security', tool: 'OWASP ZAP, Burp Suite' },
+    { cat: 'API Testing', tool: 'Postman, REST Assured' },
+    { cat: 'Bug Tracking', tool: 'Jira, Bugzilla' }
   ];
 
   if (selectedDetail !== null) {
@@ -166,11 +174,12 @@ export default function Phase5Requirements({ onBack }) {
             <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
           </div>
           
-          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
-            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
-              {detailItem.subtitle}
+          <div style={{ background: 'white', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
+              {detailItem.subtitle} - विस्तृत जानकारी (Overview)
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
               {detailItem.items.map((bullet, idx) => {
                 const parts = bullet.split(':');
                 const hasColon = parts.length > 1;
@@ -189,12 +198,37 @@ export default function Phase5Requirements({ onBack }) {
               })}
             </div>
 
+            {/* Deep Dive Extra Details Section */}
+            {detailItem.deepDive && detailItem.deepDive.length > 0 && (
+              <div style={{ marginTop: '2.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Info size={22} color={detailItem.color} />
+                  गहराई से जानकारी (Deep Dive Details)
+                </h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                  {detailItem.deepDive.map((dive, idx) => (
+                    <div key={idx} style={{ 
+                      background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', 
+                      border: '1px solid #e2e8f0', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
+                    }}>
+                      <h5 style={{ margin: '0 0 0.75rem 0', fontSize: '1.1rem', color: detailItem.color, fontWeight: 'bold' }}>
+                        {dive.heading}
+                      </h5>
+                      <p style={{ margin: 0, color: '#475569', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                        {dive.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {detailItem.example && (
-              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+              <div style={{ marginTop: '2.5rem', padding: '1.75rem', background: '#f0fdf4', borderRadius: '1rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1.25rem', borderRadius: '50%' }}><Target size={32} color="#16a34a" /></div>
                 <div>
-                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
-                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.2rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1.1rem', fontStyle: 'italic', fontWeight: '500' }}>
                     {detailItem.example}
                   </p>
                 </div>
@@ -227,11 +261,11 @@ export default function Phase5Requirements({ onBack }) {
         </button>
         <div>
           <h2 style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <CheckSquare size={28} color="#10b981" />
-            Phase 5: Testing & Quality Assurance (QA)
+            <TestTube size={28} color="#f59e0b" />
+            Phase 5: Testing & Quality Assurance
           </h2>
           <p style={{ margin: '0.25rem 0 0 0', color: '#64748b' }}>
-            सॉफ्टवेयर सही, सुरक्षित, तेज, विश्वसनीय और Bug-Free तरीके से काम करे, यह सुनिश्चित करना।
+            सॉफ़्टवेयर परीक्षण - सिस्टम को लाइव (Live) करने से पहले उसमें मौजूद कमियों (Bugs) को ढूंढना और उन्हें ठीक करना।
           </p>
         </div>
       </div>
@@ -313,103 +347,53 @@ export default function Phase5Requirements({ onBack }) {
         })}
       </div>
 
-      {/* QA Workflows & Diagrams */}
+      {/* Visual Diagrams: CI/CD Pipeline & Tools */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
         
-        {/* Enterprise QA Process */}
+        {/* Testing Lifecycle Flow */}
         <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#3b82f615', padding: '0.75rem', borderRadius: '0.5rem', color: '#3b82f6' }}><ListOrdered size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Enterprise QA Process</h3>
+            <div style={{ background: '#3b82f615', padding: '0.75rem', borderRadius: '0.5rem', color: '#3b82f6' }}><Filter size={24} /></div>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Testing Lifecycle (प्रक्रिया)</h3>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', alignItems: 'center' }}>
-            {['Requirements', 'Test Planning', 'Test Case Design', 'Environment Setup', 'Execution', 'Bug Fixing', 'Retesting', 'Regression Testing', 'UAT', 'Production Release'].map((step, idx, arr) => (
-              <React.Fragment key={idx}>
-                <div style={{ 
-                  background: idx === arr.length - 1 ? '#dcfce7' : '#f1f5f9', 
-                  color: idx === arr.length - 1 ? '#166534' : '#334155', 
-                  padding: '0.4rem 1.5rem', borderRadius: '0.5rem', 
-                  fontWeight: 'bold', width: '80%', textAlign: 'center',
-                  border: `1px solid ${idx === arr.length - 1 ? '#bbf7d0' : '#e2e8f0'}`,
-                  fontSize: '0.85rem'
-                }}>
-                  {step}
-                </div>
-                {idx < arr.length - 1 && <div style={{ color: '#94a3b8', fontSize: '1.2rem', lineHeight: '0.8' }}>↓</div>}
-              </React.Fragment>
-            ))}
+          
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', width: '22%' }}>
+              <div style={{ background: '#dbeafe', color: '#1e40af', padding: '0.75rem', borderRadius: '50%' }}><Code size={20} /></div>
+              <span style={{ fontSize: '0.8rem', fontWeight: 'bold', textAlign: 'center' }}>Unit Test<br/>(डेवलपर)</span>
+            </div>
+            <ArrowLeft size={16} color="#94a3b8" style={{ transform: 'rotate(180deg)' }} />
+            
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', width: '22%' }}>
+              <div style={{ background: '#fef3c7', color: '#b45309', padding: '0.75rem', borderRadius: '50%' }}><Network size={20} /></div>
+              <span style={{ fontSize: '0.8rem', fontWeight: 'bold', textAlign: 'center' }}>Integration<br/>(सिस्टम)</span>
+            </div>
+            <ArrowLeft size={16} color="#94a3b8" style={{ transform: 'rotate(180deg)' }} />
+            
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', width: '22%' }}>
+              <div style={{ background: '#fce7f3', color: '#9d174d', padding: '0.75rem', borderRadius: '50%' }}><CheckSquare size={20} /></div>
+              <span style={{ fontSize: '0.8rem', fontWeight: 'bold', textAlign: 'center' }}>System Test<br/>(QA टीम)</span>
+            </div>
+            <ArrowLeft size={16} color="#94a3b8" style={{ transform: 'rotate(180deg)' }} />
+            
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', width: '22%' }}>
+              <div style={{ background: '#ecfdf5', color: '#047857', padding: '0.75rem', borderRadius: '50%' }}><Users size={20} /></div>
+              <span style={{ fontSize: '0.8rem', fontWeight: 'bold', textAlign: 'center' }}>UAT<br/>(पुलिस)</span>
+            </div>
           </div>
         </div>
 
-        {/* Bug Lifecycle Flow */}
+        {/* Recommended Testing Tools */}
         <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#ef444415', padding: '0.75rem', borderRadius: '0.5rem', color: '#ef4444' }}><Bug size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Defect Management (Bug Lifecycle)</h3>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center', marginTop: '2rem' }}>
-            <div style={{ background: '#fee2e2', color: '#991b1b', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '60%', textAlign: 'center', border: '1px solid #fecaca' }}>New</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#fef3c7', color: '#b45309', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '60%', textAlign: 'center', border: '1px solid #fde68a' }}>Assigned</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#dbeafe', color: '#1e40af', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '60%', textAlign: 'center', border: '1px solid #bfdbfe' }}>In Progress</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#f3e8ff', color: '#6b21a8', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '60%', textAlign: 'center', border: '1px solid #e9d5ff' }}>Fixed</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#e0e7ff', color: '#3730a3', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '60%', textAlign: 'center', border: '1px solid #c7d2fe' }}>Retest</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#dcfce7', color: '#166534', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '60%', textAlign: 'center', border: '1px solid #bbf7d0' }}>Closed</div>
-          </div>
-        </div>
-        
-        {/* Integration Testing Flow */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#10b98115', padding: '0.75rem', borderRadius: '0.5rem', color: '#10b981' }}><RefreshCw size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Integration Testing Flow</h3>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', marginTop: '3rem' }}>
-            <div style={{ background: '#eff6ff', color: '#1e40af', padding: '1rem 3rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center' }}>Frontend</div>
-            <div style={{ color: '#94a3b8', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
-            <div style={{ background: '#f5f3ff', color: '#5b21b6', padding: '1rem 3rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center' }}>API Layer</div>
-            <div style={{ color: '#94a3b8', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
-            <div style={{ background: '#ecfdf5', color: '#065f46', padding: '1rem 3rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center' }}>Backend Core</div>
-            <div style={{ color: '#94a3b8', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
-            <div style={{ background: '#fef2f2', color: '#991b1b', padding: '1rem 3rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '2px solid #fca5a5', width: '70%', textAlign: 'center' }}>Database</div>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Lists (Deliverables & Recommended Tools) */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem' }}>
-        
-        {/* Recommended Tools */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#8b5cf615', padding: '0.75rem', borderRadius: '0.5rem', color: '#8b5cf6' }}><PenTool size={24} /></div>
+            <div style={{ background: '#f59e0b15', padding: '0.75rem', borderRadius: '0.5rem', color: '#f59e0b' }}><HardDrive size={24} /></div>
             <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Recommended QA Tools</h3>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-            {tools.map((tool, idx) => (
-              <span key={idx} style={{ padding: '0.5rem 1rem', background: '#f5f3ff', color: '#5b21b6', border: '1px solid #ede9fe', borderRadius: '2rem', fontSize: '0.9rem', fontWeight: 'bold' }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Deliverables */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#ec489915', padding: '0.75rem', borderRadius: '0.5rem', color: '#ec4899' }}><FileText size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>QA Deliverables</h3>
-          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {deliverables.map((doc, idx) => (
-              <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', padding: '0.75rem', background: '#fdf2f8', borderRadius: '0.5rem', border: '1px solid #fce7f3' }}>
-                <CheckCircle size={18} color="#ec4899" style={{ flexShrink: 0 }} />
-                <span style={{ color: '#831843', fontSize: '0.9rem', fontWeight: '500' }}>{doc}</span>
+            {tools.map((item, idx) => (
+              <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 1rem', background: '#f8fafc', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
+                <span style={{ color: '#64748b', fontWeight: '500', fontSize: '0.9rem' }}>{item.cat}</span>
+                <span style={{ color: '#0f172a', fontWeight: 'bold', fontSize: '0.9rem' }}>{item.tool}</span>
               </div>
             ))}
           </div>

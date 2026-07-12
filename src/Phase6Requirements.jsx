@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  ArrowLeft, Cloud, Server, Database, Shield, Activity, GitBranch, Terminal, ShieldAlert, Wrench, FileSignature, CheckCircle, Network, Layers, PenTool, BrainCircuit, RefreshCw, Target
+  ArrowLeft, Cloud, Server, ShieldCheck, Database, HardDrive, RefreshCw, UploadCloud, Globe, Lock, Activity, Users, Settings, Target, Info
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
@@ -11,138 +11,150 @@ export default function Phase6Requirements({ onBack }) {
   const reqData = [
     {
       id: 1,
-      title: 'Deployment Planning',
-      subtitle: 'लॉन्च की योजना',
-      icon: Server,
+      title: 'Hosting & Cloud Architecture',
+      subtitle: 'क्लाउड सर्वर इंफ्रास्ट्रक्चर',
+      icon: Cloud,
       color: '#3b82f6',
       items: [
-        'गो-लाइव प्लान (Go-Live Plan): सॉफ्टवेयर को पुलिस विभाग को सौंपने की पूरी चेकलिस्ट और तारीख तय करना।',
-        'रोलबैक स्ट्रेटेजी (Rollback Strategy): अगर लॉन्च के समय कोई बड़ी गड़बड़ी हो जाए, तो तुरंत पुराने सिस्टम पर वापस कैसे लौटें?'
+        'क्लाउड प्रोवाइडर (Cloud Provider): भारत सरकार के नियमों (MeitY empaneled) के अनुसार AWS India, Azure या NIC क्लाउड का चयन।',
+        'हाई अवेलेबिलिटी (High Availability): 2 अलग-अलग शहरों (जैसे दिल्ली और मुंबई) में सर्वर लगाना ताकि एक शहर में बाढ़/भूकंप आने पर दूसरा सर्वर चलता रहे।',
+        'ऑटो-स्केलिंग (Auto-scaling): जब अचानक से हज़ारों पुलिसकर्मी ऐप खोलें (जैसे चुनाव के समय), तो सर्वर की ताकत अपने आप बढ़ जाए।'
       ],
-      example: 'लक्ष्य: लाइव सर्वर (Live Server) पर बिना किसी रुकावट या एरर के सॉफ्टवेयर को सुरक्षित रूप से इंस्टॉल करना।'
+      example: 'लक्ष्य: सिस्टम को ऐसा बनाना कि वह एक सेकंड के लिए भी डाउन (Offline) न हो।',
+      deepDive: [
+        {
+          heading: 'सरकारी अनुपालन (MeitY Empaneled)',
+          content: 'भारत सरकार के नियम के अनुसार पुलिस का डेटा देश के बाहर नहीं जा सकता। इसलिए AWS/Azure के केवल मुंबई या हैदराबाद डेटा सेंटर्स का ही इस्तेमाल होगा।'
+        },
+        {
+          heading: 'डिजास्टर रिकवरी (DR Site)',
+          content: 'मेन सर्वर के साथ एक डिजास्टर रिकवरी (DR) सर्वर दूसरे जोन में रखा जाएगा। मेन सर्वर फेल होने पर 10 मिनट के अंदर DR सर्वर ऑटोमैटिक रूप से लाइव हो जाएगा।'
+        }
+      ]
     },
     {
       id: 2,
-      title: 'Infrastructure & Environments',
-      subtitle: 'सर्वर और सेटअप',
-      icon: Cloud,
+      title: 'Database Deployment',
+      subtitle: 'डेटाबेस को लाइव करना',
+      icon: Database,
       color: '#10b981',
       items: [
-        'सर्वर इंफ्रास्ट्रक्चर (Servers): सिस्टम की ज़रूरत के हिसाब से वेब सर्वर, डेटाबेस सर्वर और बैकअप सर्वर स्थापित करना (NIC या AWS क्लाउड)।',
-        'पर्यावरण सेटअप (Environments): टेस्टिंग के लिए अलग सर्वर (UAT) और असली इस्तेमाल के लिए अलग लाइव सर्वर (Production)।'
+        'प्राइमरी डेटाबेस (Primary DB): SQL Server या PostgreSQL को क्लाउड पर सुरक्षित रूप से इनस्टॉल करना।',
+        'रीड-रेप्लिका (Read-Replica): डेटा सेव करने के लिए एक सर्वर और डेटा को सर्च (Search) करने के लिए दूसरा सर्वर, ताकि स्पीड तेज़ रहे।',
+        'डेटा माइग्रेशन (Data Migration): पुराने थानों के रजिस्टर और पुराने सॉफ्टवेयर का करोड़ों रिकॉर्ड नए सिस्टम में बिना गलती के ट्रांसफर करना।'
       ],
-      example: 'लक्ष्य: इतना मजबूत सर्वर सेटअप करना जो पुलिस विभाग के सारे थानों का बोझ आसानी से उठा सके।'
+      example: 'लक्ष्य: पुराने और नए पुलिस रिकॉर्ड्स को सुरक्षित और तेज़ डेटाबेस में सेट करना।',
+      deepDive: [
+        {
+          heading: 'रेप्लिका आर्किटेक्चर (Replica Setup)',
+          content: 'एक मास्टर डेटाबेस होगा जिसमें सिर्फ नई FIR लिखी जाएँगी। और 3 स्लेव (Slave) डेटाबेस होंगे जहाँ से FIR सर्च की जाएँगी ताकि मास्टर सर्वर पर लोड न पड़े।'
+        },
+        {
+          heading: 'ETL प्रक्रिया (ETL Migration)',
+          content: 'पुराने सिस्टम से डेटा निकालते (Extract) समय उसमें मौजूद गलतियों (जैसे गलत स्पेलिंग) को सुधारा (Transform) जाएगा, फिर नए सिस्टम में लोड (Load) किया जाएगा।'
+        }
+      ]
     },
     {
       id: 3,
-      title: 'Version Control & Containerization',
-      subtitle: 'कोड मैनेजमेंट',
-      icon: GitBranch,
+      title: 'CI/CD Pipeline',
+      subtitle: 'ऑटोमैटिक अपडेट प्रक्रिया',
+      icon: RefreshCw,
       color: '#f59e0b',
       items: [
-        'वर्ज़न कंट्रोल (Git): कोड के हर बदलाव को सुरक्षित रखना, ताकि कई डेवलपर्स एक साथ काम कर सकें।',
-        'कंटेनर (Docker): सॉफ्टवेयर और उसकी सेटिंग्स को एक "बॉक्स" (Container) में पैक करना ताकि वह किसी भी सर्वर पर बिना एरर के चले।'
+        'कंटीन्यूअस इंटीग्रेशन (CI): डेवलपर जैसे ही नया कोड लिखेगा, सर्वर उसे अपने आप टेस्ट (Test) कर लेगा।',
+        'कंटीन्यूअस डिप्लॉयमेंट (CD): बिना सॉफ्टवेयर को बंद किए (Zero-downtime) नए फीचर्स को लाइव (Live) करना।',
+        'गिटहब एक्शन्स (GitHub/Jenkins): कोड को सर्वर तक सुरक्षित पहुँचाने के लिए ऑटोमैटिक पाइपलाइन टूल का उपयोग।'
       ],
-      example: 'लक्ष्य: भविष्य में सॉफ्टवेयर को आसानी से अपग्रेड (Upgrade) किया जा सके।'
+      example: 'लक्ष्य: ऐप को अपडेट करते समय पुलिस का काम 1 मिनट के लिए भी न रुके।',
+      deepDive: [
+        {
+          heading: 'जीरो डाउनटाइम (Blue-Green Deployment)',
+          content: 'नए अपडेट को एक "Green" सर्वर पर लाइव किया जाता है। जब वह सही काम करने लगता है, तो ट्रैफिक पुराने "Blue" सर्वर से "Green" पर स्विच कर दिया जाता है। इससे पुलिस को डाउनटाइम महसूस नहीं होता।'
+        },
+        {
+          heading: 'ऑटो-रोलबैक (Auto-Rollback)',
+          content: 'अगर नए अपडेट में कोई बड़ा बग आ जाता है, तो पाइपलाइन अपने आप 2 मिनट के अंदर पुराने वर्ज़न पर वापस (Rollback) चली जाएगी।'
+        }
+      ]
     },
     {
       id: 4,
-      title: 'Database Deployment',
-      subtitle: 'डेटाबेस सेटअप',
-      icon: Database,
-      color: '#ec4899',
+      title: 'Security Configuration',
+      subtitle: 'सर्वर सुरक्षा सेटिंग्स',
+      icon: ShieldCheck,
+      color: '#ef4444',
       items: [
-        'डेटा माइग्रेशन (Migration): अगर कोई पुराना पुलिस रिकॉर्ड (एक्सेल या पुराने सॉफ्टवेयर में) है, तो उसे सुरक्षित रूप से नए डेटाबेस में डालना।',
-        'इंडेक्सिंग (Indexing): सर्च स्पीड को तेज करने के लिए डेटाबेस को ऑप्टिमाइज़ (Optimize) करना।'
+        'फायरवॉल (Firewall - WAF): हैकर्स को रोकने के लिए सर्वर के बाहर एक मज़बूत वेब एप्लीकेशन फायरवॉल लगाना।',
+        'SSL सर्टिफिकेट्स (SSL/TLS): वेबसाइट के URL में \'https\' सुनिश्चित करना ताकि डेटा चोरी न हो।',
+        'वर्चुअल प्राइवेट नेटवर्क (VPN): एडमिन पैनल (SP/DGP लेवल) को केवल पुलिस के सुरक्षित प्राइवेट नेटवर्क या VPN से ही खुलने देना।'
       ],
-      example: 'लक्ष्य: करोड़ों पुराने केस रिकॉर्ड्स को नए सिस्टम में बिना खोए सफलतापूर्वक ट्रांसफर करना।'
+      example: 'लक्ष्य: सर्वर को डिजिटल किले (Digital Fortress) में तब्दील करना।',
+      deepDive: [
+        {
+          heading: 'प्राइवेट सबनेट (Private Subnet)',
+          content: 'डेटाबेस को इंटरनेट से पूरी तरह काट कर प्राइवेट नेटवर्क (VPC) में रखा जाएगा। कोई भी बाहरी व्यक्ति सीधा डेटाबेस को पिंग (Ping) नहीं कर सकता।'
+        },
+        {
+          heading: 'IP वाइटलिस्टिंग (IP Whitelisting)',
+          content: 'डीजीपी (DGP) और बड़े अधिकारियों का डैशबोर्ड केवल पुलिस हेडक्वार्टर के इंटरनेट (IP Address) से ही खुलेगा, बाहरी इंटरनेट से ब्लॉक रहेगा।'
+        }
+      ]
     },
     {
       id: 5,
-      title: 'Security Configuration',
-      subtitle: 'सर्वर सुरक्षा',
-      icon: Shield,
+      title: 'Environment Setup',
+      subtitle: 'सर्वर के अलग-अलग हिस्से',
+      icon: Server,
       color: '#8b5cf6',
       items: [
-        'HTTPS एन्क्रिप्शन (SSL): डोमेन पर SSL सर्टिफिकेट लगाना ताकि डेटा रास्ते में हैक न हो।',
-        'फायरवॉल (Firewall Rules): सर्वर पर सिर्फ सुरक्षित और मान्यता प्राप्त IP एड्रेस से ही लॉगिन की अनुमति देना।'
+        'डेवलपमेंट सर्वर (Dev): जहाँ इंजिनियर्स नए कोड का परीक्षण करते हैं।',
+        'स्टेजिंग सर्वर (Staging): पुलिस अधिकारियों को दिखाने और टेस्टिंग के लिए एक डमी (Dummy) सर्वर।',
+        'प्रोडक्शन सर्वर (Production): असली सर्वर जहाँ असली FIR दर्ज होंगी और असली पुलिसकर्मी काम करेंगे।'
       ],
-      example: 'लक्ष्य: सर्वर को इस तरह लॉक करना कि कोई भी बाहरी व्यक्ति उसे एक्सेस न कर सके।'
+      example: 'लक्ष्य: टेस्टिंग और असली काम को अलग-अलग रखना ताकि असली डेटा ख़राब न हो।',
+      deepDive: [
+        {
+          heading: 'डेटा मास्किंग (Data Masking in Staging)',
+          content: 'स्टेजिंग सर्वर पर जो डेटा डाला जाएगा, उसमें असली नाम और नंबर बदल दिए जाएंगे (Masking), ताकि टेस्टिंग के दौरान प्राइवेसी भंग न हो।'
+        },
+        {
+          heading: 'इन्फ्रास्ट्रक्चर एज़ कोड (IaC - Terraform)',
+          content: 'सर्वर बनाने का काम मैन्युअली नहीं बल्कि कोड (Terraform) के ज़रिये किया जाएगा। इससे अगर सर्वर डिलीट हो जाए, तो कोड चलाकर 5 मिनट में नया सर्वर बन जाएगा।'
+        }
+      ]
     },
     {
       id: 6,
-      title: 'Monitoring & Logging',
-      subtitle: 'निगरानी और लॉग्स',
-      icon: Activity,
-      color: '#14b8a6',
+      title: 'Training & Handoff',
+      subtitle: 'पुलिस टीम को ट्रेनिंग',
+      icon: Users,
+      color: '#ec4899',
       items: [
-        'सर्वर मॉनिटरिंग (Monitoring): सर्वर के CPU, RAM और स्टोरेज पर 24/7 नज़र रखना (Prometheus या Grafana की मदद से)।',
-        'सिस्टम लॉग्स (Logging): सॉफ्टवेयर में आने वाले हर छोटे-बड़े एरर (Error) को एक फाइल में सेव करना।'
+        'यूज़र मैन्युअल (User Manuals): सॉफ्टवेयर चलाने के लिए हिंदी और अंग्रेजी में वीडियो और PDF गाइड।',
+        'हैंड्स-ऑन ट्रेनिंग (Training): थानों में जाकर इन्वेस्टिगेशन ऑफिसर्स (IO) को नया सिस्टम चलाना सिखाना।',
+        'एडमिन एक्सेस (Handoff): पुलिस विभाग की IT सेल को सर्वर के सारे पासवर्ड्स और कंट्रोल सौंपना।'
       ],
-      example: 'लक्ष्य: सर्वर डाउन होने से पहले ही अलर्ट मिल जाए ताकि उसे समय रहते ठीक किया जा सके।'
-    },
-    {
-      id: 7,
-      title: 'High Availability & Backup',
-      subtitle: 'उपलब्धता और बैकअप',
-      icon: Server,
-      color: '#ef4444',
-      items: [
-        'लोड बैलेंसर (Load Balancer): अगर एक सर्वर पर लोड बढ़े, तो ट्रैफिक को अपने आप दूसरे सर्वर पर ट्रांसफर कर देना।',
-        'ऑटोमैटिक बैकअप (Backup): हर रात डेटाबेस की एक कॉपी बनाकर सुरक्षित जगह (Disaster Recovery Server) पर रखना।'
-      ],
-      example: 'लक्ष्य: सॉफ्टवेयर साल के 365 दिन, 24 घंटे उपलब्ध रहे (99.9% Uptime)।'
-    },
-    {
-      id: 8,
-      title: 'Maintenance Activities',
-      subtitle: 'रखरखाव के कार्य',
-      icon: Wrench,
-      color: '#f97316',
-      items: [
-        'सिक्योरिटी पैच (Security Patch): समय-समय पर सॉफ्टवेयर और सर्वर को वायरस या नए साइबर हमलों से बचाने के लिए अपडेट करना।',
-        'बग फिक्सेस (Bug Fixes): लाइव होने के बाद यूज़र्स द्वारा बताई गई छोटी-मोटी समस्याओं को ठीक करना।'
-      ],
-      example: 'लक्ष्य: सिस्टम को समय के साथ-साथ और भी ज़्यादा बेहतर और सुरक्षित बनाते रहना।'
-    },
-    {
-      id: 9,
-      title: 'Production Support',
-      subtitle: 'लाइव सिस्टम सपोर्ट',
-      icon: ShieldAlert,
-      color: '#6366f1',
-      items: [
-        'इंसीडेंट मैनेजमेंट (Incident Mgmt): अगर सिस्टम अचानक काम करना बंद कर दे, तो इमरजेंसी टीम (Support) उसे तुरंत ठीक करे।',
-        'यूज़र सपोर्ट (User Support): पुलिस अधिकारियों को इस्तेमाल में आने वाली दिक्कतों का तुरंत समाधान देना (Helpdesk)।'
-      ],
-      example: 'लक्ष्य: पुलिस वालों को काम के दौरान कोई परेशानी न हो और उन्हें तुरंत तकनीकी सहायता मिले।'
+      example: 'लक्ष्य: सॉफ्टवेयर लाइव होने के बाद पुलिस खुद इसे आसानी से चला सके।',
+      deepDive: [
+        {
+          heading: 'ट्रेन-द-ट्रेनर मॉडल (Train-the-Trainer)',
+          content: 'हम हर जिले के 5 पुलिसकर्मियों को एक्सपर्ट (Master Trainers) बनाएंगे, जो आगे जाकर अपने-अपने थानों में बाकी लोगों को ट्रेनिंग देंगे।'
+        },
+        {
+          heading: 'इन-ऐप ट्यूटोरियल (In-App Guides)',
+          content: 'सॉफ्टवेयर के अंदर ही छोटे-छोटे हेल्प-बटन (Help Tooltips) होंगे। अगर कोई बटन समझ न आये, तो वहां क्लिक करते ही 30 सेकंड का वीडियो प्ले हो जाएगा।'
+        }
+      ]
     }
   ];
 
   const tools = [
-    'GitHub', 'GitLab', 'Jenkins', 'Docker Hub', 'Kubernetes', 'Prometheus', 'Grafana'
-  ];
-
-  const deliverables = [
-    'Infrastructure Architecture Document',
-    'Deployment Guide & Server Config',
-    'CI/CD Pipeline Configuration',
-    'Backup & Recovery Plan',
-    'Security Configuration Document',
-    'Monitoring Dashboard',
-    'Production Runbook & Maintenance Plan',
-    'Go-Live Sign-off'
-  ];
-
-  const sdlcSteps = [
-    '1. Requirements Gathering & Analysis',
-    '2. UI/UX Design',
-    '3. Frontend Development',
-    '4. Backend Development',
-    '5. Testing & Quality Assurance',
-    '6. Deployment & DevOps',
-    '7. Maintenance & Support',
-    '8. Continuous Improvement'
+    { cat: 'Cloud Provider', tool: 'AWS, Microsoft Azure (MeitY)' },
+    { cat: 'CI/CD Pipeline', tool: 'GitHub Actions, Jenkins' },
+    { cat: 'Containerization', tool: 'Docker, Kubernetes' },
+    { cat: 'Infrastructure as Code', tool: 'Terraform, Ansible' },
+    { cat: 'Web Server / Proxy', tool: 'Nginx, IIS' }
   ];
 
   if (selectedDetail !== null) {
@@ -162,11 +174,12 @@ export default function Phase6Requirements({ onBack }) {
             <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
           </div>
           
-          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
-            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
-              {detailItem.subtitle}
+          <div style={{ background: 'white', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
+              {detailItem.subtitle} - विस्तृत जानकारी (Overview)
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
               {detailItem.items.map((bullet, idx) => {
                 const parts = bullet.split(':');
                 const hasColon = parts.length > 1;
@@ -185,12 +198,37 @@ export default function Phase6Requirements({ onBack }) {
               })}
             </div>
 
+            {/* Deep Dive Extra Details Section */}
+            {detailItem.deepDive && detailItem.deepDive.length > 0 && (
+              <div style={{ marginTop: '2.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Info size={22} color={detailItem.color} />
+                  गहराई से जानकारी (Deep Dive Details)
+                </h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                  {detailItem.deepDive.map((dive, idx) => (
+                    <div key={idx} style={{ 
+                      background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', 
+                      border: '1px solid #e2e8f0', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
+                    }}>
+                      <h5 style={{ margin: '0 0 0.75rem 0', fontSize: '1.1rem', color: detailItem.color, fontWeight: 'bold' }}>
+                        {dive.heading}
+                      </h5>
+                      <p style={{ margin: 0, color: '#475569', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                        {dive.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {detailItem.example && (
-              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+              <div style={{ marginTop: '2.5rem', padding: '1.75rem', background: '#f0fdf4', borderRadius: '1rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1.25rem', borderRadius: '50%' }}><Target size={32} color="#16a34a" /></div>
                 <div>
-                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
-                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.2rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1.1rem', fontStyle: 'italic', fontWeight: '500' }}>
                     {detailItem.example}
                   </p>
                 </div>
@@ -223,11 +261,11 @@ export default function Phase6Requirements({ onBack }) {
         </button>
         <div>
           <h2 style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <Server size={28} color="#f97316" />
-            Phase 6: Deployment, DevOps & Maintenance
+            <UploadCloud size={28} color="#3b82f6" />
+            Phase 6: Deployment & Launch
           </h2>
           <p style={{ margin: '0.25rem 0 0 0', color: '#64748b' }}>
-            सॉफ्टवेयर को Production Environment में Install, Configure और Live करना।
+            डिप्लॉयमेंट और लॉन्च - सॉफ़्टवेयर को सुरक्षित सर्वर पर स्थापित करना और उसे पुलिस विभाग को सौंपना।
           </p>
         </div>
       </div>
@@ -309,122 +347,44 @@ export default function Phase6Requirements({ onBack }) {
         })}
       </div>
 
-      {/* DevOps Workflows & Diagrams */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+      {/* Visual Diagrams: Architecture Flow & Tools */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
         
-        {/* CI/CD Pipeline */}
+        {/* Cloud Architecture Flow */}
         <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#3b82f615', padding: '0.75rem', borderRadius: '0.5rem', color: '#3b82f6' }}><RefreshCw size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>CI/CD Pipeline</h3>
+            <div style={{ background: '#3b82f615', padding: '0.75rem', borderRadius: '0.5rem', color: '#3b82f6' }}><Cloud size={24} /></div>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Cloud Deployment Flow</h3>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center', marginTop: '1rem' }}>
-            <div style={{ background: '#f8fafc', color: '#334155', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #e2e8f0', width: '70%', textAlign: 'center' }}>Developer</div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+            <div style={{ background: '#f8fafc', color: '#334155', padding: '0.5rem 1.5rem', borderRadius: '2rem', fontWeight: 'bold', border: '1px solid #cbd5e1' }}>Police User (Web/App)</div>
             <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#eff6ff', color: '#1e40af', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bfdbfe', width: '70%', textAlign: 'center' }}>Git Repository</div>
+            <div style={{ background: '#fef2f2', color: '#b91c1c', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px dashed #fca5a5' }}>Web Application Firewall (WAF)</div>
             <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#fef3c7', color: '#b45309', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #fde68a', width: '70%', textAlign: 'center' }}>Build Server</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#fce7f3', color: '#9d174d', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #fbcfe8', width: '70%', textAlign: 'center' }}>Automated Testing</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#e0e7ff', color: '#3730a3', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #c7d2fe', width: '70%', textAlign: 'center' }}>Deployment</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#dcfce7', color: '#166534', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bbf7d0', width: '70%', textAlign: 'center' }}>Production</div>
+            <div style={{ background: '#eff6ff', color: '#1d4ed8', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bfdbfe' }}>Load Balancer</div>
+            
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+              <div style={{ background: '#f0fdf4', color: '#15803d', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bbf7d0' }}>App Server 1</div>
+              <div style={{ background: '#f0fdf4', color: '#15803d', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bbf7d0' }}>App Server 2</div>
+            </div>
+            
+            <div style={{ color: '#94a3b8', marginTop: '0.5rem' }}>↓</div>
+            <div style={{ background: '#fffbeb', color: '#b45309', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #fde68a' }}>Primary Database (RDS/SQL)</div>
           </div>
         </div>
 
-        {/* Deployment Architecture */}
+        {/* Recommended Testing Tools */}
         <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#10b98115', padding: '0.75rem', borderRadius: '0.5rem', color: '#10b981' }}><Network size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Deployment Architecture</h3>
+            <div style={{ background: '#10b98115', padding: '0.75rem', borderRadius: '0.5rem', color: '#10b981' }}><Settings size={24} /></div>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Deployment Tools Stack</h3>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center', marginTop: '2rem' }}>
-            <div style={{ background: '#f1f5f9', color: '#334155', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center', border: '1px solid #cbd5e1' }}>Users</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#fffbeb', color: '#b45309', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center', border: '1px solid #fde68a' }}>Load Balancer</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#eff6ff', color: '#1d4ed8', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center', border: '1px solid #bfdbfe' }}>Web Server</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#fdf4ff', color: '#a21caf', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center', border: '1px solid #f5d0fe' }}>Application Server</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#ecfdf5', color: '#047857', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center', border: '1px solid #a7f3d0' }}>Database Server</div>
-          </div>
-        </div>
-
-        {/* AI Application Deployment */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#8b5cf615', padding: '0.75rem', borderRadius: '0.5rem', color: '#8b5cf6' }}><BrainCircuit size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>AI Deployment Flow</h3>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center', marginBottom: '1rem' }}>
-            <div style={{ background: '#e0f2fe', color: '#0369a1', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bae6fd' }}>Web Application</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#f5f3ff', color: '#6d28d9', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #ddd6fe' }}>API Gateway</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#fce7f3', color: '#be185d', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #fbcfe8' }}>AI Model Server</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#fef2f2', color: '#b91c1c', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #fecaca' }}>Prediction Engine</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
-            <div style={{ background: '#f0fdf4', color: '#15803d', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bbf7d0' }}>Database</div>
-          </div>
-          <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '0.8rem' }}>
-            <strong style={{color:'#334155'}}>AI Infrastructure:</strong> GPU Server, Model Registry, Monitoring, Versioning, Retraining Pipeline
-          </div>
-        </div>
-
-      </div>
-
-      {/* Lists (Tools, Deliverables, SDLC) */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-        
-        {/* Recommended Tools */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#ec489915', padding: '0.75rem', borderRadius: '0.5rem', color: '#ec4899' }}><PenTool size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>DevOps Tools</h3>
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-            {tools.map((tool, idx) => (
-              <span key={idx} style={{ padding: '0.5rem 1rem', background: '#fdf2f8', color: '#be185d', border: '1px solid #fce7f3', borderRadius: '2rem', fontSize: '0.85rem', fontWeight: 'bold' }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Deliverables */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#10b98115', padding: '0.75rem', borderRadius: '0.5rem', color: '#10b981' }}><FileSignature size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Deployment Deliverables</h3>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            {deliverables.map((doc, idx) => (
-              <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 0.75rem', background: '#f0fdf4', borderRadius: '0.5rem', border: '1px solid #dcfce7' }}>
-                <CheckCircle size={16} color="#10b981" style={{ flexShrink: 0 }} />
-                <span style={{ color: '#166534', fontSize: '0.85rem', fontWeight: '500' }}>{doc}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Complete SDLC */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#f59e0b15', padding: '0.75rem', borderRadius: '0.5rem', color: '#f59e0b' }}><Layers size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Complete SDLC Lifecycle</h3>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            {sdlcSteps.map((step, idx) => (
-              <div key={idx} style={{ 
-                padding: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold',
-                color: idx === 5 || idx === 6 ? '#2563eb' : '#475569',
-                background: idx === 5 || idx === 6 ? '#eff6ff' : 'transparent',
-                borderRadius: '0.25rem'
-              }}>
-                {step}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {tools.map((item, idx) => (
+              <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 1rem', background: '#f8fafc', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
+                <span style={{ color: '#64748b', fontWeight: '500', fontSize: '0.9rem' }}>{item.cat}</span>
+                <span style={{ color: '#0f172a', fontWeight: 'bold', fontSize: '0.9rem' }}>{item.tool}</span>
               </div>
             ))}
           </div>

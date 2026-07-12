@@ -90,7 +90,7 @@ export default function StepUpLiteracyDashboard() {
     <div className="thane-dashboard-container">
       <div className="thane-header">
         <h2 className="thane-title">Step Up Literacy Software</h2>
-        <p className="thane-subtitle">Initial steps in software development(सॉफ्टवेयर डेवलपमेंट के शुरुआती चरण)</p>
+        <p className="thane-subtitle">Initial Steps in Software Development (सॉफ्टवेयर बनाने की शुरुआत)</p>
       </div>
 
       <div className="thane-menu-bar">
@@ -99,13 +99,13 @@ export default function StepUpLiteracyDashboard() {
             className={`thane-tab ${activeTab === 'phases' ? 'active-blue' : ''}`}
             onClick={() => setActiveTab('phases')}
           >
-            Initial steps in software development(सॉफ्टवेयर डेवलपमेंट के शुरुआती चरण)
+            Initial Steps in Software Development (सॉफ्टवेयर बनाने की शुरुआत)
           </button>
           <button
             className={`thane-tab ${activeTab === 'sdlc' ? 'active-green' : ''}`}
             onClick={() => setActiveTab('sdlc')}
           >
-            सॉफ्टवेयर डेवलपमेंट लाइफसाइकिल (SDLC)
+            Software Development Lifecycle - SDLC(सॉफ्टवेयर को पूरा तैयार करने का तरीका)
           </button>
           <button
             className={`thane-tab ${activeTab === 'advanced' ? 'active-purple' : ''}`}
@@ -117,7 +117,12 @@ export default function StepUpLiteracyDashboard() {
       </div>
 
       {activeTab === 'phases' && (
-        <div className="thane-projects-grid">
+        <div style={{ padding: '2rem', background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ margin: '0 0 1.5rem 0', color: '#0f172a', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Layout size={28} color="#3b82f6" />
+            Initial Steps in Software Development (सॉफ्टवेयर बनाने की शुरुआत)
+          </h3>
+          <div className="thane-projects-grid">
           {phases.map(phase => {
             const Icon = phase.icon;
             return (
@@ -157,6 +162,7 @@ export default function StepUpLiteracyDashboard() {
               </div>
             );
           })}
+        </div>
         </div>
       )}
 
@@ -218,7 +224,7 @@ export default function StepUpLiteracyDashboard() {
         <div style={{ padding: '2rem', background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <h3 style={{ margin: '0 0 1.5rem 0', color: '#0f172a', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Layers size={28} color="#3b82f6" />
-            Complete Software Development Lifecycle (SDLC)
+            Software Development Lifecycle (सॉफ्टवेयर को पूरा तैयार करने का तरीका)
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
             {[
