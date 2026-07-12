@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  ArrowLeft, Database, Server, Settings, Lock, Network, Shield, HardDrive, FileText, Activity, BrainCircuit, Code, Layers, FileSignature, CheckCircle, Zap, Target
+  ArrowLeft, Database, Server, Settings, Lock, Network, Shield, HardDrive, FileText, Activity, BrainCircuit, Code, Layers, FileSignature, CheckCircle, Zap, Target, Info
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
@@ -21,7 +21,17 @@ export default function Phase4Requirements({ onBack }) {
         'डेटाबेस (Database): पुलिस के करोड़ों रिकॉर्ड्स सुरक्षित रखने के लिए SQL Server या PostgreSQL।',
         'क्लाउड और सर्वर (Cloud & Server): AWS, Azure या प्राइवेट गवर्नमेंट क्लाउड इंफ्रास्ट्रक्चर।'
       ],
-      example: 'लक्ष्य: एक ऐसा बैकएंड बनाना जो एक साथ लाखों रिक्वेस्ट्स (Searches) बिना क्रैश हुए संभाल सके।'
+      example: 'लक्ष्य: एक ऐसा बैकएंड बनाना जो एक साथ लाखों रिक्वेस्ट्स (Searches) बिना क्रैश हुए संभाल सके।',
+      deepDive: [
+        {
+          heading: '.NET Core (C#)',
+          content: 'भारत सरकार और पुलिस विभाग के अधिकांश पुराने सिस्टम्स .NET पर बने हैं। इसलिए .NET Core का उपयोग करने से नए सिस्टम को पुराने सिस्टम (Legacy) के साथ जोड़ना सबसे आसान और सुरक्षित होगा।'
+        },
+        {
+          heading: 'एंटरप्राइज ग्रेड (Enterprise Grade)',
+          content: 'हम माइक्रो-सर्विसेस (Microservices) आर्किटेक्चर का इस्तेमाल करेंगे। इसका मतलब है कि अगर रिपोर्टिंग सर्वर डाउन हो भी जाये, तो FIR सर्च का काम बिना रुके चलता रहेगा।'
+        }
+      ]
     },
     {
       id: 2,
@@ -35,7 +45,17 @@ export default function Phase4Requirements({ onBack }) {
         'अलर्ट्स और नोटिफिकेशन्स (Notifications): इमरजेंसी में तुरंत Email, SMS और पुश नोटिफिकेशन्स भेजना।',
         'रिपोर्ट और डेटा (Reports & Data): भारी मात्रा में डेटा से सेकंड्स में PDF या Excel रिपोर्ट तैयार करना।'
       ],
-      example: 'लक्ष्य: सिस्टम के सभी महत्वपूर्ण कामों (ऑपरेशन्स) को बैकएंड में सुरक्षित तरीके से प्रोसेस करना।'
+      example: 'लक्ष्य: सिस्टम के सभी महत्वपूर्ण कामों (ऑपरेशन्स) को बैकएंड में सुरक्षित तरीके से प्रोसेस करना।',
+      deepDive: [
+        {
+          heading: 'आईडेंटिटी सर्वर (Identity Server)',
+          content: 'ऑथेंटिकेशन के लिए एक अलग सेंट्रलाइज़्ड सर्वर होगा (OAuth 2.0 / OpenID Connect) जो किसी भी डिवाइस (वेब या मोबाइल) से लॉगिन करने पर सिक्यूरिटी को मैनेज करेगा।'
+        },
+        {
+          heading: 'बैकग्राउंड प्रोसेस (Background Tasks)',
+          content: 'भारी काम जैसे महीने की पूरी क्राइम रिपोर्ट का PDF बनाना, बैकग्राउंड में चलेगा (Hangfire के ज़रिये) ताकि पुलिसकर्मी को कंप्यूटर स्क्रीन पर इंतज़ार न करना पड़े।'
+        }
+      ]
     },
     {
       id: 3,
@@ -49,7 +69,17 @@ export default function Phase4Requirements({ onBack }) {
         'API वर्ज़निंग (API Versioning): भविष्य के अपडेट्स (v1, v2) के लिए API को तैयार रखना ताकि पुराना सिस्टम न रुके।',
         'API सिक्योरिटी (API Security): हर API रिक्वेस्ट को टोकन (Token) द्वारा वेरीफाई करना।'
       ],
-      example: 'लक्ष्य: ऐप, वेबसाइट और अन्य सरकारी पोर्टल्स (जैसे CCTNS) को आपस में सुरक्षित तरीके से जोड़ना।'
+      example: 'लक्ष्य: ऐप, वेबसाइट और अन्य सरकारी पोर्टल्स (जैसे CCTNS) को आपस में सुरक्षित तरीके से जोड़ना।',
+      deepDive: [
+        {
+          heading: 'API रेट लिमिटिंग (Rate Limiting)',
+          content: 'एक ही अधिकारी 1 सेकंड में 100 से ज्यादा सर्च नहीं कर पाएगा। इससे सर्वर को हैकर्स के DDoS अटैक से बचाया जा सकेगा।'
+        },
+        {
+          heading: 'स्वैगर इंटीग्रेशन (Swagger UI)',
+          content: 'API डॉक्यूमेंटेशन के लिए Swagger का उपयोग किया जायेगा, जिससे कोई भी थर्ड-पार्टी डेवलपर बिना कोड पढ़े समझ जाएगा कि डेटा कैसे भेजना और मंगाना है।'
+        }
+      ]
     },
     {
       id: 4,
@@ -63,7 +93,17 @@ export default function Phase4Requirements({ onBack }) {
         'अप्रूवल प्रोसेस (Approval Process): जूनियर अधिकारी द्वारा दी गई रिपोर्ट को सीनियर अधिकारी द्वारा मंज़ूरी देना।',
         'टास्क शेड्यूलिंग (Scheduling): रात के समय ऑटोमैटिक बैकअप और सुबह तक क्राइम रिपोर्ट तैयार करना।'
       ],
-      example: 'लक्ष्य: पुलिस विभाग के असल नियमों और कार्यप्रणाली (Rules) को कोड (Code) में बदलना।'
+      example: 'लक्ष्य: पुलिस विभाग के असल नियमों और कार्यप्रणाली (Rules) को कोड (Code) में बदलना।',
+      deepDive: [
+        {
+          heading: 'वैलिडेशन रूल्स (Complex Validations)',
+          content: 'उदाहरण: अगर किसी ने "हत्या" की धारा (Section 302) सेलेक्ट की है, तो सिस्टम अनिवार्य रूप से क्राइम सीन की फोटो मांगेगा, वरना FIR सेव नहीं होगी।'
+        },
+        {
+          heading: 'हाइरार्की वर्कफ़्लो (Hierarchy Workflow)',
+          content: 'सिस्टम पुलिस विभाग की रैंक (Rank) समझता है। इंस्पेक्टर की रिपोर्ट सीधा SP को नहीं जाएगी, वह पहले DSP/CO की स्क्रीन पर अप्रूवल के लिए रुकेगी।'
+        }
+      ]
     },
     {
       id: 5,
@@ -77,7 +117,17 @@ export default function Phase4Requirements({ onBack }) {
         'डेटा एन्क्रिप्शन (Encryption): डेटाबेस में रखे गए संवेदनशील केस रिकॉर्ड्स को एन्क्रिप्ट (Encrypt) करके लॉक करना।',
         'साइबर हमलों से बचाव (Protection): API रेट लिमिटिंग, SQL Injection और XSS अटैक्स से सिस्टम को बचाना।'
       ],
-      example: 'लक्ष्य: पुलिस डेटा को किसी भी हैकिंग या अनधिकृत एक्सेस (Unauthorized Access) से 100% सुरक्षित रखना।'
+      example: 'लक्ष्य: पुलिस डेटा को किसी भी हैकिंग या अनधिकृत एक्सेस (Unauthorized Access) से 100% सुरक्षित रखना।',
+      deepDive: [
+        {
+          heading: 'डेटा एन्क्रिप्शन (At Rest & In Transit)',
+          content: 'डेटाबेस में सेव होने वाला हर पासवर्ड और केस डायरी AES-256 एन्क्रिप्शन से लॉक होगी, और सर्वर से मोबाइल तक का डेटा TLS 1.3 टनल से गुज़रेगा।'
+        },
+        {
+          heading: 'एसक्यूएल इंजेक्शन बचाव (SQL Injection)',
+          content: 'Entity Framework Core (ORM) का इस्तेमाल करके सभी डेटाबेस क्वेरीज (Queries) को सुरक्षित बनाया जायेगा ताकि कोई सर्च बॉक्स में कमांड टाइप करके डेटा उड़ा न सके।'
+        }
+      ]
     },
     {
       id: 6,
@@ -90,7 +140,17 @@ export default function Phase4Requirements({ onBack }) {
         'क्लाउड स्टोरेज (Storage): भारी वीडियो और इमेजेज को सुरक्षित AWS S3 या Azure Blob स्टोरेज में सेव करना।',
         'डिजिटल सिग्नेचर (Digital Sign): ऑनलाइन FIR और रिपोर्ट्स पर अधिकारियों के ई-हस्ताक्षर (E-signature) को मान्य करना।'
       ],
-      example: 'लक्ष्य: डिजिटल सबूतों (Evidence) को कानूनी रूप से सुरक्षित रखना ताकि वे कोर्ट में मान्य हों।'
+      example: 'लक्ष्य: डिजिटल सबूतों (Evidence) को कानूनी रूप से सुरक्षित रखना ताकि वे कोर्ट में मान्य हों।',
+      deepDive: [
+        {
+          heading: 'ऑब्जेक्ट स्टोरेज (S3 / Blob)',
+          content: 'फोटो और वीडियो को डेटाबेस में सेव करने के बजाय क्लाउड के S3 स्टोरेज में रखा जायेगा। डेटाबेस में केवल उसका लिंक (URL) होगा, इससे सर्वर कभी फुल नहीं होगा।'
+        },
+        {
+          heading: 'वायरस स्कैन (Anti-Virus Scan)',
+          content: 'जैसे ही कोई अधिकारी सबूत (PDF/Image) अपलोड करेगा, बैकएंड उसे 2 सेकंड में स्कैन करेगा ताकि सर्वर में कोई वायरस न आ जाए।'
+        }
+      ]
     },
     {
       id: 7,
@@ -103,7 +163,17 @@ export default function Phase4Requirements({ onBack }) {
         'फास्ट रिस्पांस (Fast Response): डेटाबेस तक जाए बिना ही यूज़र को मिलीसेकंड्स (Milliseconds) में डेटा वापस कर देना।',
         'डिस्ट्रीब्यूटेड कैश (Distributed): अगर 10,000 पुलिसकर्मी एक साथ लॉगिन करें, तो भी सर्वर की स्पीड धीमी न पड़े।'
       ],
-      example: 'लक्ष्य: पुलिस के लिए सॉफ्टवेयर को रॉकेट (Rocket) की तरह तेज़ बनाना, चाहे कितना भी लोड हो।'
+      example: 'लक्ष्य: पुलिस के लिए सॉफ्टवेयर को रॉकेट (Rocket) की तरह तेज़ बनाना, चाहे कितना भी लोड हो।',
+      deepDive: [
+        {
+          heading: 'रेडिस कैशिंग (Redis In-Memory)',
+          content: 'थाने के नाम, IPC/BNS की धाराएं, और शहर के पिनकोड जैसी चीजें जो कभी नहीं बदलतीं, उन्हें रैम (RAM) में रखा जायेगा ताकि वे 0.1 सेकंड में खुल जाएँ।'
+        },
+        {
+          heading: 'क्वेरी रिजल्ट कैशिंग (Query Cache)',
+          content: 'अगर SP साहब ने सुबह जिले की पूरी रिपोर्ट मंगा ली है, तो वही रिपोर्ट 1 घंटे तक कैश (Cache) में रहेगी ताकि दोबारा मंगाने पर सर्वर पर लोड न पड़े।'
+        }
+      ]
     },
     {
       id: 8,
@@ -117,7 +187,17 @@ export default function Phase4Requirements({ onBack }) {
         'ऑटोमैटिक रिपोर्ट (Auto Report): महीने के अंत में खुद-ब-खुद पूरे जिले की क्राइम रिपोर्ट जनरेट करके SP को भेजना।',
         'डेटा सिंक (Data Sync): लोकल सर्वर का डेटा मुख्य स्टेट (State) सर्वर के साथ सिंक करना।'
       ],
-      example: 'लक्ष्य: बैकग्राउंड में होने वाले रूटीन कामों को ऑटोमैटिक (Automatic) बनाना ताकि समय बचे।'
+      example: 'लक्ष्य: बैकग्राउंड में होने वाले रूटीन कामों को ऑटोमैटिक (Automatic) बनाना ताकि समय बचे।',
+      deepDive: [
+        {
+          heading: 'हैंगफायर (Hangfire Integration)',
+          content: 'Hangfire नाम के टूल से जॉब्स को शेड्यूल किया जाएगा (जैसे अलार्म लगाना)। अगर बीच में सर्वर बंद भी हो जाए, तो चालू होने पर बैकअप का काम वहीं से शुरू होगा जहाँ से रुका था।'
+        },
+        {
+          heading: 'मैसेज क्यू (RabbitMQ / Kafka)',
+          content: 'जब एक साथ 1000 SMS भेजने हों, तो सर्वर रुकेगा नहीं। वह सारे SMS एक कतार (Queue) में डाल देगा और बैकग्राउंड सर्विस उन्हें एक-एक करके भेजती रहेगी।'
+        }
+      ]
     },
     {
       id: 9,
@@ -130,7 +210,17 @@ export default function Phase4Requirements({ onBack }) {
         'एरर लॉग्स (Error Logs): अगर सिस्टम में कोई तकनीकी गड़बड़ी आती है, तो उसे चुपचाप लॉग में सेव करना ताकि डेवलपर्स ठीक कर सकें।',
         'परफॉरमेंस मॉनिटरिंग (Performance): सर्वर की हेल्थ (Health), CPU इस्तेमाल और मेमोरी (RAM) पर रियल-टाइम नज़र रखना।'
       ],
-      example: 'लक्ष्य: सिस्टम में होने वाली हर छोटी-बड़ी गतिविधि पर पैनी नज़र (Monitoring) रखना।'
+      example: 'लक्ष्य: सिस्टम में होने वाली हर छोटी-बड़ी गतिविधि पर पैनी नज़र (Monitoring) रखना।',
+      deepDive: [
+        {
+          heading: 'ऑडिट ट्रेल (Strict Audit Log)',
+          content: 'सिस्टम में कुछ भी डिलीट नहीं होगा (Soft Delete)। अगर कोई पुरानी FIR में बदलाव करता है, तो पुरानी और नई लाइन का पूरा रिकॉर्ड टाइमस्टैम्प (Timestamp) के साथ सेव होगा।'
+        },
+        {
+          heading: 'सेरीलॉग और किबाना (Serilog + ELK)',
+          content: 'सर्वर में आने वाले सारे एरर (Errors) एक सेंट्रलाइज़्ड डैशबोर्ड (Kibana) पर दिखाई देंगे। जिससे डेवलपर्स पुलिस को बिना बताए समस्या हल कर सकेंगे।'
+        }
+      ]
     }
   ];
 
@@ -174,11 +264,12 @@ export default function Phase4Requirements({ onBack }) {
             <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
           </div>
           
-          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
-            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
-              {detailItem.subtitle}
+          <div style={{ background: 'white', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
+              {detailItem.subtitle} - विस्तृत जानकारी (Overview)
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
               {detailItem.items.map((bullet, idx) => {
                 const parts = bullet.split(':');
                 const hasColon = parts.length > 1;
@@ -197,12 +288,37 @@ export default function Phase4Requirements({ onBack }) {
               })}
             </div>
 
+            {/* Deep Dive Extra Details Section */}
+            {detailItem.deepDive && detailItem.deepDive.length > 0 && (
+              <div style={{ marginTop: '2.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Info size={22} color={detailItem.color} />
+                  गहराई से जानकारी (Deep Dive Details)
+                </h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                  {detailItem.deepDive.map((dive, idx) => (
+                    <div key={idx} style={{ 
+                      background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', 
+                      border: '1px solid #e2e8f0', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
+                    }}>
+                      <h5 style={{ margin: '0 0 0.75rem 0', fontSize: '1.1rem', color: detailItem.color, fontWeight: 'bold' }}>
+                        {dive.heading}
+                      </h5>
+                      <p style={{ margin: 0, color: '#475569', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                        {dive.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {detailItem.example && (
-              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+              <div style={{ marginTop: '2.5rem', padding: '1.75rem', background: '#f0fdf4', borderRadius: '1rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1.25rem', borderRadius: '50%' }}><Target size={32} color="#16a34a" /></div>
                 <div>
-                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
-                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.2rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1.1rem', fontStyle: 'italic', fontWeight: '500' }}>
                     {detailItem.example}
                   </p>
                 </div>

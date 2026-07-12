@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  ArrowLeft, Layout, MousePointerClick, Smartphone, Eye, Columns, Grid, MonitorPlay, MessageSquare, Briefcase, FileSignature, PenTool, Palette, MoveRight, Target
+  ArrowLeft, Layout, MousePointerClick, Smartphone, Eye, Columns, Grid, MonitorPlay, MessageSquare, Briefcase, FileSignature, PenTool, Palette, MoveRight, Target, Info
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
@@ -19,7 +19,17 @@ export default function Phase2Requirements({ onBack }) {
         'कलर थीम (Color Theme): सॉफ्टवेयर के रंग कैसे होंगे? (जैसे- यूपी पुलिस के लिए नीला और सफ़ेद)।',
         'टाइपोग्राफी (Typography): फॉन्ट कौन सा होगा ताकि स्क्रीन पर लिखे हुए अक्षर आसानी से पढ़े जा सकें? (हिंदी और इंग्लिश दोनों)।'
       ],
-      example: 'लक्ष्य: सॉफ्टवेयर को देखने में सुंदर और पुलिस विभाग के स्तर (Professional Look) का बनाना।'
+      example: 'लक्ष्य: सॉफ्टवेयर को देखने में सुंदर और पुलिस विभाग के स्तर (Professional Look) का बनाना।',
+      deepDive: [
+        {
+          heading: 'ब्रांडिंग और आइडेंटिटी (Branding)',
+          content: 'पुलिस विभाग के आधिकारिक लोगो (Logo) और कलर्स (जैसे खाकी, नेवी ब्लू) का इस्तेमाल करके एक प्रोफेशनल और आधिकारिक फील देना।'
+        },
+        {
+          heading: 'एक्सेसिबिलिटी (Accessibility)',
+          content: 'कलर कंट्रास्ट ऐसा रखा जाएगा कि कम रौशनी में या स्क्रीन की ब्राइटनेस कम होने पर भी सब कुछ स्पष्ट दिखाई दे (WCAG 2.1 Guidelines)।'
+        }
+      ]
     },
     {
       id: 2,
@@ -31,7 +41,17 @@ export default function Phase2Requirements({ onBack }) {
         'यूज़र जर्नी (User Journey): एक पुलिसकर्मी जब लॉगिन करेगा तो उसे पहला पेज (Dashboard) कैसा दिखेगा और वह 2 क्लिक में केस की डिटेल्स कैसे सर्च करेगा?',
         'आसानी (Simplicity): बटन्स और मेन्यू ऐसी जगह हों कि बिना किसी को पूछे समझ आ जाए कि कहाँ क्लिक करना है।'
       ],
-      example: 'लक्ष्य: सॉफ्टवेयर को इतना आसान बनाना कि कोई नया पुलिसकर्मी भी उसे बिना ट्रेनिंग के चला सके।'
+      example: 'लक्ष्य: सॉफ्टवेयर को इतना आसान बनाना कि कोई नया पुलिसकर्मी भी उसे बिना ट्रेनिंग के चला सके।',
+      deepDive: [
+        {
+          heading: 'इन्फोर्मेशन आर्किटेक्चर (Information Architecture)',
+          content: 'सॉफ्टवेयर के हर मेनू और बटन को इस तरह से व्यवस्थित किया जाएगा कि सबसे ज़रूरी चीजें (जैसे FIR सर्च या अलर्ट) सबसे ऊपर दिखाई दें।'
+        },
+        {
+          heading: 'यूज़र रिसर्च (User Feedback)',
+          content: 'डिज़ाइन फाइनल करने से पहले कुछ पुलिसकर्मियों को प्रोटोटाइप दिखाया जाएगा ताकि उनके फीडबैक के आधार पर बदलाव किये जा सकें।'
+        }
+      ]
     },
     {
       id: 3,
@@ -43,7 +63,17 @@ export default function Phase2Requirements({ onBack }) {
         'लॉगिन स्क्रीन (Login Screen): सुरक्षित लॉगिन पेज जहाँ OTP और कैप्चा (Captcha) की सुविधा हो।',
         'डैशबोर्ड (Dashboard): एक मुख्य स्क्रीन जहाँ आज की FIR, पेंडिंग केस और AI के अलर्ट्स (Alerts) एक साथ दिखें।'
       ],
-      example: 'लक्ष्य: हर स्क्रीन का एक स्पष्ट और साफ़ लेआउट (Wireframe) तैयार करना।'
+      example: 'लक्ष्य: हर स्क्रीन का एक स्पष्ट और साफ़ लेआउट (Wireframe) तैयार करना।',
+      deepDive: [
+        {
+          heading: 'वायरफ्रेमिंग (Low & High Fidelity)',
+          content: 'पहले कागज़ या बेसिक टूल पर स्केच (Wireframe) बनाया जाएगा, फिर उसे Figma जैसे टूल में असली स्क्रीन (High Fidelity) का रूप दिया जाएगा।'
+        },
+        {
+          heading: 'कंसिस्टेंसी (Consistency)',
+          content: 'चाहे थाने का पेज हो या SP ऑफिस का, सभी पेजों पर बटन्स का डिज़ाइन, टेबल का लेआउट और फॉन्ट एक समान (Consistent) रहेगा।'
+        }
+      ]
     },
     {
       id: 4,
@@ -55,7 +85,17 @@ export default function Phase2Requirements({ onBack }) {
         'रिकॉर्ड विजेट्स (Record Widgets): कितने केस दर्ज हुए, कितने हल हुए (Graphs और Charts के रूप में दिखाना)।',
         'अलर्ट विजेट्स (Alert Widgets): अगर कोई वांटेड अपराधी (Wanted Criminal) पकड़ा गया है, तो उसका लाल रंग का अलर्ट दिखना।'
       ],
-      example: 'लक्ष्य: एक ही नज़र में थाने की पूरी स्थिति (Status) का पता लगाना।'
+      example: 'लक्ष्य: एक ही नज़र में थाने की पूरी स्थिति (Status) का पता लगाना।',
+      deepDive: [
+        {
+          heading: 'ड्रैग एंड ड्राप (Customizable Widgets)',
+          content: 'अधिकारी अपनी ज़रूरत के अनुसार डैशबोर्ड के विजेट्स को माउस से ड्रैग (Drag) करके आगे-पीछे सेट कर सकेंगे।'
+        },
+        {
+          heading: 'डेटा विज़ुअलाइज़ेशन (Data Viz)',
+          content: 'डेटा को पाई चार्ट (Pie chart) या बार ग्राफ (Bar graph) में दिखाया जाएगा ताकि पिछले महीने और इस महीने के क्राइम में अंतर तुरंत समझ आ सके।'
+        }
+      ]
     },
     {
       id: 5,
@@ -67,7 +107,17 @@ export default function Phase2Requirements({ onBack }) {
         'AI चैट असिस्टेंट (AI Chat): पुलिस वालों के सवालों के जवाब देने के लिए ChatGPT जैसा एक स्मार्ट चैटबॉक्स डिज़ाइन करना।',
         'AI रिस्क ग्राफ (Risk Graph): कौन से इलाके में क्राइम बढ़ने वाला है, उसे मैप (Map) पर हीटमैप (Heatmap - लाल, पीला, हरा) से दिखाना।'
       ],
-      example: 'लक्ष्य: जटिल AI डेटा को भी इतने आसान ग्राफिक्स में दिखाना कि हर कोई उसे तुरंत समझ सके।'
+      example: 'लक्ष्य: जटिल AI डेटा को भी इतने आसान ग्राफिक्स में दिखाना कि हर कोई उसे तुरंत समझ सके।',
+      deepDive: [
+        {
+          heading: 'प्राकृतिक भाषा इंटरफ़ेस (NLP UI)',
+          content: 'सर्च बॉक्स ऐसा डिज़ाइन होगा कि आप बोलकर या टाइप करके लिख सकें- "पिछले हफ्ते की चोरी की FIR दिखाओ", और AI उसे समझ ले।'
+        },
+        {
+          heading: 'प्रेडिक्टिव अलर्ट डिज़ाइन (Predictive UI)',
+          content: 'जब AI कोई खतरा भांप लेगा, तो स्क्रीन पर एक खास तरह का ब्लिंकिंग (Blinking) कार्ड पॉपअप होगा ताकि तुरंत ध्यान जाए।'
+        }
+      ]
     }
   ];
 
@@ -107,11 +157,12 @@ export default function Phase2Requirements({ onBack }) {
             <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
           </div>
           
-          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
-            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
-              {detailItem.subtitle}
+          <div style={{ background: 'white', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
+              {detailItem.subtitle} - विस्तृत जानकारी (Overview)
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
               {detailItem.items.map((bullet, idx) => {
                 const parts = bullet.split(':');
                 const hasColon = parts.length > 1;
@@ -130,12 +181,37 @@ export default function Phase2Requirements({ onBack }) {
               })}
             </div>
 
+            {/* Deep Dive Extra Details Section */}
+            {detailItem.deepDive && detailItem.deepDive.length > 0 && (
+              <div style={{ marginTop: '2.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Info size={22} color={detailItem.color} />
+                  गहराई से जानकारी (Deep Dive Details)
+                </h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                  {detailItem.deepDive.map((dive, idx) => (
+                    <div key={idx} style={{ 
+                      background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', 
+                      border: '1px solid #e2e8f0', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
+                    }}>
+                      <h5 style={{ margin: '0 0 0.75rem 0', fontSize: '1.1rem', color: detailItem.color, fontWeight: 'bold' }}>
+                        {dive.heading}
+                      </h5>
+                      <p style={{ margin: 0, color: '#475569', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                        {dive.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {detailItem.example && (
-              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+              <div style={{ marginTop: '2.5rem', padding: '1.75rem', background: '#f0fdf4', borderRadius: '1rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1.25rem', borderRadius: '50%' }}><Target size={32} color="#16a34a" /></div>
                 <div>
-                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
-                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.2rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1.1rem', fontStyle: 'italic', fontWeight: '500' }}>
                     {detailItem.example}
                   </p>
                 </div>

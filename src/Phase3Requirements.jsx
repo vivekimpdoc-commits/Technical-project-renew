@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  ArrowLeft, Code, Layers, Box, Cpu, Database, Shield, Zap, Smartphone, MessageSquare, Briefcase, Network, FolderTree, FileSignature, CheckCircle, Target
+  ArrowLeft, Code, Layers, Box, Cpu, Database, Shield, Zap, Smartphone, MessageSquare, Briefcase, Network, FolderTree, FileSignature, CheckCircle, Target, Info
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
@@ -19,7 +19,17 @@ export default function Phase3Requirements({ onBack }) {
         'मॉडर्न फ्रेमवर्क (Frameworks): तेज़ और सुरक्षित डिज़ाइन के लिए React, Angular या Vue.js का उपयोग (React + TypeScript का सुझाव)।',
         'स्टाइलिंग (Styling): बेहतरीन और रेस्पॉन्सिव डिज़ाइन के लिए Tailwind CSS या Bootstrap का उपयोग।'
       ],
-      example: 'लक्ष्य: ऐप को दुनिया की सबसे आधुनिक और सुरक्षित तकनीक पर बनाना।'
+      example: 'लक्ष्य: ऐप को दुनिया की सबसे आधुनिक और सुरक्षित तकनीक पर बनाना।',
+      deepDive: [
+        {
+          heading: 'React + TypeScript',
+          content: 'TypeScript कोड में होने वाली गलतियों (Bugs) को पहले ही पकड़ लेता है, जिससे पुलिस का सॉफ्टवेयर लाइव होने के बाद क्रैश नहीं होता।'
+        },
+        {
+          heading: 'Tailwind CSS',
+          content: 'यह एक यूटिलिटी-फर्स्ट (Utility-first) फ्रेमवर्क है जो वेबसाइट को बहुत तेज़ी से लोड होने में मदद करता है और डिज़ाइन को एकदम मॉडर्न रखता है।'
+        }
+      ]
     },
     {
       id: 2,
@@ -31,7 +41,17 @@ export default function Phase3Requirements({ onBack }) {
         'ऑथेंटिकेशन (Authentication): लॉगिन (Login), लॉगआउट, पासवर्ड रीसेट और सेशन का सुरक्षित मैनेजमेंट।',
         'डैशबोर्ड (Dashboard): एक मुख्य स्क्रीन जहाँ ग्राफिक्स (KPI Cards, Charts) के साथ पूरा सारांश (Summary) दिखाई दे।'
       ],
-      example: 'लक्ष्य: यूज़र को सभी ज़रूरी टूल्स और डेटा एक ही जगह पर आसानी से उपलब्ध करवाना।'
+      example: 'लक्ष्य: यूज़र को सभी ज़रूरी टूल्स और डेटा एक ही जगह पर आसानी से उपलब्ध करवाना।',
+      deepDive: [
+        {
+          heading: 'डायनामिक डैशबोर्ड (Dynamic)',
+          content: 'SP के लॉगिन करने पर पूरे जिले का डेटा दिखेगा, जबकि SHO के लॉगिन करने पर केवल उनके थाने का डेटा दिखेगा।'
+        },
+        {
+          heading: 'मॉड्यूलर एप्रोच (Modular)',
+          content: 'हर फीचर (जैसे FIR, क्रिमिनल रिकॉर्ड, रिपोर्टिंग) का एक अलग मॉड्यूल होगा ताकि भविष्य में नया फीचर आसानी से जोड़ा जा सके।'
+        }
+      ]
     },
     {
       id: 3,
@@ -43,7 +63,17 @@ export default function Phase3Requirements({ onBack }) {
         'कॉमन डिज़ाइन (Components): पूरे ऐप में एक जैसे बटन्स (Buttons), फॉर्म्स (Forms), और टेबल्स (Tables) का इस्तेमाल।',
         'पॉपअप्स (Modals): ज़रूरी सूचना देने या कोई फॉर्म भरवाने के लिए स्क्रीन के ऊपर खुलने वाले पॉपअप (Popups)।'
       ],
-      example: 'लक्ष्य: पूरे सॉफ्टवेयर में एकरूपता (Consistency) बनाए रखना ताकि पुलिस वाले कंफ्यूज़ न हों।'
+      example: 'लक्ष्य: पूरे सॉफ्टवेयर में एकरूपता (Consistency) बनाए रखना ताकि पुलिस वाले कंफ्यूज़ न हों।',
+      deepDive: [
+        {
+          heading: 'कॉम्पोनेन्ट लाइब्रेरी (Library)',
+          content: 'Material-UI या Ant Design जैसी रेडीमेड लाइब्रेरी का इस्तेमाल करके बटन्स और टेबल्स को जल्दी और परफेक्ट बनाया जाएगा।'
+        },
+        {
+          heading: 'रीयूज़ेबल कोड (Reusable)',
+          content: 'एक ही डिज़ाइन कोड को बार-बार इस्तेमाल किया जाएगा, जिससे ऐप का साइज छोटा रहेगा और वह तेज़ चलेगा।'
+        }
+      ]
     },
     {
       id: 4,
@@ -55,7 +85,17 @@ export default function Phase3Requirements({ onBack }) {
         'डेटा मैनेजमेंट (State Mgmt): एक पेज का डेटा (जैसे यूज़र का नाम) बिना दोबारा लोड किए दूसरे पेज पर दिखाना (Redux या Zustand का उपयोग)।',
         'लोकल स्टोरेज (Local Storage): इंटरनेट जाने पर भी फॉर्म में भरा हुआ थोड़ा-बहुत डेटा सेव (Save) रखना।'
       ],
-      example: 'लक्ष्य: पेज बार-बार लोड होने के बजाय एक बार में ही तेज़ी से काम करे (Single Page Application)।'
+      example: 'लक्ष्य: पेज बार-बार लोड होने के बजाय एक बार में ही तेज़ी से काम करे (Single Page Application)।',
+      deepDive: [
+        {
+          heading: 'Redux Toolkit',
+          content: 'जब पुलिसकर्मी एक क्रिमिनल का रिकॉर्ड सर्च करेगा, तो वह डेटा Redux में सेव हो जाएगा ताकि बैक करने पर दोबारा लोडिंग न हो।'
+        },
+        {
+          heading: 'रियल-टाइम अपडेट (Real-time)',
+          content: 'अगर कोई नया अलर्ट आता है, तो बिना पेज रिफ्रेश किये वह स्टेट मैनेजमेंट के ज़रिये लाल रंग में ब्लिंक करने लगेगा।'
+        }
+      ]
     },
     {
       id: 5,
@@ -67,7 +107,17 @@ export default function Phase3Requirements({ onBack }) {
         'राउट गार्ड्स (Route Guards): कोई भी बिना लॉगिन किए किसी सुरक्षित पेज का URL डालकर उसे खोल न पाए।',
         'सेशन टाइमआउट (Session Timeout): अगर पुलिसकर्मी लॉगिन करके कंप्यूटर छोड़ दे, तो 15 मिनट बाद सॉफ्टवेयर अपने आप लॉगआउट (Logout) हो जाए।'
       ],
-      example: 'लक्ष्य: फ्रंटएंड से होने वाली किसी भी गड़बड़ी या डेटा चोरी को पूरी तरह रोकना।'
+      example: 'लक्ष्य: फ्रंटएंड से होने वाली किसी भी गड़बड़ी या डेटा चोरी को पूरी तरह रोकना।',
+      deepDive: [
+        {
+          heading: 'XSS प्रोटेक्शन (XSS)',
+          content: 'अगर कोई हैकर सर्च बॉक्स में वायरस कोड (Script) डालकर सिस्टम को हैक करने की कोशिश करेगा, तो React उसे खुद ब्लॉक कर देगा।'
+        },
+        {
+          heading: 'JWT टोकन (Tokens)',
+          content: 'लॉगिन होने पर एक सिक्यूरिटी चाबी (Token) मिलेगी। हर बार नया पेज खोलने पर वह चाबी चेक होगी, और बिना चाबी के एक्सेस नहीं मिलेगा।'
+        }
+      ]
     },
     {
       id: 6,
@@ -79,7 +129,17 @@ export default function Phase3Requirements({ onBack }) {
         'लेज़ी लोडिंग (Lazy Loading): सॉफ्टवेयर में सिर्फ वही पेज लोड (Load) हो जिसे यूज़र ने क्लिक किया है, ताकि स्पीड तेज़ रहे।',
         'कैशिंग (Caching): बार-बार सर्च होने वाले रिकॉर्ड्स को सेव रखना ताकि वे अगले क्लिक पर 1 सेकंड में खुल जाएँ।'
       ],
-      example: 'लक्ष्य: धीमी इंटरनेट स्पीड (2G/3G) में भी सॉफ्टवेयर बिना रुके तेज़ी से खुले।'
+      example: 'लक्ष्य: धीमी इंटरनेट स्पीड (2G/3G) में भी सॉफ्टवेयर बिना रुके तेज़ी से खुले।',
+      deepDive: [
+        {
+          heading: 'कोड स्प्लिटिंग (Code Splitting)',
+          content: 'पूरे ऐप का एक भारी कोड (Bundle) बनाने की बजाय उसे छोटे-छोटे हिस्सों में बांटा जाएगा ताकि पहली बार ऐप बहुत तेज़ी से खुले।'
+        },
+        {
+          heading: 'इमेज ऑप्टिमाइजेशन (Images)',
+          content: 'क्रिमिनल की बड़ी तस्वीरों को फ्रंटएंड पर अपने आप छोटा और कम्प्रेस (Compress) कर दिया जाएगा ताकि डेटा कम खर्च हो।'
+        }
+      ]
     },
     {
       id: 7,
@@ -91,7 +151,17 @@ export default function Phase3Requirements({ onBack }) {
         'स्क्रीन एडजस्टमेंट (Responsive): सॉफ्टवेयर को इस तरह बनाना कि वह कंप्यूटर (Desktop), टैबलेट (Tablet) और मोबाइल (Mobile) पर अपने आप फिट हो जाए।',
         'PWA सपोर्ट (PWA): वेबसाइट को मोबाइल ऐप की तरह फोन में इनस्टॉल (Install) करने की सुविधा देना।'
       ],
-      example: 'लक्ष्य: फील्ड में गश्त कर रहा सिपाही भी अपने फोन से आसानी से रिपोर्ट दर्ज कर सके।'
+      example: 'लक्ष्य: फील्ड में गश्त कर रहा सिपाही भी अपने फोन से आसानी से रिपोर्ट दर्ज कर सके।',
+      deepDive: [
+        {
+          heading: 'मोबाइल-फर्स्ट डिज़ाइन (Mobile-first)',
+          content: 'डिज़ाइन बनाते समय सबसे पहले मोबाइल स्क्रीन का ध्यान रखा जाएगा क्योंकि फील्ड के 70% सिपाही मोबाइल का ही इस्तेमाल करेंगे।'
+        },
+        {
+          heading: 'ऑफ़लाइन PWA (Progressive Web App)',
+          content: 'PWA तकनीक से इसे प्ले-स्टोर (Play Store) पर जाए बिना ही किसी भी पुलिसकर्मी के फ़ोन की होम-स्क्रीन पर ऐप (Icon) की तरह लगाया जा सकता है।'
+        }
+      ]
     },
     {
       id: 8,
@@ -103,7 +173,17 @@ export default function Phase3Requirements({ onBack }) {
         'चैट इंटरफ़ेस (AI Chat): ChatGPT जैसा एक इंटरएक्टिव चैट बॉक्स जहाँ पुलिस बोलकर (Voice Input) या टाइप करके सवाल पूछ सके।',
         'इंटरेक्टिव चार्ट्स (Interactive Charts): AI द्वारा बताए गए रिस्क और भविष्यवाणियों (Predictions) को डायनामिक ग्राफ्स में दिखाना।'
       ],
-      example: 'लक्ष्य: AI की जटिल बातों को आम बोलचाल और आसान ग्राफिक्स में यूज़र तक पहुँचाना।'
+      example: 'लक्ष्य: AI की जटिल बातों को आम बोलचाल और आसान ग्राफिक्स में यूज़र तक पहुँचाना।',
+      deepDive: [
+        {
+          heading: 'AI टाइपिंग सजेस्टन्स (Suggestions)',
+          content: 'FIR लिखते समय AI अपने आप सुझाव देगा (जैसे Google Smart Compose) कि आगे क्या लिखना है, जिससे टाइपिंग में समय बचेगा।'
+        },
+        {
+          heading: 'रीडिंग असिस्टेंट (Reading AI)',
+          content: '20 पेज की लम्बी चार्जशीट (Chargesheet) को AI पढ़कर स्क्रीन के साइड में उसका 5 लाइन का सारांश (Summary) दिखा देगा।'
+        }
+      ]
     },
     {
       id: 9,
@@ -115,7 +195,17 @@ export default function Phase3Requirements({ onBack }) {
         'क्राइम डैशबोर्ड (Crime Dashboard): पूरे जिले का क्राइम ग्राफ और अलर्ट्स एक स्क्रीन पर।',
         'इन्वेस्टिगेशन मॉड्यूल (Investigation): केस डायरी, सबूत (Evidence) और टाइमलाइन दर्ज करने का आसान फॉर्म।'
       ],
-      example: 'लक्ष्य: पुलिस के रोज़मर्रा के कागज़ी काम (Paperwork) को डिजिटल और आसान बनाना।'
+      example: 'लक्ष्य: पुलिस के रोज़मर्रा के कागज़ी काम (Paperwork) को डिजिटल और आसान बनाना।',
+      deepDive: [
+        {
+          heading: 'क्राइम मैपिंग (Heatmaps)',
+          content: 'जिले के नक़्शे (Map) पर लाल, पीले और हरे रंग के बिंदु (Dots) दिखाए जाएंगे कि कहाँ किस तरह का अपराध ज्यादा होता है।'
+        },
+        {
+          heading: 'डिजिटल केस डायरी (Digital CD)',
+          content: 'सिपाही एक फॉर्म भरकर केस डायरी अपडेट करेगा, जो एकदम साफ़ PDF में बदल जाएगी, जिसे कोर्ट में भी पेश किया जा सकेगा।'
+        }
+      ]
     }
   ];
 
@@ -158,11 +248,12 @@ export default function Phase3Requirements({ onBack }) {
             <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
           </div>
           
-          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
-            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
-              {detailItem.subtitle}
+          <div style={{ background: 'white', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
+              {detailItem.subtitle} - विस्तृत जानकारी (Overview)
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
               {detailItem.items.map((bullet, idx) => {
                 const parts = bullet.split(':');
                 const hasColon = parts.length > 1;
@@ -181,12 +272,37 @@ export default function Phase3Requirements({ onBack }) {
               })}
             </div>
 
+            {/* Deep Dive Extra Details Section */}
+            {detailItem.deepDive && detailItem.deepDive.length > 0 && (
+              <div style={{ marginTop: '2.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Info size={22} color={detailItem.color} />
+                  गहराई से जानकारी (Deep Dive Details)
+                </h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                  {detailItem.deepDive.map((dive, idx) => (
+                    <div key={idx} style={{ 
+                      background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', 
+                      border: '1px solid #e2e8f0', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
+                    }}>
+                      <h5 style={{ margin: '0 0 0.75rem 0', fontSize: '1.1rem', color: detailItem.color, fontWeight: 'bold' }}>
+                        {dive.heading}
+                      </h5>
+                      <p style={{ margin: 0, color: '#475569', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                        {dive.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {detailItem.example && (
-              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+              <div style={{ marginTop: '2.5rem', padding: '1.75rem', background: '#f0fdf4', borderRadius: '1rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1.25rem', borderRadius: '50%' }}><Target size={32} color="#16a34a" /></div>
                 <div>
-                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
-                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.2rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1.1rem', fontStyle: 'italic', fontWeight: '500' }}>
                     {detailItem.example}
                   </p>
                 </div>
