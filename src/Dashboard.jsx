@@ -137,9 +137,9 @@ export default function Dashboard() {
     <div className="app-container">
       <header className="app-header" style={{
         position: 'relative',
-        background: 'linear-gradient(135deg, #0f172a, #1e3a8a)',
-        borderBottom: '4px solid #3b82f6',
-        padding: '3.5rem 2.5rem',
+        background: 'linear-gradient(135deg, #0a1931, #15305b)',
+        borderBottom: '4px solid #b91c1c',
+        padding: '2rem 2.5rem',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -167,7 +167,8 @@ export default function Dashboard() {
             borderRadius: '0.85rem',
             boxShadow: '0 4px 12px rgba(245, 158, 11, 0.4)',
             border: '1px solid rgba(255, 255, 255, 0.25)',
-            transform: 'scale(1.05)'
+            transform: 'scale(1.05)',
+            flexShrink: 0
           }}>
             <Shield size={24} fill="white" color="white" />
             <span style={{ fontSize: '1.35rem', fontWeight: '900', color: 'white', letterSpacing: '0.05em' }}>K.A.V.A.C.H. AI</span>
@@ -177,7 +178,7 @@ export default function Dashboard() {
             <span style={{ fontWeight: '800', fontSize: '1.85rem', opacity: 1 }}>Knowledge, Automation, Vision, & Analytics for Command Hub</span>
           </h1>
         </div>
-        <p className="header-subtitle" style={{ margin: '1.25rem 0 0 0', color: '#94a3b8', fontSize: '1rem', fontWeight: '600', letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
+        <p className="header-subtitle" style={{ margin: '1.25rem 0 0 0', color: '#94a3b8', fontSize: '1rem', fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
           UP Police Advanced AI & Security Operations Command
         </p>
 
@@ -243,13 +244,13 @@ export default function Dashboard() {
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'rgba(255,255,255,0.1)',
+            background: 'rgba(255,255,255,0.08)',
             color: 'white',
             textDecoration: 'none',
             padding: '0.6rem 1.25rem',
             borderRadius: '2rem',
             fontSize: '0.9rem',
-            fontWeight: '600',
+            fontWeight: '700',
             backdropFilter: 'blur(4px)',
             border: '1px solid rgba(255,255,255,0.2)',
             transition: 'all 0.2s',

@@ -569,3 +569,19 @@ body {
   border: none !important;
   box-shadow: none !important;
 }
+
+/* Responsive Header Controls */
+@media (max-width: 1024px) {
+  .app-header {
+    padding: 1.5rem !important;
+    min-height: auto !important;
+    align-items: center !important;
+  }
+  
+  .header-controls {
+    position: static !important;
+    margin-top: 1.5rem !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
