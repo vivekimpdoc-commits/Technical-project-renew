@@ -146,7 +146,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
 
   return (
     <div className="thane-dashboard-container" style={{ padding: '0.25rem', background: 'transparent', width: '100%', maxWidth: '100%' }}>
-      <div style={{ display: 'none', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
         <button
           onClick={onBack}
           style={{

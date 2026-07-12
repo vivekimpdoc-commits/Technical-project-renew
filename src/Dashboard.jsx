@@ -6,7 +6,8 @@ import {
   UserCheck, LineChart, BrainCircuit, Clock4,
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
-  History, Command, BookOpen, Activity, Layout, GraduationCap, Presentation
+  History, Command, BookOpen, Activity, Layout, GraduationCap, Presentation,
+  Code, Briefcase, GitBranch, Network
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
@@ -32,6 +33,7 @@ import SettingsPage from './pages/Settings';
 import AuditLogs from './pages/AuditLogs';
 import AICommandCenter from './pages/AICommandCenter';
 import ProjectPPTDashboard from './ProjectPPTDashboard';
+import SoftwareMasterclassDashboard from './SoftwareMasterclassDashboard';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('step-up');
@@ -56,7 +58,8 @@ export default function Dashboard() {
     { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit },
     { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield },
     { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 },
-    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation }
+    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation },
+    { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code }
   ];
 
   return (
@@ -139,6 +142,7 @@ export default function Dashboard() {
           {activeTab === 'thane-level' && <ThaneLevelDashboard projects={projects} />}
           {activeTab === 'district-level' && <DistrictLevelDashboard />}
           {activeTab === 'project-ppt' && <ProjectPPTDashboard />}
+          {activeTab === 'masterclass' && <SoftwareMasterclassDashboard />}
         </main>
       </div>
 
