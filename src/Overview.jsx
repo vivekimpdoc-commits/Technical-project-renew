@@ -109,10 +109,10 @@ export default function Overview({ onNavigate }) {
           <ShieldCheck size={40} />
         </div>
         <h2 className="thane-title" style={{ fontSize: '2.5rem', fontWeight: '800', background: 'linear-gradient(to right, #1e3a8a, #3b82f6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-          Central Navigation & Project Overview
+          Home & Central Command Portal (मुख्य पोर्टल)
         </h2>
         <p className="thane-subtitle" style={{ fontSize: '1.15rem', marginTop: '0.5rem' }}>
-          मुख्य अवलोकन: उत्तर प्रदेश पुलिस एआई प्रोजेक्ट के सभी स्तंभों का सारांश
+          उत्तर प्रदेश पुलिस एआई प्रोजेक्ट के सभी मुख्य स्तंभों का पोर्टल गेटवे
         </p>
       </div>
 

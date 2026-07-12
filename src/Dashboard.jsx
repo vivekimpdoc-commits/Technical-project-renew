@@ -6,7 +6,7 @@ import {
   UserCheck, LineChart, BrainCircuit, Clock4,
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
-  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown
+  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
@@ -52,7 +52,7 @@ export default function Dashboard() {
     Operations: false,
     Administrative: false
   });
-  
+
   const toggleSection = (sec) => {
     setExpandedSections(prev => ({ ...prev, [sec]: !prev[sec] }));
   };
@@ -89,7 +89,7 @@ export default function Dashboard() {
   }, [activeTab]);
 
   const navItems = [
-    { id: 'overview', label: 'Overview (अवलोकन)', icon: Info, color: '#3b82f6', category: 'General' },
+    { id: 'overview', label: 'Home (मुख्य पृष्ठ)', icon: Home, color: '#3b82f6', category: 'General' },
     { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen, color: '#64748b', category: 'Education' },
     { id: 'ai-course', label: 'Artificial Intelligence (AI) Course (आर्टिफिशियल इंटेलिजेंस (AI) कोर्स)', icon: GraduationCap, color: '#3b82f6', category: 'Education' },
     { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code, color: '#0ea5e9', category: 'Education' },
@@ -103,38 +103,71 @@ export default function Dashboard() {
 
   return (
     <div className="app-container">
-      {/* Header */}
-      <header className="app-header" style={{ position: 'relative' }}>
-        <div className="header-title-container">
+      <header className="app-header" style={{
+        position: 'relative',
+        background: 'linear-gradient(135deg, #0f172a, #1e3a8a)',
+        borderBottom: '4px solid #3b82f6',
+        padding: '3.5rem 2.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.3)',
+        color: 'white',
+        minHeight: '180px'
+      }}>
+        <div className="header-title-container" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           <button
             className="mobile-menu-toggle"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            style={{ border: 'none', background: 'none', color: 'white', cursor: 'pointer' }}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-          <Shield className="header-icon" size={32} />
-          <h1 className="header-title">UP Police AI Investigation <span>(Command Center)</span></h1>
+
+          {/* Emblem Badge for K.A.V.A.C.H. */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+            padding: '0.6rem 1.35rem',
+            borderRadius: '0.85rem',
+            boxShadow: '0 4px 12px rgba(245, 158, 11, 0.4)',
+            border: '1px solid rgba(255, 255, 255, 0.25)',
+            transform: 'scale(1.05)'
+          }}>
+            <Shield size={24} fill="white" color="white" />
+            <span style={{ fontSize: '1.35rem', fontWeight: '900', color: 'white', letterSpacing: '0.05em' }}>K.A.V.A.C.H. AI</span>
+          </div>
+
+          <h1 className="header-title" style={{ fontSize: '1.85rem', fontWeight: '800', margin: 0, letterSpacing: '0.03em', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+            <span style={{ fontWeight: '800', fontSize: '1.85rem', opacity: 1 }}>Knowledge, Automation, Vision, & Analytics for Command Hub</span>
+          </h1>
         </div>
-        <p className="header-subtitle">Advanced Analytics & Investigative Intelligence Platform | Innovation - Integration - Implementation</p>
+        <p className="header-subtitle" style={{ margin: '1.25rem 0 0 0', color: '#94a3b8', fontSize: '1rem', fontWeight: '600', letterSpacing: '0.05em', textTransform: 'uppercase', textAlign: 'center' }}>
+          UP Police Advanced AI & Security Operations Command
+        </p>
 
         {/* Logout Button */}
         <Link to="/" style={{
           position: 'absolute',
-          top: '1.25rem',
-          right: '1.5rem',
+          top: '2rem',
+          right: '2.5rem',
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
           background: 'rgba(255,255,255,0.1)',
           color: 'white',
           textDecoration: 'none',
-          padding: '0.5rem 1rem',
+          padding: '0.6rem 1.25rem',
           borderRadius: '2rem',
-          fontSize: '0.85rem',
+          fontSize: '0.9rem',
           fontWeight: '600',
           backdropFilter: 'blur(4px)',
           border: '1px solid rgba(255,255,255,0.2)',
-          transition: 'all 0.2s'
+          transition: 'all 0.2s',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
         }}
           onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
@@ -154,7 +187,7 @@ export default function Dashboard() {
 
         {/* Sidebar */}
         <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`} style={{ overflowY: 'auto', padding: '1.5rem 0.75rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-          
+
           {/* General Tab */}
           {navItems.filter(i => i.category === 'General').map((item) => (
             <div
@@ -199,8 +232,8 @@ export default function Dashboard() {
               }}>
                 <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
               </div>
-              <span style={{ 
-                fontWeight: activeTab === item.id ? '700' : '500', 
+              <span style={{
+                fontWeight: activeTab === item.id ? '700' : '500',
                 color: activeTab === item.id ? item.color : '#475569',
                 fontSize: '0.95rem',
                 transition: 'color 0.3s ease'
@@ -215,25 +248,35 @@ export default function Dashboard() {
             <div 
               onClick={() => toggleSection('Education')}
               style={{ 
-                fontSize: '0.75rem', 
+                fontSize: '0.8rem', 
                 fontWeight: '800', 
                 color: '#2563eb', 
                 background: '#2563eb10', 
-                padding: '0.4rem 0.75rem', 
+                padding: '0.75rem 1rem', 
                 borderRadius: '0.5rem',
-                marginBottom: '0.5rem',
-                textTransform: 'uppercase', 
-                letterSpacing: '0.05em',
+                borderLeft: '4px solid #2563eb',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
-                userSelect: 'none'
+                userSelect: 'none',
+                boxShadow: '0 2px 4px rgba(37, 99, 235, 0.05)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#2563eb15';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#2563eb10';
+                e.currentTarget.style.transform = 'none';
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2563eb' }}></span>
-                Education & IT Capacity
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ background: '#2563eb20', padding: '0.4rem', borderRadius: '0.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2563eb' }}>
+                  <GraduationCap size={16} />
+                </div>
+                <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em' }}>Education & IT Capacity</span>
               </div>
               <ChevronDown size={14} style={{ transform: expandedSections.Education ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#2563eb' }} />
             </div>
@@ -280,8 +323,8 @@ export default function Dashboard() {
                 }}>
                   <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
                 </div>
-                <span style={{ 
-                  fontWeight: activeTab === item.id ? '700' : '500', 
+                <span style={{
+                  fontWeight: activeTab === item.id ? '700' : '500',
                   color: activeTab === item.id ? item.color : '#475569',
                   fontSize: '0.95rem',
                   transition: 'color 0.3s ease'
@@ -297,25 +340,35 @@ export default function Dashboard() {
             <div 
               onClick={() => toggleSection('Operations')}
               style={{ 
-                fontSize: '0.75rem', 
+                fontSize: '0.8rem', 
                 fontWeight: '800', 
                 color: '#0d9488', 
                 background: '#0d948810', 
-                padding: '0.4rem 0.75rem', 
+                padding: '0.75rem 1rem', 
                 borderRadius: '0.5rem',
-                marginBottom: '0.5rem',
-                textTransform: 'uppercase', 
-                letterSpacing: '0.05em',
+                borderLeft: '4px solid #0d9488',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
-                userSelect: 'none'
+                userSelect: 'none',
+                boxShadow: '0 2px 4px rgba(13, 148, 136, 0.05)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#0d948815';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#0d948810';
+                e.currentTarget.style.transform = 'none';
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#0d9488' }}></span>
-                AI & Operations Command
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ background: '#0d948820', padding: '0.4rem', borderRadius: '0.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0d9488' }}>
+                  <BrainCircuit size={16} />
+                </div>
+                <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em' }}>AI & Operations Command</span>
               </div>
               <ChevronDown size={14} style={{ transform: expandedSections.Operations ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#0d9488' }} />
             </div>
@@ -362,8 +415,8 @@ export default function Dashboard() {
                 }}>
                   <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
                 </div>
-                <span style={{ 
-                  fontWeight: activeTab === item.id ? '700' : '500', 
+                <span style={{
+                  fontWeight: activeTab === item.id ? '700' : '500',
                   color: activeTab === item.id ? item.color : '#475569',
                   fontSize: '0.95rem',
                   transition: 'color 0.3s ease'
@@ -379,25 +432,35 @@ export default function Dashboard() {
             <div 
               onClick={() => toggleSection('Administrative')}
               style={{ 
-                fontSize: '0.75rem', 
+                fontSize: '0.8rem', 
                 fontWeight: '800', 
                 color: '#dc2626', 
                 background: '#dc262610', 
-                padding: '0.4rem 0.75rem', 
+                padding: '0.75rem 1rem', 
                 borderRadius: '0.5rem',
-                marginBottom: '0.5rem',
-                textTransform: 'uppercase', 
-                letterSpacing: '0.05em',
+                borderLeft: '4px solid #dc2626',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
-                userSelect: 'none'
+                userSelect: 'none',
+                boxShadow: '0 2px 4px rgba(220, 38, 38, 0.05)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#dc262615';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#dc262610';
+                e.currentTarget.style.transform = 'none';
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#dc2626' }}></span>
-                Administrative & Field Levels
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ background: '#dc262620', padding: '0.4rem', borderRadius: '0.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#dc2626' }}>
+                  <Building2 size={16} />
+                </div>
+                <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em' }}>Administrative & Field Levels</span>
               </div>
               <ChevronDown size={14} style={{ transform: expandedSections.Administrative ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#dc2626' }} />
             </div>
@@ -444,8 +507,8 @@ export default function Dashboard() {
                 }}>
                   <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
                 </div>
-                <span style={{ 
-                  fontWeight: activeTab === item.id ? '700' : '500', 
+                <span style={{
+                  fontWeight: activeTab === item.id ? '700' : '500',
                   color: activeTab === item.id ? item.color : '#475569',
                   fontSize: '0.95rem',
                   transition: 'color 0.3s ease'
