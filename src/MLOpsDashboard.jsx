@@ -9,8 +9,20 @@ import ModelDeployment from './ModelDeployment';
 import MonitoringDriftAnalysis from './MonitoringDriftAnalysis';
 import LLMOps from './LLMOps';
 
-export default function MLOpsDashboard() {
+export default function MLOpsDashboard({ resetTrigger }) {
   const [selectedTopic, setSelectedTopic] = useState(null);
+
+  React.useEffect(() => {
+    setSelectedTopic(null);
+  }, [resetTrigger]);
+
+  React.useEffect(() => {
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+  }, [selectedTopic]);
 
   const topics = [
     { num: 1, id: 'data-pipeline', title: 'Data Pipeline & Processing (डेटा पाइपलाइन)', desc: 'ETL, Data Versioning, Feature Engineering, Data Quality', icon: Database, color: '#0ea5e9' },

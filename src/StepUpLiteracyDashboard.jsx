@@ -18,11 +18,29 @@ import DevSecOps from './DevSecOps';
 import MonitoringAnalytics from './MonitoringAnalytics';
 import AIInSoftwareEngineering from './AIInSoftwareEngineering';
 
-export default function StepUpLiteracyDashboard() {
+export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTrigger }) {
   const [selectedPhase, setSelectedPhase] = useState(null);
-  const [activeTab, setActiveTab] = useState('phases');
+  const [activeTab, setActiveTab] = useState(defaultTab);
   const [selectedSdlcItem, setSelectedSdlcItem] = useState(null);
   const [selectedAdvancedItem, setSelectedAdvancedItem] = useState(null);
+
+  React.useEffect(() => {
+    setSelectedPhase(null);
+    setSelectedSdlcItem(null);
+    setSelectedAdvancedItem(null);
+  }, [resetTrigger]);
+
+  React.useEffect(() => {
+    setActiveTab(defaultTab);
+  }, [defaultTab]);
+
+  React.useEffect(() => {
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+  }, [selectedPhase, selectedSdlcItem, selectedAdvancedItem, activeTab]);
 
   // We don't need a station dropdown, but we'll keep the layout similar
   const phases = [

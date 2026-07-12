@@ -7,9 +7,21 @@ import DistrictResourceDashboard from './DistrictResourceDashboard';
 import DistrictAssetDashboard from './DistrictAssetDashboard';
 import DistrictSecurityDashboard from './DistrictSecurityDashboard';
 
-export default function DistrictLevelDashboard() {
+export default function DistrictLevelDashboard({ resetTrigger }) {
   const [selectedStation, setSelectedStation] = useState('All Zones');
   const [selectedProject, setSelectedProject] = useState(null);
+
+  React.useEffect(() => {
+    setSelectedProject(null);
+  }, [resetTrigger]);
+
+  React.useEffect(() => {
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+  }, [selectedStation, selectedProject]);
 
   const displayProjects = [
     { id: 101, name: 'डिस्ट्रिक्ट-लेवल इंटीग्रेटेड कमांड सेंटर (D-LICC)', status: 'Active', date: '2026-07-08' },

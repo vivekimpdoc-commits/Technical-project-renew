@@ -3,9 +3,21 @@ import { Folder, ChevronDown, Clock, Mic, Activity, BookOpen, Package, Box, Cale
 import './ThaneLevelDashboard.css';
 import ProjectDetailsView from './ProjectDetailsView';
 
-export default function ThaneLevelDashboard({ projects = [] }) {
+export default function ThaneLevelDashboard({ projects = [], resetTrigger }) {
   const [selectedStation, setSelectedStation] = useState('All Stations');
   const [selectedProject, setSelectedProject] = useState(null);
+
+  React.useEffect(() => {
+    setSelectedProject(null);
+  }, [resetTrigger]);
+
+  React.useEffect(() => {
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+  }, [selectedStation, selectedProject]);
 
   // Dummy projects if none passed
   const displayProjects = projects.length > 0 ? projects : [

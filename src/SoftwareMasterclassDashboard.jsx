@@ -9,8 +9,20 @@ import OpenSourceGit from './OpenSourceGit';
 import SystemDesign from './SystemDesign';
 import InterviewPrepDSA from './InterviewPrepDSA';
 
-export default function SoftwareMasterclassDashboard() {
+export default function SoftwareMasterclassDashboard({ resetTrigger }) {
   const [selectedTopic, setSelectedTopic] = useState(null);
+
+  React.useEffect(() => {
+    setSelectedTopic(null);
+  }, [resetTrigger]);
+
+  React.useEffect(() => {
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+  }, [selectedTopic]);
 
   const topics = [
     { num: 1, id: 'modern-tech', title: 'Modern Tech Stack (आधुनिक टेक्नोलॉजी)', desc: 'React, Node.js, SQL/NoSQL, Docker, AWS', icon: Code, color: '#3b82f6' },
