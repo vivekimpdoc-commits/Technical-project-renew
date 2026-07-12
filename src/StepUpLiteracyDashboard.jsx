@@ -90,7 +90,7 @@ export default function StepUpLiteracyDashboard() {
     <div className="thane-dashboard-container">
       <div className="thane-header">
         <h2 className="thane-title">Step Up Literacy Software</h2>
-        <p className="thane-subtitle">Phases of AI Project Lifecycle (एआई प्रोजेक्ट लाइफ साइकिल के मुख्य चरण)</p>
+        <p className="thane-subtitle">Initial steps in software development(सॉफ्टवेयर डेवलपमेंट के शुरुआती चरण)</p>
       </div>
 
       <div className="thane-menu-bar">
@@ -99,7 +99,7 @@ export default function StepUpLiteracyDashboard() {
             className={`thane-tab ${activeTab === 'phases' ? 'active-blue' : ''}`}
             onClick={() => setActiveTab('phases')}
           >
-            Lifecycle Phases (लाइफसाइकिल के चरण)
+            Initial steps in software development(सॉफ्टवेयर डेवलपमेंट के शुरुआती चरण)
           </button>
           <button
             className={`thane-tab ${activeTab === 'sdlc' ? 'active-green' : ''}`}

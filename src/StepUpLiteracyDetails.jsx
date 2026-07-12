@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   ArrowLeft, LayoutDashboard, FileText, Code, ListOrdered, BookOpen, CheckSquare, Settings, Target, Shield, Database, Layout, CheckCircle, Network, Server, Briefcase, Activity, Monitor, BrainCircuit, Search, Zap, AlertTriangle, Layers, TrendingUp, Users, Cpu
 } from 'lucide-react';
 import './ProjectDetailsView.css';
@@ -113,7 +113,7 @@ export default function StepUpLiteracyDetails() {
           </div>
           <div style={{ padding: 0 }}>
             {(() => {
-              switch(sec.id) {
+              switch (sec.id) {
                 case 'io-assistance': return (
                   <div style={{ background: '#ffffff', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
@@ -126,21 +126,21 @@ export default function StepUpLiteracyDetails() {
                 case 'objectives': return (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
                     <div className="tech-category-card" style={{ borderTop: '4px solid #3b82f6' }}>
-                      <h5 style={{ margin: '0 0 1rem 0' }}><Layers size={20}/> Structured Approach</h5>
+                      <h5 style={{ margin: '0 0 1rem 0' }}><Layers size={20} /> Structured Approach</h5>
                       <span className="workflow-point">AI डेवलपमेंट को एक व्यवस्थित और पारदर्शी प्रक्रिया बनाना।</span>
                     </div>
                     <div className="tech-category-card" style={{ borderTop: '4px solid #10b981' }}>
-                      <h5 style={{ margin: '0 0 1rem 0' }}><TrendingUp size={20}/> Scalability & Accuracy</h5>
+                      <h5 style={{ margin: '0 0 1rem 0' }}><TrendingUp size={20} /> Scalability & Accuracy</h5>
                       <span className="workflow-point">भविष्य में मॉडल को सुधारने और अपग्रेड करने का रास्ता साफ रखना।</span>
                     </div>
                   </div>
                 );
                 case 'features': return (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
-                    <div className="tech-category-card"><Search size={22} color="#475569"/> <h5>Scoping</h5><p>समस्या की जड़ तक जाना</p></div>
-                    <div className="tech-category-card"><Database size={22} color="#475569"/> <h5>Data Prep</h5><p>डेटा की सफाई</p></div>
-                    <div className="tech-category-card"><BrainCircuit size={22} color="#475569"/> <h5>Modeling</h5><p>मशीन लर्निंग ट्रेनिंग</p></div>
-                    <div className="tech-category-card"><Server size={22} color="#475569"/> <h5>Deployment</h5><p>सर्वर पर लाइव करना</p></div>
+                    <div className="tech-category-card"><Search size={22} color="#475569" /> <h5>Scoping</h5><p>समस्या की जड़ तक जाना</p></div>
+                    <div className="tech-category-card"><Database size={22} color="#475569" /> <h5>Data Prep</h5><p>डेटा की सफाई</p></div>
+                    <div className="tech-category-card"><BrainCircuit size={22} color="#475569" /> <h5>Modeling</h5><p>मशीन लर्निंग ट्रेनिंग</p></div>
+                    <div className="tech-category-card"><Server size={22} color="#475569" /> <h5>Deployment</h5><p>सर्वर पर लाइव करना</p></div>
                   </div>
                 );
                 default: return null;
@@ -158,18 +158,18 @@ export default function StepUpLiteracyDetails() {
         <button onClick={() => setSelectedGuideStep(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>
           <ArrowLeft size={18} /> Back
         </button>
-        <div className="workflow-container"><h3 style={{textAlign: 'center'}}>Refer to Architecture section for guide details.</h3></div>
+        <div className="workflow-container"><h3 style={{ textAlign: 'center' }}>Refer to Architecture section for guide details.</h3></div>
       </div>
     );
   }
-  
+
   if (selectedEvaluation !== null) {
     return (
       <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
         <button onClick={() => setSelectedEvaluation(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>
           <ArrowLeft size={18} /> Back
         </button>
-        <div className="workflow-container"><h3 style={{textAlign: 'center'}}>Evaluation Metrics active.</h3></div>
+        <div className="workflow-container"><h3 style={{ textAlign: 'center' }}>Evaluation Metrics active.</h3></div>
       </div>
     );
   }
@@ -179,10 +179,10 @@ export default function StepUpLiteracyDetails() {
       <div className="details-header-bar">
         <div className="details-header-content">
           <div className="details-title-wrapper">
-            <h2 className="details-title">Step Up Literacy Software - AI Project Lifecycle</h2>
+            <h2 className="details-title">Step Up Literacy Software - Initial steps in software development</h2>
             <span className="details-status-badge active">Active</span>
           </div>
-          <p className="details-subtitle">एआई प्रोजेक्ट लाइफ साइकिल के मुख्य चरण (Phases of AI Project Life Cycle)</p>
+          <p className="details-subtitle">सॉफ्टवेयर डेवलपमेंट के शुरुआती चरण (Initial steps in software development)</p>
         </div>
       </div>
 
@@ -210,7 +210,7 @@ export default function StepUpLiteracyDetails() {
                   <BrainCircuit size={28} color="#93c5fd" /> Project Overview
                 </h3>
                 <p style={{ color: '#dbeafe', fontSize: '1.1rem', lineHeight: '1.7', maxWidth: '90%' }}>
-                  <strong>"Phases of AI Project Lifecycle"</strong> एक व्यापक गाइड है जो समझाती है कि किसी भी AI प्रोजेक्ट को जीरो से लेकर डिप्लॉयमेंट तक ले जाने के लिए कौन-कौन से 6 प्रमुख चरणों (Stages) से गुजरना पड़ता है।
+                  <strong>"Initial steps in software development"</strong> एक व्यापक गाइड है जो समझाती है कि किसी भी सॉफ्टवेयर प्रोजेक्ट को जीरो से लेकर डिप्लॉयमेंट तक ले जाने के लिए कौन-कौन से प्रमुख चरणों (Stages) से गुजरना पड़ता है।
                 </p>
               </div>
               <div className="tech-stack-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
