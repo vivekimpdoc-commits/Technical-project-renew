@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { 
-  ArrowLeft, Cloud, Server, Database, Shield, Activity, GitBranch, Terminal, ShieldAlert, Wrench, FileSignature, CheckCircle, Network, Layers, PenTool, BrainCircuit, RefreshCw
+  ArrowLeft, Cloud, Server, Database, Shield, Activity, GitBranch, Terminal, ShieldAlert, Wrench, FileSignature, CheckCircle, Network, Layers, PenTool, BrainCircuit, RefreshCw, Target
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
 export default function Phase6Requirements({ onBack }) {
   const [expandedCard, setExpandedCard] = useState(null);
+  const [selectedDetail, setSelectedDetail] = useState(null);
 
   const reqData = [
     {
@@ -15,11 +16,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: Server,
       color: '#3b82f6',
       items: [
-        'Production Environment Setup',
-        'Server, Network & Security Configuration',
-        'Backup & Rollback Strategy',
-        'Go-Live Plan'
-      ]
+        'गो-लाइव प्लान (Go-Live Plan): सॉफ्टवेयर को पुलिस विभाग को सौंपने की पूरी चेकलिस्ट और तारीख तय करना।',
+        'रोलबैक स्ट्रेटेजी (Rollback Strategy): अगर लॉन्च के समय कोई बड़ी गड़बड़ी हो जाए, तो तुरंत पुराने सिस्टम पर वापस कैसे लौटें?'
+      ],
+      example: 'लक्ष्य: लाइव सर्वर (Live Server) पर बिना किसी रुकावट या एरर के सॉफ्टवेयर को सुरक्षित रूप से इंस्टॉल करना।'
     },
     {
       id: 2,
@@ -28,10 +28,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: Cloud,
       color: '#10b981',
       items: [
-        'On-Premise: App, Database, File, Backup Servers',
-        'Cloud: Microsoft Azure, AWS, GCP',
-        'Environments: DEV (Development), QA (Testing), UAT (Staging), PROD (Live)'
-      ]
+        'सर्वर इंफ्रास्ट्रक्चर (Servers): सिस्टम की ज़रूरत के हिसाब से वेब सर्वर, डेटाबेस सर्वर और बैकअप सर्वर स्थापित करना (NIC या AWS क्लाउड)।',
+        'पर्यावरण सेटअप (Environments): टेस्टिंग के लिए अलग सर्वर (UAT) और असली इस्तेमाल के लिए अलग लाइव सर्वर (Production)।'
+      ],
+      example: 'लक्ष्य: इतना मजबूत सर्वर सेटअप करना जो पुलिस विभाग के सारे थानों का बोझ आसानी से उठा सके।'
     },
     {
       id: 3,
@@ -40,10 +40,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: GitBranch,
       color: '#f59e0b',
       items: [
-        'Version Control: Git, Branching, Release Mgmt, Tagging',
-        'Tools: Docker, Kubernetes',
-        'Benefits: Easy Deployment, Scalability, Portability'
-      ]
+        'वर्ज़न कंट्रोल (Git): कोड के हर बदलाव को सुरक्षित रखना, ताकि कई डेवलपर्स एक साथ काम कर सकें।',
+        'कंटेनर (Docker): सॉफ्टवेयर और उसकी सेटिंग्स को एक "बॉक्स" (Container) में पैक करना ताकि वह किसी भी सर्वर पर बिना एरर के चले।'
+      ],
+      example: 'लक्ष्य: भविष्य में सॉफ्टवेयर को आसानी से अपग्रेड (Upgrade) किया जा सके।'
     },
     {
       id: 4,
@@ -52,10 +52,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: Database,
       color: '#ec4899',
       items: [
-        'Database Migration & Schema Deployment',
-        'Data Seeding & Index Creation',
-        'Backup Before Deployment'
-      ]
+        'डेटा माइग्रेशन (Migration): अगर कोई पुराना पुलिस रिकॉर्ड (एक्सेल या पुराने सॉफ्टवेयर में) है, तो उसे सुरक्षित रूप से नए डेटाबेस में डालना।',
+        'इंडेक्सिंग (Indexing): सर्च स्पीड को तेज करने के लिए डेटाबेस को ऑप्टिमाइज़ (Optimize) करना।'
+      ],
+      example: 'लक्ष्य: करोड़ों पुराने केस रिकॉर्ड्स को नए सिस्टम में बिना खोए सफलतापूर्वक ट्रांसफर करना।'
     },
     {
       id: 5,
@@ -64,11 +64,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: Shield,
       color: '#8b5cf6',
       items: [
-        'SSL Certificate & HTTPS Configuration',
-        'Firewall Rules & Network Security',
-        'API Security & Identity Management',
-        'Secret Management'
-      ]
+        'HTTPS एन्क्रिप्शन (SSL): डोमेन पर SSL सर्टिफिकेट लगाना ताकि डेटा रास्ते में हैक न हो।',
+        'फायरवॉल (Firewall Rules): सर्वर पर सिर्फ सुरक्षित और मान्यता प्राप्त IP एड्रेस से ही लॉगिन की अनुमति देना।'
+      ],
+      example: 'लक्ष्य: सर्वर को इस तरह लॉक करना कि कोई भी बाहरी व्यक्ति उसे एक्सेस न कर सके।'
     },
     {
       id: 6,
@@ -77,9 +76,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: Activity,
       color: '#14b8a6',
       items: [
-        'Monitoring: CPU, Memory, Disk Space, API Performance',
-        'Logging: Error Logs, Audit Logs, User Activity, Security Logs'
-      ]
+        'सर्वर मॉनिटरिंग (Monitoring): सर्वर के CPU, RAM और स्टोरेज पर 24/7 नज़र रखना (Prometheus या Grafana की मदद से)।',
+        'सिस्टम लॉग्स (Logging): सॉफ्टवेयर में आने वाले हर छोटे-बड़े एरर (Error) को एक फाइल में सेव करना।'
+      ],
+      example: 'लक्ष्य: सर्वर डाउन होने से पहले ही अलर्ट मिल जाए ताकि उसे समय रहते ठीक किया जा सके।'
     },
     {
       id: 7,
@@ -88,10 +88,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: Server,
       color: '#ef4444',
       items: [
-        'Backup: Daily, Weekly Full, Database, File',
-        'Disaster Recovery & Business Continuity Plan',
-        'HA: Load Balancer, Multiple Servers, Auto Recovery'
-      ]
+        'लोड बैलेंसर (Load Balancer): अगर एक सर्वर पर लोड बढ़े, तो ट्रैफिक को अपने आप दूसरे सर्वर पर ट्रांसफर कर देना।',
+        'ऑटोमैटिक बैकअप (Backup): हर रात डेटाबेस की एक कॉपी बनाकर सुरक्षित जगह (Disaster Recovery Server) पर रखना।'
+      ],
+      example: 'लक्ष्य: सॉफ्टवेयर साल के 365 दिन, 24 घंटे उपलब्ध रहे (99.9% Uptime)।'
     },
     {
       id: 8,
@@ -100,11 +100,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: Wrench,
       color: '#f97316',
       items: [
-        'Corrective: Bug Fixes, Security Patches',
-        'Adaptive: OS & Dependency Updates',
-        'Perfective: Performance Improvements, New Features',
-        'Preventive: Monitoring, Health Checks'
-      ]
+        'सिक्योरिटी पैच (Security Patch): समय-समय पर सॉफ्टवेयर और सर्वर को वायरस या नए साइबर हमलों से बचाने के लिए अपडेट करना।',
+        'बग फिक्सेस (Bug Fixes): लाइव होने के बाद यूज़र्स द्वारा बताई गई छोटी-मोटी समस्याओं को ठीक करना।'
+      ],
+      example: 'लक्ष्य: सिस्टम को समय के साथ-साथ और भी ज़्यादा बेहतर और सुरक्षित बनाते रहना।'
     },
     {
       id: 9,
@@ -113,11 +112,10 @@ export default function Phase6Requirements({ onBack }) {
       icon: ShieldAlert,
       color: '#6366f1',
       items: [
-        'Incident Management',
-        'Problem & Change Management',
-        'Release Management',
-        'Service Desk Support'
-      ]
+        'इंसीडेंट मैनेजमेंट (Incident Mgmt): अगर सिस्टम अचानक काम करना बंद कर दे, तो इमरजेंसी टीम (Support) उसे तुरंत ठीक करे।',
+        'यूज़र सपोर्ट (User Support): पुलिस अधिकारियों को इस्तेमाल में आने वाली दिक्कतों का तुरंत समाधान देना (Helpdesk)।'
+      ],
+      example: 'लक्ष्य: पुलिस वालों को काम के दौरान कोई परेशानी न हो और उन्हें तुरंत तकनीकी सहायता मिले।'
     }
   ];
 
@@ -146,6 +144,63 @@ export default function Phase6Requirements({ onBack }) {
     '7. Maintenance & Support',
     '8. Continuous Improvement'
   ];
+
+  if (selectedDetail !== null) {
+    const detailItem = reqData.find(item => item.id === selectedDetail);
+    if (!detailItem) return null;
+    const DetailIcon = detailItem.icon;
+    
+    return (
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedDetail(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+          <ArrowLeft size={18} /> Back to Phase 6
+        </button>
+        
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
+            <DetailIcon size={40} color={detailItem.color} />
+            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
+          </div>
+          
+          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
+              {detailItem.subtitle}
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {detailItem.items.map((bullet, idx) => {
+                const parts = bullet.split(':');
+                const hasColon = parts.length > 1;
+                return (
+                  <div key={idx} style={{ padding: '1.25rem', background: `${detailItem.color}0a`, borderRadius: '0.75rem', borderLeft: `4px solid ${detailItem.color}` }}>
+                    {hasColon ? (
+                      <>
+                        <strong style={{ fontSize: '1.1rem', color: '#1e293b' }}>{parts[0]}:</strong>
+                        <p style={{ margin: '0.5rem 0 0 0', color: '#334155', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
+                      </>
+                    ) : (
+                      <p style={{ margin: 0, color: '#1e293b', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {detailItem.example && (
+              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+                <div>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                    {detailItem.example}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
@@ -220,16 +275,19 @@ export default function Phase6Requirements({ onBack }) {
               {expandedCard === box.id && (
                 <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
-                    {box.items.map((item, idx) => (
-                      <div key={idx} style={{ 
-                        background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
-                        borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
-                        fontSize: '0.85rem', color: '#334155', fontWeight: '500'
-                      }}>
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
-                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{item}</span>
-                      </div>
-                    ))}
+                    {box.items.map((item, idx) => {
+                      const title = item.split(':')[0];
+                      return (
+                        <div key={idx} style={{ 
+                          background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
+                          borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                          fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                        }}>
+                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
+                          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                   
                   {/* View Details Button */}
@@ -240,6 +298,7 @@ export default function Phase6Requirements({ onBack }) {
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = 0.9}
                   onMouseLeave={(e) => e.currentTarget.style.opacity = 1}
+                  onClick={() => setSelectedDetail(box.id)}
                   >
                     Click to View Details
                   </button>

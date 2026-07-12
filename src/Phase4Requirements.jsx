@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { 
-  ArrowLeft, Database, Server, Settings, Lock, Network, Shield, HardDrive, FileText, Activity, BrainCircuit, Code, Layers, FileSignature, CheckCircle, Zap
+  ArrowLeft, Database, Server, Settings, Lock, Network, Shield, HardDrive, FileText, Activity, BrainCircuit, Code, Layers, FileSignature, CheckCircle, Zap, Target
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
 export default function Phase4Requirements({ onBack }) {
   const [expandedCard, setExpandedCard] = useState(null);
+  const [selectedDetail, setSelectedDetail] = useState(null);
+
   const reqData = [
     {
       id: 1,
@@ -14,9 +16,12 @@ export default function Phase4Requirements({ onBack }) {
       icon: Code,
       color: '#3b82f6',
       items: [
-        'Languages: .NET (Recommended), Java, Python, Node.js',
-        'Frameworks: ASP.NET Core Web API, Spring Boot, FastAPI, Express.js'
-      ]
+        'प्रोग्रामिंग भाषाएँ (Languages): सिस्टम की नींव के लिए .NET (सुझाया गया), Java, Python या Node.js का उपयोग।',
+        'फ्रेमवर्क्स (Frameworks): मज़बूत और सुरक्षित बैकएंड के लिए ASP.NET Core Web API, Spring Boot, FastAPI या Express.js।',
+        'डेटाबेस (Database): पुलिस के करोड़ों रिकॉर्ड्स सुरक्षित रखने के लिए SQL Server या PostgreSQL।',
+        'क्लाउड और सर्वर (Cloud & Server): AWS, Azure या प्राइवेट गवर्नमेंट क्लाउड इंफ्रास्ट्रक्चर।'
+      ],
+      example: 'लक्ष्य: एक ऐसा बैकएंड बनाना जो एक साथ लाखों रिक्वेस्ट्स (Searches) बिना क्रैश हुए संभाल सके।'
     },
     {
       id: 2,
@@ -25,11 +30,12 @@ export default function Phase4Requirements({ onBack }) {
       icon: Layers,
       color: '#10b981',
       items: [
-        'Authentication: Login, Logout, Password Reset, OTP, Session',
-        'User Management: Registration, Role, Permissions, Profile',
-        'Notifications: Email, SMS, Push Notification',
-        'Reports: PDF Generation, Excel Export, Dashboard Analytics'
-      ]
+        'ऑथेंटिकेशन (Authentication): सुरक्षित लॉगिन (Login), पासवर्ड रीसेट (Password Reset), OTP जनरेशन और सेशन को कंट्रोल करना।',
+        'यूजर मैनेजमेंट (User Management): नए अधिकारियों का रजिस्ट्रेशन, प्रोफाइल अपडेट और उनके अधिकार (Permissions) तय करना।',
+        'अलर्ट्स और नोटिफिकेशन्स (Notifications): इमरजेंसी में तुरंत Email, SMS और पुश नोटिफिकेशन्स भेजना।',
+        'रिपोर्ट और डेटा (Reports & Data): भारी मात्रा में डेटा से सेकंड्स में PDF या Excel रिपोर्ट तैयार करना।'
+      ],
+      example: 'लक्ष्य: सिस्टम के सभी महत्वपूर्ण कामों (ऑपरेशन्स) को बैकएंड में सुरक्षित तरीके से प्रोसेस करना।'
     },
     {
       id: 3,
@@ -38,11 +44,12 @@ export default function Phase4Requirements({ onBack }) {
       icon: Network,
       color: '#f59e0b',
       items: [
-        'REST APIs: GET, POST, PUT, DELETE',
-        'Documentation: Swagger / OpenAPI',
-        'API Versioning',
-        'API Security'
-      ]
+        'REST API डिज़ाइन (REST APIs): फ्रंटएंड और डेटाबेस के बीच सुरक्षित रूप से डेटा का लेन-देन (GET, POST, PUT, DELETE)।',
+        'API डॉक्यूमेंटेशन (Documentation): डेवलपर्स के लिए Swagger या OpenAPI के ज़रिए साफ़ और स्पष्ट API डॉक्स बनाना।',
+        'API वर्ज़निंग (API Versioning): भविष्य के अपडेट्स (v1, v2) के लिए API को तैयार रखना ताकि पुराना सिस्टम न रुके।',
+        'API सिक्योरिटी (API Security): हर API रिक्वेस्ट को टोकन (Token) द्वारा वेरीफाई करना।'
+      ],
+      example: 'लक्ष्य: ऐप, वेबसाइट और अन्य सरकारी पोर्टल्स (जैसे CCTNS) को आपस में सुरक्षित तरीके से जोड़ना।'
     },
     {
       id: 4,
@@ -51,12 +58,12 @@ export default function Phase4Requirements({ onBack }) {
       icon: Settings,
       color: '#ec4899',
       items: [
-        'Validation Rules',
-        'Workflow Engine',
-        'Approval Process',
-        'Rule Engine',
-        'Scheduling System'
-      ]
+        'नियमों की जाँच (Validation Rules): सुनिश्चित करना कि दर्ज की गई FIR या सबूत कानूनी रूप से सही फॉर्मेट में हों।',
+        'वर्कफ़्लो (Workflow Engine): एक केस के दर्ज होने से लेकर SP तक पहुँचने तक का ऑटोमैटिक रूट तय करना।',
+        'अप्रूवल प्रोसेस (Approval Process): जूनियर अधिकारी द्वारा दी गई रिपोर्ट को सीनियर अधिकारी द्वारा मंज़ूरी देना।',
+        'टास्क शेड्यूलिंग (Scheduling): रात के समय ऑटोमैटिक बैकअप और सुबह तक क्राइम रिपोर्ट तैयार करना।'
+      ],
+      example: 'लक्ष्य: पुलिस विभाग के असल नियमों और कार्यप्रणाली (Rules) को कोड (Code) में बदलना।'
     },
     {
       id: 5,
@@ -65,11 +72,12 @@ export default function Phase4Requirements({ onBack }) {
       icon: Shield,
       color: '#ef4444',
       items: [
-        'Auth: JWT, OAuth2, SSO, MFA',
-        'Authorization: Role Based Access Control (RBAC)',
-        'Security Features: Data Encryption, Audit Logs',
-        'Protection: API Rate Limiting, Input Validation, SQL Injection & XSS Protection'
-      ]
+        'मल्टी-फैक्टर ऑथेंटिकेशन (MFA): पासवर्ड के अलावा OTP या बायोमेट्रिक से अतिरिक्त सुरक्षा (JWT, OAuth2)।',
+        'रोल-बेस्ड एक्सेस (RBAC): सुनिश्चित करना कि कॉन्स्टेबल SP की रिपोर्ट न देख सके और SP सब कुछ देख सके।',
+        'डेटा एन्क्रिप्शन (Encryption): डेटाबेस में रखे गए संवेदनशील केस रिकॉर्ड्स को एन्क्रिप्ट (Encrypt) करके लॉक करना।',
+        'साइबर हमलों से बचाव (Protection): API रेट लिमिटिंग, SQL Injection और XSS अटैक्स से सिस्टम को बचाना।'
+      ],
+      example: 'लक्ष्य: पुलिस डेटा को किसी भी हैकिंग या अनधिकृत एक्सेस (Unauthorized Access) से 100% सुरक्षित रखना।'
     },
     {
       id: 6,
@@ -78,10 +86,11 @@ export default function Phase4Requirements({ onBack }) {
       icon: HardDrive,
       color: '#8b5cf6',
       items: [
-        'File Uploads',
-        'Document, Image & Video Storage',
-        'Digital Signature Support'
-      ]
+        'फाइल अपलोड (File Uploads): CCTV फुटेज, क्राइम सीन की तस्वीरें और PDF दस्तावेज़ों को तेज़ी से अपलोड करना।',
+        'क्लाउड स्टोरेज (Storage): भारी वीडियो और इमेजेज को सुरक्षित AWS S3 या Azure Blob स्टोरेज में सेव करना।',
+        'डिजिटल सिग्नेचर (Digital Sign): ऑनलाइन FIR और रिपोर्ट्स पर अधिकारियों के ई-हस्ताक्षर (E-signature) को मान्य करना।'
+      ],
+      example: 'लक्ष्य: डिजिटल सबूतों (Evidence) को कानूनी रूप से सुरक्षित रखना ताकि वे कोर्ट में मान्य हों।'
     },
     {
       id: 7,
@@ -90,10 +99,11 @@ export default function Phase4Requirements({ onBack }) {
       icon: Zap,
       color: '#14b8a6',
       items: [
-        'Redis Cache',
-        'Memory Cache',
-        'Distributed Cache'
-      ]
+        'रेडिस कैश (Redis Cache): बार-बार सर्च की जाने वाली जानकारी (जैसे - शहर का नाम, धाराओं की लिस्ट) को मेमोरी में सेव करना।',
+        'फास्ट रिस्पांस (Fast Response): डेटाबेस तक जाए बिना ही यूज़र को मिलीसेकंड्स (Milliseconds) में डेटा वापस कर देना।',
+        'डिस्ट्रीब्यूटेड कैश (Distributed): अगर 10,000 पुलिसकर्मी एक साथ लॉगिन करें, तो भी सर्वर की स्पीड धीमी न पड़े।'
+      ],
+      example: 'लक्ष्य: पुलिस के लिए सॉफ्टवेयर को रॉकेट (Rocket) की तरह तेज़ बनाना, चाहे कितना भी लोड हो।'
     },
     {
       id: 8,
@@ -102,11 +112,12 @@ export default function Phase4Requirements({ onBack }) {
       icon: Server,
       color: '#f97316',
       items: [
-        'Scheduled Jobs',
-        'Email & Notification Service',
-        'Report Generation',
-        'Data Synchronization'
-      ]
+        'शेड्यूल्ड जॉब्स (Scheduled Jobs): हर रात 12 बजे ऑटोमैटिक रूप से सभी थानों का डेटा बैकअप (Backup) लेना।',
+        'नोटिफिकेशन सर्विस (Notification): बैकग्राउंड में ईमेल, SMS और अलर्ट्स भेजना ताकि ऐप स्लो न हो।',
+        'ऑटोमैटिक रिपोर्ट (Auto Report): महीने के अंत में खुद-ब-खुद पूरे जिले की क्राइम रिपोर्ट जनरेट करके SP को भेजना।',
+        'डेटा सिंक (Data Sync): लोकल सर्वर का डेटा मुख्य स्टेट (State) सर्वर के साथ सिंक करना।'
+      ],
+      example: 'लक्ष्य: बैकग्राउंड में होने वाले रूटीन कामों को ऑटोमैटिक (Automatic) बनाना ताकि समय बचे।'
     },
     {
       id: 9,
@@ -115,11 +126,11 @@ export default function Phase4Requirements({ onBack }) {
       icon: Activity,
       color: '#6366f1',
       items: [
-        'Error Logs & Audit Trail',
-        'Performance Monitoring',
-        'User Activity Logs',
-        'System Health Checks'
-      ]
+        'ऑडिट ट्रेल (Audit Trail): कौन से अधिकारी ने, कितने बजे, किस केस फाइल में क्या बदलाव किया—इसकी पूरी ट्रैकिंग।',
+        'एरर लॉग्स (Error Logs): अगर सिस्टम में कोई तकनीकी गड़बड़ी आती है, तो उसे चुपचाप लॉग में सेव करना ताकि डेवलपर्स ठीक कर सकें।',
+        'परफॉरमेंस मॉनिटरिंग (Performance): सर्वर की हेल्थ (Health), CPU इस्तेमाल और मेमोरी (RAM) पर रियल-टाइम नज़र रखना।'
+      ],
+      example: 'लक्ष्य: सिस्टम में होने वाली हर छोटी-बड़ी गतिविधि पर पैनी नज़र (Monitoring) रखना।'
     }
   ];
 
@@ -145,6 +156,63 @@ export default function Phase4Requirements({ onBack }) {
     'Deployment Package',
     'Production APIs'
   ];
+
+  if (selectedDetail !== null) {
+    const detailItem = reqData.find(item => item.id === selectedDetail);
+    if (!detailItem) return null;
+    const DetailIcon = detailItem.icon;
+    
+    return (
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedDetail(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+          <ArrowLeft size={18} /> Back to Phase 4
+        </button>
+        
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
+            <DetailIcon size={40} color={detailItem.color} />
+            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
+          </div>
+          
+          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
+              {detailItem.subtitle}
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {detailItem.items.map((bullet, idx) => {
+                const parts = bullet.split(':');
+                const hasColon = parts.length > 1;
+                return (
+                  <div key={idx} style={{ padding: '1.25rem', background: `${detailItem.color}0a`, borderRadius: '0.75rem', borderLeft: `4px solid ${detailItem.color}` }}>
+                    {hasColon ? (
+                      <>
+                        <strong style={{ fontSize: '1.1rem', color: '#1e293b' }}>{parts[0]}:</strong>
+                        <p style={{ margin: '0.5rem 0 0 0', color: '#334155', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
+                      </>
+                    ) : (
+                      <p style={{ margin: 0, color: '#1e293b', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {detailItem.example && (
+              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+                <div>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                    {detailItem.example}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
@@ -219,22 +287,20 @@ export default function Phase4Requirements({ onBack }) {
               {expandedCard === box.id && (
                 <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
-                    {box.items.map((item, idx) => (
-                      <div key={idx} style={{ 
-                        background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
-                        borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
-                        fontSize: '0.85rem', color: '#334155', fontWeight: '500'
-                      }}>
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
-                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{item}</span>
-                      </div>
-                    ))}
+                    {box.items.map((item, idx) => {
+                      const title = item.split(':')[0];
+                      return (
+                        <div key={idx} style={{ 
+                          background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
+                          borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                          fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                        }}>
+                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
+                          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</span>
+                        </div>
+                      );
+                    })}
                   </div>
-                  {box.example && (
-                    <div style={{ marginBottom: '1.5rem', padding: '0.75rem', background: '#f1f5f9', borderRadius: '0.5rem', fontSize: '0.85rem', color: '#475569', fontStyle: 'italic', borderLeft: `3px solid ${box.color}` }}>
-                      {box.example}
-                    </div>
-                  )}
                   
                   {/* View Details Button */}
                   <button style={{
@@ -244,6 +310,7 @@ export default function Phase4Requirements({ onBack }) {
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = 0.9}
                   onMouseLeave={(e) => e.currentTarget.style.opacity = 1}
+                  onClick={() => setSelectedDetail(box.id)}
                   >
                     Click to View Details
                   </button>

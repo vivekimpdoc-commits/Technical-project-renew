@@ -6,6 +6,7 @@ import './ThaneLevelDashboard.css';
 
 export default function Phase7Requirements({ onBack }) {
   const [expandedCard, setExpandedCard] = useState(null);
+  const [selectedDetail, setSelectedDetail] = useState(null);
 
   const reqData = [
     {
@@ -15,11 +16,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: Activity,
       color: '#3b82f6',
       items: [
-        'Server & Health Monitoring',
-        'API & Database Monitoring',
-        'AI Model Monitoring',
-        'Performance & User Activity Monitoring'
-      ]
+        'सर्वर मॉनिटरिंग (Health Monitoring): 24 घंटे जाँचना कि सर्वर ठीक से चल रहा है या नहीं, और मेमोरी (RAM/CPU) कितनी यूज़ हो रही है।',
+        'यूज़र एक्टिविटी (User Activity): पुलिसकर्मी दिन भर में क्या-क्या सर्च कर रहे हैं और सॉफ्टवेयर कितना तेज़ चल रहा है, इसका हिसाब रखना।'
+      ],
+      example: 'लक्ष्य: सिस्टम डाउन होने से पहले ही उसकी खराबी का पता लगाकर उसे ठीक कर लेना।'
     },
     {
       id: 2,
@@ -28,10 +28,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: Wrench,
       color: '#ef4444',
       items: [
-        'Error Resolution & Code Fixes',
-        'Security Patches',
-        'Database & API Fixes'
-      ]
+        'एरर रेज़ोल्यूशन (Error Fixes): काम करते वक्त अगर कोई पेज अटक जाए या फाइल अपलोड न हो, तो उस गड़बड़ी (Bug) को तुरंत ठीक करना।',
+        'सिक्योरिटी पैच (Security Patches): हैकिंग के नए तरीकों से बचने के लिए पुराने कोड में सुधार करना।'
+      ],
+      example: 'लक्ष्य: यूज़र (पुलिस) को काम करने में कोई भी तकनीकी दिक्कत या रुकावट न आए।'
     },
     {
       id: 3,
@@ -40,11 +40,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: Wrench,
       color: '#f59e0b',
       items: [
-        'OS Upgrade & Browser Compatibility',
-        'Third-Party API Changes',
-        'Cloud Migration',
-        'Regulatory Changes'
-      ]
+        'नया OS अपडेट (OS Upgrades): अगर कल को Windows 12 या नया Android आ जाए, तो सॉफ्टवेयर को उसमें चलने लायक बनाना।',
+        'नए नियम (Rules Change): अगर सरकार कोई नया कानून (जैसे नया BNS) लाती है, तो सॉफ्टवेयर के फॉर्म्स और धाराओं को अपडेट करना।'
+      ],
+      example: 'लक्ष्य: समय और तकनीक के बदलने पर भी सॉफ्टवेयर का पुराना और बेकार न होना।'
     },
     {
       id: 4,
@@ -53,10 +52,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: Target,
       color: '#10b981',
       items: [
-        'Performance Optimization',
-        'New Features & UI Improvements',
-        'Better Reports & Analytics'
-      ]
+        'परफॉरमेंस सुधार (Optimization): जो सर्च पहले 5 सेकंड लेती थी, कोड में सुधार करके उसे 1 सेकंड में पूरा करना।',
+        'नए फीचर्स (New Features): पुलिस वालों के फीडबैक के आधार पर सॉफ्टवेयर में नए ऑप्शंस (जैसे- वौइस् टाइपिंग) जोड़ना।'
+      ],
+      example: 'लक्ष्य: हर महीने सॉफ्टवेयर को पहले से ज़्यादा तेज़, आसान और स्मार्ट बनाना।'
     },
     {
       id: 5,
@@ -65,11 +64,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: Shield,
       color: '#8b5cf6',
       items: [
-        'Server Health Checks',
-        'Backup Verification',
-        'Log Cleanup & Database Optimization',
-        'Security Review'
-      ]
+        'डेटाबेस क्लीनअप (DB Cleanup): बेकार फाइलों (Logs/Cache) को डिलीट करना ताकि स्टोरेज फुल न हो जाए।',
+        'बैकअप टेस्टिंग (Backup Check): रोज़ाना चेक करना कि जो डेटा सेव हो रहा है, वह करप्ट (Corrupt) तो नहीं है।'
+      ],
+      example: 'लक्ष्य: भविष्य में होने वाले किसी बड़े सर्वर क्रैश या डेटा लॉस से बचना।'
     },
     {
       id: 6,
@@ -78,10 +76,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: HeadphonesIcon,
       color: '#ec4899',
       items: [
-        'Channels: Email, Phone, Chat',
-        'Helpdesk Portal',
-        'Knowledge Base & User Manuals'
-      ]
+        'हेल्पडेस्क (Helpdesk): सॉफ्टवेयर न चलने पर पुलिसकर्मियों के लिए कॉल, ईमेल या WhatsApp सपोर्ट टीम का होना।',
+        'ट्रेनिंग (Training): नए पुलिसकर्मियों को सॉफ्टवेयर सिखाने के लिए वीडियो (Tutorials) और मैन्युअल (PDFs) देना।'
+      ],
+      example: 'लक्ष्य: किसी भी पुलिसकर्मी का काम सिर्फ इसलिए न रुके क्योंकि उसे सॉफ्टवेयर चलाना नहीं आता।'
     },
     {
       id: 7,
@@ -90,9 +88,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: Database,
       color: '#14b8a6',
       items: [
-        'DB: Backup, Indexing, Archiving, Cleanup',
-        'Security: Vulnerability & Penetration Testing, Access Review, Patches'
-      ]
+        'डेटा आर्काइव (Archiving): 20 साल पुराने बंद हो चुके केस रिकॉर्ड्स को मुख्य सर्वर से हटाकर सुरक्षित (Cold Storage) में रखना ताकि स्पीड बनी रहे।',
+        'एक्सेस रिव्यु (Access Review): हर 6 महीने में चेक करना कि किन अधिकारियों के पास लॉगिन पासवर्ड हैं और जो रिटायर हो गए उनका एक्सेस हटाना।'
+      ],
+      example: 'लक्ष्य: सालों-साल डेटा बढ़ने के बाद भी सॉफ्टवेयर की रफ़्तार और सुरक्षा कम न होना।'
     },
     {
       id: 8,
@@ -101,9 +100,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: FileText,
       color: '#f97316',
       items: [
-        'Monitoring: Response Time, CPU, Memory',
-        'Docs: User Manuals, API Docs, SOP Updates'
-      ]
+        'रिपोर्टिंग (Reporting): सॉफ्टवेयर की स्पीड और परफॉरमेंस की मंथली रिपोर्ट (Health Card) क्लाइंट (SP/DGP) को सौंपना।',
+        'दस्तावेज़ अपडेट (Docs Update): जब भी सॉफ्टवेयर में कोई नया बटन जुड़े, तो यूज़र मैन्युअल (User Manual) की किताब को अपडेट करना।'
+      ],
+      example: 'लक्ष्य: कागज़ों पर हमेशा हिसाब रहे कि सॉफ्टवेयर कैसा चल रहा है और उसमें क्या बदलाव हुए हैं।'
     },
     {
       id: 9,
@@ -112,9 +112,10 @@ export default function Phase7Requirements({ onBack }) {
       icon: CloudLightning,
       color: '#6366f1',
       items: [
-        'Daily/Weekly Backup & Failover Testing',
-        'KPIs: Uptime %, MTTR, MTBF, Incident Count'
-      ]
+        'आपदा प्रबंधन (Disaster Recovery): अगर मुख्य सर्वर रूम में आग लग जाए, तो दूसरे शहर के सर्वर से सॉफ्टवेयर को तुरंत चालू (Failover) करना।',
+        'SLA मॉनिटरिंग (SLA KPIs): यह सुनिश्चित करना कि अगर कोई गड़बड़ी आए, तो उसे तय समय (जैसे- 2 घंटे) के अंदर ही ठीक कर दिया जाए।'
+      ],
+      example: 'लक्ष्य: बाढ़, आग या साइबर हमले जैसी इमरजेंसी में भी पुलिस का डिजिटल काम न रुके।'
     }
   ];
 
@@ -138,6 +139,63 @@ export default function Phase7Requirements({ onBack }) {
     '7. Maintenance & Support',
     '8. Continuous Improvement & Innovation'
   ];
+
+  if (selectedDetail !== null) {
+    const detailItem = reqData.find(item => item.id === selectedDetail);
+    if (!detailItem) return null;
+    const DetailIcon = detailItem.icon;
+    
+    return (
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedDetail(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+          <ArrowLeft size={18} /> Back to Phase 7
+        </button>
+        
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
+            <DetailIcon size={40} color={detailItem.color} />
+            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
+          </div>
+          
+          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
+              {detailItem.subtitle}
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {detailItem.items.map((bullet, idx) => {
+                const parts = bullet.split(':');
+                const hasColon = parts.length > 1;
+                return (
+                  <div key={idx} style={{ padding: '1.25rem', background: `${detailItem.color}0a`, borderRadius: '0.75rem', borderLeft: `4px solid ${detailItem.color}` }}>
+                    {hasColon ? (
+                      <>
+                        <strong style={{ fontSize: '1.1rem', color: '#1e293b' }}>{parts[0]}:</strong>
+                        <p style={{ margin: '0.5rem 0 0 0', color: '#334155', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
+                      </>
+                    ) : (
+                      <p style={{ margin: 0, color: '#1e293b', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {detailItem.example && (
+              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+                <div>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                    {detailItem.example}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
@@ -200,22 +258,20 @@ export default function Phase7Requirements({ onBack }) {
               {expandedCard === box.id && (
                 <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
-                    {box.items.map((item, idx) => (
-                      <div key={idx} style={{ 
-                        background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
-                        borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
-                        fontSize: '0.85rem', color: '#334155', fontWeight: '500'
-                      }}>
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
-                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{item}</span>
-                      </div>
-                    ))}
+                    {box.items.map((item, idx) => {
+                      const title = item.split(':')[0];
+                      return (
+                        <div key={idx} style={{ 
+                          background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
+                          borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                          fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                        }}>
+                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
+                          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</span>
+                        </div>
+                      );
+                    })}
                   </div>
-                  {box.example && (
-                    <div style={{ marginBottom: '1.5rem', padding: '0.75rem', background: '#f1f5f9', borderRadius: '0.5rem', fontSize: '0.85rem', color: '#475569', fontStyle: 'italic', borderLeft: `3px solid ${box.color}` }}>
-                      {box.example}
-                    </div>
-                  )}
                   
                   {/* View Details Button */}
                   <button style={{
@@ -225,6 +281,7 @@ export default function Phase7Requirements({ onBack }) {
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = 0.9}
                   onMouseLeave={(e) => e.currentTarget.style.opacity = 1}
+                  onClick={() => setSelectedDetail(box.id)}
                   >
                     Click to View Details
                   </button>

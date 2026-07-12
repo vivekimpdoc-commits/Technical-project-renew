@@ -6,6 +6,7 @@ import './ThaneLevelDashboard.css';
 
 export default function Phase5Requirements({ onBack }) {
   const [expandedCard, setExpandedCard] = useState(null);
+  const [selectedDetail, setSelectedDetail] = useState(null);
 
   const reqData = [
     {
@@ -15,9 +16,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: Target,
       color: '#3b82f6',
       items: [
-        'QA Planning: Test Strategy, Test Plan, Scope, Environment, Schedule',
-        'Requirement Testing: Validation, RTM, Business Rule & Acceptance Criteria Verification'
-      ]
+        'टेस्ट प्लानिंग (QA Planning): सॉफ्टवेयर को कैसे, कब और कहाँ टेस्ट करना है, इसकी पूरी स्ट्रेटेजी (Strategy) बनाना।',
+        'रिक्वायरमेंट टेस्टिंग (Requirement Testing): यह जाँचना कि क्या सॉफ्टवेयर ने पुलिस विभाग की हर एक ज़रूरत (जैसे FIR दर्ज करना) को पूरा किया है या नहीं।'
+      ],
+      example: 'लक्ष्य: टेस्टिंग शुरू करने से पहले एक पक्की रूपरेखा तैयार करना ताकि कोई भी बग (Bug) छूटे नहीं।'
     },
     {
       id: 2,
@@ -26,9 +28,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: SearchCode,
       color: '#10b981',
       items: [
-        'Functional: Login, Registration, Dashboard, Reports, Workflow, Export',
-        'Unit Testing: API Methods, Service Layer, Validation, Utility Functions'
-      ]
+        'फंक्शनल टेस्टिंग (Functional): सॉफ्टवेयर का हर एक बटन, फॉर्म और लिंक (जैसे- लॉगिन, रिपोर्ट डाउनलोड) सही से काम कर रहा है या नहीं, यह चेक करना।',
+        'यूनिट टेस्टिंग (Unit Testing): कोड के हर छोटे से छोटे हिस्से (Unit) को अलग-अलग चेक करना कि उसमें कोई तकनीकी गलती तो नहीं है।'
+      ],
+      example: 'लक्ष्य: यह सुनिश्चित करना कि सिस्टम का हर एक फीचर ठीक उसी तरह काम करे जैसा तय किया गया था।'
     },
     {
       id: 3,
@@ -37,9 +40,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: CheckSquare,
       color: '#f59e0b',
       items: [
-        'System Testing: Complete End-to-End Workflow & Business Process Testing',
-        'UAT: Real Scenario Testing, Business Validation, User Feedback, Sign-off'
-      ]
+        'सिस्टम टेस्टिंग (System Testing): पूरा सॉफ्टवेयर (फ्रंटएंड + बैकएंड + डेटाबेस) एक साथ जुड़कर सही आउटपुट दे रहा है या नहीं।',
+        'यूज़र टेस्टिंग (UAT): असली पुलिस अधिकारियों (Users) द्वारा सॉफ्टवेयर का इस्तेमाल करवा कर उनका फीडबैक (Feedback) लेना।'
+      ],
+      example: 'लक्ष्य: लाइव (Live) करने से पहले खुद क्लाइंट (UP Police) से हरी झंडी (Sign-off) लेना।'
     },
     {
       id: 4,
@@ -48,9 +52,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: RefreshCw,
       color: '#ec4899',
       items: [
-        'Regression: Existing Features Verification, Automation Regression Suite',
-        'Compatibility: Windows, Linux, Android, iOS, Chrome, Edge, Firefox'
-      ]
+        'रिग्रेशन (Regression): यह जाँचना कि किसी नए अपडेट के आने से पुराने काम कर रहे फीचर्स खराब तो नहीं हो गए।',
+        'कम्पैटिबिलिटी (Compatibility): सॉफ्टवेयर क्या मोबाइल, टैबलेट, कंप्यूटर और अलग-अलग ब्राउज़र्स (Chrome, Edge) पर सही से खुल रहा है?'
+      ],
+      example: 'लक्ष्य: सॉफ्टवेयर हर डिवाइस और हर अपडेट के बाद बिना रुके सुचारू रूप से चले।'
     },
     {
       id: 5,
@@ -59,9 +64,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: Activity,
       color: '#8b5cf6',
       items: [
-        'Parameters: Response Time, Throughput, Concurrent Users, DB & API Performance',
-        'Types: Load Testing, Stress Testing, Spike Testing, Endurance Testing'
-      ]
+        'लोड टेस्टिंग (Load Testing): अगर 10,000 पुलिसकर्मी एक साथ लॉगिन करें, तो क्या सिस्टम स्लो (Slow) होगा?',
+        'स्ट्रेस टेस्टिंग (Stress Testing): सर्वर की वह सीमा (Limit) जाँचना जिस पर पहुँच कर वह क्रैश हो जाता है, ताकि उसे और मज़बूत बनाया जा सके।'
+      ],
+      example: 'लक्ष्य: किसी बड़ी घटना के समय, जब बहुत ज़्यादा लोग सिस्टम यूज़ करें, तब भी यह क्रैश न हो।'
     },
     {
       id: 6,
@@ -70,11 +76,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: ShieldCheck,
       color: '#ef4444',
       items: [
-        'Auth & Authorization Testing',
-        'SQL Injection, XSS, CSRF Testing',
-        'API Security & Session Management',
-        'Data Encryption Verification'
-      ]
+        'वल्नेरेबिलिटी स्कैन (Vulnerability): सिस्टम में मौजूद उन कमज़ोरियों को खोजना जिनका फायदा हैकर्स उठा सकते हैं।',
+        'पेनेट्रेशन टेस्टिंग (Pen-Testing): एथिकल हैकर्स द्वारा जानबूझकर सिस्टम को हैक करने की कोशिश करना (सुरक्षा जाँचने के लिए)।'
+      ],
+      example: 'लक्ष्य: पुलिस के संवेदनशील डेटाबेस को साइबर हमलों (Cyber Attacks) से अभेद्य बनाना।'
     },
     {
       id: 7,
@@ -83,9 +88,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: Database,
       color: '#14b8a6',
       items: [
-        'Database: Data Integrity, CRUD, Stored Procedures, Backup & Recovery',
-        'API: Request/Response Validation, Error Handling, Status Codes'
-      ]
+        'डेटाबेस टेस्टिंग (DB Test): दर्ज की गई FIR क्या सही टेबल में, बिना डेटा लॉस के सेव हो रही है?',
+        'API टेस्टिंग (API Test): फ्रंटएंड और बैकएंड के बीच जो डेटा भेजा जा रहा है, क्या वह सही फॉर्मेट में और सुरक्षित है?'
+      ],
+      example: 'लक्ष्य: अंदरूनी डेटा स्ट्रक्चर (Data Structure) में कोई गड़बड़ी या लीकेज न हो।'
     },
     {
       id: 8,
@@ -94,9 +100,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: Layout,
       color: '#f97316',
       items: [
-        'UI/UX: Responsive Design, Browser Compatibility, Accessibility, Navigation',
-        'Data Quality: Missing, Duplicate, Invalid Data, Consistency & Accuracy'
-      ]
+        'UI/UX टेस्टिंग (Design): क्या सॉफ्टवेयर देखने में अच्छा है? क्या बटन्स सही जगह पर हैं और यूज़र्स के लिए आसान हैं?',
+        'डेटा क्वालिटी (Data Quality): क्या सर्च करने पर गलत, डुप्लीकेट या आधा-अधूरा रिकॉर्ड तो नहीं आ रहा?'
+      ],
+      example: 'लक्ष्य: सॉफ्टवेयर इतना आसान हो कि एक नया पुलिसकर्मी भी उसे बिना ट्रेनिंग के समझ सके।'
     },
     {
       id: 9,
@@ -105,9 +112,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: BrainCircuit,
       color: '#6366f1',
       items: [
-        'Model Testing: Accuracy, Precision, Recall, F1 Score, Confusion Matrix',
-        'AI Validation: Bias, Explainability, False Positives/Negatives, Human Review'
-      ]
+        'मॉडल एक्यूरेसी (Model Accuracy): AI जो अपराधियों की भविष्यवाणी कर रहा है, वह कितनी सटीक (Accurate) है?',
+        'बायस टेस्टिंग (Bias Testing): क्या AI किसी खास इलाके या समुदाय के खिलाफ गलत परिणाम (False Positives) तो नहीं दे रहा?'
+      ],
+      example: 'लक्ष्य: AI के नतीजों को 100% निष्पक्ष (Unbiased) और भरोसेमंद बनाना।'
     },
     {
       id: 10,
@@ -116,9 +124,10 @@ export default function Phase5Requirements({ onBack }) {
       icon: MonitorSmartphone,
       color: '#06b6d4',
       items: [
-        'Automation Scope: Login, API, Regression, Smoke Testing, End-to-End Workflow',
-        'Metrics: Total/Passed/Failed Tests, Defect Density, Coverage (Test/Automation)'
-      ]
+        'ऑटोमेशन (Automation Testing): इंसानों के बजाय सॉफ्टवेयर (जैसे Selenium) से टेस्टिंग करवाना ताकि काम जल्दी हो।',
+        'टेस्टिंग रिपोर्ट्स (Metrics): कितने टेस्ट पास हुए, कितने फेल हुए और कितने बग्स (Bugs) मिले—इसकी पूरी रिपोर्ट।'
+      ],
+      example: 'लक्ष्य: समय बचाने के लिए मैन्युअल काम कम करना और ऑटोमैटिक टेस्टिंग को बढ़ाना।'
     }
   ];
 
@@ -139,6 +148,63 @@ export default function Phase5Requirements({ onBack }) {
     'Performance & Security Test Report',
     'UAT Sign-off & Final QA Certification'
   ];
+
+  if (selectedDetail !== null) {
+    const detailItem = reqData.find(item => item.id === selectedDetail);
+    if (!detailItem) return null;
+    const DetailIcon = detailItem.icon;
+    
+    return (
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedDetail(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+          <ArrowLeft size={18} /> Back to Phase 5
+        </button>
+        
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
+            <DetailIcon size={40} color={detailItem.color} />
+            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
+          </div>
+          
+          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
+              {detailItem.subtitle}
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {detailItem.items.map((bullet, idx) => {
+                const parts = bullet.split(':');
+                const hasColon = parts.length > 1;
+                return (
+                  <div key={idx} style={{ padding: '1.25rem', background: `${detailItem.color}0a`, borderRadius: '0.75rem', borderLeft: `4px solid ${detailItem.color}` }}>
+                    {hasColon ? (
+                      <>
+                        <strong style={{ fontSize: '1.1rem', color: '#1e293b' }}>{parts[0]}:</strong>
+                        <p style={{ margin: '0.5rem 0 0 0', color: '#334155', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
+                      </>
+                    ) : (
+                      <p style={{ margin: 0, color: '#1e293b', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {detailItem.example && (
+              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+                <div>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                    {detailItem.example}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
@@ -213,22 +279,20 @@ export default function Phase5Requirements({ onBack }) {
               {expandedCard === box.id && (
                 <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
-                    {box.items.map((item, idx) => (
-                      <div key={idx} style={{ 
-                        background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
-                        borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
-                        fontSize: '0.85rem', color: '#334155', fontWeight: '500'
-                      }}>
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
-                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{item}</span>
-                      </div>
-                    ))}
+                    {box.items.map((item, idx) => {
+                      const title = item.split(':')[0];
+                      return (
+                        <div key={idx} style={{ 
+                          background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
+                          borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                          fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                        }}>
+                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
+                          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</span>
+                        </div>
+                      );
+                    })}
                   </div>
-                  {box.example && (
-                    <div style={{ marginBottom: '1.5rem', padding: '0.75rem', background: '#f1f5f9', borderRadius: '0.5rem', fontSize: '0.85rem', color: '#475569', fontStyle: 'italic', borderLeft: `3px solid ${box.color}` }}>
-                      {box.example}
-                    </div>
-                  )}
                   
                   {/* View Details Button */}
                   <button style={{
@@ -238,6 +302,7 @@ export default function Phase5Requirements({ onBack }) {
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = 0.9}
                   onMouseLeave={(e) => e.currentTarget.style.opacity = 1}
+                  onClick={() => setSelectedDetail(box.id)}
                   >
                     Click to View Details
                   </button>

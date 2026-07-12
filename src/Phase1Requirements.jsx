@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { 
-  ArrowLeft, Target, Users, Settings, Zap, Smartphone, Code, BrainCircuit, Shield, Network, FileText, CheckCircle, ListOrdered, FileSignature, Search
+  ArrowLeft, Target, Users, Settings, Zap, Smartphone, Code, BrainCircuit, Shield, Network, FileText, CheckCircle, ListOrdered, FileSignature, Search, Layers, Activity, Database, TrendingUp
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 
 export default function Phase1Requirements({ onBack }) {
   const [expandedCard, setExpandedCard] = useState(null);
+  const [selectedDetail, setSelectedDetail] = useState(null);
   const reqData = [
     {
       id: 1,
@@ -28,11 +29,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: Users,
       color: '#10b981',
       items: [
-        'State Level Admin (DGP / IG Level)',
-        'District Officers (SP / DSP Level)',
-        'Thane Level (SHO / Inspector Level)',
-        'Investigation Officers (IO) & Beat Constables'
-      ]
+        'State Level Admin (DGP / IG Level): पूरे राज्य का डैशबोर्ड देखना, सभी जिलों की क्राइम रिपोर्ट का विश्लेषण करना और बड़े फैसले लेना।',
+        'District Officers (SP / DSP Level): अपने जिले के सभी थानों की गतिविधियों पर नज़र रखना और महत्वपूर्ण मामलों में सीधा निर्देश देना।',
+        'Thane Level (SHO / Inspector Level): थाने के सभी केसों की समीक्षा करना, IO को कार्य सौंपना और डेली रिपोर्टिंग सुनिश्चित करना।',
+        'Investigation Officers (IO) & Beat Constables: डिजिटल FIR दर्ज करना, एविडेंस अपलोड करना और केस की ज़मीनी स्तर पर जाँच करना।'
+      ],
+      example: 'लक्ष्य: हर स्तर के अधिकारी को उसकी भूमिका (Role) के अनुसार सही जानकारी (Access) देना।'
     },
     {
       id: 3,
@@ -41,14 +43,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: Settings,
       color: '#f59e0b',
       items: [
-        'Computer Application (Login/Logout, Dashboard)',
-        'User Management & Search',
-        'Reports, Notifications, Document Upload',
-        'Approval Workflow',
-        'AI Software (Prediction, Recommendation)',
-        'Classification, Chatbot, OCR',
-        'Speech-to-Text, Data Analysis, Anomaly Detection'
-      ]
+        'कंप्यूटर एप्लिकेशन (Computer Application): पुलिस अधिकारियों के लिए सुरक्षित लॉगिन, मल्टी-डैशबोर्ड और नेविगेशन सिस्टम।',
+        'यूजर मैनेजमेंट और सर्च (User Management & Search): किसी भी क्रिमिनल रिकॉर्ड या FIR को पलक झपकते ही सर्च करने की सुविधा।',
+        'रिपोर्ट और सूचनाएं (Reports & Notifications): नए केस, पेंडिंग केस और इमरजेंसी अलर्ट के लिए रियल-टाइम नोटिफिकेशन्स।',
+        'AI आधारित स्मार्ट फीचर्स (AI Smart Features): क्रिमिनल पैटर्न रिकॉग्निशन, चेहरे की पहचान (Facial Recognition) और क्राइम हॉटस्पॉट प्रेडिक्शन।'
+      ],
+      example: 'लक्ष्य: सिस्टम को इतना स्मार्ट बनाना कि वह पुलिस का काम 10 गुना तेज़ कर सके।'
     },
     {
       id: 4,
@@ -57,12 +57,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: Zap,
       color: '#8b5cf6',
       items: [
-        'Performance & Security',
-        'Scalability & Availability',
-        'Reliability & Response Time',
-        'Backup & Recovery',
-        'Maintainability'
-      ]
+        'तेज़ रिस्पॉन्स टाइम (Performance): सिस्टम 2 सेकंड के अंदर किसी भी सर्च क्वेरी का रिजल्ट दे सके।',
+        'हाई सिक्योरिटी (Security): 256-bit एन्क्रिप्शन और मल्टी-फैक्टर ऑथेंटिकेशन (MFA) के साथ डेटा सुरक्षा।',
+        'विश्वसनीयता (Reliability): 99.99% अपटाइम के साथ सिस्टम 24x7 उपलब्ध रहना चाहिए।',
+        'बैकअप और रिकवरी (Backup & Recovery): ऑटोमैटिक क्लाउड बैकअप ताकि कोई भी FIR या सबूत कभी डिलीट न हो।'
+      ],
+      example: 'लक्ष्य: सिस्टम को तेज़, सुरक्षित और हमेशा उपलब्ध (Highly Available) रखना।'
     },
     {
       id: 5,
@@ -71,11 +71,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: Smartphone,
       color: '#ec4899',
       items: [
-        'User-friendly Interface',
-        'Mobile Support',
-        'Multi-language Support',
-        'Accessibility'
-      ]
+        'यूजर-फ्रेंडली इंटरफेस (User-friendly Interface): एक ऐसा डैशबोर्ड जिसे कोई भी साधारण सिपाही बिना ज्यादा ट्रेनिंग के चला सके।',
+        'मोबाइल सपोर्ट (Mobile Support): इन्वेस्टिगेशन ऑफिसर्स (IO) के लिए मोबाइल फ्रेंडली वेब ऐप, ताकि वे फील्ड से भी फोटो/सबूत अपलोड कर सकें।',
+        'बहुभाषी सपोर्ट (Multi-language Support): हिंदी और अंग्रेजी दोनों भाषाओं में आसानी से काम करने की सुविधा।',
+        'आसान नेविगेशन (Easy Navigation): कम से कम क्लिक्स में महत्वपूर्ण जानकारी तक पहुँच।'
+      ],
+      example: 'लक्ष्य: पुलिस बल के लिए इस्तेमाल में सबसे आसान और प्रभावी टूल बनाना।'
     },
     {
       id: 6,
@@ -84,11 +85,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: Code,
       color: '#64748b',
       items: [
-        'Frontend: HTML, CSS, JavaScript, React, Angular',
-        'Backend: .NET, Java, Python, Node.js',
-        'Database: SQL Server, PostgreSQL, MongoDB',
-        'Cloud: Azure, AWS, Google Cloud'
-      ]
+        'फ्रंटएंड तकनीक (Frontend Tech): React.js का उपयोग करके एक तेज़ और रेस्पॉन्सिव UI तैयार करना।',
+        'बैकएंड तकनीक (Backend Tech): Node.js या Python FastAPI द्वारा सुरक्षित और स्केलेबल API का निर्माण।',
+        'डेटाबेस (Database): भारी मात्रा में क्रिमिनल डेटा को सुरक्षित रखने के लिए PostgreSQL या MongoDB का इस्तेमाल।',
+        'क्लाउड और होस्टिंग (Cloud Hosting): डेटा सिक्योरिटी के लिए सरकारी गाइडलाइन्स के तहत AWS या Azure क्लाउड का उपयोग।'
+      ],
+      example: 'लक्ष्य: मॉडर्न और सुरक्षित टेक्नोलॉजी स्टैक का इस्तेमाल करना।'
     },
     {
       id: 7,
@@ -97,11 +99,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: BrainCircuit,
       color: '#0ea5e9',
       items: [
-        'Data: Source, Quality, Volume, Labeling, Privacy',
-        'Model: Accuracy, Precision, Recall, Explainability',
-        'Training Frequency',
-        'AI Infrastructure: GPU, Model Server, APIs'
-      ]
+        'डेटा सोर्स और क्वालिटी (Data Quality): पुराने पुलिस रिकॉर्ड्स, FIR और CCTV फुटेज को AI मॉडल के लिए तैयार करना।',
+        'मॉडल की सटीकता (Model Accuracy): चेहरे की पहचान और अपराध की भविष्यवाणी में कम से कम 95% एक्यूरेसी सुनिश्चित करना।',
+        'ऑटोमैटिक अपडेट्स (Training Frequency): हर महीने नए क्रिमिनल डेटा के साथ AI मॉडल को री-ट्रेन करना।',
+        'AI इंफ्रास्ट्रक्चर (AI Infrastructure): वीडियो और इमेज प्रोसेसिंग के लिए शक्तिशाली GPU सर्वर्स का इस्तेमाल।'
+      ],
+      example: 'लक्ष्य: AI मॉडल्स को पुलिस की वास्तविक ज़रूरतों के अनुसार सटीक बनाना।'
     },
     {
       id: 8,
@@ -110,11 +113,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: Shield,
       color: '#ef4444',
       items: [
-        'Authentication & RBAC',
-        'Encryption & Audit Logs',
-        'Multi-Factor Authentication (MFA)',
-        'API Security'
-      ]
+        'रोल-बेस्ड एक्सेस कंट्रोल (RBAC): सिर्फ ऑथराइज़्ड अधिकारी ही संवेदनशील केस और FIR की जानकारी देख सकें।',
+        'डेटा एन्क्रिप्शन (Encryption): डेटाबेस में सेव होने वाला हर रिकॉर्ड और फाइल पूरी तरह से एन्क्रिप्टेड हो।',
+        'ऑडिट लॉग्स (Audit Logs): सिस्टम में किसने, कब और क्या बदलाव किया, इसका पूरा रिकॉर्ड (Log) रखा जाए।',
+        'API सिक्योरिटी (API Security): बाहरी सिस्टम्स के साथ डेटा शेयर करते समय सुरक्षित API गेटवे का उपयोग।'
+      ],
+      example: 'लक्ष्य: पुलिस डेटा को किसी भी प्रकार की साइबर हैकिंग और लीक से बचाना।'
     },
     {
       id: 9,
@@ -123,11 +127,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: Network,
       color: '#14b8a6',
       items: [
-        'APIs & Email Service',
-        'SMS & Payment Gateway',
-        'Government Systems Integration',
-        'Third-Party Services'
-      ]
+        'सरकारी पोर्टल्स से जुड़ाव (Gov Systems Integration): VAHAN, CCTNS और आधार डेटाबेस के साथ सुरक्षित रूप से जुड़ना।',
+        'SMS और ईमेल सेवा (SMS/Email Alerts): महत्वपूर्ण अलर्ट्स और OTP के लिए थर्ड-पार्टी SMS गेटवे का एकीकरण।',
+        'सीसीटीवी नेटवर्क (CCTV Integration): शहर के मुख्य चौराहों के CCTV कैमरों के साथ लाइव कनेक्टिविटी।',
+        'थर्ड-पार्टी API (Third-Party APIs): फेशियल रिकग्निशन और मैप (Map) सर्विसेज के लिए बाहरी API का उपयोग।'
+      ],
+      example: 'लक्ष्य: सभी पुलिस सिस्टम्स को एक ही सेंट्रलाइज़्ड प्लेटफ़ॉर्म पर लाना।'
     },
     {
       id: 10,
@@ -136,10 +141,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: FileText,
       color: '#f97316',
       items: [
-        'Dashboard & Charts',
-        'Analytics & Real-time Monitoring',
-        'Export to PDF/Excel'
-      ]
+        'लाइव डैशबोर्ड (Live Dashboard): जिलेवार और थानेवार क्राइम रेट्स का रियल-टाइम ग्राफिकल रिप्रेजेंटेशन।',
+        'ऑटोमैटिक रिपोर्ट्स (Automated Reports): हर हफ्ते और महीने के अंत में ऑटोमैटिक क्राइम रिपोर्ट जेनरेट करना।',
+        'एक्सपोर्ट सुविधा (Export Options): किसी भी रिपोर्ट या केस फाइल को एक क्लिक में PDF या Excel में डाउनलोड करना।',
+        'पेंडेंसी ट्रैकिंग (Pendency Tracking): कितने केस अनसुलझे (Pending) हैं, उसकी पूरी लिस्ट और अलर्ट।'
+      ],
+      example: 'लक्ष्य: उच्च अधिकारियों (DGP/SP) को तुरंत और सटीक रिपोर्टिंग सुविधा देना।'
     },
     {
       id: 11,
@@ -148,11 +155,12 @@ export default function Phase1Requirements({ onBack }) {
       icon: CheckCircle,
       color: '#22c55e',
       items: [
-        'Data Protection',
-        'Government Guidelines',
-        'Cyber Security Standards',
-        'Audit Compliance'
-      ]
+        'डेटा प्रोटेक्शन कानून (Data Protection Laws): भारत सरकार के पर्सनल डेटा प्रोटेक्शन (DPDP) बिल का पूरी तरह से पालन करना।',
+        'साइबर सिक्योरिटी स्टैंडर्ड्स (Cyber Standards): CERT-In के दिशा-निर्देशों के अनुसार सिस्टम का सुरक्षा परीक्षण (Security Audit)।',
+        'सरकारी गाइडलाइन्स (Government Guidelines): पुलिस और गृह मंत्रालय के IT नियमों का कड़ाई से अनुपालन।',
+        'डिजिटल एविडेंस एक्ट (Digital Evidence): अदालत में पेश किए जा सकने वाले डिजिटल सबूतों के नियमों (IT Act) का पालन।'
+      ],
+      example: 'लक्ष्य: पूरा सिस्टम कानूनी रूप से 100% सुरक्षित और मान्य (Compliant) हो।'
     }
   ];
 
@@ -176,6 +184,152 @@ export default function Phase1Requirements({ onBack }) {
     'AI Architecture Document',
     'Risk Assessment Report & Project Plan'
   ];
+
+  if (selectedDetail !== null) {
+    const detailItem = reqData.find(item => item.id === selectedDetail);
+    if (!detailItem) return null;
+    const DetailIcon = detailItem.icon;
+    
+    // Custom beautiful layout specifically for Point 1
+    if (selectedDetail === 1) {
+      return (
+        <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+          <button onClick={() => setSelectedDetail(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+            <ArrowLeft size={18} /> Back to Phase 1
+          </button>
+          
+          <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
+              <Target size={40} color="#3b82f6" />
+              <h3 style={{ margin: 0, fontSize: '2.2rem', color: '#0f172a' }}>1. Project Goals & Objectives</h3>
+            </div>
+            
+            <div style={{ background: 'white', padding: '2.5rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+              
+              <div style={{ display: 'grid', gap: '1.5rem' }}>
+                {/* Point 1 */}
+                <div style={{ padding: '1.5rem', background: '#eff6ff', borderRadius: '0.75rem', borderLeft: '5px solid #3b82f6' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                    <Network size={24} color="#1d4ed8" />
+                    <h4 style={{ margin: 0, fontSize: '1.25rem', color: '#1e40af' }}>1. आर्किटेक्चर और टेक्नोलॉजी स्टैक (Architecture & Tech Stack)</h4>
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#334155', lineHeight: '1.6', fontSize: '1.05rem' }}>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>इस्तेमाल होने वाले AI/ML मॉडल्स:</strong> (जैसे Predictive Analytics, NLP)।</li>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>डेटाबेस और क्लाउड इंफ्रास्ट्रक्चर:</strong> (जैसे सुरक्षित AWS/Azure या सरकारी क्लाउड)।</li>
+                    <li><strong>डेटा सिक्योरिटी और एन्क्रिप्शन के तरीके:</strong> (FIR और पुलिस रिकॉर्ड्स की सुरक्षा के लिए)।</li>
+                  </ul>
+                </div>
+
+                {/* Point 2 */}
+                <div style={{ padding: '1.5rem', background: '#ecfdf5', borderRadius: '0.75rem', borderLeft: '5px solid #10b981' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                    <Layers size={24} color="#047857" />
+                    <h4 style={{ margin: 0, fontSize: '1.25rem', color: '#065f46' }}>2. मुख्य फीचर्स का विस्तृत विवरण (Detailed Features)</h4>
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#334155', lineHeight: '1.6', fontSize: '1.05rem' }}>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>स्मार्ट पुलिसिंग:</strong> लाइव डैशबोर्ड, सीसीटीवी (CCTV) इंटीग्रेशन और फेशियल रिकग्निशन की जानकारी।</li>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>अपराध की भविष्यवाणी:</strong> हॉटस्पॉट मैपिंग (Hotspot Mapping) और क्राइम ट्रेंड एनालिसिस कैसे काम करेगा।</li>
+                    <li><strong>डिजिटल FIR:</strong> क्लाउड स्टोरेज, ब्लॉकचेन या सुरक्षित बैकअप सिस्टम की कार्यप्रणाली।</li>
+                  </ul>
+                </div>
+
+                {/* Point 3 */}
+                <div style={{ padding: '1.5rem', background: '#fffbeb', borderRadius: '0.75rem', borderLeft: '5px solid #f59e0b' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                    <Activity size={24} color="#b45309" />
+                    <h4 style={{ margin: 0, fontSize: '1.25rem', color: '#92400e' }}>3. प्रोजेक्ट की समय-सीमा और चरण (Roadmap & Phases)</h4>
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#334155', lineHeight: '1.6', fontSize: '1.05rem' }}>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>चरण 1:</strong> डेटा कलेक्शन और पुलिस डेटाबेस का डिजिटलीकरण।</li>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>चरण 2:</strong> AI मॉडल की ट्रेनिंग और टेस्टिंग।</li>
+                    <li><strong>चरण 3:</strong> यूपी पुलिस (UP Police) के साथ पायलट रन और फाइनल रोलआउट।</li>
+                  </ul>
+                </div>
+
+                {/* Point 4 */}
+                <div style={{ padding: '1.5rem', background: '#f5f3ff', borderRadius: '0.75rem', borderLeft: '5px solid #8b5cf6' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                    <Database size={24} color="#6d28d9" />
+                    <h4 style={{ margin: 0, fontSize: '1.25rem', color: '#5b21b6' }}>4. बजट और संसाधन (Budget & Resource Allocation)</h4>
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#334155', lineHeight: '1.6', fontSize: '1.05rem' }}>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>प्रोजेक्ट की अनुमानित लागत:</strong> (Estimated Cost)।</li>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>आवश्यक हार्डवेयर और सॉफ्टवेयर:</strong> सिस्टम चलाने के लिए जरुरी संसाधन।</li>
+                    <li><strong>टीम का विवरण:</strong> डेवलपर्स, डेटा साइंटिस्ट और पुलिस अधिकारियों की टीम का विवरण।</li>
+                  </ul>
+                </div>
+
+                {/* Point 5 */}
+                <div style={{ padding: '1.5rem', background: '#fdf2f8', borderRadius: '0.75rem', borderLeft: '5px solid #ec4899' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                    <TrendingUp size={24} color="#be185d" />
+                    <h4 style={{ margin: 0, fontSize: '1.25rem', color: '#9d174d' }}>5. प्रभाव और लाभ (Impact & Benefits)</h4>
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#334155', lineHeight: '1.6', fontSize: '1.05rem' }}>
+                    <li style={{ marginBottom: '0.5rem' }}><strong>केस सुलझाने के समय में कमी:</strong> संभावित कमी (ग्राफ या प्रतिशत में)।</li>
+                    <li><strong>आम जनता को मिलने वाली सुविधाएं:</strong> और सिस्टम में पारदर्शिता (Transparency)।</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Dynamic renderer for points 2 through 11
+    return (
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedDetail(null)} className="back-button" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+          <ArrowLeft size={18} /> Back to Phase 1
+        </button>
+        
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
+            <DetailIcon size={40} color={detailItem.color} />
+            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
+          </div>
+          
+          <div style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
+              {detailItem.subtitle}
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {detailItem.items.map((bullet, idx) => {
+                const parts = bullet.split(':');
+                const hasColon = parts.length > 1;
+                return (
+                  <div key={idx} style={{ padding: '1.25rem', background: `${detailItem.color}0a`, borderRadius: '0.75rem', borderLeft: `4px solid ${detailItem.color}` }}>
+                    {hasColon ? (
+                      <>
+                        <strong style={{ fontSize: '1.1rem', color: '#1e293b' }}>{parts[0]}:</strong>
+                        <p style={{ margin: '0.5rem 0 0 0', color: '#334155', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
+                      </>
+                    ) : (
+                      <p style={{ margin: 0, color: '#1e293b', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {detailItem.example && (
+              <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ background: '#dcfce7', padding: '1rem', borderRadius: '50%' }}><Target size={28} color="#16a34a" /></div>
+                <div>
+                  <h4 style={{ color: '#166534', margin: '0 0 0.25rem 0', fontSize: '1.1rem' }}>Ultimate Goal (अंतिम लक्ष्य)</h4>
+                  <p style={{ margin: 0, color: '#15803d', fontSize: '1rem', fontStyle: 'italic', fontWeight: '500' }}>
+                    {detailItem.example}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
@@ -273,6 +427,7 @@ export default function Phase1Requirements({ onBack }) {
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = 0.9}
                   onMouseLeave={(e) => e.currentTarget.style.opacity = 1}
+                  onClick={() => setSelectedDetail(box.id)}
                   >
                     Click to View Details
                   </button>
