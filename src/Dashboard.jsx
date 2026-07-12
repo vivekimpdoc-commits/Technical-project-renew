@@ -6,8 +6,7 @@ import {
   UserCheck, LineChart, BrainCircuit, Clock4,
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
-  History, Command, BookOpen, Activity, Layout, GraduationCap, Presentation,
-  Code, Briefcase, GitBranch, Network, GlobeLock
+  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity
 } from 'lucide-react';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
@@ -55,15 +54,15 @@ export default function Dashboard() {
   };
 
   const navItems = [
-    { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen },
-    { id: 'ai-course', label: 'Artificial Intelligence (AI) Course (आर्टिफिशियल इंटेलिजेंस (AI) कोर्स)', icon: GraduationCap },
-    { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit },
-    { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield },
-    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2 },
-    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation },
-    { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code },
-    { id: 'mlops', label: 'AI Operations - MLOps (AI ऑपरेशन्स)', icon: Activity },
-    { id: 'advanced-ai', label: 'Advanced AI & Cyber Command (एडवांस्ड AI)', icon: GlobeLock }
+    { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen, color: '#64748b' },
+    { id: 'ai-course', label: 'Artificial Intelligence (AI) Course (आर्टिफिशियल इंटेलिजेंस (AI) कोर्स)', icon: GraduationCap, color: '#3b82f6' },
+    { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code, color: '#0ea5e9' },
+    { id: 'mlops', label: 'AI Operations - MLOps (AI ऑपरेशन्स)', icon: Activity, color: '#8b5cf6' },
+    { id: 'advanced-ai', label: 'Advanced AI & Cyber Command (एडवांस्ड AI)', icon: GlobeLock, color: '#10b981' },
+    { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit, color: '#f59e0b' },
+    { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield, color: '#ef4444' },
+    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#b91c1c' },
+    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: '#475569' }
   ];
 
   return (
@@ -124,9 +123,51 @@ export default function Dashboard() {
               key={item.id}
               className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
               onClick={() => handleTabChange(item.id)}
+              style={{
+                borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
+                background: activeTab === item.id ? `${item.color}15` : 'transparent',
+                transition: 'all 0.2s ease',
+                display: 'flex',
+                alignItems: 'center',
+                padding: '0.75rem 1rem',
+                gap: '0.75rem',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                if (activeTab !== item.id) {
+                  e.currentTarget.style.background = '#f1f5f9';
+                  e.currentTarget.style.borderLeft = `4px solid #cbd5e1`;
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeTab !== item.id) {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.borderLeft = '4px solid transparent';
+                }
+              }}
             >
-              <item.icon className="nav-icon" size={20} />
-              {item.label}
+              <div style={{
+                background: activeTab === item.id ? `linear-gradient(135deg, ${item.color}, ${item.color}dd)` : `${item.color}15`,
+                padding: '0.6rem',
+                borderRadius: '0.6rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: activeTab === item.id ? 'white' : item.color,
+                boxShadow: activeTab === item.id ? `0 4px 12px ${item.color}66` : 'none',
+                transform: activeTab === item.id ? 'scale(1.05)' : 'scale(1)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}>
+                <item.icon size={18} strokeWidth={activeTab === item.id ? 2.5 : 2} />
+              </div>
+              <span style={{ 
+                fontWeight: activeTab === item.id ? '700' : '500', 
+                color: activeTab === item.id ? item.color : '#475569',
+                fontSize: '0.95rem',
+                transition: 'color 0.3s ease'
+              }}>
+                {item.label}
+              </span>
             </div>
           ))}
         </aside>
