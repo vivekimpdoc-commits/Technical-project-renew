@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  BookOpen, BrainCircuit, Target, Database, Wrench, Calculator, 
-  Code, Network, Cpu, Camera, MessageSquare, Sparkles, 
-  Activity, BarChart, Rocket, Server, Settings, ShieldCheck, 
+import {
+  BookOpen, BrainCircuit, Target, Database, Wrench, Calculator,
+  Code, Network, Cpu, Camera, MessageSquare, Sparkles,
+  Activity, BarChart, Rocket, Server, Settings, ShieldCheck,
   Layout, Medal, CheckCircle, GraduationCap
 } from 'lucide-react';
 import './ThaneLevelDashboard.css';
@@ -143,57 +143,57 @@ export default function AICourseDashboard() {
   ];
 
   const capstoneProjects = [
-    'AI Chatbot', 'AI Meeting Assistant', 'AI Investigation Platform', 
-    'AI Command & Control Center', 'Face Recognition System', 
-    'Document Intelligence System', 'Predictive Analytics Dashboard', 
+    'AI Chatbot', 'AI Meeting Assistant', 'AI Investigation Platform',
+    'AI Command & Control Center', 'Face Recognition System',
+    'Document Intelligence System', 'Predictive Analytics Dashboard',
     'Generative AI Assistant', 'Smart Policing AI Platform', 'Autonomous AI Agent System'
   ];
 
   const requirements = [
-    'Problem Statement', 'Data', 'Programming Language (Python)', 
-    'Machine Learning Frameworks', 'GPU/Cloud Infrastructure', 
-    'Database', 'Model Training Environment', 'Deployment Platform', 
+    'Problem Statement', 'Data', 'Programming Language (Python)',
+    'Machine Learning Frameworks', 'GPU/Cloud Infrastructure',
+    'Database', 'Model Training Environment', 'Deployment Platform',
     'Monitoring System', 'Security & Governance', 'Maintenance & Support'
   ];
 
   return (
     <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', width: '100%' }}>
-      
+
       {/* Modal Popup for Module Detail */}
       {selectedModuleId && (
-        <div style={{ 
-          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', 
-          background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(4px)', 
-          zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', 
-          padding: isPopupMaximized ? '1rem' : '2rem' 
+        <div style={{
+          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
+          background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(4px)',
+          zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: isPopupMaximized ? '1rem' : '2rem'
         }}>
-          <div className="animate-fade-in" style={{ 
-            background: '#f8fafc', width: '100%', 
-            maxWidth: isPopupMaximized ? '98%' : '1000px', 
-            height: isPopupMaximized ? '96vh' : '75vh', 
-            overflowY: 'auto', 
-            borderRadius: isPopupMaximized ? '0.75rem' : '1.5rem', 
+          <div className="animate-fade-in" style={{
+            background: '#f8fafc', width: '100%',
+            maxWidth: isPopupMaximized ? '98%' : '1000px',
+            height: isPopupMaximized ? '96vh' : '75vh',
+            overflowY: 'auto',
+            borderRadius: isPopupMaximized ? '0.75rem' : '1.5rem',
             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
             position: 'relative',
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
             <div style={{ position: 'absolute', top: '1rem', right: '1.5rem', display: 'flex', gap: '0.75rem', zIndex: 100 }}>
-              <button 
-                onClick={() => setIsPopupMaximized(!isPopupMaximized)} 
-                style={{ 
-                  background: '#e2e8f0', color: '#0f172a', border: 'none', 
-                  padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold', 
+              <button
+                onClick={() => setIsPopupMaximized(!isPopupMaximized)}
+                style={{
+                  background: '#e2e8f0', color: '#0f172a', border: 'none',
+                  padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold',
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem',
                   boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
                 }}
               >
                 {isPopupMaximized ? '🗗 Restore' : '🗖 Maximize'}
               </button>
-              <button 
-                onClick={() => { setSelectedModuleId(null); setIsPopupMaximized(false); }} 
-                style={{ 
-                  background: '#ef4444', color: 'white', border: 'none', 
-                  padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold', 
+              <button
+                onClick={() => { setSelectedModuleId(null); setIsPopupMaximized(false); }}
+                style={{
+                  background: '#ef4444', color: 'white', border: 'none',
+                  padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold',
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem',
                   boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
                 }}
@@ -201,14 +201,15 @@ export default function AICourseDashboard() {
                 ✕ Close
               </button>
             </div>
-            <ModuleDetail 
-              module={courseModules.find(m => m.id === selectedModuleId)} 
-              onBack={() => { setSelectedModuleId(null); setIsPopupMaximized(false); }} 
+            <ModuleDetail
+              module={courseModules.find(m => m.id === selectedModuleId)}
+              onBack={() => { setSelectedModuleId(null); setIsPopupMaximized(false); }}
+              isMaximized={isPopupMaximized}
             />
           </div>
         </div>
       )}
-      
+
       {/* Header Section */}
       <div style={{ textAlign: 'center', marginBottom: '2rem', background: 'white', padding: '1.5rem 2rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
         <div style={{ display: 'inline-flex', padding: '1rem', background: 'linear-gradient(135deg, #3b82f6, #2563eb)', borderRadius: '50%', color: 'white', marginBottom: '1rem', boxShadow: '0 8px 20px rgba(59, 130, 246, 0.4)' }}>
@@ -225,19 +226,19 @@ export default function AICourseDashboard() {
       {/* Top Navigation Tabs */}
       <div className="thane-menu-bar">
         <div className="thane-menu-tabs">
-          <button 
+          <button
             className={`thane-tab ${activeTab === 'modules' ? 'active-blue' : ''}`}
             onClick={() => setActiveTab('modules')}
           >
             Course Modules (कोर्स के मॉड्यूल)
           </button>
-          <button 
+          <button
             className={`thane-tab ${activeTab === 'projects' ? 'active-green' : ''}`}
             onClick={() => setActiveTab('projects')}
           >
             Capstone Projects (फाइनल प्रोजेक्ट्स)
           </button>
-          <button 
+          <button
             className={`thane-tab ${activeTab === 'requirements' ? 'active-purple' : ''}`}
             onClick={() => setActiveTab('requirements')}
           >
@@ -265,17 +266,17 @@ export default function AICourseDashboard() {
                 display: 'flex',
                 flexDirection: 'column'
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-5px)';
-                e.currentTarget.style.boxShadow = `0 10px 25px ${module.color}33`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.02)';
-              }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  e.currentTarget.style.boxShadow = `0 10px 25px ${module.color}33`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.02)';
+                }}
               >
                 {/* Header (Click to expand accordion) */}
-                <div 
+                <div
                   onClick={() => setExpandedDashboardCard(expandedDashboardCard === module.id ? null : module.id)}
                   style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}
                 >
@@ -294,15 +295,15 @@ export default function AICourseDashboard() {
                   <div className="animate-fade-in" style={{ marginTop: '1.5rem', borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem' }}>
                     <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem' }}>
                       {module.items.map((item, index) => (
-                        <div 
-                          key={index} 
-                          style={{ 
-                            background: '#f8fafc', 
-                            border: '1px solid #e2e8f0', 
-                            padding: '0.5rem 0.75rem', 
-                            borderRadius: '0.5rem', 
-                            display: 'flex', 
-                            alignItems: 'center', 
+                        <div
+                          key={index}
+                          style={{
+                            background: '#f8fafc',
+                            border: '1px solid #e2e8f0',
+                            padding: '0.5rem 0.75rem',
+                            borderRadius: '0.5rem',
+                            display: 'flex',
+                            alignItems: 'center',
                             gap: '0.5rem',
                             fontSize: '0.85rem',
                             color: '#334155',
@@ -314,9 +315,9 @@ export default function AICourseDashboard() {
                         </div>
                       ))}
                     </div>
-                    
+
                     {/* Highlighted 'Click to View Details' Button */}
-                    <button 
+                    <button
                       onClick={(e) => { e.stopPropagation(); setSelectedModuleId(module.id); }}
                       style={{
                         width: '100%',
@@ -355,8 +356,8 @@ export default function AICourseDashboard() {
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
             {capstoneProjects.map((project, index) => (
-              <div key={index} style={{ 
-                background: '#fffbeb', color: '#d97706', padding: '1rem 1.25rem', 
+              <div key={index} style={{
+                background: '#fffbeb', color: '#d97706', padding: '1rem 1.25rem',
                 borderRadius: '0.75rem', fontSize: '1.1rem', fontWeight: '600',
                 border: '1px solid #fde68a', display: 'flex', alignItems: 'center', gap: '0.75rem',
                 boxShadow: '0 2px 5px rgba(0,0,0,0.02)'
