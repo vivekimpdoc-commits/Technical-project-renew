@@ -64,6 +64,7 @@ export default function Dashboard() {
 
   // ── Dark Mode ────────────────────────────────────────────────────
   const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
+  const [showAIAnimation, setShowAIAnimation] = useState(false);
 
   // ── Search & Notifications ───────────────────────────────────────
   const [searchQuery, setSearchQuery] = useState('');
@@ -90,7 +91,8 @@ export default function Dashboard() {
   const toggleDarkMode = () => setIsDarkMode(prev => !prev);
   // ─────────────────────────────────────────────────────────────────
 
-  const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem('appLanguage') || 'en');
+  
+const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem('appLanguage') || 'en');
 
   const changeLanguage = (lang) => {
     setCurrentLanguage(lang);
@@ -369,6 +371,37 @@ export default function Dashboard() {
             {isDarkMode ? <Sun size={14} /> : <Moon size={14} />}
             {isDarkMode ? 'Light' : 'Dark'}
           </button>
+
+          {/* AI Website Link */}
+          <a href="#" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            background: isDarkMode ? 'linear-gradient(135deg, #0ea5e9, #2563eb)' : 'linear-gradient(135deg, #38bdf8, #0284c7)',
+            color: 'white',
+            textDecoration: 'none',
+            padding: '0.35rem 1rem',
+            borderRadius: '2rem',
+            fontSize: '0.75rem',
+            fontWeight: '700',
+            border: isDarkMode ? '1px solid #38bdf8' : '1px solid #7dd3fc',
+            transition: 'all 0.2s',
+            boxShadow: '0 4px 12px rgba(14, 165, 233, 0.3)'
+          }}
+            onClick={(e) => {
+              e.preventDefault();
+              setShowAIAnimation(true);
+              setTimeout(() => {
+                setShowAIAnimation(false);
+                window.location.hash = '#/ai-website';
+              }, 2500);
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 15px rgba(14, 165, 233, 0.4)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(14, 165, 233, 0.3)'; }}
+          >
+            <GlobeLock size={14} />
+            AI Website
+          </a>
 
           {/* Logout Button */}
           <Link to="/" style={{
