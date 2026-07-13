@@ -3,11 +3,24 @@ import { BookOpen, BrainCircuit, Target, Database, Wrench, Calculator, Code, Net
 import './ThaneLevelDashboard.css';
 import ModuleDetail from './ModuleDetail';
 
-export default function AICourseDashboard() {
+export default function AICourseDashboard({ setSubBreadcrumb }) {
   const [activeTab, setActiveTab] = useState('modules');
   const [selectedModuleId, setSelectedModuleId] = useState(null);
   const [expandedDashboardCard, setExpandedDashboardCard] = useState(null);
   const [isPopupMaximized, setIsPopupMaximized] = useState(false);
+
+  React.useEffect(() => {
+    if (!setSubBreadcrumb) return;
+    
+    let crumbs = [];
+    if (selectedModuleId) {
+      const mod = courseModules.find(m => m.id === selectedModuleId);
+      if (mod) crumbs.push(mod.title);
+    }
+    setSubBreadcrumb(crumbs);
+
+  }, [selectedModuleId, setSubBreadcrumb]);
+
   const courseModules = [
     {
       id: 1,

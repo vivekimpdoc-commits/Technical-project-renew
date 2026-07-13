@@ -7,7 +7,7 @@ import {
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
   Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home, ShieldCheck, Cloud, MapPin,
-  Moon, Sun, Search, Bell, PanelLeftClose, PanelLeftOpen
+  Moon, Sun, Search, Bell, PanelLeftClose, PanelLeftOpen, ChevronRight
 } from 'lucide-react';
 import EthicsDashboard from './EthicsDashboard';
 import GovernanceDashboard from './GovernanceDashboard';
@@ -53,11 +53,12 @@ export default function Dashboard() {
     { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit, color: '#f59e0b', category: 'Operations' },
     { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield, color: '#ef4444', category: 'Administrative' },
     { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#0ea5e9', category: 'Administrative' },
-        { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: 'var(--text-muted)', category: 'Administrative' },
+    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: 'var(--text-muted)', category: 'Administrative' },
     { id: 'analytics', label: 'Live Analytics & Metrics (एनालिटिक्स)', icon: MapPin, color: '#3b82f6', category: 'Operations' },
   ];
 
   const [activeTab, setActiveTab] = useState('overview');
+  const [subBreadcrumb, setSubBreadcrumb] = useState([]);
   const [stepUpSubTab, setStepUpSubTab] = useState('phases');
   const [members, setMembers] = useState([]);
 
@@ -94,7 +95,7 @@ export default function Dashboard() {
   const changeLanguage = (lang) => {
     setCurrentLanguage(lang);
     localStorage.setItem('appLanguage', lang);
-    
+
     // Trigger Google Translate hidden dropdown
     const selectEl = document.querySelector('.goog-te-combo');
     if (selectEl) {
@@ -147,6 +148,7 @@ export default function Dashboard() {
 
 
   const handleTabChange = (tab, subTab = 'phases') => {
+    setSubBreadcrumb([]);
     if (activeTab === tab) {
       setResetTriggers(prev => ({
         ...prev,
@@ -179,6 +181,8 @@ export default function Dashboard() {
 
   const filteredNavItems = navItems.filter(item => item.label.toLowerCase().includes(searchQuery.toLowerCase()));
 
+  const activeItem = navItems.find(i => i.id === activeTab);
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -191,10 +195,10 @@ export default function Dashboard() {
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-          
+
           {/* Clickable Logo & Title for Home Navigation */}
-          <div 
-            onClick={() => setActiveTab('overview')} 
+          <div
+            onClick={() => setActiveTab('overview')}
             style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', transition: 'opacity 0.2s' }}
             onMouseEnter={(e) => e.currentTarget.style.opacity = '0.8'}
             onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
@@ -218,9 +222,9 @@ export default function Dashboard() {
               <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#f59e0b', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
                 UP Police Academy & AI Command
               </span>
-              <span style={{ 
-                fontSize: '1.45rem', 
-                fontWeight: '900', 
+              <span style={{
+                fontSize: '1.45rem',
+                fontWeight: '900',
                 background: 'linear-gradient(to right, #00d2ff, #00d2ff, #ffffff)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -250,19 +254,19 @@ export default function Dashboard() {
           <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.1)', borderRadius: '2rem', padding: '0.35rem 0.75rem', border: '1px solid rgba(255,255,255,0.2)' }}>
               <Search size={14} color="#94a3b8" />
-              <input 
-                type="text" 
-                placeholder="Search modules..." 
+              <input
+                type="text"
+                placeholder="Search modules..."
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                   setShowSearchDropdown(e.target.value.length > 0);
                 }}
-                onFocus={() => { if(searchQuery.length > 0) setShowSearchDropdown(true); }}
+                onFocus={() => { if (searchQuery.length > 0) setShowSearchDropdown(true); }}
                 onBlur={() => setTimeout(() => setShowSearchDropdown(false), 200)}
                 style={{ background: 'transparent', border: 'none', color: 'white', marginLeft: '0.5rem', outline: 'none', fontSize: '0.8rem', width: '120px', transition: 'width 0.3s ease' }}
                 onMouseEnter={(e) => e.target.style.width = '180px'}
-                onMouseLeave={(e) => { if(searchQuery === '') e.target.style.width = '120px' }}
+                onMouseLeave={(e) => { if (searchQuery === '') e.target.style.width = '120px' }}
               />
             </div>
 
@@ -273,8 +277,8 @@ export default function Dashboard() {
                 {filteredNavItems.length > 0 ? (
                   <div style={{ padding: '0.5rem' }}>
                     {filteredNavItems.map(item => (
-                      <div 
-                        key={item.id} 
+                      <div
+                        key={item.id}
                         onClick={() => { setActiveTab(item.id); setShowSearchDropdown(false); setSearchQuery(''); }}
                         style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', cursor: 'pointer', borderRadius: '0.5rem', color: 'var(--text-main)', transition: 'background 0.2s' }}
                         onMouseEnter={(e) => e.currentTarget.style.background = 'var(--icon-bg)'}
@@ -314,7 +318,7 @@ export default function Dashboard() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', borderBottom: '1px solid var(--card-border)' }}>
                   <span style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-main)' }}>Notifications</span>
                   {unreadCount > 0 && (
-                    <button onClick={() => setNotifications(notifications.map(n => ({...n, unread: false})))} style={{ background: 'none', border: 'none', color: '#2563eb', fontSize: '0.75rem', cursor: 'pointer', fontWeight: '600' }}>Mark all read</button>
+                    <button onClick={() => setNotifications(notifications.map(n => ({ ...n, unread: false })))} style={{ background: 'none', border: 'none', color: '#2563eb', fontSize: '0.75rem', cursor: 'pointer', fontWeight: '600' }}>Mark all read</button>
                   )}
                 </div>
                 <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
@@ -450,10 +454,10 @@ export default function Dashboard() {
         )}
 
         {/* Sidebar */}
-        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''} ${isSidebarCollapsed ? 'collapsed' : ''}`} style={{ 
+        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''} ${isSidebarCollapsed ? 'collapsed' : ''}`} style={{
           height: '100%',
-          display: 'flex', 
-          flexDirection: 'column', 
+          display: 'flex',
+          flexDirection: 'column',
           background: 'var(--card-bg)',
           borderRight: '1px solid #e2e8f0',
           padding: 0
@@ -517,7 +521,7 @@ export default function Dashboard() {
               const isEducationActive = expandedSections.Education || navItems.filter(i => i.category === 'Education').some(i => i.id === activeTab);
               const isOperationsActive = expandedSections.Operations || navItems.filter(i => i.category === 'Operations').some(i => i.id === activeTab);
               const isAdministrativeActive = expandedSections.Administrative || navItems.filter(i => i.category === 'Administrative').some(i => i.id === activeTab);
-              
+
               return (
                 <>
                   {/* General Tab (Home) */}
@@ -525,21 +529,21 @@ export default function Dashboard() {
                     <div
                       key={item.id}
                       className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
-                        title={item.label}
+                      title={item.label}
                       onClick={() => handleTabChange(item.id)}
                       style={{
-                          background: activeTab === item.id ? 'rgba(37, 99, 235, 0.06)' : 'transparent',
-                          color: activeTab === item.id ? '#1e40af' : '#475569',
-                          transition: 'all 0.2s ease',
-                          display: 'flex',
-                          alignItems: 'center',
-                          padding: '0.7rem 1rem',
-                          gap: '0.75rem',
-                          cursor: 'pointer',
-                          borderRadius: '0.5rem',
-                          borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
-                          boxShadow: activeTab === item.id ? '0 2px 8px rgba(0,0,0,0.04)' : 'none'
-                        }}
+                        background: activeTab === item.id ? 'rgba(37, 99, 235, 0.06)' : 'transparent',
+                        color: activeTab === item.id ? '#1e40af' : '#475569',
+                        transition: 'all 0.2s ease',
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '0.7rem 1rem',
+                        gap: '0.75rem',
+                        cursor: 'pointer',
+                        borderRadius: '0.5rem',
+                        borderLeft: activeTab === item.id ? `4px solid ${item.color}` : '4px solid transparent',
+                        boxShadow: activeTab === item.id ? '0 2px 8px rgba(0,0,0,0.04)' : 'none'
+                      }}
                       onMouseEnter={(e) => {
                         if (activeTab !== item.id) {
                           e.currentTarget.style.background = '#f1f5f9';
@@ -552,16 +556,16 @@ export default function Dashboard() {
                       }}
                     >
                       <div style={{
-                          background: activeTab === item.id ? item.color : '#f1f5f9',
-                          padding: '0.5rem',
-                          borderRadius: '0.5rem',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: activeTab === item.id ? 'white' : item.color,
-                          transition: 'all 0.2s',
-                          boxShadow: activeTab === item.id ? `0 2px 6px ${item.color}60` : 'none'
-                        }}>
+                        background: activeTab === item.id ? item.color : '#f1f5f9',
+                        padding: '0.5rem',
+                        borderRadius: '0.5rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: activeTab === item.id ? 'white' : item.color,
+                        transition: 'all 0.2s',
+                        boxShadow: activeTab === item.id ? `0 2px 6px ${item.color}60` : 'none'
+                      }}>
                         <item.icon size={16} strokeWidth={2} />
                       </div>
                       <span className="hide-on-collapse" style={{ fontWeight: activeTab === item.id ? '700' : '600', fontSize: '0.9rem', transition: 'color 0.3s ease' }}>{item.label}</span>
@@ -570,28 +574,28 @@ export default function Dashboard() {
 
                   {/* Group 1: Education */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <div 
+                    <div
                       className="group-header"
                       title="Education & Skill Upgradation"
                       onClick={() => toggleSection('Education')}
                       style={
-                        { 
-                        fontSize: '0.9rem', 
-                        fontWeight: '800', 
-                        color: '#2563eb', 
-                        background: isEducationActive ? '#2563eb05' : '#f8fafc', 
-                        padding: '1.05rem 1.25rem', 
-                        borderRadius: '0.5rem',
-                        border: '1px solid var(--card-border)',
-                        borderLeft: isEducationActive ? '4px solid #2563eb' : '4px solid transparent',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        cursor: 'pointer',
-                        userSelect: 'none',
-                        boxShadow: '0 1px 3px rgba(37, 99, 235, 0.05)',
-                        transition: 'all 0.2s ease'
-                      }}
+                        {
+                          fontSize: '0.9rem',
+                          fontWeight: '800',
+                          color: '#2563eb',
+                          background: isEducationActive ? '#2563eb05' : '#f8fafc',
+                          padding: '1.05rem 1.25rem',
+                          borderRadius: '0.5rem',
+                          border: '1px solid var(--card-border)',
+                          borderLeft: isEducationActive ? '4px solid #2563eb' : '4px solid transparent',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          cursor: 'pointer',
+                          userSelect: 'none',
+                          boxShadow: '0 1px 3px rgba(37, 99, 235, 0.05)',
+                          transition: 'all 0.2s ease'
+                        }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.background = '#f1f5f9';
                       }}
@@ -600,13 +604,13 @@ export default function Dashboard() {
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <div style={{ 
-                          background: '#2563eb15', 
-                          padding: '0.6rem', 
-                          borderRadius: '0.5rem', 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          justifyContent: 'center', 
+                        <div style={{
+                          background: '#2563eb15',
+                          padding: '0.6rem',
+                          borderRadius: '0.5rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                           color: '#2563eb',
                           transition: 'all 0.2s'
                         }}>
@@ -667,28 +671,28 @@ export default function Dashboard() {
 
                   {/* Group 2: Operations */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <div 
+                    <div
                       className="group-header"
                       title="AI & Operations Command"
                       onClick={() => toggleSection('Operations')}
                       style={
-                        { 
-                        fontSize: '0.9rem', 
-                        fontWeight: '800', 
-                        color: '#0d9488', 
-                        background: isOperationsActive ? '#0d948805' : '#f8fafc', 
-                        padding: '1.05rem 1.25rem', 
-                        borderRadius: '0.5rem',
-                        border: '1px solid var(--card-border)',
-                        borderLeft: isOperationsActive ? '4px solid #0d9488' : '4px solid transparent',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        cursor: 'pointer',
-                        userSelect: 'none',
-                        boxShadow: '0 1px 3px rgba(13, 148, 136, 0.05)',
-                        transition: 'all 0.2s ease'
-                      }}
+                        {
+                          fontSize: '0.9rem',
+                          fontWeight: '800',
+                          color: '#0d9488',
+                          background: isOperationsActive ? '#0d948805' : '#f8fafc',
+                          padding: '1.05rem 1.25rem',
+                          borderRadius: '0.5rem',
+                          border: '1px solid var(--card-border)',
+                          borderLeft: isOperationsActive ? '4px solid #0d9488' : '4px solid transparent',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          cursor: 'pointer',
+                          userSelect: 'none',
+                          boxShadow: '0 1px 3px rgba(13, 148, 136, 0.05)',
+                          transition: 'all 0.2s ease'
+                        }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.background = '#f1f5f9';
                       }}
@@ -697,13 +701,13 @@ export default function Dashboard() {
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <div style={{ 
-                          background: '#0d948815', 
-                          padding: '0.6rem', 
-                          borderRadius: '0.5rem', 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          justifyContent: 'center', 
+                        <div style={{
+                          background: '#0d948815',
+                          padding: '0.6rem',
+                          borderRadius: '0.5rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                           color: '#0d9488',
                           transition: 'all 0.2s'
                         }}>
@@ -764,28 +768,28 @@ export default function Dashboard() {
 
                   {/* Group 3: Administrative */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <div 
+                    <div
                       className="group-header"
                       title="Administrative & Field Levels"
                       onClick={() => toggleSection('Administrative')}
                       style={
-                        { 
-                        fontSize: '0.9rem', 
-                        fontWeight: '800', 
-                        color: '#dc2626', 
-                        background: isAdministrativeActive ? '#dc262605' : '#f8fafc', 
-                        padding: '1.05rem 1.25rem', 
-                        borderRadius: '0.5rem',
-                        border: '1px solid var(--card-border)',
-                        borderLeft: isAdministrativeActive ? '4px solid #dc2626' : '4px solid transparent',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        cursor: 'pointer',
-                        userSelect: 'none',
-                        boxShadow: '0 1px 3px rgba(220, 38, 38, 0.05)',
-                        transition: 'all 0.2s ease'
-                      }}
+                        {
+                          fontSize: '0.9rem',
+                          fontWeight: '800',
+                          color: '#dc2626',
+                          background: isAdministrativeActive ? '#dc262605' : '#f8fafc',
+                          padding: '1.05rem 1.25rem',
+                          borderRadius: '0.5rem',
+                          border: '1px solid var(--card-border)',
+                          borderLeft: isAdministrativeActive ? '4px solid #dc2626' : '4px solid transparent',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          cursor: 'pointer',
+                          userSelect: 'none',
+                          boxShadow: '0 1px 3px rgba(220, 38, 38, 0.05)',
+                          transition: 'all 0.2s ease'
+                        }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.background = '#f1f5f9';
                       }}
@@ -794,13 +798,13 @@ export default function Dashboard() {
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <div style={{ 
-                          background: '#dc262615', 
-                          padding: '0.6rem', 
-                          borderRadius: '0.5rem', 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          justifyContent: 'center', 
+                        <div style={{
+                          background: '#dc262615',
+                          padding: '0.6rem',
+                          borderRadius: '0.5rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                           color: '#dc2626',
                           transition: 'all 0.2s'
                         }}>
@@ -859,7 +863,7 @@ export default function Dashboard() {
                     ))}
                   </div>
 
-                  </>
+                </>
               );
             })()}
           </div>
@@ -867,26 +871,158 @@ export default function Dashboard() {
 
         {/* Main Content Area */}
         <main className="main-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', overflowY: 'auto', width: '100%' }}>
-          {activeTab === 'overview' && (
-            <Overview onNavigate={(tabId, subTabId) => handleTabChange(tabId, subTabId)} />
+
+          {/* Breadcrumb Navigation */}
+          {!activeTab.startsWith('overview') && !activeTab.startsWith('category-') && activeItem && (
+            <div style={{
+              width: '100%',
+              maxWidth: '1200px',
+              display: 'flex',
+              justifyContent: 'flex-start',
+              padding: '0 1.25rem',
+              marginBottom: '1.5rem',
+            }}>
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '0.6rem',
+                padding: '0.6rem 1.2rem',
+                background: isDarkMode 
+                  ? 'rgba(30, 41, 59, 0.7)'
+                  : '#ffffff',
+                border: `1px solid ${activeItem.color}40`,
+                borderRadius: '2rem',
+                color: 'var(--text-muted)',
+                fontSize: '0.85rem',
+                fontWeight: '600',
+                boxShadow: isDarkMode ? `0 4px 20px rgba(0,0,0,0.4)` : `0 4px 20px ${activeItem.color}20`,
+              }}>
+                <span 
+                  style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem', transition: 'all 0.3s', color: isDarkMode ? '#94a3b8' : '#64748b', padding: '0.2rem 0.4rem' }}
+                  onClick={() => handleTabChange('overview')}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = '#3b82f6'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = isDarkMode ? '#94a3b8' : '#64748b'; }}
+                  title="Go to Home"
+                >
+                  <Home size={15} /> <span style={{marginTop: '1px'}}>Home</span>
+                </span>
+                
+                {activeItem.category !== 'General' && (
+                  <>
+                    <ChevronRight size={14} style={{ color: '#cbd5e1', opacity: 0.8 }} />
+                    <span 
+                      style={{ 
+                        cursor: 'pointer',
+                        color: isDarkMode ? '#94a3b8' : '#64748b', 
+                        padding: '0.2rem 0.4rem', 
+                        letterSpacing: '0.02em', 
+                        marginTop: '1px',
+                        transition: 'all 0.3s'
+                      }}
+                      title="Open Category Overview"
+                      onClick={() => handleTabChange(`category-${activeItem.category}`)}
+                      onMouseEnter={(e) => { e.currentTarget.style.color = '#3b82f6'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.color = isDarkMode ? '#94a3b8' : '#64748b'; }}
+                    >
+                      {activeItem.category} 
+                    </span>
+                  </>
+                )}
+                
+                <ChevronRight size={14} style={{ color: '#cbd5e1', opacity: 0.8 }} />
+                <span 
+                  style={{ 
+                    cursor: subBreadcrumb.length > 0 ? 'pointer' : 'default',
+                    color: subBreadcrumb.length === 0 ? activeItem.color : (isDarkMode ? '#94a3b8' : '#64748b'), 
+                    fontWeight: subBreadcrumb.length === 0 ? '700' : '600', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '0.4rem',
+                    background: subBreadcrumb.length === 0 ? `rgba(${parseInt(activeItem.color.slice(1,3),16)},${parseInt(activeItem.color.slice(3,5),16)},${parseInt(activeItem.color.slice(5,7),16)},0.08)` : 'transparent',
+                    padding: '0.35rem 0.9rem',
+                    borderRadius: '1.5rem',
+                    border: subBreadcrumb.length === 0 ? `1px solid rgba(${parseInt(activeItem.color.slice(1,3),16)},${parseInt(activeItem.color.slice(3,5),16)},${parseInt(activeItem.color.slice(5,7),16)},0.3)` : '1px solid transparent',
+                    transition: 'all 0.3s',
+                    boxShadow: subBreadcrumb.length === 0 ? `0 0 12px rgba(${parseInt(activeItem.color.slice(1,3),16)},${parseInt(activeItem.color.slice(3,5),16)},${parseInt(activeItem.color.slice(5,7),16)},0.4)` : 'none',
+                    textShadow: subBreadcrumb.length === 0 ? `0 0 8px rgba(${parseInt(activeItem.color.slice(1,3),16)},${parseInt(activeItem.color.slice(3,5),16)},${parseInt(activeItem.color.slice(5,7),16)},0.3)` : 'none'
+                  }}
+                  onClick={() => {
+                    if (subBreadcrumb.length > 0) {
+                      setSubBreadcrumb([]);
+                      setResetTriggers(prev => ({
+                        ...prev,
+                        [activeTab]: (prev[activeTab] || 0) + 1
+                      }));
+                    }
+                  }}
+                  onMouseEnter={(e) => {
+                    if (subBreadcrumb.length > 0) {
+                      e.currentTarget.style.color = activeItem.color;
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (subBreadcrumb.length > 0) {
+                      e.currentTarget.style.color = isDarkMode ? '#94a3b8' : '#64748b';
+                    }
+                  }}
+                  title={subBreadcrumb.length > 0 ? `Back to ${activeItem.label.split(' (')[0]}` : ''}
+                >
+                  <activeItem.icon size={15} color={subBreadcrumb.length === 0 ? activeItem.color : (isDarkMode ? '#94a3b8' : '#64748b')} style={{ transition: 'all 0.3s' }} />
+                  <span style={{marginTop: '1px'}}>{activeItem.label.split(' (')[0]}</span>
+                </span>
+                
+                {subBreadcrumb && subBreadcrumb.map((item, index) => {
+                  const isLast = index === subBreadcrumb.length - 1;
+                  return (
+                    <React.Fragment key={index}>
+                      <ChevronRight size={14} style={{ color: '#cbd5e1', opacity: 0.8 }} />
+                      <span style={{ 
+                        color: isLast ? activeItem.color : (isDarkMode ? '#94a3b8' : '#64748b'), 
+                        fontWeight: isLast ? '700' : '600', 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        background: isLast ? `rgba(${parseInt(activeItem.color.slice(1,3),16)},${parseInt(activeItem.color.slice(3,5),16)},${parseInt(activeItem.color.slice(5,7),16)},0.08)` : 'transparent',
+                        padding: isLast ? '0.35rem 0.9rem' : '0.2rem 0.4rem',
+                        borderRadius: '1.5rem',
+                        border: isLast ? `1px solid rgba(${parseInt(activeItem.color.slice(1,3),16)},${parseInt(activeItem.color.slice(3,5),16)},${parseInt(activeItem.color.slice(5,7),16)},0.3)` : '1px solid transparent',
+                        boxShadow: isLast ? `0 0 12px rgba(${parseInt(activeItem.color.slice(1,3),16)},${parseInt(activeItem.color.slice(3,5),16)},${parseInt(activeItem.color.slice(5,7),16)},0.4)` : 'none',
+                        textShadow: isLast ? `0 0 8px rgba(${parseInt(activeItem.color.slice(1,3),16)},${parseInt(activeItem.color.slice(3,5),16)},${parseInt(activeItem.color.slice(5,7),16)},0.3)` : 'none',
+                        transition: 'all 0.3s',
+                        marginTop: '1px'
+                      }}>
+                        {item}
+                      </span>
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {(activeTab === 'overview' || activeTab.startsWith('category-')) && (
+            <Overview 
+              onNavigate={(tabId, subTabId) => handleTabChange(tabId, subTabId)} 
+              filterCategory={activeTab.startsWith('category-') ? activeTab.replace('category-', '') : null}
+            />
           )}
           {activeTab === 'step-up' && (
-            <StepUpLiteracyDashboard defaultTab={stepUpSubTab} resetTrigger={resetTriggers['step-up']} />
+            <StepUpLiteracyDashboard defaultTab={stepUpSubTab} resetTrigger={resetTriggers['step-up']} setSubBreadcrumb={setSubBreadcrumb} />
           )}
           {activeTab === 'ai-course' && (
-            <AICourseDashboard />
+            <AICourseDashboard setSubBreadcrumb={setSubBreadcrumb} />
           )}
           {activeTab === 'frontend' && (
-            <FrontendDetails />
+            <FrontendDetails setSubBreadcrumb={setSubBreadcrumb} />
           )}
-          {activeTab === 'police-functioning' && <PoliceFunctioningDashboard />}
-          {activeTab === 'thane-level' && <ThaneLevelDashboard projects={projects} resetTrigger={resetTriggers['thane-level']} />}
-          {activeTab === 'district-level' && <DistrictLevelDashboard resetTrigger={resetTriggers['district-level']} />}
-          {activeTab === 'project-ppt' && <ProjectPPTDashboard />}
-          {activeTab === 'masterclass' && <SoftwareMasterclassDashboard resetTrigger={resetTriggers['masterclass']} />}
-          {activeTab === 'mlops' && <MLOpsDashboard resetTrigger={resetTriggers['mlops']} />}
-          {activeTab === 'advanced-ai' && <AdvancedAICyberDashboard />}
-          {activeTab === 'analytics' && <AnalyticsDashboard />}
+          {activeTab === 'police-functioning' && <PoliceFunctioningDashboard setSubBreadcrumb={setSubBreadcrumb} />}
+          {activeTab === 'thane-level' && <ThaneLevelDashboard projects={projects} resetTrigger={resetTriggers['thane-level']} setSubBreadcrumb={setSubBreadcrumb} />}
+          {activeTab === 'district-level' && <DistrictLevelDashboard resetTrigger={resetTriggers['district-level']} setSubBreadcrumb={setSubBreadcrumb} />}
+          {activeTab === 'project-ppt' && <ProjectPPTDashboard setSubBreadcrumb={setSubBreadcrumb} />}
+          {activeTab === 'masterclass' && <SoftwareMasterclassDashboard resetTrigger={resetTriggers['masterclass']} setSubBreadcrumb={setSubBreadcrumb} />}
+          {activeTab === 'mlops' && <MLOpsDashboard resetTrigger={resetTriggers['mlops']} setSubBreadcrumb={setSubBreadcrumb} />}
+          {activeTab === 'advanced-ai' && <AdvancedAICyberDashboard setSubBreadcrumb={setSubBreadcrumb} />}
+          {activeTab === 'analytics' && <AnalyticsDashboard setSubBreadcrumb={setSubBreadcrumb} />}
           {activeTab === 'devops' && <PlaceholderView title="DevOps (CI/CD & Automation)" />}
         </main>
       </div>

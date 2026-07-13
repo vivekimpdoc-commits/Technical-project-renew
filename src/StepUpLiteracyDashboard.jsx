@@ -18,11 +18,43 @@ import DevSecOps from './DevSecOps';
 import MonitoringAnalytics from './MonitoringAnalytics';
 import AIInSoftwareEngineering from './AIInSoftwareEngineering';
 
-export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTrigger }) {
+export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTrigger, setSubBreadcrumb }) {
   const [selectedPhase, setSelectedPhase] = useState(null);
   const [activeTab, setActiveTab] = useState(defaultTab);
   const [selectedSdlcItem, setSelectedSdlcItem] = useState(null);
   const [selectedAdvancedItem, setSelectedAdvancedItem] = useState(null);
+
+  React.useEffect(() => {
+    if (!setSubBreadcrumb) return;
+    
+    let crumbs = [];
+    
+    // Level 1: Tab
+    if (activeTab === 'phases') crumbs.push('Initial Steps in Software Development');
+    else if (activeTab === 'sdlc') crumbs.push('SDLC - Lifecycle');
+    else if (activeTab === 'advanced') crumbs.push('Advanced Software Engineering');
+
+    // Level 2: Specific item inside tab
+    if (selectedPhase) {
+      const phaseObj = phases.find(p => p.id === selectedPhase);
+      if (phaseObj) crumbs.push(phaseObj.name.split(' (')[0]);
+    } else if (selectedSdlcItem) {
+      if (selectedSdlcItem === 1) crumbs.push('SDLC Models');
+      if (selectedSdlcItem === 2) crumbs.push('Software Testing');
+      if (selectedSdlcItem === 3) crumbs.push('CI/CD Pipeline');
+      if (selectedSdlcItem === 4) crumbs.push('Project Management Tools');
+    } else if (selectedAdvancedItem) {
+      if (selectedAdvancedItem === 1) crumbs.push('Cloud Computing');
+      if (selectedAdvancedItem === 2) crumbs.push('Software Architecture');
+      if (selectedAdvancedItem === 3) crumbs.push('DevSecOps');
+      if (selectedAdvancedItem === 4) crumbs.push('Monitoring & Analytics');
+      if (selectedAdvancedItem === 5) crumbs.push('AI in Software Engineering');
+    }
+
+    setSubBreadcrumb(crumbs);
+
+  }, [activeTab, selectedPhase, selectedSdlcItem, selectedAdvancedItem, setSubBreadcrumb]);
+
 
   React.useEffect(() => {
     setSelectedPhase(null);

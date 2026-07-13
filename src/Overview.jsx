@@ -2,10 +2,10 @@ import React from 'react';
 import { 
   BookOpen, GraduationCap, Code, Activity, 
   GlobeLock, BrainCircuit, Shield, Building2, 
-  Presentation, ArrowRight, ShieldCheck
+  Presentation, ArrowRight, ShieldCheck, Home
 } from 'lucide-react';
 
-export default function Overview({ onNavigate }) {
+export default function Overview({ onNavigate, filterCategory }) {
   const sections = [
     {
       titleEn: "1. Education & IT Capacity Building",
@@ -109,9 +109,47 @@ export default function Overview({ onNavigate }) {
     }
   ];
 
+  const displaySections = filterCategory 
+    ? sections.filter(s => s.titleEn.toLowerCase().includes(filterCategory.toLowerCase()))
+    : sections;
+
   return (
     <div className="thane-dashboard-container" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '1rem' }}>
       
+      {/* Back to Home Button (Only visible on Category Pages) */}
+      {filterCategory && (
+        <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'flex-start' }}>
+          <button 
+            onClick={() => onNavigate('overview')}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.6rem 1.25rem',
+              background: 'linear-gradient(to right, #2563eb, #3b82f6)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '2rem',
+              cursor: 'pointer',
+              fontWeight: '600',
+              fontSize: '0.9rem',
+              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.25)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.35)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(37, 99, 235, 0.25)';
+            }}
+          >
+            <Home size={16} /> Back to Home
+          </button>
+        </div>
+      )}
+
       {/* Title */}
       <div className="thane-header" style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
         <h2 className="thane-title" style={{ 
@@ -126,26 +164,28 @@ export default function Overview({ onNavigate }) {
           gap: '0.5rem'
         }}>
           <ShieldCheck size={28} style={{ color: '#2563eb', flexShrink: 0 }} />
-          Home & Central Command Portal (मुख्य पोर्टल)
+          {filterCategory ? `${filterCategory} Category Portal` : 'Home & Central Command Portal (मुख्य पोर्टल)'}
         </h2>
         <p className="thane-subtitle" style={{ fontSize: '0.9rem', marginTop: '0.25rem', color: 'var(--text-muted)' }}>
-          उत्तर प्रदेश पुलिस एआई प्रोजेक्ट के सभी मुख्य स्तंभों का पोर्टल गेटवे
+          {filterCategory ? `Modules under ${filterCategory} category` : 'उत्तर प्रदेश पुलिस एआई प्रोजेक्ट के सभी मुख्य स्तंभों का पोर्टल गेटवे'}
         </p>
       </div>
 
       {/* Intro Summary */}
-      <div style={{ 
-        background: 'var(--card-bg)', borderRadius: '0.75rem', padding: '0.75rem 1.25rem', border: '1px solid var(--card-border)', 
-        boxShadow: '0 2px 4px rgba(0,0,0,0.02)', marginBottom: '1.5rem', textAlign: 'center'
-      }}>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
-          यह डैशबोर्ड उत्तर प्रदेश पुलिस विभाग के आधुनिकीकरण का एक संपूर्ण नक्शा है। नीचे दिए गए तीन मुख्य क्षेत्रों में विभाजित किसी भी मॉड्यूल पर क्लिक करके सीधे उसके कार्यप्रणाली विवरण को देखें।
-        </p>
-      </div>
+      {!filterCategory && (
+        <div style={{ 
+          background: 'var(--card-bg)', borderRadius: '0.75rem', padding: '0.75rem 1.25rem', border: '1px solid var(--card-border)', 
+          boxShadow: '0 2px 4px rgba(0,0,0,0.02)', marginBottom: '1.5rem', textAlign: 'center'
+        }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
+            यह डैशबोर्ड उत्तर प्रदेश पुलिस विभाग के आधुनिकीकरण का एक संपूर्ण नक्शा है। नीचे दिए गए तीन मुख्य क्षेत्रों में विभाजित किसी भी मॉड्यूल पर क्लिक करके सीधे उसके कार्यप्रणाली विवरण को देखें।
+          </p>
+        </div>
+      )}
 
       {/* Sections rendering */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        {sections.map((section, idx) => (
+        {displaySections.map((section, idx) => (
           <div key={idx} style={{ 
             background: 'var(--card-bg)', padding: '1.75rem 1.5rem', borderRadius: '1.25rem', 
             border: '1px solid var(--card-border)', borderTop: `4px solid ${section.color}`,
