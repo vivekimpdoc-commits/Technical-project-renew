@@ -105,7 +105,7 @@ export default function ProjectDetailsView({ project, onBack }) {
     { id: 3, title: 'चरण 3: बैकएंड और API का निर्माण', subtitle: 'Backend Development', icon: Server, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: फ्रंटएंड और यूजर इंटरफेस', subtitle: 'Frontend & UI Design', icon: Monitor, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: टेस्टिंग और मानवीय समीक्षा', subtitle: 'Testing & Guardrails', icon: CheckCircle, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: सुरक्षा और डिप्लॉयमेंट', subtitle: 'Security & Deployment', icon: Shield, color: '#64748b' },
+    { id: 6, title: 'चरण 6: सुरक्षा और डिप्लॉयमेंट', subtitle: 'Security & Deployment', icon: Shield, color: 'var(--text-muted)' },
   ];
 
   const resourcesList = [
@@ -133,18 +133,18 @@ export default function ProjectDetailsView({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenFlowchart(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
 
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>आर्किटेक्चर और प्रोसेस फ्लो चार्ट (Process Flow Chart)</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>आर्किटेक्चर और प्रोसेस फ्लो चार्ट (Process Flow Chart)</h3>
         
-        <div className="flowchart-container" style={{ margin: '0 auto', maxWidth: '800px', background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
+        <div className="flowchart-container" style={{ margin: '0 auto', maxWidth: '800px', background: 'var(--card-bg)', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
           <div className="flow-step">
             <div className="flow-node user-node">
               <div className="flow-icon">🗣️</div>
@@ -239,16 +239,16 @@ export default function ProjectDetailsView({ project, onBack }) {
 
   if (showFullscreenWorkflow) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenWorkflow(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
 
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>विस्तृत कार्यप्रणाली (Step-by-Step Workflow)</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>विस्तृत कार्यप्रणाली (Step-by-Step Workflow)</h3>
         
         <div className="workflow-container">
           {/* Step 1 */}
@@ -347,11 +347,11 @@ export default function ProjectDetailsView({ project, onBack }) {
 
   if (showFrontendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFrontendDetails(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
@@ -359,7 +359,7 @@ export default function ProjectDetailsView({ project, onBack }) {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <Monitor size={40} color="#2563eb" />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>फ्रंटएंड (Frontend) - यूजर इंटरफेस</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>फ्रंटएंड (Frontend) - यूजर इंटरफेस</h3>
           </div>
           
           <p className="overview-intro-text" style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.15rem' }}>
@@ -402,11 +402,11 @@ export default function ProjectDetailsView({ project, onBack }) {
 
   if (showBackendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowBackendDetails(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
@@ -414,7 +414,7 @@ export default function ProjectDetailsView({ project, onBack }) {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <Server size={40} color="#2563eb" />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>बैकएंड (Backend) - कोर लॉजिक और API</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>बैकएंड (Backend) - कोर लॉजिक और API</h3>
           </div>
           
           <p className="overview-intro-text" style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.15rem' }}>
@@ -446,11 +446,11 @@ export default function ProjectDetailsView({ project, onBack }) {
 
   if (showAiDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowAiDetails(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
@@ -458,7 +458,7 @@ export default function ProjectDetailsView({ project, onBack }) {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <BrainCircuit size={40} color="#2563eb" />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>AI और NLP स्टैक</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>AI और NLP स्टैक</h3>
           </div>
           
           <p className="overview-intro-text" style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.15rem' }}>
@@ -497,11 +497,11 @@ export default function ProjectDetailsView({ project, onBack }) {
 
   if (showDatabaseDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowDatabaseDetails(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
@@ -509,7 +509,7 @@ export default function ProjectDetailsView({ project, onBack }) {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem', justifyContent: 'center' }}>
             <Database size={40} color="#2563eb" />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>डेटाबेस और स्टोरेज</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>डेटाबेस और स्टोरेज</h3>
           </div>
           
           <div className="workflow-container" style={{ padding: 0 }}>
@@ -543,11 +543,11 @@ export default function ProjectDetailsView({ project, onBack }) {
     const step = guideSteps.find(s => s.id === selectedGuideStep);
     const StepIcon = step.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setSelectedGuideStep(null)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Step-by-Step Guide
         </button>
@@ -555,7 +555,7 @@ export default function ProjectDetailsView({ project, onBack }) {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <StepIcon size={40} color={step.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{step.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{step.title}</h3>
           </div>
           
           <div className="workflow-container" style={{ padding: 0 }}>
@@ -660,7 +660,7 @@ export default function ProjectDetailsView({ project, onBack }) {
                         अंतिम चरण में सिस्टम को सुरक्षित और लाइव करना।
                       </p>
                       <div className="workflow-step-card" style={{ borderLeftColor: '#64748b', paddingLeft: '2rem' }}>
-                        <h4 className="workflow-step-title" style={{ color: '#334155' }}>🔒 ऑन-प्रिमाइसेस डिप्लॉयमेंट</h4>
+                        <h4 className="workflow-step-title" style={{ color: 'var(--text-main)' }}>🔒 ऑन-प्रिमाइसेस डिप्लॉयमेंट</h4>
                         <div className="workflow-point">संवेदनशीलता को देखते हुए, पूरे सिस्टम को पुलिस विभाग के अपने सुरक्षित लोकल सर्वर पर डिप्लॉय करें ताकि डेटा इंटरनेट पर लीक न हो।</div>
                       </div>
                       <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6', paddingLeft: '2rem' }}>
@@ -683,11 +683,11 @@ export default function ProjectDetailsView({ project, onBack }) {
     const resource = resourcesList.find(r => r.id === selectedResource);
     const ResourceIcon = resource.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setSelectedResource(null)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Resources
         </button>
@@ -695,7 +695,7 @@ export default function ProjectDetailsView({ project, onBack }) {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <ResourceIcon size={40} color={resource.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{resource.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{resource.title}</h3>
           </div>
           
           <div className="workflow-container" style={{ padding: 0 }}>
@@ -778,11 +778,11 @@ export default function ProjectDetailsView({ project, onBack }) {
   }
 
   const renderChecklistItem = (title, description, color) => (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'white', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
       <CheckCircle color={color} size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
       <div>
-        <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{title}</h4>
-        <p style={{ margin: 0, color: '#475569' }}>{description}</p>
+        <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{title}</h4>
+        <p style={{ margin: 0, color: 'var(--text-muted)' }}>{description}</p>
       </div>
     </div>
   );
@@ -791,11 +791,11 @@ export default function ProjectDetailsView({ project, onBack }) {
     const evaluation = evaluationList.find(e => e.id === selectedEvaluation);
     const EvaluationIcon = evaluation.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setSelectedEvaluation(null)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
@@ -803,7 +803,7 @@ export default function ProjectDetailsView({ project, onBack }) {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <EvaluationIcon size={40} color={evaluation.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{evaluation.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{evaluation.title}</h3>
           </div>
           
           <p className="overview-intro-text" style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.15rem' }}>
@@ -964,13 +964,13 @@ export default function ProjectDetailsView({ project, onBack }) {
               <h3>Architecture & Workflow (कार्यप्रणाली)</h3>
               
               <div className="arch-section" style={{ marginTop: '2rem' }}>
-                <h4 style={{ fontSize: '1.1rem', color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <span className="overview-emoji">🔄</span> आर्किटेक्चर और प्रोसेस फ्लो चार्ट (Process Flow Chart)
                 </h4>
                 
                 <div 
                   onClick={() => setShowFullscreenFlowchart(true)}
-                  style={{ background: '#f8fafc', border: '1px dashed #cbd5e1', borderRadius: '0.75rem', padding: '3rem 2rem', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s' }}
+                  style={{ background: 'var(--icon-bg)', border: '1px dashed #cbd5e1', borderRadius: '0.75rem', padding: '3rem 2rem', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#2563eb'; e.currentTarget.style.background = '#eff6ff'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#cbd5e1'; e.currentTarget.style.background = '#f8fafc'; }}
                 >
@@ -981,13 +981,13 @@ export default function ProjectDetailsView({ project, onBack }) {
               </div>
 
               <div className="arch-section" style={{ marginTop: '3rem' }}>
-                <h4 style={{ fontSize: '1.1rem', color: '#0f172a', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <span className="overview-emoji">📝</span> विस्तृत कार्यप्रणाली (Step-by-Step Workflow)
                 </h4>
                 
                 <div 
                   onClick={() => setShowFullscreenWorkflow(true)}
-                  style={{ background: '#f8fafc', border: '1px dashed #cbd5e1', borderRadius: '0.75rem', padding: '3rem 2rem', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s' }}
+                  style={{ background: 'var(--icon-bg)', border: '1px dashed #cbd5e1', borderRadius: '0.75rem', padding: '3rem 2rem', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#16a34a'; e.currentTarget.style.background = '#f0fdf4'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#cbd5e1'; e.currentTarget.style.background = '#f8fafc'; }}
                 >
@@ -1098,8 +1098,8 @@ export default function ProjectDetailsView({ project, onBack }) {
                       <div style={{ background: `${step.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={step.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem', fontWeight: 'bold' }}>{step.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.95rem' }}>{step.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem', fontWeight: 'bold' }}>{step.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem' }}>{step.subtitle}</p>
                     </div>
                   );
                 })}
@@ -1127,8 +1127,8 @@ export default function ProjectDetailsView({ project, onBack }) {
                       <div style={{ background: `${resource.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={resource.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem', fontWeight: 'bold' }}>{resource.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.95rem' }}>{resource.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem', fontWeight: 'bold' }}>{resource.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem' }}>{resource.subtitle}</p>
                     </div>
                   );
                 })}
@@ -1156,8 +1156,8 @@ export default function ProjectDetailsView({ project, onBack }) {
                       <div style={{ background: `${evaluation.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={evaluation.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem', fontWeight: 'bold' }}>{evaluation.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.95rem' }}>{evaluation.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem', fontWeight: 'bold' }}>{evaluation.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem' }}>{evaluation.subtitle}</p>
                     </div>
                   );
                 })}

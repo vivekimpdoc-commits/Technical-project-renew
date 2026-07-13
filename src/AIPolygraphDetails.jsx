@@ -13,7 +13,7 @@ export default function AIPolygraphDetails({ project, onBack }) {
   const [selectedOverviewSection, setSelectedOverviewSection] = useState(null);
 
   const overviewSections = [
-    { id: 'io-assistance', title: 'IO Assistance', subtitle: 'जांच अधिकारी (IO) के लिए उपयोगिता', icon: Briefcase, color: '#475569' },
+    { id: 'io-assistance', title: 'IO Assistance', subtitle: 'जांच अधिकारी (IO) के लिए उपयोगिता', icon: Briefcase, color: 'var(--text-muted)' },
     { id: 'objectives', title: 'Project Objectives', subtitle: 'परियोजना के मुख्य उद्देश्य', icon: Target, color: '#2563eb' },
     { id: 'features', title: 'Major Features', subtitle: 'प्रमुख विशेषताएं (AI & Analytics)', icon: Zap, color: '#ec4899' },
   ];
@@ -24,7 +24,7 @@ export default function AIPolygraphDetails({ project, onBack }) {
     { id: 3, title: 'चरण 3: फिजियोलॉजिकल सिग्नल (rPPG)', subtitle: 'Physiological Signals', icon: HeartPulse, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: बैकएंड प्रोसेसिंग व एनालिटिक्स', subtitle: 'Backend & Scoring', icon: Server, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: फ्रंटएंड (लाइव डैशबोर्ड)', subtitle: 'Frontend / Dashboard', icon: Monitor, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: टेस्टिंग और कैलिब्रेशन', subtitle: 'Testing & Calibration', icon: Shield, color: '#64748b' },
+    { id: 6, title: 'चरण 6: टेस्टिंग और कैलिब्रेशन', subtitle: 'Testing & Calibration', icon: Shield, color: 'var(--text-muted)' },
   ];
 
   const evaluationList = [
@@ -46,18 +46,18 @@ export default function AIPolygraphDetails({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenFlowchart(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
 
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>System Architecture & Process Flow</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>System Architecture & Process Flow</h3>
         
-        <div className="flowchart-container" style={{ margin: '0 auto', maxWidth: '800px', background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
+        <div className="flowchart-container" style={{ margin: '0 auto', maxWidth: '800px', background: 'var(--card-bg)', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
           <div className="flow-step">
             <div className="flow-node user-node">High-Resolution Video Feed (Interview Room)</div>
           </div>
@@ -88,16 +88,16 @@ export default function AIPolygraphDetails({ project, onBack }) {
 
   if (showFullscreenWorkflow) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenWorkflow(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
 
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>विस्तृत कार्यप्रणाली (Step-by-Step Workflow)</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>विस्तृत कार्यप्रणाली (Step-by-Step Workflow)</h3>
         
         <div className="workflow-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6' }}>
@@ -129,14 +129,14 @@ export default function AIPolygraphDetails({ project, onBack }) {
     const step = guideSteps.find(s => s.id === selectedGuideStep);
     const StepIcon = step.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedGuideStep(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedGuideStep(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Step-by-Step Guide
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <StepIcon size={40} color={step.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{step.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{step.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -190,14 +190,14 @@ export default function AIPolygraphDetails({ project, onBack }) {
     const evalItem = evaluationList.find(e => e.id === selectedEvaluation);
     const EvalIcon = evalItem.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <EvalIcon size={40} color={evalItem.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{evalItem.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{evalItem.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -263,20 +263,20 @@ export default function AIPolygraphDetails({ project, onBack }) {
     const sec = overviewSections.find(s => s.id === selectedOverviewSection);
     const SecIcon = sec.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedOverviewSection(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedOverviewSection(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Project Overview
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <SecIcon size={40} color={sec.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{sec.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{sec.title}</h3>
           </div>
           <div style={{ padding: 0 }}>
             {(() => {
               switch(sec.id) {
                 case 'io-assistance': return (
-                  <div style={{ background: '#ffffff', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+                  <div style={{ background: 'var(--card-bg)', padding: '2rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
                       {[
                         'पूछताछ के दौरान आरोपी के हाव-भाव और तनाव के स्तर का सटीक विश्लेषण।',
@@ -284,9 +284,9 @@ export default function AIPolygraphDetails({ project, onBack }) {
                         'पुराने और शातिर अपराधियों से सच उगलवाने में मनोवैज्ञानिक मदद।',
                         'बिना किसी कोर्ट परमिशन या मेडिकल मशीन (सेंसर) के तुरंत इस्तेमाल।'
                       ].map((text, i) => (
-                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', background: '#f8fafc', padding: '1rem', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
+                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', background: 'var(--icon-bg)', padding: '1rem', borderRadius: '0.75rem', border: '1px solid var(--card-border)' }}>
                           <div style={{ background: '#dbeafe', padding: '0.4rem', borderRadius: '50%', color: '#2563eb', flexShrink: 0 }}><Search size={16} /></div>
-                          <span style={{ color: '#334155', fontSize: '0.95rem', lineHeight: '1.5' }}>{text}</span>
+                          <span style={{ color: 'var(--text-main)', fontSize: '0.95rem', lineHeight: '1.5' }}>{text}</span>
                         </div>
                       ))}
                     </div>
@@ -301,87 +301,87 @@ export default function AIPolygraphDetails({ project, onBack }) {
                     <div className="tech-category-card" style={{ borderTop: '4px solid #3b82f6' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
                         <div style={{ background: '#dbeafe', padding: '0.6rem', borderRadius: '0.5rem', color: '#2563eb' }}><Eye size={20} /></div>
-                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: '#1e293b' }}>1. Micro-expression Analysis</h5>
+                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-main)' }}>1. Micro-expression Analysis</h5>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• चेहरे के सूक्ष्म भावों का सेकंडों में विश्लेषण।</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• डर (Fear), गुस्सा (Anger), आश्चर्य (Surprise) की पहचान।</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• चेहरे के सूक्ष्म भावों का सेकंडों में विश्लेषण।</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• डर (Fear), गुस्सा (Anger), आश्चर्य (Surprise) की पहचान।</span>
                       </div>
                     </div>
                     <div className="tech-category-card" style={{ borderTop: '4px solid #10b981' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
                         <div style={{ background: '#d1fae5', padding: '0.6rem', borderRadius: '0.5rem', color: '#10b981' }}><HeartPulse size={20} /></div>
-                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: '#1e293b' }}>2. Stress & Thermal Analysis</h5>
+                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-main)' }}>2. Stress & Thermal Analysis</h5>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• पसीने की ग्रंथियों और त्वचा के तापमान में बदलाव को मापना।</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• हार्ट रेट (rPPG) का अनुमान लगाना।</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• पसीने की ग्रंथियों और त्वचा के तापमान में बदलाव को मापना।</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• हार्ट रेट (rPPG) का अनुमान लगाना।</span>
                       </div>
                     </div>
                     <div className="tech-category-card" style={{ borderTop: '4px solid #f59e0b' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
                         <div style={{ background: '#fef3c7', padding: '0.6rem', borderRadius: '0.5rem', color: '#f59e0b' }}><Camera size={20} /></div>
-                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: '#1e293b' }}>3. Non-Invasive Approach</h5>
+                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-main)' }}>3. Non-Invasive Approach</h5>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• आरोपी के शरीर पर कोई तार या सेंसर नहीं लगाना पड़ता।</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• केवल हाई-रेजोल्यूशन कैमरा सेटअप की आवश्यकता।</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• आरोपी के शरीर पर कोई तार या सेंसर नहीं लगाना पड़ता।</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• केवल हाई-रेजोल्यूशन कैमरा सेटअप की आवश्यकता।</span>
                       </div>
                     </div>
                     <div className="tech-category-card" style={{ borderTop: '4px solid #8b5cf6' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
                         <div style={{ background: '#ede9fe', padding: '0.6rem', borderRadius: '0.5rem', color: '#8b5cf6' }}><Monitor size={20} /></div>
-                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: '#1e293b' }}>4. Real-time Feedback</h5>
+                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-main)' }}>4. Real-time Feedback</h5>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• पूछताछ कर रहे अधिकारी को स्क्रीन पर लाइव तनाव (Stress Graph) दिखाना।</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• तुरंत चेतावनी (Alerts) देना।</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• पूछताछ कर रहे अधिकारी को स्क्रीन पर लाइव तनाव (Stress Graph) दिखाना।</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• तुरंत चेतावनी (Alerts) देना।</span>
                       </div>
                     </div>
                   </div>
                 );
                 case 'features': return (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><Video size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><Video size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>AI Video Analytics</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>वीडियो से हाव-भाव पढ़ना</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>AI Video Analytics</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>वीडियो से हाव-भाव पढ़ना</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><HeartPulse size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><HeartPulse size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Physiological Tracking</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>हार्ट रेट और ब्लड फ्लो ट्रैक करना</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Physiological Tracking</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>हार्ट रेट और ब्लड फ्लो ट्रैक करना</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><BrainCircuit size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><BrainCircuit size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Deception Scoring Engine</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>झूठ बोलने की संभावना प्रतिशत</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Deception Scoring Engine</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>झूठ बोलने की संभावना प्रतिशत</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><AlertTriangle size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><AlertTriangle size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Real-time Alert System</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>गंभीर सवालों पर अलर्ट देना</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Real-time Alert System</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>गंभीर सवालों पर अलर्ट देना</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><LayoutDashboard size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><LayoutDashboard size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Interview Timeline</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>पूरे इंटरव्यू का वीडियो और ग्राफ</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Interview Timeline</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>पूरे इंटरव्यू का वीडियो और ग्राफ</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><FileText size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><FileText size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Report Generation</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>पूछताछ की विस्तृत रिपोर्ट</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Report Generation</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>पूछताछ की विस्तृत रिपोर्ट</p>
                       </div>
                     </div>
                   </div>
@@ -468,8 +468,8 @@ export default function AIPolygraphDetails({ project, onBack }) {
                       <div style={{ background: `${sec.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={sec.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem', fontWeight: 'bold' }}>{sec.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>{sec.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem', fontWeight: 'bold' }}>{sec.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>{sec.subtitle}</p>
                     </div>
                   );
                 })}
@@ -496,8 +496,8 @@ export default function AIPolygraphDetails({ project, onBack }) {
                     <Network size={24} />
                   </div>
                   <div>
-                    <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1.1rem' }}>View System Architecture</h4>
-                    <p style={{ margin: 0, color: '#475569', fontSize: '0.9rem' }}>High-Level Flowchart (कैमरे से लेकर डैशबोर्ड तक)</p>
+                    <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>View System Architecture</h4>
+                    <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>High-Level Flowchart (कैमरे से लेकर डैशबोर्ड तक)</p>
                   </div>
                 </div>
 
@@ -512,8 +512,8 @@ export default function AIPolygraphDetails({ project, onBack }) {
                     <ListOrdered size={24} />
                   </div>
                   <div>
-                    <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1.1rem' }}>View Step-by-Step Workflow</h4>
-                    <p style={{ margin: 0, color: '#475569', fontSize: '0.9rem' }}>Detailed execution steps (Biometrics & Analytics)</p>
+                    <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>View Step-by-Step Workflow</h4>
+                    <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>Detailed execution steps (Biometrics & Analytics)</p>
                   </div>
                 </div>
 
@@ -583,8 +583,8 @@ export default function AIPolygraphDetails({ project, onBack }) {
                       <div style={{ background: `${step.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={step.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem', fontWeight: 'bold' }}>{step.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>{step.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem', fontWeight: 'bold' }}>{step.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>{step.subtitle}</p>
                     </div>
                   );
                 })}
@@ -646,8 +646,8 @@ export default function AIPolygraphDetails({ project, onBack }) {
                       <div style={{ background: `${evaluation.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={evaluation.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem', fontWeight: 'bold' }}>{evaluation.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>{evaluation.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem', fontWeight: 'bold' }}>{evaluation.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>{evaluation.subtitle}</p>
                     </div>
                   );
                 })}

@@ -13,7 +13,7 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
   const [selectedOverviewSection, setSelectedOverviewSection] = useState(null);
 
   const overviewSections = [
-    { id: 'io-assistance', title: 'IO Assistance', subtitle: 'जांच अधिकारी (IO) के लिए उपयोगिता', icon: Briefcase, color: '#475569' },
+    { id: 'io-assistance', title: 'IO Assistance', subtitle: 'जांच अधिकारी (IO) के लिए उपयोगिता', icon: Briefcase, color: 'var(--text-muted)' },
     { id: 'objectives', title: 'Project Objectives', subtitle: 'परियोजना के मुख्य उद्देश्य', icon: Target, color: '#2563eb' },
     { id: 'features', title: 'Major Features', subtitle: 'प्रमुख विशेषताएं (AI & Analytics)', icon: Zap, color: '#ec4899' },
   ];
@@ -24,7 +24,7 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
     { id: 3, title: 'चरण 3: बैकएंड और API', subtitle: 'Backend & API', icon: Server, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: फ्रंटएंड डेवलपमेंट', subtitle: 'Frontend (UI/UX)', icon: Monitor, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: टेस्टिंग और रिव्यू', subtitle: 'Testing & Human Review', icon: Activity, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: सुरक्षा और डिप्लॉयमेंट', subtitle: 'Security & Deployment', icon: Shield, color: '#64748b' },
+    { id: 6, title: 'चरण 6: सुरक्षा और डिप्लॉयमेंट', subtitle: 'Security & Deployment', icon: Shield, color: 'var(--text-muted)' },
   ];
 
   const evaluationList = [
@@ -46,18 +46,18 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenFlowchart(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
 
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>System Architecture & Process Flow</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>System Architecture & Process Flow</h3>
         
-        <div className="flowchart-container" style={{ margin: '0 auto', maxWidth: '800px', background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
+        <div className="flowchart-container" style={{ margin: '0 auto', maxWidth: '800px', background: 'var(--card-bg)', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
           <div className="flow-step">
             <div className="flow-node user-node">Data Sources (FIR, CDR, CCTV, Bank, Social)</div>
           </div>
@@ -88,16 +88,16 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
 
   if (showFullscreenWorkflow) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
         <button 
           onClick={() => setShowFullscreenWorkflow(false)} 
           className="thane-back-btn" 
-          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}
         >
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
 
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>विस्तृत कार्यप्रणाली (Step-by-Step Workflow)</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>विस्तृत कार्यप्रणाली (Step-by-Step Workflow)</h3>
         
         <div className="workflow-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6' }}>
@@ -129,14 +129,14 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
     const step = guideSteps.find(s => s.id === selectedGuideStep);
     const StepIcon = step.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedGuideStep(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedGuideStep(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Step-by-Step Guide
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <StepIcon size={40} color={step.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{step.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{step.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -190,14 +190,14 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
     const evalItem = evaluationList.find(e => e.id === selectedEvaluation);
     const EvalIcon = evalItem.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <EvalIcon size={40} color={evalItem.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{evalItem.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{evalItem.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -279,20 +279,20 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
     const sec = overviewSections.find(s => s.id === selectedOverviewSection);
     const SecIcon = sec.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedOverviewSection(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedOverviewSection(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Project Overview
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <SecIcon size={40} color={sec.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{sec.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{sec.title}</h3>
           </div>
           <div style={{ padding: 0 }}>
             {(() => {
               switch(sec.id) {
                 case 'io-assistance': return (
-                  <div style={{ background: '#ffffff', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+                  <div style={{ background: 'var(--card-bg)', padding: '2rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
                       {[
                         'कौन से व्यक्ति पहले भी किसी मामले में शामिल रहे हैं।',
@@ -301,9 +301,9 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
                         'किन घटनाओं में समान Modus Operandi (MO) है।',
                         'कौन से जिलों में एक ही गैंग सक्रिय है।'
                       ].map((text, i) => (
-                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', background: '#f8fafc', padding: '1rem', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
+                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', background: 'var(--icon-bg)', padding: '1rem', borderRadius: '0.75rem', border: '1px solid var(--card-border)' }}>
                           <div style={{ background: '#dbeafe', padding: '0.4rem', borderRadius: '50%', color: '#2563eb', flexShrink: 0 }}><Search size={16} /></div>
-                          <span style={{ color: '#334155', fontSize: '0.95rem', lineHeight: '1.5' }}>{text}</span>
+                          <span style={{ color: 'var(--text-main)', fontSize: '0.95rem', lineHeight: '1.5' }}>{text}</span>
                         </div>
                       ))}
                     </div>
@@ -318,90 +318,90 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
                     <div className="tech-category-card" style={{ borderTop: '4px solid #3b82f6' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
                         <div style={{ background: '#dbeafe', padding: '0.6rem', borderRadius: '0.5rem', color: '#2563eb' }}><Database size={20} /></div>
-                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: '#1e293b' }}>1. Entity Linking</h5>
+                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-main)' }}>1. Entity Linking</h5>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Person, Mobile Number, Bank Account</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Vehicle, Address, Social Media Account</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Email ID, Weapon, CCTV Location</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Person, Mobile Number, Bank Account</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Vehicle, Address, Social Media Account</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Email ID, Weapon, CCTV Location</span>
                       </div>
                     </div>
                     <div className="tech-category-card" style={{ borderTop: '4px solid #10b981' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
                         <div style={{ background: '#d1fae5', padding: '0.6rem', borderRadius: '0.5rem', color: '#10b981' }}><Network size={20} /></div>
-                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: '#1e293b' }}>2. Relationship Discovery</h5>
+                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-main)' }}>2. Relationship Discovery</h5>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Calls Between Suspects</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Financial Transactions</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Co-Accused Network, Frequent Locations</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Calls Between Suspects</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Financial Transactions</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Co-Accused Network, Frequent Locations</span>
                       </div>
                     </div>
                     <div className="tech-category-card" style={{ borderTop: '4px solid #f59e0b' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
                         <div style={{ background: '#fef3c7', padding: '0.6rem', borderRadius: '0.5rem', color: '#f59e0b' }}><Activity size={20} /></div>
-                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: '#1e293b' }}>3. Pattern Analysis</h5>
+                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-main)' }}>3. Pattern Analysis</h5>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Serial Crimes, Organized Crime</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Repeat Offenders, Fraud Networks</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Serial Crimes, Organized Crime</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Repeat Offenders, Fraud Networks</span>
                       </div>
                     </div>
                     <div className="tech-category-card" style={{ borderTop: '4px solid #8b5cf6' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
                         <div style={{ background: '#ede9fe', padding: '0.6rem', borderRadius: '0.5rem', color: '#8b5cf6' }}><BrainCircuit size={20} /></div>
-                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: '#1e293b' }}>4. Predictive Intelligence</h5>
+                        <h5 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-main)' }}>4. Predictive Intelligence</h5>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Crime Pattern Similarity</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Potential Associate Identification</span>
-                        <span style={{ background: '#f1f5f9', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: '#475569' }}>• Hotspot Detection</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Crime Pattern Similarity</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Potential Associate Identification</span>
+                        <span style={{ background: 'var(--icon-bg)', padding: '0.5rem 0.75rem', borderRadius: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>• Hotspot Detection</span>
                       </div>
                     </div>
                   </div>
                 );
                 case 'features': return (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><FileText size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><FileText size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>AI Entity Extraction</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>NLP द्वारा स्वतः जानकारी निकालना</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>AI Entity Extraction</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>NLP द्वारा स्वतः जानकारी निकालना</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><Network size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><Network size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Autonomous Linking</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>सभी डेटा स्रोतों को जोड़ना</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Autonomous Linking</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>सभी डेटा स्रोतों को जोड़ना</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><LayoutDashboard size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><LayoutDashboard size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Network Visualization</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>Graph View में नेटवर्क देखना</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Network Visualization</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>Graph View में नेटवर्क देखना</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><CheckCircle size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><CheckCircle size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Similar Case Detection</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>पुराने मामलों से समानता निकालना</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Similar Case Detection</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>पुराने मामलों से समानता निकालना</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><Activity size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><Activity size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Timeline Generation</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>पूरे केस की टाइमलाइन बनाना</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Timeline Generation</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>पूरे केस की टाइमलाइन बनाना</p>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                      <div style={{ background: '#f8fafc', padding: '0.75rem', borderRadius: '0.75rem', color: '#64748b' }}><Zap size={22} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--card-bg)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--card-border)', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                      <div style={{ background: 'var(--icon-bg)', padding: '0.75rem', borderRadius: '0.75rem', color: 'var(--text-muted)' }}><Zap size={22} /></div>
                       <div>
-                        <h5 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem' }}>Risk Scoring Engine</h5>
-                        <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>केवल Analytical Score</p>
+                        <h5 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem' }}>Risk Scoring Engine</h5>
+                        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>केवल Analytical Score</p>
                       </div>
                     </div>
                   </div>
@@ -488,8 +488,8 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
                       <div style={{ background: `${sec.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={sec.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem', fontWeight: 'bold' }}>{sec.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>{sec.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem', fontWeight: 'bold' }}>{sec.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>{sec.subtitle}</p>
                     </div>
                   );
                 })}
@@ -504,39 +504,39 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
               <h3 className="section-title"><Network size={20} style={{ display: 'inline', marginRight: '8px' }} /> Architecture & Workflow (कार्यप्रणाली)</h3>
               
               <div className="arch-section" style={{ marginTop: '2rem' }}>
-                <h4 style={{ fontSize: '1.1rem', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <span className="overview-emoji">🔄</span> आर्किटेक्चर और प्रोसेस फ्लो चार्ट (Process Flow Chart)
                 </h4>
                 
                 <div 
                   onClick={() => setShowFullscreenFlowchart(true)}
-                  style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', background: '#f8fafc', border: '1px dashed #cbd5e1', borderRadius: '0.75rem', padding: '1.25rem 1.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', background: 'var(--icon-bg)', border: '1px dashed #cbd5e1', borderRadius: '0.75rem', padding: '1.25rem 1.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#2563eb'; e.currentTarget.style.background = '#eff6ff'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#cbd5e1'; e.currentTarget.style.background = '#f8fafc'; }}
                 >
                   <span className="overview-emoji" style={{ fontSize: '2.25rem' }}>📈</span>
                   <div>
                     <h4 style={{ fontSize: '1.15rem', color: '#2563eb', margin: '0 0 0.25rem 0' }}>View Interactive Flowchart</h4>
-                    <p style={{ margin: 0, color: '#64748b', fontSize: '0.9rem' }}>Click here to open the detailed process flow chart in a new fullscreen view.</p>
+                    <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>Click here to open the detailed process flow chart in a new fullscreen view.</p>
                   </div>
                 </div>
               </div>
 
               <div className="arch-section" style={{ marginTop: '2rem' }}>
-                <h4 style={{ fontSize: '1.1rem', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <span className="overview-emoji">📝</span> विस्तृत कार्यप्रणाली (Step-by-Step Workflow)
                 </h4>
                 
                 <div 
                   onClick={() => setShowFullscreenWorkflow(true)}
-                  style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', background: '#f8fafc', border: '1px dashed #cbd5e1', borderRadius: '0.75rem', padding: '1.25rem 1.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', background: 'var(--icon-bg)', border: '1px dashed #cbd5e1', borderRadius: '0.75rem', padding: '1.25rem 1.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#16a34a'; e.currentTarget.style.background = '#f0fdf4'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#cbd5e1'; e.currentTarget.style.background = '#f8fafc'; }}
                 >
                   <span className="overview-emoji" style={{ fontSize: '2.25rem' }}>📋</span>
                   <div>
                     <h4 style={{ fontSize: '1.15rem', color: '#16a34a', margin: '0 0 0.25rem 0' }}>View Step-by-Step Workflow</h4>
-                    <p style={{ margin: 0, color: '#64748b', fontSize: '0.9rem' }}>Click here to view the detailed explanation of each step in the AI process.</p>
+                    <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>Click here to view the detailed explanation of each step in the AI process.</p>
                   </div>
                 </div>
               </div>
@@ -625,8 +625,8 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
                       <div style={{ background: `${step.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={step.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem', fontWeight: 'bold' }}>{step.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>{step.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem', fontWeight: 'bold' }}>{step.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>{step.subtitle}</p>
                     </div>
                   );
                 })}
@@ -641,7 +641,7 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
               
               <div className="tech-stack-grid" style={{ marginTop: '2rem' }}>
                 <div className="tech-category-card" style={{ borderLeft: '4px solid #3b82f6' }}>
-                  <h4 style={{ margin: '0 0 1rem 0', color: '#1e293b' }}>Internal Datasets</h4>
+                  <h4 style={{ margin: '0 0 1rem 0', color: 'var(--text-main)' }}>Internal Datasets</h4>
                   <ul className="overview-styled-list">
                     <li>FIR Data & Criminal History</li>
                     <li>Charge Sheets</li>
@@ -651,7 +651,7 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
                 </div>
                 
                 <div className="tech-category-card" style={{ borderLeft: '4px solid #10b981' }}>
-                  <h4 style={{ margin: '0 0 1rem 0', color: '#1e293b' }}>External Datasets</h4>
+                  <h4 style={{ margin: '0 0 1rem 0', color: 'var(--text-main)' }}>External Datasets</h4>
                   <ul className="overview-styled-list">
                     <li>Vehicle & RTO Data</li>
                     <li>Bank Fraud Data</li>
@@ -661,7 +661,7 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
                 </div>
 
                 <div className="tech-category-card" style={{ borderLeft: '4px solid #f59e0b', gridColumn: '1 / -1' }}>
-                  <h4 style={{ margin: '0 0 1rem 0', color: '#1e293b' }}>AI Training Dataset</h4>
+                  <h4 style={{ margin: '0 0 1rem 0', color: 'var(--text-main)' }}>AI Training Dataset</h4>
                   <ul className="overview-styled-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
                     <li>Historical Cases</li>
                     <li>Crime Patterns Data</li>
@@ -694,8 +694,8 @@ export default function AutonomousLinkerDetails({ project, onBack }) {
                       <div style={{ background: `${evaluation.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}>
                         <Icon size={24} color={evaluation.color} />
                       </div>
-                      <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem', fontWeight: 'bold' }}>{evaluation.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>{evaluation.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem', fontWeight: 'bold' }}>{evaluation.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>{evaluation.subtitle}</p>
                     </div>
                   );
                 })}

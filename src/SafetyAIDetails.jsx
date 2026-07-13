@@ -16,7 +16,7 @@ export default function SafetyAIDetails({ project, onBack }) {
     { id: 3, title: 'चरण 3: रीयल-टाइम वीडियो स्ट्रीम प्रोसेसिंग', subtitle: 'Video Processing', icon: Video, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: अलर्ट सिस्टम सेटअप', subtitle: 'Alert System Setup', icon: AlertTriangle, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: वेब मॉनिटरिंग डैशबोर्ड', subtitle: 'Monitoring Dashboard', icon: Monitor, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: सुरक्षा और डेटा प्राइवेसी', subtitle: 'Privacy & Security', icon: Shield, color: '#64748b' },
+    { id: 6, title: 'चरण 6: सुरक्षा और डेटा प्राइवेसी', subtitle: 'Privacy & Security', icon: Shield, color: 'var(--text-muted)' },
   ];
 
   const resourcesList = [
@@ -44,33 +44,33 @@ export default function SafetyAIDetails({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>स्मार्ट लॉकअप गार्ड (Safety AI) आर्किटेक्चर</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>स्मार्ट लॉकअप गार्ड (Safety AI) आर्किटेक्चर</h3>
         
-        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'var(--card-bg)', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
-            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #64748b' }}>
-              <h4 style={{ margin: '0 0 0.5rem 0', color: '#334155' }}>1. वीडियो स्ट्रीमिंग (Video Streaming)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>लॉकअप के अंदर लगे CCTV कैमरों से RTSP प्रोटोकॉल के जरिए लाइव वीडियो फीड AI सर्वर पर भेजी जाती है।</p>
+            <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #64748b' }}>
+              <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)' }}>1. वीडियो स्ट्रीमिंग (Video Streaming)</h4>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>लॉकअप के अंदर लगे CCTV कैमरों से RTSP प्रोटोकॉल के जरिए लाइव वीडियो फीड AI सर्वर पर भेजी जाती है।</p>
             </div>
 
             <div style={{ background: '#fef2f2', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #ef4444' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#b91c1c' }}>2. AI विज़न एनालिसिस (Computer Vision)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>YOLOv8 और Pose Estimation मॉडल फ्रेम-दर-फ्रेम वीडियो की जांच करते हैं ताकि हिंसा (Violence), आत्महत्या का प्रयास (Suicide attempt) या बेहोशी का पता चल सके।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>YOLOv8 और Pose Estimation मॉडल फ्रेम-दर-फ्रेम वीडियो की जांच करते हैं ताकि हिंसा (Violence), आत्महत्या का प्रयास (Suicide attempt) या बेहोशी का पता चल सके।</p>
             </div>
 
             <div style={{ background: '#f0f9ff', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #0ea5e9' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#0369a1' }}>3. ऑडियो एनालिसिस (Audio Analytics)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>अगर लॉकअप में कोई असामान्य आवाज़ (जैसे चीखना, जोर से चिल्लाना) आती है, तो ऑडियो मॉडल (Speech/Sound AI) उसे डिटेक्ट करता है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>अगर लॉकअप में कोई असामान्य आवाज़ (जैसे चीखना, जोर से चिल्लाना) आती है, तो ऑडियो मॉडल (Speech/Sound AI) उसे डिटेक्ट करता है।</p>
             </div>
             
             <div style={{ background: '#fffbeb', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #f59e0b' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#b45309' }}>4. रीयल-टाइम इमरजेंसी अलर्ट्स (Emergency Alerts)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>जैसे ही कोई संदिग्ध गतिविधि पकड़ी जाती है, सिस्टम तुरंत थानेदार (SHO) और ड्यूटी ऑफिसर के कंप्यूटर और मोबाइल पर अलार्म बजा देता है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>जैसे ही कोई संदिग्ध गतिविधि पकड़ी जाती है, सिस्टम तुरंत थानेदार (SHO) और ड्यूटी ऑफिसर के कंप्यूटर और मोबाइल पर अलार्म बजा देता है।</p>
             </div>
 
           </div>
@@ -81,12 +81,12 @@ export default function SafetyAIDetails({ project, onBack }) {
 
   if (showFrontendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>फ्रंटएंड (Frontend) - मॉनिटरिंग डैशबोर्ड</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>फ्रंटएंड (Frontend) - मॉनिटरिंग डैशबोर्ड</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#1d4ed8' }}>कंट्रोल रूम के लिए: React.js</h4>
             <p>एक मल्टी-स्क्रीन डैशबोर्ड जहां सभी कैमरों की लाइव फीड दिखती है और अलर्ट्स आने पर स्क्रीन लाल रंग में ब्लिंक करती है।</p>
@@ -98,12 +98,12 @@ export default function SafetyAIDetails({ project, onBack }) {
 
   if (showBackendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>बैकएंड (Backend) - AI मॉडल्स और वीडियो प्रोसेसिंग</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>बैकएंड (Backend) - AI मॉडल्स और वीडियो प्रोसेसिंग</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#10b981', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#047857' }}>AI इंजन: Python (TensorFlow / PyTorch)</h4>
             <p>कंप्यूटर विज़न मॉडल (YOLO, MediaPipe) जो रीयल-टाइम में कैदियों के पोज़ (Pose) और गतिविधियों का विश्लेषण करता है।</p>
@@ -118,11 +118,11 @@ export default function SafetyAIDetails({ project, onBack }) {
   }
 
   const renderChecklistItem = (title, description, color) => (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'white', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
       <CheckCircle color={color} size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
       <div>
-        <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{title}</h4>
-        <p style={{ margin: 0, color: '#475569' }}>{description}</p>
+        <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{title}</h4>
+        <p style={{ margin: 0, color: 'var(--text-muted)' }}>{description}</p>
       </div>
     </div>
   );
@@ -131,14 +131,14 @@ export default function SafetyAIDetails({ project, onBack }) {
     const evaluation = evaluationList.find(e => e.id === selectedEvaluation);
     const EvaluationIcon = evaluation.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <EvaluationIcon size={40} color={evaluation.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{evaluation.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{evaluation.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -280,7 +280,7 @@ export default function SafetyAIDetails({ project, onBack }) {
                         <Icon size={36} color={step.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{step.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{step.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{step.subtitle}</p>
                     </div>
                   );
                 })}
@@ -319,7 +319,7 @@ export default function SafetyAIDetails({ project, onBack }) {
                         <Icon size={36} color={evaluation.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{evaluation.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{evaluation.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{evaluation.subtitle}</p>
                     </div>
                   );
                 })}

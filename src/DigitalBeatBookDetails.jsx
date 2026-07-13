@@ -21,7 +21,7 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
     { id: 3, title: 'चरण 3: मोबाइल ऐप का निर्माण', subtitle: 'React Native App Dev', icon: Smartphone, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: जियो-फेंसिंग और GPS इंटीग्रेशन', subtitle: 'Geo-fencing & GPS', icon: MapPin, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: वेब एडमिन डैशबोर्ड (SHO)', subtitle: 'Web Admin Dashboard', icon: Monitor, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: ऑफलाइन सिंक और डिप्लॉयमेंट', subtitle: 'Offline Sync & Deployment', icon: Shield, color: '#64748b' },
+    { id: 6, title: 'चरण 6: ऑफलाइन सिंक और डिप्लॉयमेंट', subtitle: 'Offline Sync & Deployment', icon: Shield, color: 'var(--text-muted)' },
   ];
 
   const resourcesList = [
@@ -51,33 +51,33 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>डिजिटल बीट बुक (Guardian AI) आर्किटेक्चर</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>डिजिटल बीट बुक (Guardian AI) आर्किटेक्चर</h3>
         
-        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'var(--card-bg)', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
             <div style={{ background: '#fef2f2', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #ef4444' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#7f1d1d' }}>1. डेटा कलेक्शन (Data Collection)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>CCTNS से पिछले 10 सालों का क्राइम डेटा (लोकेशन, समय, और अपराध का प्रकार) लिया जाता है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>CCTNS से पिछले 10 सालों का क्राइम डेटा (लोकेशन, समय, और अपराध का प्रकार) लिया जाता है।</p>
             </div>
 
             <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #10b981' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#14532d' }}>2. Guardian AI प्रेडिक्शन इंजन</h4>
-              <p style={{ margin: 0, color: '#475569' }}>Machine Learning मॉडल इस डेटा का विश्लेषण करके अपराध के 'हॉटस्पॉट' (Hotspots) की भविष्यवाणी करता है और बीट सिपाही के लिए सबसे सुरक्षित और प्रभावी गश्त (Patrol) रूट तैयार करता है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>Machine Learning मॉडल इस डेटा का विश्लेषण करके अपराध के 'हॉटस्पॉट' (Hotspots) की भविष्यवाणी करता है और बीट सिपाही के लिए सबसे सुरक्षित और प्रभावी गश्त (Patrol) रूट तैयार करता है।</p>
             </div>
 
             <div style={{ background: '#eff6ff', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #3b82f6' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#1e3a8a' }}>3. मोबाइल ऐप अलर्ट्स (Mobile App Alerts)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>सिपाही जब अपनी बीट (इलाके) में होता है, तो ऐप उसे GPS के ज़रिए ट्रैक करता है और आस-पास के हिस्ट्री-शीटर या वांटेड अपराधियों की फोटो के साथ पुश अलर्ट देता है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>सिपाही जब अपनी बीट (इलाके) में होता है, तो ऐप उसे GPS के ज़रिए ट्रैक करता है और आस-पास के हिस्ट्री-शीटर या वांटेड अपराधियों की फोटो के साथ पुश अलर्ट देता है।</p>
             </div>
             
             <div style={{ background: '#fffbeb', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #f59e0b' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#78350f' }}>4. सेंट्रल कमांड (Central Command)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>थाना प्रभारी (SHO) डैशबोर्ड पर अपने सभी बीट सिपाहियों की लाइव लोकेशन और उनके द्वारा ऐप पर दर्ज की गई खुफिया जानकारी (Intelligence) को रीयल-टाइम में देख सकते हैं।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>थाना प्रभारी (SHO) डैशबोर्ड पर अपने सभी बीट सिपाहियों की लाइव लोकेशन और उनके द्वारा ऐप पर दर्ज की गई खुफिया जानकारी (Intelligence) को रीयल-टाइम में देख सकते हैं।</p>
             </div>
 
           </div>
@@ -89,12 +89,12 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
   // Same logic for tech stack details...
   if (showFrontendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>फ्रंटएंड (Frontend) - वेब और मोबाइल</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>फ्रंटएंड (Frontend) - वेब और मोबाइल</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#1d4ed8' }}>मोबाइल ऐप (सिपाहियों के लिए): React Native</h4>
             <p>एक ही कोडबेस से Android और iOS दोनों ऐप बनते हैं। यह ऐप बैटरी बचाने (Battery Optimization) और ऑफलाइन मोड (Offline Sync) के लिए विशेष रूप से डिज़ाइन किया जाता है।</p>
@@ -110,12 +110,12 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
 
   if (showBackendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>बैकएंड (Backend) - कोर लॉजिक और API</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>बैकएंड (Backend) - कोर लॉजिक और API</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#10b981', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#047857' }}>कोर API सर्वर: Python (FastAPI)</h4>
             <p>Python का उपयोग इसलिए किया गया है क्योंकि इसमें Machine Learning मॉडल्स (Scikit-Learn/TensorFlow) को चलाना और इंटीग्रेट करना बहुत आसान और तेज़ होता है।</p>
@@ -130,11 +130,11 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
   }
 
   const renderChecklistItem = (title, description, color) => (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'white', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
       <CheckCircle color={color} size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
       <div>
-        <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{title}</h4>
-        <p style={{ margin: 0, color: '#475569' }}>{description}</p>
+        <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{title}</h4>
+        <p style={{ margin: 0, color: 'var(--text-muted)' }}>{description}</p>
       </div>
     </div>
   );
@@ -143,14 +143,14 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
     const evaluation = evaluationList.find(e => e.id === selectedEvaluation);
     const EvaluationIcon = evaluation.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <EvaluationIcon size={40} color={evaluation.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{evaluation.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{evaluation.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -295,7 +295,7 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
                         <Icon size={36} color={step.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{step.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{step.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{step.subtitle}</p>
                     </div>
                   );
                 })}
@@ -334,7 +334,7 @@ export default function DigitalBeatBookDetails({ project, onBack }) {
                         <Icon size={36} color={evaluation.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{evaluation.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{evaluation.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{evaluation.subtitle}</p>
                     </div>
                   );
                 })}

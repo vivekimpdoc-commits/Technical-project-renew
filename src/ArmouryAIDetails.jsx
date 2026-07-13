@@ -20,7 +20,7 @@ export default function ArmouryAIDetails({ project, onBack }) {
     { id: 3, title: 'चरण 3: बैकएंड API और अलर्ट्स', subtitle: 'Backend API & Alerts', icon: Server, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: वेब डैशबोर्ड (UI)', subtitle: 'Web Dashboard UI', icon: Monitor, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: सिक्योरिटी और बायोमेट्रिक ऑथेंटिकेशन', subtitle: 'Biometric Auth', icon: Shield, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: परीक्षण और डिप्लॉयमेंट', subtitle: 'Testing & Deployment', icon: CheckCircle, color: '#64748b' },
+    { id: 6, title: 'चरण 6: परीक्षण और डिप्लॉयमेंट', subtitle: 'Testing & Deployment', icon: CheckCircle, color: 'var(--text-muted)' },
   ];
 
   const resourcesList = [
@@ -48,33 +48,33 @@ export default function ArmouryAIDetails({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>स्मार्ट इन्वेंटरी (Armoury AI) आर्किटेक्चर</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>स्मार्ट इन्वेंटरी (Armoury AI) आर्किटेक्चर</h3>
         
-        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'var(--card-bg)', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
-            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #64748b' }}>
-              <h4 style={{ margin: '0 0 0.5rem 0', color: '#334155' }}>1. डिजिटल रजिस्टर (Digital Registry)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>प्रत्येक हथियार और मैगज़ीन/गोला-बारूद को एक यूनीक QR/Bar-code या RFID टैग से मैप किया जाता है जिसे डेटाबेस में सुरक्षित रखा जाता है।</p>
+            <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #64748b' }}>
+              <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)' }}>1. डिजिटल रजिस्टर (Digital Registry)</h4>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>प्रत्येक हथियार और मैगज़ीन/गोला-बारूद को एक यूनीक QR/Bar-code या RFID टैग से मैप किया जाता है जिसे डेटाबेस में सुरक्षित रखा जाता है।</p>
             </div>
 
             <div style={{ background: '#f0f9ff', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #0ea5e9' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#0369a1' }}>2. इश्यू और रिटर्न प्रक्रिया (Issue & Return Process)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>जब भी किसी सिपाही को ड्यूटी के लिए हथियार दिया जाता है, तो स्कैनर से हथियार का कोड और सिपाही का ID कार्ड स्कैन किया जाता है। इससे सिस्टम में रियल-टाइम एंट्री हो जाती है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>जब भी किसी सिपाही को ड्यूटी के लिए हथियार दिया जाता है, तो स्कैनर से हथियार का कोड और सिपाही का ID कार्ड स्कैन किया जाता है। इससे सिस्टम में रियल-टाइम एंट्री हो जाती है।</p>
             </div>
 
             <div style={{ background: '#fef2f2', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #ef4444' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#b91c1c' }}>3. ऑटोमेटेड अलर्ट्स (Automated Alerts)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>अगर कोई हथियार ड्यूटी खत्म होने के बाद तय समय तक वापस नहीं आता है, तो सिस्टम ऑटोमेटिकली थानेदार (SHO) को SMS/ऐप अलर्ट भेजता है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>अगर कोई हथियार ड्यूटी खत्म होने के बाद तय समय तक वापस नहीं आता है, तो सिस्टम ऑटोमेटिकली थानेदार (SHO) को SMS/ऐप अलर्ट भेजता है।</p>
             </div>
             
             <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #10b981' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#15803d' }}>4. ऑडिटिंग और एम्युनिशन ट्रैकिंग (Auditing & Tracking)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>गोला-बारूद के इस्तेमाल का रिकॉर्ड (कितनी गोलियां इश्यू हुईं और कितनी वापस आईं) सिस्टम में दर्ज होता है, जिससे हथियारों के दुरुपयोग पर रोक लगती है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>गोला-बारूद के इस्तेमाल का रिकॉर्ड (कितनी गोलियां इश्यू हुईं और कितनी वापस आईं) सिस्टम में दर्ज होता है, जिससे हथियारों के दुरुपयोग पर रोक लगती है।</p>
             </div>
 
           </div>
@@ -85,12 +85,12 @@ export default function ArmouryAIDetails({ project, onBack }) {
 
   if (showFrontendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>फ्रंटएंड (Frontend) - वेब और इन्वेंटरी UI</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>फ्रंटएंड (Frontend) - वेब और इन्वेंटरी UI</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#1d4ed8' }}>मालखाना ऑपरेटर के लिए: React.js</h4>
             <p>एक बहुत ही तेज़ और यूजर-फ्रेंडली डैशबोर्ड जहाँ बारकोड स्कैनर कनेक्ट किया जा सके। कीबोर्ड शॉर्टकट सपोर्ट के साथ डेटा एंट्री तेज़ होती है।</p>
@@ -106,12 +106,12 @@ export default function ArmouryAIDetails({ project, onBack }) {
 
   if (showBackendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>बैकएंड (Backend) - डेटाबेस और सिक्योरिटी</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>बैकएंड (Backend) - डेटाबेस और सिक्योरिटी</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#10b981', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#047857' }}>कोर API: Node.js (Express) या Python (FastAPI)</h4>
             <p>सिस्टम में हजारों इन्वेंटरी लॉग्स को बिना किसी एरर के प्रोसेस करने के लिए पावरफुल RESTful APIs।</p>
@@ -126,11 +126,11 @@ export default function ArmouryAIDetails({ project, onBack }) {
   }
 
   const renderChecklistItem = (title, description, color) => (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'white', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
       <CheckCircle color={color} size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
       <div>
-        <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{title}</h4>
-        <p style={{ margin: 0, color: '#475569' }}>{description}</p>
+        <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{title}</h4>
+        <p style={{ margin: 0, color: 'var(--text-muted)' }}>{description}</p>
       </div>
     </div>
   );
@@ -139,14 +139,14 @@ export default function ArmouryAIDetails({ project, onBack }) {
     const evaluation = evaluationList.find(e => e.id === selectedEvaluation);
     const EvaluationIcon = evaluation.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <EvaluationIcon size={40} color={evaluation.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{evaluation.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{evaluation.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -291,7 +291,7 @@ export default function ArmouryAIDetails({ project, onBack }) {
                         <Icon size={36} color={step.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{step.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{step.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{step.subtitle}</p>
                     </div>
                   );
                 })}
@@ -330,7 +330,7 @@ export default function ArmouryAIDetails({ project, onBack }) {
                         <Icon size={36} color={evaluation.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{evaluation.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{evaluation.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{evaluation.subtitle}</p>
                     </div>
                   );
                 })}

@@ -16,7 +16,7 @@ export default function SmartRosterDetails({ project, onBack }) {
     { id: 3, title: 'चरण 3: ऑटोमैटिक ड्यूटी असाइनमेंट', subtitle: 'Auto Duty Assignment', icon: Server, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: व्हाट्सएप / SMS इंटीग्रेशन', subtitle: 'WhatsApp/SMS Integration', icon: MessageCircle, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: एडमिन डैशबोर्ड (UI)', subtitle: 'Admin Dashboard UI', icon: Monitor, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: टेस्टिंग और लाइव डिप्लॉयमेंट', subtitle: 'Testing & Deployment', icon: CheckCircle, color: '#64748b' },
+    { id: 6, title: 'चरण 6: टेस्टिंग और लाइव डिप्लॉयमेंट', subtitle: 'Testing & Deployment', icon: CheckCircle, color: 'var(--text-muted)' },
   ];
 
   const resourcesList = [
@@ -44,33 +44,33 @@ export default function SmartRosterDetails({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>स्मार्ट ड्यूटी रोस्टर (Smart Scheduling) आर्किटेक्चर</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>स्मार्ट ड्यूटी रोस्टर (Smart Scheduling) आर्किटेक्चर</h3>
         
-        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'var(--card-bg)', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
-            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #64748b' }}>
-              <h4 style={{ margin: '0 0 0.5rem 0', color: '#334155' }}>1. डेटा प्रोसेसिंग (Data Processing)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>सिस्टम चेक करता है कि कौन सा अधिकारी छुट्टी पर है, किसकी नाइट ड्यूटी थी, और किसे आराम की जरूरत है।</p>
+            <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #64748b' }}>
+              <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)' }}>1. डेटा प्रोसेसिंग (Data Processing)</h4>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>सिस्टम चेक करता है कि कौन सा अधिकारी छुट्टी पर है, किसकी नाइट ड्यूटी थी, और किसे आराम की जरूरत है।</p>
             </div>
 
             <div style={{ background: '#f0f9ff', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #0ea5e9' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#0369a1' }}>2. AI ड्यूटी एलोकेशन (AI Duty Allocation)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>AI एल्गोरिदम निष्पक्ष रूप से सभी की ड्यूटी बांटता है ताकि किसी एक अधिकारी पर ज्यादा काम का बोझ न पड़े (Fairness Algorithm)।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>AI एल्गोरिदम निष्पक्ष रूप से सभी की ड्यूटी बांटता है ताकि किसी एक अधिकारी पर ज्यादा काम का बोझ न पड़े (Fairness Algorithm)।</p>
             </div>
 
             <div style={{ background: '#fef2f2', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #ef4444' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#b91c1c' }}>3. ऑटोमैटिक नोटिफिकेशन (Auto Notification)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>रोस्टर जनरेट होते ही सिस्टम स्वचालित रूप से सभी संबंधित पुलिसकर्मियों को WhatsApp और SMS के माध्यम से उनकी ड्यूटी की जानकारी भेज देता है।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>रोस्टर जनरेट होते ही सिस्टम स्वचालित रूप से सभी संबंधित पुलिसकर्मियों को WhatsApp और SMS के माध्यम से उनकी ड्यूटी की जानकारी भेज देता है।</p>
             </div>
             
             <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #10b981' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#15803d' }}>4. मैनुअल ओवरराइड (Manual Override)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>थाना प्रभारी (SHO) डैशबोर्ड पर जाकर किसी भी समय AI द्वारा बनाए गए रोस्टर में मैनुअल बदलाव कर सकते हैं।</p>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>थाना प्रभारी (SHO) डैशबोर्ड पर जाकर किसी भी समय AI द्वारा बनाए गए रोस्टर में मैनुअल बदलाव कर सकते हैं।</p>
             </div>
 
           </div>
@@ -81,12 +81,12 @@ export default function SmartRosterDetails({ project, onBack }) {
 
   if (showFrontendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>फ्रंटएंड (Frontend) - वेब और रोस्टर UI</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>फ्रंटएंड (Frontend) - वेब और रोस्टर UI</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#1d4ed8' }}>मुंशी / SHO के लिए: React.js</h4>
             <p>एक इंटरैक्टिव कैलेंडर (FullCalendar) के साथ डैशबोर्ड, जहां अधिकारियों की लिस्ट और उनकी ड्यूटी ड्रैग-एंड-ड्रॉप की जा सके।</p>
@@ -98,12 +98,12 @@ export default function SmartRosterDetails({ project, onBack }) {
 
   if (showBackendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>बैकएंड (Backend) - डेटाबेस और AI</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>बैकएंड (Backend) - डेटाबेस और AI</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#10b981', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#047857' }}>कोर API & AI: Python (FastAPI)</h4>
             <p>Pandas और Scikit-Learn का इस्तेमाल करके ड्यूटी जनरेशन को ऑटोमेट करना और WhatsApp API इंटीग्रेशन।</p>
@@ -118,11 +118,11 @@ export default function SmartRosterDetails({ project, onBack }) {
   }
 
   const renderChecklistItem = (title, description, color) => (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'white', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
       <CheckCircle color={color} size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
       <div>
-        <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{title}</h4>
-        <p style={{ margin: 0, color: '#475569' }}>{description}</p>
+        <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{title}</h4>
+        <p style={{ margin: 0, color: 'var(--text-muted)' }}>{description}</p>
       </div>
     </div>
   );
@@ -131,14 +131,14 @@ export default function SmartRosterDetails({ project, onBack }) {
     const evaluation = evaluationList.find(e => e.id === selectedEvaluation);
     const EvaluationIcon = evaluation.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <EvaluationIcon size={40} color={evaluation.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{evaluation.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{evaluation.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -279,7 +279,7 @@ export default function SmartRosterDetails({ project, onBack }) {
                         <Icon size={36} color={step.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{step.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{step.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{step.subtitle}</p>
                     </div>
                   );
                 })}
@@ -318,7 +318,7 @@ export default function SmartRosterDetails({ project, onBack }) {
                         <Icon size={36} color={evaluation.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{evaluation.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{evaluation.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{evaluation.subtitle}</p>
                     </div>
                   );
                 })}

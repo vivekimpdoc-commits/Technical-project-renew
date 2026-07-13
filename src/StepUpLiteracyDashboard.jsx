@@ -135,8 +135,8 @@ export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTr
       </div>
 
       {activeTab === 'phases' && (
-        <div style={{ padding: '2rem', background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <h3 style={{ margin: '0 0 1.5rem 0', color: '#0f172a', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ padding: '2rem', background: 'var(--card-bg)', borderRadius: '1rem', border: '1px solid var(--card-border)', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ margin: '0 0 1.5rem 0', color: 'var(--text-main)', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Layout size={28} color="#3b82f6" />
             Initial Steps in Software Development (सॉफ्टवेयर बनाने की शुरुआत)
           </h3>
@@ -167,7 +167,7 @@ export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTr
                   <span className="thane-status-badge" style={{ background: `${phase.color}15`, color: phase.color, border: `1px solid ${phase.color}40`, fontWeight: 'bold' }}>{phase.status}</span>
                 </div>
                 <h3 className="thane-card-title">{phase.name}</h3>
-                <p style={{ margin: '0.5rem 0', color: '#64748b', fontSize: '0.9rem' }}>{phase.subtitle}</p>
+                <p style={{ margin: '0.5rem 0', color: 'var(--text-muted)', fontSize: '0.9rem' }}>{phase.subtitle}</p>
                 <div className="thane-card-footer" style={{ marginTop: 'auto', paddingTop: '1rem' }}>
                   <span className="thane-date"><Clock size={14} /> {phase.date}</span>
                   <button
@@ -185,8 +185,8 @@ export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTr
       )}
 
       {activeTab === 'advanced' && (
-        <div style={{ padding: '2rem', background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <h3 style={{ margin: '0 0 1.5rem 0', color: '#0f172a', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ padding: '2rem', background: 'var(--card-bg)', borderRadius: '1rem', border: '1px solid var(--card-border)', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ margin: '0 0 1.5rem 0', color: 'var(--text-main)', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Server size={28} color="#8b5cf6" />
             Advanced Software Engineering & Operations (नवीनतम SDLC दस्तावेज़)
           </h3>
@@ -203,7 +203,7 @@ export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTr
                 onClick={() => setSelectedAdvancedItem(step.num)}
                 style={{
                   display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1.5rem',
-                  background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0',
+                  background: 'var(--icon-bg)', borderRadius: '0.75rem', border: '1px solid var(--card-border)',
                   borderLeft: `4px solid ${step.color}`,
                   cursor: 'pointer',
                   transition: 'all 0.2s ease-in-out'
@@ -226,11 +226,11 @@ export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTr
                   {step.num}
                 </div>
                 <div>
-                  <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     {step.title}
                     <span style={{ fontSize: '0.7rem', background: `${step.color}22`, color: step.color, padding: '0.1rem 0.5rem', borderRadius: '1rem' }}>Click to View</span>
                   </h4>
-                  <p style={{ margin: 0, color: '#64748b', fontSize: '0.9rem', lineHeight: '1.4' }}>{step.desc}</p>
+                  <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.4' }}>{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -239,8 +239,8 @@ export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTr
       )}
 
       {activeTab === 'sdlc' && (
-        <div style={{ padding: '2rem', background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-          <h3 style={{ margin: '0 0 1.5rem 0', color: '#0f172a', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ padding: '2rem', background: 'var(--card-bg)', borderRadius: '1rem', border: '1px solid var(--card-border)', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ margin: '0 0 1.5rem 0', color: 'var(--text-main)', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Layers size={28} color="#3b82f6" />
             Software Development Lifecycle (सॉफ्टवेयर को पूरा तैयार करने का तरीका)
           </h3>
@@ -258,7 +258,7 @@ export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTr
                 }}
                 style={{
                   display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1.5rem',
-                  background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0',
+                  background: 'var(--icon-bg)', borderRadius: '0.75rem', border: '1px solid var(--card-border)',
                   borderLeft: `4px solid ${step.color}`,
                   cursor: (step.num >= 1 && step.num <= 4) ? 'pointer' : 'default',
                   transition: 'all 0.2s ease-in-out'
@@ -285,13 +285,13 @@ export default function StepUpLiteracyDashboard({ defaultTab = 'phases', resetTr
                   {step.num}
                 </div>
                 <div>
-                  <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     {step.title}
                     {(step.num >= 1 && step.num <= 4) && (
                       <span style={{ fontSize: '0.7rem', background: `${step.color}22`, color: step.color, padding: '0.1rem 0.5rem', borderRadius: '1rem' }}>Click to View</span>
                     )}
                   </h4>
-                  <p style={{ margin: 0, color: '#64748b', fontSize: '0.9rem', lineHeight: '1.4' }}>{step.desc}</p>
+                  <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.4' }}>{step.desc}</p>
                 </div>
               </div>
             ))}

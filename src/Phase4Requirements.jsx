@@ -253,19 +253,19 @@ export default function Phase4Requirements({ onBack }) {
     const DetailIcon = detailItem.icon;
     
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedDetail(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedDetail(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Phase 4
         </button>
         
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <DetailIcon size={40} color={detailItem.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{detailItem.title}</h3>
           </div>
           
-          <div style={{ background: 'white', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
-            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
+          <div style={{ background: 'var(--card-bg)', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: 'var(--text-main)', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
               {detailItem.subtitle} - विस्तृत जानकारी (Overview)
             </h4>
             
@@ -277,11 +277,11 @@ export default function Phase4Requirements({ onBack }) {
                   <div key={idx} style={{ padding: '1.25rem', background: `${detailItem.color}0a`, borderRadius: '0.75rem', borderLeft: `4px solid ${detailItem.color}` }}>
                     {hasColon ? (
                       <>
-                        <strong style={{ fontSize: '1.1rem', color: '#1e293b' }}>{parts[0]}:</strong>
-                        <p style={{ margin: '0.5rem 0 0 0', color: '#334155', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
+                        <strong style={{ fontSize: '1.1rem', color: 'var(--text-main)' }}>{parts[0]}:</strong>
+                        <p style={{ margin: '0.5rem 0 0 0', color: 'var(--text-main)', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
                       </>
                     ) : (
-                      <p style={{ margin: 0, color: '#1e293b', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
+                      <p style={{ margin: 0, color: 'var(--text-main)', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
                     )}
                   </div>
                 );
@@ -291,20 +291,20 @@ export default function Phase4Requirements({ onBack }) {
             {/* Deep Dive Extra Details Section */}
             {detailItem.deepDive && detailItem.deepDive.length > 0 && (
               <div style={{ marginTop: '2.5rem' }}>
-                <h4 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', color: 'var(--text-main)', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Info size={22} color={detailItem.color} />
                   गहराई से जानकारी (Deep Dive Details)
                 </h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
                   {detailItem.deepDive.map((dive, idx) => (
                     <div key={idx} style={{ 
-                      background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', 
-                      border: '1px solid #e2e8f0', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
+                      background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '1rem', 
+                      border: '1px solid var(--card-border)', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
                     }}>
                       <h5 style={{ margin: '0 0 0.75rem 0', fontSize: '1.1rem', color: detailItem.color, fontWeight: 'bold' }}>
                         {dive.heading}
                       </h5>
-                      <p style={{ margin: 0, color: '#475569', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', lineHeight: '1.6', fontSize: '0.95rem' }}>
                         {dive.content}
                       </p>
                     </div>
@@ -331,7 +331,7 @@ export default function Phase4Requirements({ onBack }) {
   }
 
   return (
-    <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+    <div className="thane-dashboard-container" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
       
       {/* Header with Back Button */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
@@ -339,11 +339,11 @@ export default function Phase4Requirements({ onBack }) {
           <ArrowLeft size={18} /> Back to Phases
         </button>
         <div>
-          <h2 style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <h2 style={{ margin: 0, fontSize: '1.75rem', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Server size={28} color="#f59e0b" />
             Phase 4: Backend Development
           </h2>
-          <p style={{ margin: '0.25rem 0 0 0', color: '#64748b' }}>
+          <p style={{ margin: '0.25rem 0 0 0', color: 'var(--text-muted)' }}>
             बैकएंड डेवलपमेंट - सॉफ़्टवेयर का वह भाग जो Business Logic, APIs, Database और Authentication को संभालता है।
           </p>
         </div>
@@ -355,8 +355,8 @@ export default function Phase4Requirements({ onBack }) {
           const Icon = box.icon;
           return (
             <div key={box.id} style={{
-              background: 'white', borderRadius: '1rem', padding: '1.5rem',
-              border: '1px solid #e2e8f0', borderTop: `4px solid ${box.color}`,
+              background: 'var(--card-bg)', borderRadius: '1rem', padding: '1.5rem',
+              border: '1px solid var(--card-border)', borderTop: `4px solid ${box.color}`,
               boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
               display: 'flex', flexDirection: 'column',
               transition: 'transform 0.3s, box-shadow 0.3s'
@@ -379,8 +379,8 @@ export default function Phase4Requirements({ onBack }) {
                     <Icon size={24} />
                   </div>
                   <div>
-                    <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#0f172a', fontWeight: 'bold', lineHeight: '1.3' }}>{box.title}</h3>
-                    <p style={{ margin: '0.2rem 0 0 0', color: '#64748b', fontSize: '0.85rem' }}>{box.subtitle}</p>
+                    <h3 style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-main)', fontWeight: 'bold', lineHeight: '1.3' }}>{box.title}</h3>
+                    <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>{box.subtitle}</p>
                   </div>
                 </div>
                 <span style={{ color: box.color, fontWeight: 'bold', fontSize: '1.5rem', lineHeight: '1' }}>
@@ -390,15 +390,15 @@ export default function Phase4Requirements({ onBack }) {
 
               {/* Expanded Content */}
               {expandedCard === box.id && (
-                <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--card-border)', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
                     {box.items.map((item, idx) => {
                       const title = item.split(':')[0];
                       return (
                         <div key={idx} style={{ 
-                          background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
+                          background: 'var(--icon-bg)', border: '1px solid var(--card-border)', padding: '0.5rem 0.75rem', 
                           borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
-                          fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                          fontSize: '0.85rem', color: 'var(--text-main)', fontWeight: '500'
                         }}>
                           <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
                           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</span>
@@ -430,39 +430,39 @@ export default function Phase4Requirements({ onBack }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
         
         {/* Basic Architecture Flow */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+        <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div style={{ background: '#3b82f615', padding: '0.75rem', borderRadius: '0.5rem', color: '#3b82f6' }}><Server size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Backend Architecture Flow</h3>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-main)' }}>Backend Architecture Flow</h3>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
             <div style={{ background: '#dbeafe', color: '#1e40af', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold' }}>Client (Web/Mobile)</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#fef3c7', color: '#b45309', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold' }}>API Gateway</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#fce7f3', color: '#9d174d', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold' }}>Authentication</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#e0e7ff', color: '#3730a3', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold' }}>Business Logic</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#d1fae5', color: '#047857', padding: '0.6rem 2rem', borderRadius: '0.5rem', fontWeight: 'bold' }}>Data Access Layer</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#f3f4f6', color: '#1f2937', padding: '0.6rem 2rem', borderRadius: '0.5rem', border: '2px solid #9ca3af', fontWeight: 'bold' }}>Database</div>
           </div>
         </div>
 
         {/* Enterprise Architecture (.NET + AI) */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+        <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div style={{ background: '#8b5cf615', padding: '0.75rem', borderRadius: '0.5rem', color: '#8b5cf6' }}><Network size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Enterprise Architecture (.NET + AI)</h3>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-main)' }}>Enterprise Architecture (.NET + AI)</h3>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-            <div style={{ width: '80%', textAlign: 'center', background: '#f1f5f9', color: '#334155', padding: '0.6rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #cbd5e1' }}>Presentation Layer</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ width: '80%', textAlign: 'center', background: 'var(--icon-bg)', color: 'var(--text-main)', padding: '0.6rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid var(--card-border)' }}>Presentation Layer</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ width: '80%', textAlign: 'center', background: '#eff6ff', color: '#1d4ed8', padding: '0.6rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bfdbfe' }}>API Layer</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ width: '80%', textAlign: 'center', background: '#fdf4ff', color: '#a21caf', padding: '0.6rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #f5d0fe' }}>Business Layer</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ width: '80%', textAlign: 'center', background: '#ecfdf5', color: '#047857', padding: '0.6rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #a7f3d0' }}>Repository Layer</div>
             <div style={{ display: 'flex', gap: '1rem', width: '80%', justifyContent: 'center', marginTop: '0.5rem' }}>
               <div style={{ flex: 1, textAlign: 'center', background: '#fef2f2', color: '#b91c1c', padding: '0.6rem 1rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #fecaca' }}>Database Layer</div>
@@ -472,25 +472,25 @@ export default function Phase4Requirements({ onBack }) {
         </div>
 
         {/* AI Backend Requirements Flow */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+        <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div style={{ background: '#ec489915', padding: '0.75rem', borderRadius: '0.5rem', color: '#ec4899' }}><BrainCircuit size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>AI Backend Requirements</h3>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-main)' }}>AI Backend Requirements</h3>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center', marginBottom: '1.5rem' }}>
-            <div style={{ background: '#f8fafc', color: '#334155', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #e2e8f0' }}>Application</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ background: 'var(--icon-bg)', color: 'var(--text-main)', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid var(--card-border)' }}>Application</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#fdf2f8', color: '#be185d', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #fbcfe8' }}>AI Service</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#f0fdf4', color: '#15803d', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bbf7d0' }}>Machine Learning Model</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#fff7ed', color: '#c2410c', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #ffedd5' }}>Prediction Engine</div>
-            <div style={{ color: '#94a3b8' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)' }}>↓</div>
             <div style={{ background: '#eff6ff', color: '#1d4ed8', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '1px solid #bfdbfe' }}>Results API</div>
           </div>
-          <div style={{ background: '#f1f5f9', padding: '1rem', borderRadius: '0.5rem' }}>
-            <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold', color: '#334155', fontSize: '0.9rem' }}>AI Features:</p>
-            <ul style={{ margin: 0, paddingLeft: '1.2rem', color: '#475569', fontSize: '0.85rem' }}>
+          <div style={{ background: 'var(--icon-bg)', padding: '1rem', borderRadius: '0.5rem' }}>
+            <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold', color: 'var(--text-main)', fontSize: '0.9rem' }}>AI Features:</p>
+            <ul style={{ margin: 0, paddingLeft: '1.2rem', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
               <li>Model Inference & Prediction API</li>
               <li>Recommendation API</li>
               <li>OCR & NLP Service</li>
@@ -500,18 +500,18 @@ export default function Phase4Requirements({ onBack }) {
         </div>
         
         {/* Database Integration Flow */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+        <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div style={{ background: '#10b98115', padding: '0.75rem', borderRadius: '0.5rem', color: '#10b981' }}><Database size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Database Integration</h3>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-main)' }}>Database Integration</h3>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
             <div style={{ background: '#eff6ff', color: '#1e40af', padding: '1rem 3rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center' }}>Backend</div>
-            <div style={{ color: '#94a3b8', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
             <div style={{ background: '#f5f3ff', color: '#5b21b6', padding: '1rem 3rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center' }}>Repository Layer</div>
-            <div style={{ color: '#94a3b8', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
             <div style={{ background: '#ecfdf5', color: '#065f46', padding: '1rem 3rem', borderRadius: '0.5rem', fontWeight: 'bold', width: '70%', textAlign: 'center' }}>ORM (Entity Framework)</div>
-            <div style={{ color: '#94a3b8', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
+            <div style={{ color: 'var(--text-muted)', fontSize: '1.5rem', margin: '-0.5rem 0' }}>↓</div>
             <div style={{ background: '#fef2f2', color: '#991b1b', padding: '1rem 3rem', borderRadius: '0.5rem', fontWeight: 'bold', border: '2px solid #fca5a5', width: '70%', textAlign: 'center' }}>SQL Server</div>
           </div>
         </div>
@@ -522,26 +522,26 @@ export default function Phase4Requirements({ onBack }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem' }}>
         
         {/* Suggested Tech Stack */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+        <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div style={{ background: '#f59e0b15', padding: '0.75rem', borderRadius: '0.5rem', color: '#f59e0b' }}><FileText size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Recommended Tech Stack</h3>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-main)' }}>Recommended Tech Stack</h3>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {techStack.map((item, idx) => (
-              <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 1rem', background: '#f8fafc', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
-                <span style={{ color: '#64748b', fontWeight: '500', fontSize: '0.9rem' }}>{item.cat}</span>
-                <span style={{ color: '#0f172a', fontWeight: 'bold', fontSize: '0.9rem' }}>{item.tool}</span>
+              <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 1rem', background: 'var(--icon-bg)', borderRadius: '0.5rem', border: '1px solid var(--card-border)' }}>
+                <span style={{ color: 'var(--text-muted)', fontWeight: '500', fontSize: '0.9rem' }}>{item.cat}</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 'bold', fontSize: '0.9rem' }}>{item.tool}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Deliverables */}
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+        <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div style={{ background: '#10b98115', padding: '0.75rem', borderRadius: '0.5rem', color: '#10b981' }}><FileSignature size={24} /></div>
-            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>Backend Deliverables</h3>
+            <h3 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-main)' }}>Backend Deliverables</h3>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             {deliverables.map((doc, idx) => (

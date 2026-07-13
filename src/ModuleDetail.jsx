@@ -221,7 +221,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
         </button>
       </div>
 
-      <div style={{ background: 'white', padding: '1rem', borderRadius: '0.75rem', border: `1px solid #e2e8f0`, borderTop: `4px solid ${module.color}`, boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+      <div style={{ background: 'var(--card-bg)', padding: '1rem', borderRadius: '0.75rem', border: `1px solid #e2e8f0`, borderTop: `4px solid ${module.color}`, boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -229,10 +229,10 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
               <module.icon size={24} />
             </div>
             <div>
-              <h1 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '0.15rem', fontWeight: '800' }}>
+              <h1 style={{ fontSize: '1.25rem', color: 'var(--text-main)', marginBottom: '0.15rem', fontWeight: '800' }}>
                 {module.title}
               </h1>
-              <p style={{ color: '#64748b', fontSize: '0.85rem', margin: 0 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: 0 }}>
                 Detailed topics and learning materials for this module.
               </p>
             </div>
@@ -254,7 +254,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
 
           {/* Topics List with Accordion (Expandable Cards) */}
           <div style={{ marginBottom: '1rem' }}>
-            <h3 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <h3 style={{ fontSize: '1.25rem', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <FileText size={20} color={module.color} /> Topics Covered
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
@@ -265,22 +265,22 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                     key={index}
                     onClick={() => setExpandedTopic(isExpanded ? null : index)}
                     style={{
-                      padding: '1.25rem', background: '#f8fafc', borderRadius: '1rem', border: '1px solid #e2e8f0',
+                      padding: '1.25rem', background: 'var(--icon-bg)', borderRadius: '1rem', border: '1px solid var(--card-border)',
                       cursor: 'pointer', transition: 'all 0.2s',
                       boxShadow: isExpanded ? `0 0 0 2px ${module.color}` : '0 2px 5px rgba(0,0,0,0.02)'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                      <div style={{ padding: '0.6rem', background: 'white', borderRadius: '0.5rem', color: module.color, boxShadow: '0 2px 5px rgba(0,0,0,0.05)', flexShrink: 0 }}>
+                      <div style={{ padding: '0.6rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: module.color, boxShadow: '0 2px 5px rgba(0,0,0,0.05)', flexShrink: 0 }}>
                         <CheckCircle size={20} strokeWidth={2.5} />
                       </div>
                       <div>
-                        <h4 style={{ color: '#0f172a', fontSize: '1rem', fontWeight: 'bold', margin: 0, lineHeight: '1.3' }}>{item}</h4>
-                        <p style={{ color: '#64748b', fontSize: '0.8rem', margin: '0.25rem 0 0 0' }}>क्लिक करके विस्तृत जानकारी देखें</p>
+                        <h4 style={{ color: 'var(--text-main)', fontSize: '1rem', fontWeight: 'bold', margin: 0, lineHeight: '1.3' }}>{item}</h4>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', margin: '0.25rem 0 0 0' }}>क्लिक करके विस्तृत जानकारी देखें</p>
                       </div>
                     </div>
                     {isExpanded && (
-                      <div className="animate-fade-in" style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #e2e8f0', color: '#475569', fontSize: '0.9rem', lineHeight: '1.6' }}>
+                      <div className="animate-fade-in" style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--card-border)', color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>
                         इस सेक्शन में हम <strong>"{item}"</strong> के सभी महत्वपूर्ण पहलुओं पर गहराई से चर्चा करेंगे। इसमें थ्योरी, प्रैक्टिकल उदाहरण और रियल-वर्ल्ड एप्लीकेशन शामिल हैं।
                         <br /><br />
                         अधिक जानकारी और नोट्स के लिए नीचे दिए गए 'Study Material (PDF)' या 'Video' सेक्शन का उपयोग करें।
@@ -296,7 +296,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
 
             {/* Resource Menu */}
-            <div style={{ display: 'flex', gap: '0.5rem', background: '#f8fafc', padding: '0.5rem', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
+            <div style={{ display: 'flex', gap: '0.5rem', background: 'var(--icon-bg)', padding: '0.5rem', borderRadius: '0.75rem', border: '1px solid var(--card-border)' }}>
               <button
                 onClick={() => setActiveResourceTab('pdf')}
                 style={{
@@ -339,15 +339,15 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
             </div>
 
             {/* Content Display based on active tab */}
-            <div style={{ background: 'white', borderRadius: '0.75rem', border: '1px solid #e2e8f0', minHeight: '250px', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+            <div style={{ background: 'var(--card-bg)', borderRadius: '0.75rem', border: '1px solid var(--card-border)', minHeight: '250px', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 
               {activeResourceTab === 'video' && (
-                <div style={{ background: '#f1f5f9', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
-                  <div style={{ background: 'white', padding: '1.5rem', borderRadius: '0.75rem', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', width: '100%' }}>
+                <div style={{ background: 'var(--icon-bg)', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
+                  <div style={{ background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', width: '100%' }}>
 
                     {/* Download/Select Section - MOVED ABOVE VIEWER */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                      <label style={{ fontSize: '0.85rem', fontWeight: '600', color: '#334155' }}>Choose a Related Video to Watch:</label>
+                      <label style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-main)' }}>Choose a Related Video to Watch:</label>
                       <div style={{ display: 'flex', gap: '1rem' }}>
                         <select
                           value={videoSelect}
@@ -362,8 +362,8 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                           }}
                           style={{
                             flex: 1, padding: '0.5rem 0.75rem', borderRadius: '0.5rem',
-                            border: '1px solid #cbd5e1', outline: 'none', fontSize: '0.85rem',
-                            color: '#0f172a', background: 'white', cursor: 'pointer'
+                            border: '1px solid var(--card-border)', outline: 'none', fontSize: '0.85rem',
+                            color: 'var(--text-main)', background: 'var(--card-bg)', cursor: 'pointer'
                           }}
                         >
                           <option value="">-- Select Video Topic --</option>
@@ -407,7 +407,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
 
                     {isAdmin && (
                       <>
-                        <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0', marginBottom: '1.5rem' }} />
+                        <hr style={{ border: 'none', borderTop: '1px solid var(--card-border)', marginBottom: '1.5rem' }} />
 
                         {/* Upload Section (Admin Only) */}
                         <div style={{ marginBottom: '0.5rem', padding: '1rem', border: `2px dashed ${module.color}66`, borderRadius: '0.5rem', textAlign: 'center', background: `${module.color}05` }}>
@@ -415,7 +415,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                             <span style={{ background: module.color, color: 'white', padding: '0.4rem 1rem', borderRadius: '2rem', fontWeight: '600', fontSize: '0.8rem' }}>
                               Upload Custom Video (Admin)
                             </span>
-                            <span style={{ color: '#64748b', fontSize: '0.75rem', marginTop: '0.25rem' }}>MP4, WebM up to 500MB</span>
+                            <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem', marginTop: '0.25rem' }}>MP4, WebM up to 500MB</span>
                             <input type="file" accept="video/*" style={{ display: 'none' }} onChange={handleVideoUpload} />
                           </label>
                         </div>
@@ -427,25 +427,25 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
               )}
 
               {activeResourceTab === 'pdf' && (
-                <div style={{ background: '#f1f5f9', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
-                  <div style={{ background: 'white', padding: '1.5rem', borderRadius: '0.75rem', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', width: '100%' }}>
+                <div style={{ background: 'var(--icon-bg)', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
+                  <div style={{ background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', width: '100%' }}>
 
                     <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-                      <h3 style={{ color: '#0f172a', fontSize: '1.2rem', fontWeight: '700', marginBottom: '0.25rem' }}>Study Material (PDF)</h3>
-                      <p style={{ color: '#64748b', fontSize: '0.85rem', margin: 0 }}>इस मॉड्यूल के नोट्स यहाँ से मैनेज करें।</p>
+                      <h3 style={{ color: 'var(--text-main)', fontSize: '1.2rem', fontWeight: '700', marginBottom: '0.25rem' }}>Study Material (PDF)</h3>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: 0 }}>इस मॉड्यूल के नोट्स यहाँ से मैनेज करें।</p>
                     </div>
 
                     {/* Download Section with Dropdown - MOVED ABOVE VIEWER */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                      <label style={{ fontSize: '0.85rem', fontWeight: '600', color: '#334155' }}>Choose Related PDF Notes to Read:</label>
+                      <label style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-main)' }}>Choose Related PDF Notes to Read:</label>
                       <div style={{ display: 'flex', gap: '0.5rem' }}>
                         <select
                           value={pdfLanguage}
                           onChange={(e) => setPdfLanguage(e.target.value)}
                           style={{
                             width: '130px', padding: '0.5rem', borderRadius: '0.5rem',
-                            border: '1px solid #cbd5e1', outline: 'none', fontSize: '0.85rem',
-                            color: '#0f172a', background: 'white', cursor: 'pointer'
+                            border: '1px solid var(--card-border)', outline: 'none', fontSize: '0.85rem',
+                            color: 'var(--text-main)', background: 'var(--card-bg)', cursor: 'pointer'
                           }}
                         >
                           <option value="both">Eng + Hindi</option>
@@ -457,8 +457,8 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                           onChange={(e) => setPdfSelect(e.target.value)}
                           style={{
                             flex: 1, padding: '0.5rem 0.75rem', borderRadius: '0.5rem',
-                            border: '1px solid #cbd5e1', outline: 'none', fontSize: '0.85rem',
-                            color: '#0f172a', background: 'white', cursor: 'pointer'
+                            border: '1px solid var(--card-border)', outline: 'none', fontSize: '0.85rem',
+                            color: 'var(--text-main)', background: 'var(--card-bg)', cursor: 'pointer'
                           }}
                         >
                           <option value="">-- Select PDF Material --</option>
@@ -485,20 +485,20 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                     </div>
 
                     {/* PDF Viewer Placeholder */}
-                    <div style={{ background: '#f8fafc', borderRadius: '0.75rem', overflow: 'hidden', position: 'relative', minHeight: isMaximized ? 'calc(90vh - 250px)' : '600px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', width: '100%', border: '1px solid #e2e8f0', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
+                    <div style={{ background: 'var(--icon-bg)', borderRadius: '0.75rem', overflow: 'hidden', position: 'relative', minHeight: isMaximized ? 'calc(90vh - 250px)' : '600px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', width: '100%', border: '1px solid var(--card-border)', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
                       {uploadedPdf ? (
                         <iframe src={uploadedPdf} width="100%" height="100%" style={{ minHeight: isMaximized ? 'calc(90vh - 250px)' : '600px', border: 'none' }} title="PDF Viewer" />
                       ) : (
                         <>
                           <FileText size={64} color="#cbd5e1" style={{ opacity: 0.8 }} />
-                          <p style={{ color: '#64748b', marginTop: '1rem', fontSize: '1.1rem' }}>Select or upload a PDF to read notes for {selectedTopicName}</p>
+                          <p style={{ color: 'var(--text-muted)', marginTop: '1rem', fontSize: '1.1rem' }}>Select or upload a PDF to read notes for {selectedTopicName}</p>
                         </>
                       )}
                     </div>
 
                     {isAdmin && (
                       <>
-                        <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0', marginBottom: '1.5rem' }} />
+                        <hr style={{ border: 'none', borderTop: '1px solid var(--card-border)', marginBottom: '1.5rem' }} />
 
                         {/* Upload Section (Admin Only) */}
                         <div style={{ marginBottom: '0.5rem', padding: '1rem', border: `2px dashed ${module.color}66`, borderRadius: '0.5rem', textAlign: 'center', background: `${module.color}05` }}>
@@ -506,7 +506,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                             <span style={{ background: module.color, color: 'white', padding: '0.4rem 1rem', borderRadius: '2rem', fontWeight: '600', fontSize: '0.8rem' }}>
                               Upload Custom PDF (Admin)
                             </span>
-                            <span style={{ color: '#64748b', fontSize: '0.75rem', marginTop: '0.25rem' }}>or drag and drop here</span>
+                            <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem', marginTop: '0.25rem' }}>or drag and drop here</span>
                             <input type="file" accept=".pdf" style={{ display: 'none' }} onChange={handlePdfUpload} />
                           </label>
                         </div>
@@ -518,17 +518,17 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
               )}
 
               {activeResourceTab === 'link' && (
-                <div style={{ background: '#f1f5f9', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
-                  <div style={{ background: 'white', padding: '1.5rem', borderRadius: '0.75rem', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', width: '100%' }}>
+                <div style={{ background: 'var(--icon-bg)', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
+                  <div style={{ background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', width: '100%' }}>
 
                     <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-                      <h3 style={{ color: '#0f172a', fontSize: '1.2rem', fontWeight: '700', marginBottom: '0.25rem' }}>Reference Links</h3>
-                      <p style={{ color: '#64748b', fontSize: '0.85rem', margin: 0 }}>इस मॉड्यूल से जुड़े महत्वपूर्ण लिंक्स मैनेज करें।</p>
+                      <h3 style={{ color: 'var(--text-main)', fontSize: '1.2rem', fontWeight: '700', marginBottom: '0.25rem' }}>Reference Links</h3>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: 0 }}>इस मॉड्यूल से जुड़े महत्वपूर्ण लिंक्स मैनेज करें।</p>
                     </div>
 
                     {/* Download/Select Section - MOVED ABOVE VIEWER */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
-                      <label style={{ fontSize: '0.95rem', fontWeight: '600', color: '#334155' }}>Choose a Related Reference Site to Open:</label>
+                      <label style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-main)' }}>Choose a Related Reference Site to Open:</label>
                       <div style={{ display: 'flex', gap: '1rem' }}>
                         <select
                           value={linkSelect}
@@ -566,8 +566,8 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                           }}
                           style={{
                             flex: 1, padding: '0.75rem 1rem', borderRadius: '0.5rem',
-                            border: '1px solid #cbd5e1', outline: 'none', fontSize: '0.95rem',
-                            color: '#0f172a', background: 'white', cursor: 'pointer'
+                            border: '1px solid var(--card-border)', outline: 'none', fontSize: '0.95rem',
+                            color: 'var(--text-main)', background: 'var(--card-bg)', cursor: 'pointer'
                           }}
                         >
                           <option value="">-- Select Web Source --</option>
@@ -581,7 +581,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                         <button
                           onClick={() => window.open(externalLinkUrl || `https://www.google.com/search?q=${encodeURIComponent(selectedTopicName)}`, '_blank')}
                           style={{
-                            background: 'white', color: module.color, border: `1px solid ${module.color}`,
+                            background: 'var(--card-bg)', color: module.color, border: `1px solid ${module.color}`,
                             padding: '0 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold',
                             cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem',
                             transition: 'all 0.2s', whiteSpace: 'nowrap'
@@ -595,21 +595,21 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                     </div>
 
                     {/* Link Preview / iframe */}
-                    <div style={{ background: '#f8fafc', borderRadius: '0.75rem', overflow: 'hidden', position: 'relative', minHeight: isMaximized ? 'calc(90vh - 250px)' : '500px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', width: '100%', border: '1px solid #e2e8f0', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
+                    <div style={{ background: 'var(--icon-bg)', borderRadius: '0.75rem', overflow: 'hidden', position: 'relative', minHeight: isMaximized ? 'calc(90vh - 250px)' : '500px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', width: '100%', border: '1px solid var(--card-border)', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
                       {activeLink ? (
                         <iframe src={activeLink} width="100%" height="100%" style={{ minHeight: isMaximized ? 'calc(90vh - 250px)' : '500px', border: 'none' }} title="Website Viewer" onError={() => alert('This website cannot be embedded.')} />
                       ) : (
                         <>
                           <LinkIcon size={64} color="#cbd5e1" style={{ opacity: 0.8 }} />
-                          <p style={{ color: '#64748b', marginTop: '1rem', fontSize: '1.1rem' }}>Select a web resource to preview for {selectedTopicName}</p>
-                          <p style={{ color: '#94a3b8', fontSize: '0.85rem', marginTop: '0.5rem' }}>(Note: Some sites block embedding via iframe)</p>
+                          <p style={{ color: 'var(--text-muted)', marginTop: '1rem', fontSize: '1.1rem' }}>Select a web resource to preview for {selectedTopicName}</p>
+                          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.5rem' }}>(Note: Some sites block embedding via iframe)</p>
                         </>
                       )}
                     </div>
 
                     {isAdmin && (
                       <>
-                        <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0', marginBottom: '1.5rem' }} />
+                        <hr style={{ border: 'none', borderTop: '1px solid var(--card-border)', marginBottom: '1.5rem' }} />
 
                         {/* Upload/Add Link Section (Admin Only) */}
                         <div style={{ marginBottom: '0.5rem', padding: '1.5rem', border: `2px dashed ${module.color}66`, borderRadius: '0.5rem', textAlign: 'center', background: `${module.color}05` }}>
@@ -619,7 +619,7 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
                               placeholder="Paste new URL here (https://...)"
                               value={newLinkInput}
                               onChange={(e) => setNewLinkInput(e.target.value)}
-                              style={{ padding: '0.6rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none', fontSize: '0.85rem' }}
+                              style={{ padding: '0.6rem', borderRadius: '0.5rem', border: '1px solid var(--card-border)', outline: 'none', fontSize: '0.85rem' }}
                             />
                             <button onClick={handleAddLink} style={{ background: module.color, color: 'white', border: 'none', padding: '0.5rem 1.25rem', borderRadius: '2rem', fontWeight: '600', fontSize: '0.85rem', cursor: 'pointer', alignSelf: 'center' }}>
                               Preview Custom Link (Admin)

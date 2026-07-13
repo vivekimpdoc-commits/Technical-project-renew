@@ -20,40 +20,40 @@ export default function AdminRoleManagement() {
         <p className="thane-subtitle">Securing the system by ensuring personnel only see what they are authorized to see.</p>
       </div>
 
-      <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', marginTop: '2rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.05)' }}>
+      <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', marginTop: '2rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.05)' }}>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '3rem' }}>
-          <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.75rem', textAlign: 'center', border: '1px solid #e2e8f0' }}>
+          <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', textAlign: 'center', border: '1px solid var(--card-border)' }}>
             <Key size={32} color="#3b82f6" style={{ margin: '0 auto 1rem auto' }} />
             <h4 style={{ margin: '0 0 0.5rem 0' }}>Strict Authorization</h4>
-            <div style={{ fontSize: '0.85rem', color: '#64748b' }}>Every API request is validated against the user's role token.</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Every API request is validated against the user's role token.</div>
           </div>
-          <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.75rem', textAlign: 'center', border: '1px solid #e2e8f0' }}>
+          <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', textAlign: 'center', border: '1px solid var(--card-border)' }}>
             <Fingerprint size={32} color="#10b981" style={{ margin: '0 auto 1rem auto' }} />
             <h4 style={{ margin: '0 0 0.5rem 0' }}>Biometric Login</h4>
-            <div style={{ fontSize: '0.85rem', color: '#64748b' }}>Tier 3 & 4 access requires fingerprint or facial recognition.</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Tier 3 & 4 access requires fingerprint or facial recognition.</div>
           </div>
-          <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.75rem', textAlign: 'center', border: '1px solid #e2e8f0' }}>
+          <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', textAlign: 'center', border: '1px solid var(--card-border)' }}>
             <ShieldCheck size={32} color="#f59e0b" style={{ margin: '0 auto 1rem auto' }} />
             <h4 style={{ margin: '0 0 0.5rem 0' }}>Audit Trails</h4>
-            <div style={{ fontSize: '0.85rem', color: '#64748b' }}>Every view, edit, and deletion is logged permanently via blockchain.</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Every view, edit, and deletion is logged permanently via blockchain.</div>
           </div>
         </div>
 
-        <h3 style={{ margin: '0 0 1.5rem 0', color: '#0f172a', fontSize: '1.25rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
+        <h3 style={{ margin: '0 0 1.5rem 0', color: 'var(--text-main)', fontSize: '1.25rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>
           Hierarchical Access Levels
         </h3>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {roles.map((r, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', padding: '1.5rem', background: '#f8fafc', borderRadius: '0.75rem', borderLeft: `4px solid ${r.color}` }}>
-              <div style={{ background: 'white', padding: '1rem', borderRadius: '50%', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', color: r.color, flexShrink: 0 }}>
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', padding: '1.5rem', background: 'var(--icon-bg)', borderRadius: '0.75rem', borderLeft: `4px solid ${r.color}` }}>
+              <div style={{ background: 'var(--card-bg)', padding: '1rem', borderRadius: '50%', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', color: r.color, flexShrink: 0 }}>
                 {i === 3 ? <Lock size={24} /> : <UserCheck size={24} />}
               </div>
               <div>
-                <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{r.level}</h4>
+                <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{r.level}</h4>
                 <div style={{ color: r.color, fontSize: '0.85rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{r.access}</div>
-                <p style={{ margin: 0, color: '#475569', fontSize: '0.9rem', lineHeight: '1.5' }}>{r.desc}</p>
+                <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5' }}>{r.desc}</p>
               </div>
             </div>
           ))}

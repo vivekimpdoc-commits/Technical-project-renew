@@ -158,7 +158,7 @@ export default function AICourseDashboard() {
   ];
 
   return (
-    <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', width: '100%' }}>
+    <div className="thane-dashboard-container" style={{ padding: '2rem', background: 'var(--icon-bg)', width: '100%' }}>
 
       {/* Modal Popup for Module Detail */}
       {selectedModuleId && (
@@ -169,7 +169,7 @@ export default function AICourseDashboard() {
           padding: isPopupMaximized ? '1rem' : '2rem'
         }}>
           <div className="animate-fade-in" style={{
-            background: '#f8fafc', width: '100%',
+            background: 'var(--icon-bg)', width: '100%',
             maxWidth: isPopupMaximized ? '98%' : '1000px',
             height: isPopupMaximized ? '96vh' : '75vh',
             overflowY: 'auto',
@@ -182,7 +182,7 @@ export default function AICourseDashboard() {
               <button
                 onClick={() => setIsPopupMaximized(!isPopupMaximized)}
                 style={{
-                  background: '#e2e8f0', color: '#0f172a', border: 'none',
+                  background: '#e2e8f0', color: 'var(--text-main)', border: 'none',
                   padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold',
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem',
                   boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
@@ -212,11 +212,11 @@ export default function AICourseDashboard() {
       )}
 
       {/* Header Section */}
-      <div style={{ textAlign: 'center', marginBottom: '2rem', background: 'white', padding: '1.5rem 2rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: '2rem', background: 'var(--card-bg)', padding: '1.5rem 2rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid var(--card-border)', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
         <div style={{ display: 'inline-flex', padding: '1rem', background: 'linear-gradient(135deg, #3b82f6, #2563eb)', borderRadius: '50%', color: 'white', marginBottom: '1rem', boxShadow: '0 8px 20px rgba(59, 130, 246, 0.4)' }}>
           <GraduationCap size={32} />
         </div>
-        <h1 style={{ fontSize: '1.8rem', color: '#0f172a', marginBottom: '0.25rem', fontWeight: '800' }}>
+        <h1 style={{ fontSize: '1.8rem', color: 'var(--text-main)', marginBottom: '0.25rem', fontWeight: '800' }}>
           Course: AI Model Development
         </h1>
         <h2 style={{ fontSize: '1.2rem', color: '#3b82f6', fontWeight: '600', margin: 0 }}>
@@ -251,16 +251,16 @@ export default function AICourseDashboard() {
       {/* Conditionally Render Sections */}
       {activeTab === 'modules' && (
         <>
-          <h3 style={{ fontSize: '1.75rem', color: '#0f172a', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <h3 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <BookOpen color="#3b82f6" /> Course Modules
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '3rem', alignItems: 'flex-start' }}>
             {courseModules.map((module) => (
               <div key={module.id} style={{
-                background: 'white',
+                background: 'var(--card-bg)',
                 borderRadius: '1rem',
                 padding: '1.5rem',
-                border: '1px solid #e2e8f0',
+                border: '1px solid var(--card-border)',
                 borderTop: `4px solid ${module.color}`,
                 boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
                 transition: 'transform 0.3s, box-shadow 0.3s',
@@ -285,7 +285,7 @@ export default function AICourseDashboard() {
                     <div style={{ padding: '0.75rem', background: `${module.color}15`, color: module.color, borderRadius: '0.75rem' }}>
                       <module.icon size={24} />
                     </div>
-                    <h4 style={{ fontSize: '1.1rem', color: '#0f172a', fontWeight: '700', lineHeight: '1.3', maxWidth: '70%' }}>
+                    <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', fontWeight: '700', lineHeight: '1.3', maxWidth: '70%' }}>
                       {module.title}
                     </h4>
                   </div>
@@ -293,21 +293,21 @@ export default function AICourseDashboard() {
 
                 {/* Expanded Content */}
                 {expandedDashboardCard === module.id && (
-                  <div className="animate-fade-in" style={{ marginTop: '1.5rem', borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem' }}>
+                  <div className="animate-fade-in" style={{ marginTop: '1.5rem', borderTop: '1px solid var(--card-border)', paddingTop: '1.5rem' }}>
                     <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem' }}>
                       {module.items.map((item, index) => (
                         <div
                           key={index}
                           style={{
-                            background: '#f8fafc',
-                            border: '1px solid #e2e8f0',
+                            background: 'var(--icon-bg)',
+                            border: '1px solid var(--card-border)',
                             padding: '0.5rem 0.75rem',
                             borderRadius: '0.5rem',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '0.5rem',
                             fontSize: '0.85rem',
-                            color: '#334155',
+                            color: 'var(--text-main)',
                             fontWeight: '500'
                           }}
                         >
@@ -351,8 +351,8 @@ export default function AICourseDashboard() {
       )}
 
       {activeTab === 'projects' && (
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', marginBottom: '3rem' }}>
-          <h3 style={{ fontSize: '1.75rem', color: '#0f172a', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', marginBottom: '3rem' }}>
+          <h3 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Medal size={28} color="#f59e0b" /> Final Capstone Projects
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
@@ -371,13 +371,13 @@ export default function AICourseDashboard() {
       )}
 
       {activeTab === 'requirements' && (
-        <div style={{ background: 'white', borderRadius: '1rem', padding: '2rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
-          <h3 style={{ fontSize: '1.75rem', color: '#0f172a', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '2rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <CheckCircle size={28} color="#10b981" /> मुख्य आवश्यकताएँ (Requirements)
           </h3>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
             {requirements.map((req, index) => (
-              <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: '#334155', fontSize: '1.1rem', fontWeight: '600', padding: '1rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
+              <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', fontSize: '1.1rem', fontWeight: '600', padding: '1rem', background: 'var(--icon-bg)', borderRadius: '0.75rem', border: '1px solid var(--card-border)' }}>
                 <CheckCircle size={24} color="#10b981" /> {req}
               </li>
             ))}

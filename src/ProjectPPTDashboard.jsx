@@ -826,17 +826,17 @@ export default function ProjectPPTDashboard() {
             <Presentation size={32} color="#3b82f6" />
           </div>
           <div>
-            <h2 className="ppt-header-title" style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a' }}>
+            <h2 className="ppt-header-title" style={{ margin: 0, fontSize: '1.75rem', color: 'var(--text-main)' }}>
               {language === 'en' ? 'Project PPT' : 'प्रोजेक्ट पीपीटी'}
             </h2>
-            <p className="ppt-header-subtitle" style={{ margin: '0.25rem 0 0 0', color: '#64748b' }}>
+            <p className="ppt-header-subtitle" style={{ margin: '0.25rem 0 0 0', color: 'var(--text-muted)' }}>
               {language === 'en' ? 'Interactive Presentations & Training Modules' : 'इंटरैक्टिव प्रेजेंटेशन और ट्रेनिंग मॉड्यूल'}
             </p>
           </div>
         </div>
 
         {/* Language Toggle */}
-        <div className="language-toggle" style={{ display: 'flex', background: '#f1f5f9', borderRadius: '0.75rem', padding: '0.25rem' }}>
+        <div className="language-toggle" style={{ display: 'flex', background: 'var(--icon-bg)', borderRadius: '0.75rem', padding: '0.25rem' }}>
           <button 
             onClick={() => setLanguage('en')}
             style={{

@@ -28,7 +28,7 @@ export default function PlaceholderView({ title }) {
         <h2 style={{ fontSize: '2rem', marginBottom: '1rem', fontWeight: 'bold' }}>
           {title}
         </h2>
-        <p style={{ color: '#94a3b8', fontSize: '1.1rem', maxWidth: '400px', margin: '0 auto' }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '400px', margin: '0 auto' }}>
           This module is currently under development. Check back later for updates.
         </p>
       </div>

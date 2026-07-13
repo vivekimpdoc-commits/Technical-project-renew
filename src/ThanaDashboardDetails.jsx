@@ -22,7 +22,7 @@ export default function ThanaDashboardDetails({ project, onBack }) {
     { id: 3, title: 'चरण 3: बैकएंड और सॉकेट (WebSockets) का निर्माण', subtitle: 'Backend & WebSockets API', icon: Server, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: लाइव ट्रैकिंग UI (Frontend)', subtitle: 'Live Tracking UI (Frontend)', icon: Monitor, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: CCTNS इंटीग्रेशन', subtitle: 'CCTNS Integration', icon: Network, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: सुरक्षा, टेस्टिंग और डिप्लॉयमेंट', subtitle: 'Security, Testing & Deployment', icon: Shield, color: '#64748b' },
+    { id: 6, title: 'चरण 6: सुरक्षा, टेस्टिंग और डिप्लॉयमेंट', subtitle: 'Security, Testing & Deployment', icon: Shield, color: 'var(--text-muted)' },
   ];
 
   const resourcesList = [
@@ -52,33 +52,33 @@ export default function ThanaDashboardDetails({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>रीयल-टाइम डैशबोर्ड आर्किटेक्चर (Real-time Architecture)</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>रीयल-टाइम डैशबोर्ड आर्किटेक्चर (Real-time Architecture)</h3>
         
-        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'var(--card-bg)', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
-            <div style={{ background: '#f1f5f9', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #3b82f6' }}>
-              <h4 style={{ margin: '0 0 0.5rem 0', color: '#1e293b' }}>1. डेटा इनपुट और एकत्रीकरण (Data Aggregation)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>CCTNS सिस्टम, FIR ड्राफ्टिंग टूल, और पुलिस अधिकारियों के मोबाइल ऐप से रीयल-टाइम डेटा सर्वर पर आता है।</p>
+            <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #3b82f6' }}>
+              <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)' }}>1. डेटा इनपुट और एकत्रीकरण (Data Aggregation)</h4>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>CCTNS सिस्टम, FIR ड्राफ्टिंग टूल, और पुलिस अधिकारियों के मोबाइल ऐप से रीयल-टाइम डेटा सर्वर पर आता है।</p>
             </div>
 
-            <div style={{ background: '#f1f5f9', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #10b981' }}>
-              <h4 style={{ margin: '0 0 0.5rem 0', color: '#1e293b' }}>2. रीयल-टाइम प्रोसेसिंग (WebSockets/Socket.io)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>डेटाबेस में कोई भी नया केस या स्टेटस अपडेट होते ही, WebSockets के ज़रिए सभी कनेक्टेड डैशबोर्ड्स को तुरंत (Millisecond latency) पुश नोटिफिकेशन भेजी जाती है।</p>
+            <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #10b981' }}>
+              <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)' }}>2. रीयल-टाइम प्रोसेसिंग (WebSockets/Socket.io)</h4>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>डेटाबेस में कोई भी नया केस या स्टेटस अपडेट होते ही, WebSockets के ज़रिए सभी कनेक्टेड डैशबोर्ड्स को तुरंत (Millisecond latency) पुश नोटिफिकेशन भेजी जाती है।</p>
             </div>
 
-            <div style={{ background: '#f1f5f9', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #f59e0b' }}>
-              <h4 style={{ margin: '0 0 0.5rem 0', color: '#1e293b' }}>3. डेटा विज़ुअलाइज़ेशन (UI/UX)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>स्टेशन इंचार्ज (SHO) की स्क्रीन पर लाइव चार्ट्स (Recharts), पेंडिंग केस काउंट, और अधिकारियों की लाइव लोकेशन/स्टेटस अपडेट हो जाती है।</p>
+            <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #f59e0b' }}>
+              <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)' }}>3. डेटा विज़ुअलाइज़ेशन (UI/UX)</h4>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>स्टेशन इंचार्ज (SHO) की स्क्रीन पर लाइव चार्ट्स (Recharts), पेंडिंग केस काउंट, और अधिकारियों की लाइव लोकेशन/स्टेटस अपडेट हो जाती है।</p>
             </div>
             
-            <div style={{ background: '#f1f5f9', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #8b5cf6' }}>
-              <h4 style={{ margin: '0 0 0.5rem 0', color: '#1e293b' }}>4. एनालिटिक्स और अलर्ट्स (Analytics)</h4>
-              <p style={{ margin: 0, color: '#475569' }}>AI मॉडल पेंडिंग केसेस का विश्लेषण करता है, और अगर कोई केस 24 घंटे से अधिक समय तक अटका हुआ है, तो लाल रंग का अलर्ट जनरेट करता है।</p>
+            <div style={{ background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '0.75rem', borderLeft: '4px solid #8b5cf6' }}>
+              <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)' }}>4. एनालिटिक्स और अलर्ट्स (Analytics)</h4>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>AI मॉडल पेंडिंग केसेस का विश्लेषण करता है, और अगर कोई केस 24 घंटे से अधिक समय तक अटका हुआ है, तो लाल रंग का अलर्ट जनरेट करता है।</p>
             </div>
 
           </div>
@@ -90,12 +90,12 @@ export default function ThanaDashboardDetails({ project, onBack }) {
   // Same logic for tech stack details...
   if (showFrontendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFrontendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>फ्रंटएंड (Frontend) - यूजर इंटरफेस</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>फ्रंटएंड (Frontend) - यूजर इंटरफेस</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#1d4ed8' }}>वेब एप्लिकेशन: React.js या Next.js</h4>
             <p>यह यूजर इंटरफेस को बहुत तेज़ और रेस्पॉन्सिव बनाता है। रीयल-टाइम डेटा रेंडरिंग के लिए React का वर्चुअल DOM बेहतरीन है।</p>
@@ -111,12 +111,12 @@ export default function ThanaDashboardDetails({ project, onBack }) {
 
   if (showBackendDetails) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowBackendDetails(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Tech Stack
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: '#0f172a', textAlign: 'center' }}>बैकएंड (Backend) - कोर लॉजिक और API</h3>
+          <h3 style={{ margin: '0 0 2rem 0', fontSize: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>बैकएंड (Backend) - कोर लॉजिक और API</h3>
           <div className="workflow-step-card" style={{ borderLeftColor: '#10b981', paddingLeft: '2rem' }}>
             <h4 style={{ color: '#047857' }}>प्रोग्रामिंग लैंग्वेज: Node.js (Express)</h4>
             <p>Node.js का इवेंट-ड्रिवन आर्किटेक्चर रीयल-टाइम और हाई-कंकरेंसी (हज़ारों लाइव डैशबोर्ड्स) को हैंडल करने के लिए सबसे अच्छा है।</p>
@@ -131,11 +131,11 @@ export default function ThanaDashboardDetails({ project, onBack }) {
   }
 
   const renderChecklistItem = (title, description, color) => (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'white', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '0.75rem', marginBottom: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
       <CheckCircle color={color} size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
       <div>
-        <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{title}</h4>
-        <p style={{ margin: 0, color: '#475569' }}>{description}</p>
+        <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{title}</h4>
+        <p style={{ margin: 0, color: 'var(--text-muted)' }}>{description}</p>
       </div>
     </div>
   );
@@ -144,14 +144,14 @@ export default function ThanaDashboardDetails({ project, onBack }) {
     const evaluation = evaluationList.find(e => e.id === selectedEvaluation);
     const EvaluationIcon = evaluation.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Submission / Evaluation
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <EvaluationIcon size={40} color={evaluation.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{evaluation.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{evaluation.title}</h3>
           </div>
           <div className="workflow-container" style={{ padding: 0 }}>
             {(() => {
@@ -296,7 +296,7 @@ export default function ThanaDashboardDetails({ project, onBack }) {
                         <Icon size={24} color={step.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{step.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{step.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{step.subtitle}</p>
                     </div>
                   );
                 })}
@@ -335,7 +335,7 @@ export default function ThanaDashboardDetails({ project, onBack }) {
                         <Icon size={24} color={evaluation.color} />
                       </div>
                       <h4 style={{ margin: '0 0 0.5rem 0' }}>{evaluation.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b' }}>{evaluation.subtitle}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)' }}>{evaluation.subtitle}</p>
                     </div>
                   );
                 })}

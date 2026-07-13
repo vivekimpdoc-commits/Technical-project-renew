@@ -101,7 +101,7 @@ export default function ModernTechStack({ onBack }) {
           padding: isPopupMaximized ? '1rem' : '2rem'
         }}>
           <div className="animate-fade-in" style={{
-            background: '#f8fafc', width: '100%',
+            background: 'var(--icon-bg)', width: '100%',
             maxWidth: isPopupMaximized ? '98%' : '1000px',
             height: isPopupMaximized ? '96vh' : '75vh',
             overflowY: 'auto',
@@ -113,7 +113,7 @@ export default function ModernTechStack({ onBack }) {
             <div style={{ position: 'absolute', top: '1rem', right: '1.5rem', display: 'flex', gap: '0.75rem', zIndex: 100 }}>
               <button
                 onClick={() => setIsPopupMaximized(!isPopupMaximized)}
-                style={{ background: '#e2e8f0', color: '#0f172a', border: 'none', padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}
+                style={{ background: '#e2e8f0', color: 'var(--text-main)', border: 'none', padding: '0.5rem 1rem', borderRadius: '2rem', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}
               >
                 {isPopupMaximized ? '🗗 Restore' : '🗖 Maximize'}
               </button>
@@ -148,8 +148,8 @@ export default function ModernTechStack({ onBack }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginTop: '2rem', alignItems: 'flex-start' }}>
         {reqData.map((module) => (
           <div key={module.id} style={{
-            background: 'white', borderRadius: '1rem', padding: '1.5rem',
-            border: '1px solid #e2e8f0', borderTop: `4px solid ${module.color}`,
+            background: 'var(--card-bg)', borderRadius: '1rem', padding: '1.5rem',
+            border: '1px solid var(--card-border)', borderTop: `4px solid ${module.color}`,
             boxShadow: '0 4px 15px rgba(0,0,0,0.02)', transition: 'transform 0.3s, box-shadow 0.3s',
             display: 'flex', flexDirection: 'column'
           }}
@@ -164,21 +164,21 @@ export default function ModernTechStack({ onBack }) {
                 <div style={{ padding: '0.75rem', background: `${module.color}15`, color: module.color, borderRadius: '0.75rem' }}>
                   <module.icon size={24} />
                 </div>
-                <h4 style={{ fontSize: '1.1rem', color: '#0f172a', fontWeight: '700', lineHeight: '1.3', maxWidth: '70%' }}>
+                <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', fontWeight: '700', lineHeight: '1.3', maxWidth: '70%' }}>
                   {module.title}
                 </h4>
               </div>
             </div>
 
             {expandedCard === module.id && (
-              <div className="animate-fade-in" style={{ marginTop: '1.5rem', borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem' }}>
+              <div className="animate-fade-in" style={{ marginTop: '1.5rem', borderTop: '1px solid var(--card-border)', paddingTop: '1.5rem' }}>
                 <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem' }}>
                   {module.items.map((item, index) => (
                     <div key={index} style={{
-                      background: '#f8fafc', border: '1px solid #e2e8f0',
+                      background: 'var(--icon-bg)', border: '1px solid var(--card-border)',
                       padding: '0.5rem 0.75rem', borderRadius: '0.5rem',
                       display: 'flex', alignItems: 'center', gap: '0.5rem',
-                      fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                      fontSize: '0.85rem', color: 'var(--text-main)', fontWeight: '500'
                     }}>
                       <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: module.color, flexShrink: 0 }}></div>
                       <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item}</span>

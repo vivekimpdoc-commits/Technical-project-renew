@@ -155,19 +155,19 @@ export default function CICDPipeline({ onBack }) {
     const DetailIcon = detailItem.icon;
     
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedDetail(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedDetail(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to CI/CD Pipeline
         </button>
         
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <DetailIcon size={40} color={detailItem.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{detailItem.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{detailItem.title}</h3>
           </div>
           
-          <div style={{ background: 'white', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
-            <h4 style={{ fontSize: '1.25rem', color: '#1e293b', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
+          <div style={{ background: 'var(--card-bg)', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}>
+            <h4 style={{ fontSize: '1.25rem', color: 'var(--text-main)', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.75rem' }}>
               {detailItem.subtitle} - विस्तृत जानकारी (Overview)
             </h4>
             
@@ -179,11 +179,11 @@ export default function CICDPipeline({ onBack }) {
                   <div key={idx} style={{ padding: '1.25rem', background: `${detailItem.color}0a`, borderRadius: '0.75rem', borderLeft: `4px solid ${detailItem.color}` }}>
                     {hasColon ? (
                       <>
-                        <strong style={{ fontSize: '1.1rem', color: '#1e293b' }}>{parts[0]}:</strong>
-                        <p style={{ margin: '0.5rem 0 0 0', color: '#334155', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
+                        <strong style={{ fontSize: '1.1rem', color: 'var(--text-main)' }}>{parts[0]}:</strong>
+                        <p style={{ margin: '0.5rem 0 0 0', color: 'var(--text-main)', lineHeight: '1.6' }}>{parts.slice(1).join(':')}</p>
                       </>
                     ) : (
-                      <p style={{ margin: 0, color: '#1e293b', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
+                      <p style={{ margin: 0, color: 'var(--text-main)', fontSize: '1.1rem', fontWeight: '500' }}>{bullet}</p>
                     )}
                   </div>
                 );
@@ -193,20 +193,20 @@ export default function CICDPipeline({ onBack }) {
             {/* Deep Dive Extra Details Section */}
             {detailItem.deepDive && detailItem.deepDive.length > 0 && (
               <div style={{ marginTop: '2.5rem' }}>
-                <h4 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', color: 'var(--text-main)', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Info size={22} color={detailItem.color} />
                   गहराई से जानकारी (Deep Dive Details)
                 </h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
                   {detailItem.deepDive.map((dive, idx) => (
                     <div key={idx} style={{ 
-                      background: '#f8fafc', padding: '1.5rem', borderRadius: '1rem', 
-                      border: '1px solid #e2e8f0', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
+                      background: 'var(--icon-bg)', padding: '1.5rem', borderRadius: '1rem', 
+                      border: '1px solid var(--card-border)', boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.02)'
                     }}>
                       <h5 style={{ margin: '0 0 0.75rem 0', fontSize: '1.1rem', color: detailItem.color, fontWeight: 'bold' }}>
                         {dive.heading}
                       </h5>
-                      <p style={{ margin: 0, color: '#475569', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', lineHeight: '1.6', fontSize: '0.95rem' }}>
                         {dive.content}
                       </p>
                     </div>
@@ -233,17 +233,17 @@ export default function CICDPipeline({ onBack }) {
   }
 
   return (
-    <div className="thane-dashboard-container" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
+    <div className="thane-dashboard-container" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
         <button onClick={onBack} className="thane-back-btn">
           <ArrowLeft size={18} /> Back to SDLC
         </button>
         <div>
-          <h2 style={{ margin: 0, fontSize: '1.75rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <h2 style={{ margin: 0, fontSize: '1.75rem', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <RefreshCw size={28} color="#10b981" />
             सीआई/सीडी पाइपलाइन (CI/CD Pipeline)
           </h2>
-          <p style={{ margin: '0.25rem 0 0 0', color: '#64748b' }}>
+          <p style={{ margin: '0.25rem 0 0 0', color: 'var(--text-muted)' }}>
             कोडिंग से लेकर सॉफ्टवेयर के लाइव (Live) होने तक की पूरी प्रक्रिया का ऑटोमेशन।
           </p>
         </div>
@@ -254,8 +254,8 @@ export default function CICDPipeline({ onBack }) {
           const Icon = box.icon || CheckCircle;
           return (
             <div key={box.id} style={{
-              background: 'white', borderRadius: '1rem', padding: '1.5rem',
-              border: '1px solid #e2e8f0', borderTop: `4px solid ${box.color}`,
+              background: 'var(--card-bg)', borderRadius: '1rem', padding: '1.5rem',
+              border: '1px solid var(--card-border)', borderTop: `4px solid ${box.color}`,
               boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
               display: 'flex', flexDirection: 'column',
               transition: 'transform 0.3s, box-shadow 0.3s'
@@ -277,8 +277,8 @@ export default function CICDPipeline({ onBack }) {
                     <Icon size={24} />
                   </div>
                   <div>
-                    <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#0f172a', fontWeight: 'bold', lineHeight: '1.3' }}>{box.title}</h3>
-                    <p style={{ margin: '0.2rem 0 0 0', color: '#64748b', fontSize: '0.85rem' }}>{box.subtitle}</p>
+                    <h3 style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-main)', fontWeight: 'bold', lineHeight: '1.3' }}>{box.title}</h3>
+                    <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>{box.subtitle}</p>
                   </div>
                 </div>
                 <span style={{ color: box.color, fontWeight: 'bold', fontSize: '1.5rem', lineHeight: '1' }}>
@@ -287,15 +287,15 @@ export default function CICDPipeline({ onBack }) {
               </div>
 
               {expandedCard === box.id && (
-                <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <div className="animate-fade-in" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--card-border)', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'grid', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
                     {box.items.map((item, idx) => {
                       const title = item.split(':')[0];
                       return (
                         <div key={idx} style={{ 
-                          background: '#f8fafc', border: '1px solid #e2e8f0', padding: '0.5rem 0.75rem', 
+                          background: 'var(--icon-bg)', border: '1px solid var(--card-border)', padding: '0.5rem 0.75rem', 
                           borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
-                          fontSize: '0.85rem', color: '#334155', fontWeight: '500'
+                          fontSize: '0.85rem', color: 'var(--text-main)', fontWeight: '500'
                         }}>
                           <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: box.color, flexShrink: 0 }}></div>
                           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</span>

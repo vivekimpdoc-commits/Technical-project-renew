@@ -7,7 +7,7 @@ export default function Reports() {
       <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '3rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', textAlign: 'center' }}>
         <Construction size={64} style={{ color: '#3b82f6', marginBottom: '1.5rem' }} />
         <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Reports</h2>
-        <p style={{ color: '#94a3b8' }}>This module is currently under development.</p>
+        <p style={{ color: 'var(--text-muted)' }}>This module is currently under development.</p>
       </div>
     </div>
   );

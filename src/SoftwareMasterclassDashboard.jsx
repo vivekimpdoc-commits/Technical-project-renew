@@ -48,8 +48,8 @@ export default function SoftwareMasterclassDashboard({ resetTrigger }) {
         <p className="thane-subtitle">Advanced concepts, technologies, and career growth for modern software engineers</p>
       </div>
 
-      <div style={{ padding: '2rem', background: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-        <h3 style={{ margin: '0 0 1.5rem 0', color: '#0f172a', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <div style={{ padding: '2rem', background: 'var(--card-bg)', borderRadius: '1rem', border: '1px solid var(--card-border)', marginTop: '2rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+        <h3 style={{ margin: '0 0 1.5rem 0', color: 'var(--text-main)', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <Code size={28} color="#0ea5e9" />
           Choose a Masterclass Topic (विषय चुनें)
         </h3>
@@ -63,7 +63,7 @@ export default function SoftwareMasterclassDashboard({ resetTrigger }) {
                 onClick={() => setSelectedTopic(step.num)}
                 style={{
                   display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.75rem',
-                  background: '#f8fafc', borderRadius: '1rem', border: '1px solid #e2e8f0',
+                  background: 'var(--icon-bg)', borderRadius: '1rem', border: '1px solid var(--card-border)',
                   borderLeft: `4px solid ${step.color}`, cursor: 'pointer',
                   transition: 'all 0.2s ease-in-out'
                 }}
@@ -85,11 +85,11 @@ export default function SoftwareMasterclassDashboard({ resetTrigger }) {
                   <Icon size={24} />
                 </div>
                 <div>
-                  <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.15rem', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.15rem', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                     {step.title}
                     <span style={{ fontSize: '0.7rem', background: `${step.color}22`, color: step.color, padding: '0.15rem 0.6rem', borderRadius: '1rem', whiteSpace: 'nowrap' }}>Click to View</span>
                   </h4>
-                  <p style={{ margin: 0, color: '#64748b', fontSize: '0.95rem', lineHeight: '1.5' }}>{step.desc}</p>
+                  <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>{step.desc}</p>
                 </div>
               </div>
             );

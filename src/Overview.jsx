@@ -103,7 +103,7 @@ export default function Overview({ onNavigate }) {
           titleHi: 'प्रोजेक्ट पीपीटी (Presentations)',
           desc: 'High-quality slideshow presentations detailing the complete project goals and development life cycle.',
           icon: Presentation,
-          color: '#64748b'
+          color: 'var(--text-muted)'
         }
       ]
     }
@@ -128,17 +128,17 @@ export default function Overview({ onNavigate }) {
           <ShieldCheck size={28} style={{ color: '#2563eb', flexShrink: 0 }} />
           Home & Central Command Portal (मुख्य पोर्टल)
         </h2>
-        <p className="thane-subtitle" style={{ fontSize: '0.9rem', marginTop: '0.25rem', color: '#64748b' }}>
+        <p className="thane-subtitle" style={{ fontSize: '0.9rem', marginTop: '0.25rem', color: 'var(--text-muted)' }}>
           उत्तर प्रदेश पुलिस एआई प्रोजेक्ट के सभी मुख्य स्तंभों का पोर्टल गेटवे
         </p>
       </div>
 
       {/* Intro Summary */}
       <div style={{ 
-        background: 'white', borderRadius: '0.75rem', padding: '0.75rem 1.25rem', border: '1px solid #e2e8f0', 
+        background: 'var(--card-bg)', borderRadius: '0.75rem', padding: '0.75rem 1.25rem', border: '1px solid var(--card-border)', 
         boxShadow: '0 2px 4px rgba(0,0,0,0.02)', marginBottom: '1.5rem', textAlign: 'center'
       }}>
-        <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
           यह डैशबोर्ड उत्तर प्रदेश पुलिस विभाग के आधुनिकीकरण का एक संपूर्ण नक्शा है। नीचे दिए गए तीन मुख्य क्षेत्रों में विभाजित किसी भी मॉड्यूल पर क्लिक करके सीधे उसके कार्यप्रणाली विवरण को देखें।
         </p>
       </div>
@@ -147,8 +147,8 @@ export default function Overview({ onNavigate }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         {sections.map((section, idx) => (
           <div key={idx} style={{ 
-            background: 'white', padding: '1.75rem 1.5rem', borderRadius: '1.25rem', 
-            border: '1px solid #e2e8f0', borderTop: `4px solid ${section.color}`,
+            background: 'var(--card-bg)', padding: '1.75rem 1.5rem', borderRadius: '1.25rem', 
+            border: '1px solid var(--card-border)', borderTop: `4px solid ${section.color}`,
             boxShadow: '0 10px 25px -5px rgba(0,0,0,0.02)'
           }}>
             <h3 style={{ 
@@ -174,7 +174,7 @@ export default function Overview({ onNavigate }) {
                     key={item.id}
                     onClick={() => onNavigate(item.id, item.subTab || 'phases')}
                     style={{
-                      background: '#f8fafc', borderRadius: '0.75rem', padding: '1.25rem', border: '1px solid #e2e8f0',
+                      background: 'var(--icon-bg)', borderRadius: '0.75rem', padding: '1.25rem', border: '1px solid var(--card-border)',
                       borderTop: `4px solid ${item.color}`, display: 'flex', flexDirection: 'column',
                       cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                       minHeight: '145px'
@@ -196,11 +196,11 @@ export default function Overview({ onNavigate }) {
                       </div>
                       <div>
                         <h4 style={{ margin: 0, color: item.color, fontSize: '0.95rem', fontWeight: '800' }}>{item.title}</h4>
-                        <span style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '600' }}>{item.titleHi}</span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem', fontWeight: '600' }}>{item.titleHi}</span>
                       </div>
                     </div>
 
-                    <p style={{ color: '#1e293b', fontSize: '0.8rem', lineHeight: '1.45', margin: '0 0 0.75rem 0', flexGrow: 1, fontWeight: '500' }}>
+                    <p style={{ color: 'var(--text-main)', fontSize: '0.8rem', lineHeight: '1.45', margin: '0 0 0.75rem 0', flexGrow: 1, fontWeight: '500' }}>
                       {item.desc}
                     </p>
 

@@ -66,7 +66,7 @@ export default function DLiccDashboard({ onBack }) {
                 <span className={`thane-status-badge ${proj.status.toLowerCase()}`}>{proj.status}</span>
               </div>
               <h3 className="thane-card-title" style={{ marginBottom: '0.5rem', fontSize: '1.25rem' }}>{proj.name}</h3>
-              <p style={{ color: '#64748b', fontSize: '0.95rem', marginBottom: '1.5rem', flexGrow: 1 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.5rem', flexGrow: 1 }}>
                 {proj.description}
               </p>
               <div className="thane-card-footer" style={{ marginTop: 'auto' }}>

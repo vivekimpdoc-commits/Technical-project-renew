@@ -13,7 +13,7 @@ export default function LipReadingAIDetails({ project, onBack }) {
   const [selectedOverviewSection, setSelectedOverviewSection] = useState(null);
 
   const overviewSections = [
-    { id: 'io-assistance', title: 'IO Assistance', subtitle: 'जांच अधिकारी (IO) के लिए उपयोगिता', icon: Briefcase, color: '#475569' },
+    { id: 'io-assistance', title: 'IO Assistance', subtitle: 'जांच अधिकारी (IO) के लिए उपयोगिता', icon: Briefcase, color: 'var(--text-muted)' },
     { id: 'objectives', title: 'Project Objectives', subtitle: 'परियोजना के मुख्य उद्देश्य', icon: Target, color: '#2563eb' },
     { id: 'features', title: 'Major Features', subtitle: 'प्रमुख विशेषताएं (AI & Analytics)', icon: Zap, color: '#ec4899' },
   ];
@@ -24,7 +24,7 @@ export default function LipReadingAIDetails({ project, onBack }) {
     { id: 3, title: 'चरण 3: 3D-CNN मॉडल ट्रेनिंग', subtitle: 'Lip2Wav / LRW', icon: BrainCircuit, color: '#f59e0b' },
     { id: 4, title: 'चरण 4: डिकोडर (Seq2Seq)', subtitle: 'Text Generation', icon: Type, color: '#8b5cf6' },
     { id: 5, title: 'चरण 5: UI और सबटाइटल ओवरले', subtitle: 'Dashboard', icon: Monitor, color: '#ec4899' },
-    { id: 6, title: 'चरण 6: एक्यूरेसी टेस्टिंग', subtitle: 'Validation', icon: Shield, color: '#64748b' },
+    { id: 6, title: 'चरण 6: एक्यूरेसी टेस्टिंग', subtitle: 'Validation', icon: Shield, color: 'var(--text-muted)' },
   ];
 
   const evaluationList = [
@@ -46,12 +46,12 @@ export default function LipReadingAIDetails({ project, onBack }) {
 
   if (showFullscreenFlowchart) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFullscreenFlowchart(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>Lip-Reading AI Architecture</h3>
-        <div className="flowchart-container" style={{ margin: '0 auto', maxWidth: '800px', background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>Lip-Reading AI Architecture</h3>
+        <div className="flowchart-container" style={{ margin: '0 auto', maxWidth: '800px', background: 'var(--card-bg)', padding: '2rem', borderRadius: '1rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
           <div className="flow-step"><div className="flow-node user-node">Silent CCTV Video Input</div></div>
           <div className="flow-arrow">↓</div>
           <div className="flow-step"><div className="flow-node">Face & Mouth Region of Interest (ROI) Cropping</div></div>
@@ -68,11 +68,11 @@ export default function LipReadingAIDetails({ project, onBack }) {
 
   if (showFullscreenWorkflow) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setShowFullscreenWorkflow(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setShowFullscreenWorkflow(false)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Architecture Menu
         </button>
-        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: '#0f172a' }}>Workflow (कार्यप्रणाली)</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.75rem', color: 'var(--text-main)' }}>Workflow (कार्यप्रणाली)</h3>
         <div className="workflow-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div className="workflow-step-card" style={{ borderLeftColor: '#3b82f6' }}>
             <h4 className="workflow-step-title">1. Video Input</h4>
@@ -99,20 +99,20 @@ export default function LipReadingAIDetails({ project, onBack }) {
     const sec = overviewSections.find(s => s.id === selectedOverviewSection);
     const SecIcon = sec.icon;
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedOverviewSection(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold', cursor: 'pointer' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedOverviewSection(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold', cursor: 'pointer' }}>
           <ArrowLeft size={18} /> Back to Project Overview
         </button>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
             <SecIcon size={40} color={sec.color} />
-            <h3 style={{ margin: 0, fontSize: '2rem', color: '#0f172a' }}>{sec.title}</h3>
+            <h3 style={{ margin: 0, fontSize: '2rem', color: 'var(--text-main)' }}>{sec.title}</h3>
           </div>
           <div style={{ padding: 0 }}>
             {(() => {
               switch(sec.id) {
                 case 'io-assistance': return (
-                  <div style={{ background: '#ffffff', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0' }}>
+                  <div style={{ background: 'var(--card-bg)', padding: '2rem', borderRadius: '1rem', border: '1px solid var(--card-border)' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
                       <div className="workflow-point">• मूक (Silent) CCTV वीडियो में अपराधी आपस में क्या बात कर रहे हैं, इसका अनुमान लगाना।</div>
                       <div className="workflow-point">• दूर से रिकॉर्ड किये गए वीडियो (जिसमे आवाज न हो) से महत्वपूर्ण लीड्स प्राप्त करना।</div>
@@ -152,8 +152,8 @@ export default function LipReadingAIDetails({ project, onBack }) {
   // Identical Guide/Eval placeholder loops
   if (selectedGuideStep !== null) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedGuideStep(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedGuideStep(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold' }}>
           <ArrowLeft size={18} /> Back
         </button>
         <div className="workflow-container"><h3 style={{textAlign: 'center'}}>Refer to Architecture section for guide details.</h3></div>
@@ -163,8 +163,8 @@ export default function LipReadingAIDetails({ project, onBack }) {
   
   if (selectedEvaluation !== null) {
     return (
-      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh', width: '100%' }}>
-        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'white', borderRadius: '0.5rem', color: '#0f172a', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>
+      <div className="fullscreen-flow-view" style={{ padding: '2rem', background: 'var(--icon-bg)', minHeight: '100vh', width: '100%' }}>
+        <button onClick={() => setSelectedEvaluation(null)} className="thane-back-btn" style={{ marginBottom: '2rem', display: 'inline-flex', padding: '0.75rem 1.5rem', background: 'var(--card-bg)', borderRadius: '0.5rem', color: 'var(--text-main)', border: '1px solid var(--card-border)', fontWeight: 'bold' }}>
           <ArrowLeft size={18} /> Back
         </button>
         <div className="workflow-container"><h3 style={{textAlign: 'center'}}>Evaluation Metrics active.</h3></div>
@@ -218,8 +218,8 @@ export default function LipReadingAIDetails({ project, onBack }) {
                   return (
                     <div key={sec.id} className="tech-category-card" style={{ cursor: 'pointer', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '1.25rem 1rem' }} onClick={() => setSelectedOverviewSection(sec.id)}>
                       <div style={{ background: `${sec.color}15`, padding: '0.75rem', borderRadius: '50%', marginBottom: '0.75rem' }}><Icon size={24} color={sec.color} /></div>
-                      <h4 style={{ margin: '0 0 0.25rem 0', color: '#0f172a', fontSize: '1rem', fontWeight: 'bold' }}>{sec.title}</h4>
-                      <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>{sec.subtitle}</p>
+                      <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-main)', fontSize: '1rem', fontWeight: 'bold' }}>{sec.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.85rem' }}>{sec.subtitle}</p>
                     </div>
                   );
                 })}
@@ -284,8 +284,8 @@ export default function LipReadingAIDetails({ project, onBack }) {
                         <StepIcon size={24} />
                       </div>
                       <div className="step-content">
-                        <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{step.title}</h4>
-                        <p style={{ margin: 0, color: '#64748b' }}>{step.subtitle}</p>
+                        <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{step.title}</h4>
+                        <p style={{ margin: 0, color: 'var(--text-muted)' }}>{step.subtitle}</p>
                       </div>
                       <div className="step-action">
                         <span style={{ fontSize: '0.875rem', color: '#3b82f6', fontWeight: '500' }}>View Details &rarr;</span>
@@ -331,8 +331,8 @@ export default function LipReadingAIDetails({ project, onBack }) {
                         <ItemIcon size={24} />
                       </div>
                       <div className="step-content">
-                        <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1.1rem' }}>{item.title}</h4>
-                        <p style={{ margin: 0, color: '#64748b' }}>{item.subtitle}</p>
+                        <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{item.title}</h4>
+                        <p style={{ margin: 0, color: 'var(--text-muted)' }}>{item.subtitle}</p>
                       </div>
                       <div className="step-action">
                         <span style={{ fontSize: '0.875rem', color: '#3b82f6', fontWeight: '500' }}>View Metrics &rarr;</span>

@@ -20,12 +20,41 @@
   --footer-text: #94a3b8;
   --footer-badge: #334155;
   --primary: #2563eb;
+  /* Sidebar dark mode */
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #e2e8f0;
+  --sidebar-item-hover: #f1f5f9;
+  --sidebar-text: #475569;
+  --main-content-bg: #f4f7fb;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ── Dark Mode Variables ───────────────────────────────────────── */
+.dark-mode {
+  --bg-color: #0d1117;
+  --card-bg: #161b22;
+  --card-border: #30363d;
+  --text-main: #e6edf3;
+  --text-muted: #8b949e;
+  --link-color: #58a6ff;
+  --link-hover: #79c0ff;
+  --icon-bg: #21262d;
+  --footer-bg: #010409;
+  --footer-text: #8b949e;
+  --footer-badge: #21262d;
+  --alert-bg: #2d1b1b;
+  --alert-border: #5a2020;
+  --alert-text: #f87171;
+  --primary: #58a6ff;
+  --sidebar-bg: #161b22;
+  --sidebar-border: #30363d;
+  --sidebar-item-hover: #21262d;
+  --sidebar-text: #c9d1d9;
+  --main-content-bg: #0d1117;
+}
+
+/* ── Global Transition for smooth dark/light switch ─────────────── */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 body {
@@ -657,4 +686,113 @@ body {
 .thane-back-btn:hover svg, .back-button:hover svg {
   transform: translateX(-3px);
   color: #15803d;
+}
+
+/* ═══════════════════════════════════════════════════════
+   DARK MODE SPECIFIC OVERRIDES
+═══════════════════════════════════════════════════════ */
+
+/* Sidebar in dark mode */
+.dark-mode .sidebar {
+  background: var(--sidebar-bg) !important;
+  border-right-color: var(--sidebar-border) !important;
+}
+
+.dark-mode .sidebar-nav-item {
+  color: var(--sidebar-text) !important;
+}
+
+.dark-mode .sidebar-nav-item:hover {
+  background: var(--sidebar-item-hover) !important;
+  color: #e6edf3 !important;
+  border-left-color: #58a6ff !important;
+}
+
+/* Cards in dark mode */
+.dark-mode .module-card,
+.dark-mode .card {
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+  color: var(--text-main) !important;
+}
+
+.dark-mode .module-card:hover {
+  border-color: #58a6ff !important;
+  box-shadow: 0 8px 25px rgba(88, 166, 255, 0.15) !important;
+}
+
+/* Main content area */
+.dark-mode .main-content {
+  background: var(--main-content-bg) !important;
+}
+
+/* Select elements */
+.dark-mode .district-select,
+.dark-mode select {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--card-border) !important;
+}
+
+/* Inputs in dark mode */
+.dark-mode input,
+.dark-mode textarea {
+  background-color: var(--icon-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--card-border) !important;
+}
+
+/* Footer section */
+.dark-mode .app-footer {
+  background-color: var(--footer-bg) !important;
+}
+
+/* Text overrides */
+.dark-mode .card-title,
+.dark-mode .section-title,
+.dark-mode h1, .dark-mode h2, .dark-mode h3 {
+  color: var(--text-main) !important;
+}
+
+.dark-mode .card-desc,
+.dark-mode .card-subtitle,
+.dark-mode p {
+  color: var(--text-muted) !important;
+}
+
+/* Alert bar dark mode */
+.dark-mode .alert-bar {
+  background-color: var(--alert-bg) !important;
+  border-color: var(--alert-border) !important;
+}
+
+.dark-mode .alert-content {
+  color: var(--alert-text) !important;
+}
+
+/* Dropdown container */
+.dark-mode .dropdown-container {
+  background-color: var(--icon-bg) !important;
+  border-color: var(--card-border) !important;
+}
+
+/* Sidebar top badge area */
+.dark-mode .sidebar > div:first-child {
+  background: linear-gradient(135deg, #1c2b3a, #162032) !important;
+  border-color: #30363d !important;
+}
+
+/* Dark mode scrollbar */
+.dark-mode ::-webkit-scrollbar {
+  width: 6px;
+}
+.dark-mode ::-webkit-scrollbar-track {
+  background: #161b22;
+}
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 3px;
+}
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
 }

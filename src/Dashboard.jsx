@@ -6,7 +6,8 @@ import {
   UserCheck, LineChart, BrainCircuit, Clock4,
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
-  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home, ShieldCheck, Cloud, MapPin
+  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home, ShieldCheck, Cloud, MapPin,
+  Moon, Sun
 } from 'lucide-react';
 import EthicsDashboard from './EthicsDashboard';
 import GovernanceDashboard from './GovernanceDashboard';
@@ -38,11 +39,27 @@ import SoftwareMasterclassDashboard from './SoftwareMasterclassDashboard';
 import MLOpsDashboard from './MLOpsDashboard';
 import AdvancedAICyberDashboard from './AdvancedAICyberDashboard';
 import Overview from './Overview';
+import ChatbotAssistant from './ChatbotAssistant';
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const [stepUpSubTab, setStepUpSubTab] = useState('phases');
   const [members, setMembers] = useState([]);
-  
+
+  // ── Dark Mode ────────────────────────────────────────────────────
+  const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
+
+  React.useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('darkMode', isDarkMode);
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => setIsDarkMode(prev => !prev);
+  // ─────────────────────────────────────────────────────────────────
+
   const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem('appLanguage') || 'en');
 
   const changeLanguage = (lang) => {
@@ -140,7 +157,7 @@ export default function Dashboard() {
     { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit, color: '#f59e0b', category: 'Operations' },
     { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield, color: '#ef4444', category: 'Administrative' },
     { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#0ea5e9', category: 'Administrative' },
-    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: '#64748b', category: 'Administrative' },
+    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: 'var(--text-muted)', category: 'Administrative' },
     // ---- New universal topics ----
     { id: 'devops', label: 'DevOps (CI/CD & Automation)', icon: Code, color: '#10b981', category: 'Special' },
     { id: 'security', label: 'Security & Compliance', icon: ShieldCheck, color: '#ef4444', category: 'Special' },
@@ -150,7 +167,7 @@ export default function Dashboard() {
     { id: 'documentation', label: 'Documentation (OpenAPI)', icon: FileText, color: '#06b6d4', category: 'Special' },
     { id: 'cloud-services', label: 'Cloud Services (AWS/GCP/Azure)', icon: Cloud, color: '#6366f1', category: 'Special' },
     { id: 'performance', label: 'Performance Tuning', icon: Activity, color: '#d97706', category: 'Special' },
-    { id: 'roadmap', label: 'Product Roadmap', icon: Briefcase, color: '#64748b', category: 'Special' },
+    { id: 'roadmap', label: 'Product Roadmap', icon: Briefcase, color: 'var(--text-muted)', category: 'Special' },
     { id: 'feedback', label: 'User Feedback', icon: UserCheck, color: '#2563eb', category: 'Special' },
   ];
 
@@ -213,13 +230,45 @@ export default function Dashboard() {
           <span style={{ fontSize: '0.95rem', fontWeight: '600', color: '#cbd5e1', textAlign: 'center', fontStyle: 'italic' }}>
             "Knowledge, Automation, Vision, & Analytics for Command Hub"
           </span>
-          <span style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+          <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.25rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
             Investigation & Operational Training Platform
           </span>
         </div>
 
         {/* Right Section: Controls */}
-        <div className="header-controls" style={{ flexShrink: 0, display: 'flex', justifyContent: 'flex-end', gap: '1.25rem' }}>
+        <div className="header-controls" style={{ flexShrink: 0, display: 'flex', justifyContent: 'flex-end', gap: '1.25rem', alignItems: 'center' }}>
+
+          {/* 🌙 Dark Mode Toggle */}
+          <button
+            onClick={toggleDarkMode}
+            title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              background: isDarkMode
+                ? 'linear-gradient(135deg, #1e3a5f, #2563eb)'
+                : 'linear-gradient(135deg, #1e293b, #334155)',
+              color: isDarkMode ? '#93c5fd' : '#f8fafc',
+              border: isDarkMode ? '1px solid #3b82f6' : '1px solid #475569',
+              padding: '0.35rem 0.9rem',
+              borderRadius: '2rem',
+              fontSize: '0.75rem',
+              fontWeight: '700',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: isDarkMode
+                ? '0 4px 12px rgba(59,130,246,0.35), 0 0 0 1px rgba(59,130,246,0.2)'
+                : '0 4px 12px rgba(0,0,0,0.25)',
+              letterSpacing: '0.03em',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = isDarkMode ? '0 6px 18px rgba(59,130,246,0.5)' : '0 6px 18px rgba(0,0,0,0.35)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = isDarkMode ? '0 4px 12px rgba(59,130,246,0.35)' : '0 4px 12px rgba(0,0,0,0.25)'; }}
+          >
+            {isDarkMode ? <Sun size={14} /> : <Moon size={14} />}
+            {isDarkMode ? 'Light' : 'Dark'}
+          </button>
+
           {/* Logout Button */}
           <Link to="/" style={{
             display: 'flex',
@@ -308,16 +357,16 @@ export default function Dashboard() {
           height: '100%',
           display: 'flex', 
           flexDirection: 'column', 
-          background: '#ffffff',
+          background: 'var(--card-bg)',
           borderRight: '1px solid #e2e8f0',
           padding: 0
         }}>
           {/* Fixed Top Controls Area - Tactical Blue Welcome Badge */}
           <div style={{
             padding: '1rem 0.75rem',
-            borderBottom: '1px solid #e2e8f0',
+            borderBottom: '1px solid var(--card-border)',
             background: 'linear-gradient(135deg, #eef4ff, #dbeafe)',
-            color: '#0f172a',
+            color: 'var(--text-main)',
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
@@ -420,7 +469,7 @@ export default function Dashboard() {
                         background: isEducationActive ? '#2563eb05' : '#f8fafc', 
                         padding: '1.05rem 1.25rem', 
                         borderRadius: '0.5rem',
-                        border: '1px solid #cbd5e1',
+                        border: '1px solid var(--card-border)',
                         borderLeft: isEducationActive ? '4px solid #2563eb' : '4px solid transparent',
                         display: 'flex',
                         alignItems: 'center',
@@ -519,7 +568,7 @@ export default function Dashboard() {
                         background: isOperationsActive ? '#0d948805' : '#f8fafc', 
                         padding: '1.05rem 1.25rem', 
                         borderRadius: '0.5rem',
-                        border: '1px solid #cbd5e1',
+                        border: '1px solid var(--card-border)',
                         borderLeft: isOperationsActive ? '4px solid #0d9488' : '4px solid transparent',
                         display: 'flex',
                         alignItems: 'center',
@@ -618,7 +667,7 @@ export default function Dashboard() {
                         background: isAdministrativeActive ? '#dc262605' : '#f8fafc', 
                         padding: '1.05rem 1.25rem', 
                         borderRadius: '0.5rem',
-                        border: '1px solid #cbd5e1',
+                        border: '1px solid var(--card-border)',
                         borderLeft: isAdministrativeActive ? '4px solid #dc2626' : '4px solid transparent',
                         display: 'flex',
                         alignItems: 'center',
@@ -737,10 +786,13 @@ export default function Dashboard() {
 
       {/* Footer */}
       <footer className="app-footer" style={{ padding: '2rem 1rem', textAlign: 'center' }}>
-        <div className="footer-copyright" style={{ marginTop: '0', fontSize: '0.9rem', color: '#94a3b8' }}>
+        <div className="footer-copyright" style={{ marginTop: '0', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
           © 2026 UP Police AI Investigation Command Center. All Rights Reserved.
         </div>
       </footer>
+
+      {/* K.A.V.A.C.H. AI Chatbot Assistant */}
+      <ChatbotAssistant />
     </div>
   );
 }

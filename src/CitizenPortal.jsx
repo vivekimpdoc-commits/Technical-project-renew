@@ -24,11 +24,11 @@ export default function CitizenPortal() {
         
         {/* Left Column: Services */}
         <div>
-          <h3 style={{ margin: '0 0 1.5rem 0', color: '#0f172a', fontSize: '1.25rem' }}>Citizen E-Services</h3>
+          <h3 style={{ margin: '0 0 1.5rem 0', color: 'var(--text-main)', fontSize: '1.25rem' }}>Citizen E-Services</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
             {services.map(s => (
               <div key={s.id} style={{ 
-                background: 'white', borderRadius: '1rem', padding: '1.5rem', border: '1px solid #e2e8f0', 
+                background: 'var(--card-bg)', borderRadius: '1rem', padding: '1.5rem', border: '1px solid var(--card-border)', 
                 borderTop: `4px solid ${s.color}`, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
                 cursor: 'pointer', transition: 'transform 0.2s', display: 'flex', flexDirection: 'column'
               }}
@@ -39,9 +39,9 @@ export default function CitizenPortal() {
                   <div style={{ padding: '0.75rem', background: `${s.color}15`, color: s.color, borderRadius: '0.75rem' }}>
                     <s.icon size={24} />
                   </div>
-                  <h4 style={{ margin: 0, color: '#0f172a', fontSize: '1.1rem' }}>{s.title}</h4>
+                  <h4 style={{ margin: 0, color: 'var(--text-main)', fontSize: '1.1rem' }}>{s.title}</h4>
                 </div>
-                <p style={{ margin: 0, color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>{s.desc}</p>
+                <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5' }}>{s.desc}</p>
                 <button style={{ 
                   marginTop: 'auto', paddingTop: '1rem', background: 'none', border: 'none', 
                   color: s.color, fontWeight: 'bold', textAlign: 'left', cursor: 'pointer', fontSize: '0.9rem'
@@ -56,18 +56,18 @@ export default function CitizenPortal() {
         {/* Right Column: Alerts & Emergency */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           
-          <div style={{ background: 'white', borderRadius: '1rem', padding: '1.5rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-            <h3 style={{ margin: '0 0 1rem 0', color: '#0f172a', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div style={{ background: 'var(--card-bg)', borderRadius: '1rem', padding: '1.5rem', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+            <h3 style={{ margin: '0 0 1rem 0', color: 'var(--text-main)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Bell size={18} color="#ef4444" /> Urgent Police Advisories
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ borderLeft: '3px solid #ef4444', paddingLeft: '0.75rem' }}>
-                <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.25rem' }}>Today, 10:00 AM</div>
-                <div style={{ color: '#0f172a', fontSize: '0.9rem', fontWeight: '500' }}>Heavy traffic expected on MG Road due to rally. Avoid route.</div>
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>Today, 10:00 AM</div>
+                <div style={{ color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: '500' }}>Heavy traffic expected on MG Road due to rally. Avoid route.</div>
               </div>
               <div style={{ borderLeft: '3px solid #f59e0b', paddingLeft: '0.75rem' }}>
-                <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.25rem' }}>Yesterday, 18:30 PM</div>
-                <div style={{ color: '#0f172a', fontSize: '0.9rem', fontWeight: '500' }}>New phishing scam reported asking for OTPs. Police never asks for OTP.</div>
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>Yesterday, 18:30 PM</div>
+                <div style={{ color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: '500' }}>New phishing scam reported asking for OTPs. Police never asks for OTP.</div>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function CitizenPortal() {
             <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.25rem' }}>SOS Emergency</h3>
             <p style={{ margin: '0 0 1.5rem 0', fontSize: '0.9rem', opacity: 0.9 }}>Pressing this button will instantly dispatch the nearest PCR van to your GPS location.</p>
             <button style={{ 
-              width: '100%', padding: '1rem', background: 'white', color: '#ef4444', 
+              width: '100%', padding: '1rem', background: 'var(--card-bg)', color: '#ef4444', 
               border: 'none', borderRadius: '0.5rem', fontWeight: 'bold', fontSize: '1.1rem', cursor: 'pointer' 
             }}>
               PRESS FOR HELP (112)
