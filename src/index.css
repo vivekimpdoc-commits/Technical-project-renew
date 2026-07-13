@@ -429,6 +429,7 @@ body {
 .sidebar {
   width: 310px;
   flex-shrink: 0;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: #ffffff;
   border-right: 1px solid #e2e8f0;
   display: flex;
@@ -795,4 +796,21 @@ body {
 }
 .dark-mode ::-webkit-scrollbar-thumb:hover {
   background: #484f58;
+}
+
+
+/* Sidebar Collapsed State */
+.sidebar.collapsed {
+  width: 88px !important;
+}
+.sidebar.collapsed .hide-on-collapse {
+  display: none !important;
+}
+.sidebar.collapsed .sidebar-nav-item {
+  justify-content: center;
+  padding: 1.1rem 0;
+}
+.sidebar.collapsed .group-header {
+  justify-content: center !important;
+  padding: 1.05rem 0 !important;
 }

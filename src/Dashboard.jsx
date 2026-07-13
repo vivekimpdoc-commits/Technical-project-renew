@@ -7,7 +7,7 @@ import {
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
   Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home, ShieldCheck, Cloud, MapPin,
-  Moon, Sun
+  Moon, Sun, Search, Bell, PanelLeftClose, PanelLeftOpen
 } from 'lucide-react';
 import EthicsDashboard from './EthicsDashboard';
 import GovernanceDashboard from './GovernanceDashboard';
@@ -40,13 +40,42 @@ import MLOpsDashboard from './MLOpsDashboard';
 import AdvancedAICyberDashboard from './AdvancedAICyberDashboard';
 import Overview from './Overview';
 import ChatbotAssistant from './ChatbotAssistant';
+import AnalyticsDashboard from './AnalyticsDashboard';
+
 export default function Dashboard() {
+  const navItems = [
+    { id: 'overview', label: 'Home (मुख्य पृष्ठ)', icon: Home, color: '#2563eb', category: 'General' },
+    { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen, color: '#d946ef', category: 'Education' },
+    { id: 'ai-course', label: 'Artificial Intelligence (AI) Course (आर्टिफिशियल इंटेलिजेंस (AI) कोर्स)', icon: GraduationCap, color: '#2563eb', category: 'Education' },
+    { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code, color: '#06b6d4', category: 'Education' },
+    { id: 'mlops', label: 'AI Operations - MLOps (AI ऑपरेशन्स)', icon: Activity, color: '#8b5cf6', category: 'Operations' },
+    { id: 'advanced-ai', label: 'Advanced AI & Cyber Command (एडवांस्ड AI)', icon: GlobeLock, color: '#06b6d4', category: 'Operations' },
+    { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit, color: '#f59e0b', category: 'Operations' },
+    { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield, color: '#ef4444', category: 'Administrative' },
+    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#0ea5e9', category: 'Administrative' },
+        { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: 'var(--text-muted)', category: 'Administrative' },
+    { id: 'analytics', label: 'Live Analytics & Metrics (एनालिटिक्स)', icon: MapPin, color: '#3b82f6', category: 'Operations' },
+  ];
+
   const [activeTab, setActiveTab] = useState('overview');
   const [stepUpSubTab, setStepUpSubTab] = useState('phases');
   const [members, setMembers] = useState([]);
 
   // ── Dark Mode ────────────────────────────────────────────────────
   const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
+
+  // ── Search & Notifications ───────────────────────────────────────
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifications, setNotifications] = useState([
+    { id: 1, title: 'New Module Added', desc: 'Step Up Literacy Phase 5 is now live.', time: '10m ago', unread: true },
+    { id: 2, title: 'System Update', desc: 'Server maintenance completed successfully.', time: '1h ago', unread: true },
+    { id: 3, title: 'New Registration', desc: 'Officer Ramesh joined District HQ.', time: '2h ago', unread: false },
+  ]);
+
+  const unreadCount = notifications.filter(n => n.unread).length;
+  // ─────────────────────────────────────────────────────────────────
 
   React.useEffect(() => {
     if (isDarkMode) {
@@ -113,6 +142,7 @@ export default function Dashboard() {
     { id: 2, title: 'Cybercrime Reporting Portal', description: 'A simplified portal for citizens to quickly report digital fraud with evidence uploads.', category: 'Software Dev', status: 'Approved', date: '2026-07-05', impact: 'Increase reporting efficiency and citizen trust.', resources: 'Web hosting, Secure Database, Support Team.' }
   ]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
 
 
@@ -147,29 +177,7 @@ export default function Dashboard() {
     window.scrollTo(0, 0);
   }, [activeTab]);
 
-  const navItems = [
-    { id: 'overview', label: 'Home (मुख्य पृष्ठ)', icon: Home, color: '#2563eb', category: 'General' },
-    { id: 'step-up', label: 'Step Up Literacy Software (स्टेप अप साक्षरता सॉफ्टवेयर)', icon: BookOpen, color: '#d946ef', category: 'Education' },
-    { id: 'ai-course', label: 'Artificial Intelligence (AI) Course (आर्टिफिशियल इंटेलिजेंस (AI) कोर्स)', icon: GraduationCap, color: '#2563eb', category: 'Education' },
-    { id: 'masterclass', label: 'Software Masterclass (सॉफ्टवेयर मास्टरक्लास)', icon: Code, color: '#06b6d4', category: 'Education' },
-    { id: 'mlops', label: 'AI Operations - MLOps (AI ऑपरेशन्स)', icon: Activity, color: '#8b5cf6', category: 'Operations' },
-    { id: 'advanced-ai', label: 'Advanced AI & Cyber Command (एडवांस्ड AI)', icon: GlobeLock, color: '#06b6d4', category: 'Operations' },
-    { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit, color: '#f59e0b', category: 'Operations' },
-    { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield, color: '#ef4444', category: 'Administrative' },
-    { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#0ea5e9', category: 'Administrative' },
-    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: 'var(--text-muted)', category: 'Administrative' },
-    // ---- New universal topics ----
-    { id: 'devops', label: 'DevOps (CI/CD & Automation)', icon: Code, color: '#10b981', category: 'Special' },
-    { id: 'security', label: 'Security & Compliance', icon: ShieldCheck, color: '#ef4444', category: 'Special' },
-    { id: 'analytics', label: 'Analytics & Dashboard', icon: MapPin, color: '#3b82f6', category: 'Special' },
-    { id: 'collaboration', label: 'Collaboration Hub', icon: Users, color: '#8b5cf6', category: 'Special' },
-    { id: 'testing', label: 'Testing Frameworks', icon: CheckCircle, color: '#f59e0b', category: 'Special' },
-    { id: 'documentation', label: 'Documentation (OpenAPI)', icon: FileText, color: '#06b6d4', category: 'Special' },
-    { id: 'cloud-services', label: 'Cloud Services (AWS/GCP/Azure)', icon: Cloud, color: '#6366f1', category: 'Special' },
-    { id: 'performance', label: 'Performance Tuning', icon: Activity, color: '#d97706', category: 'Special' },
-    { id: 'roadmap', label: 'Product Roadmap', icon: Briefcase, color: 'var(--text-muted)', category: 'Special' },
-    { id: 'feedback', label: 'User Feedback', icon: UserCheck, color: '#2563eb', category: 'Special' },
-  ];
+  const filteredNavItems = navItems.filter(item => item.label.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
     <div className="app-container">
@@ -237,6 +245,95 @@ export default function Dashboard() {
 
         {/* Right Section: Controls */}
         <div className="header-controls" style={{ flexShrink: 0, display: 'flex', justifyContent: 'flex-end', gap: '1.25rem', alignItems: 'center' }}>
+
+          {/* 🔍 Global Search */}
+          <div style={{ position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.1)', borderRadius: '2rem', padding: '0.35rem 0.75rem', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <Search size={14} color="#94a3b8" />
+              <input 
+                type="text" 
+                placeholder="Search modules..." 
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSearchDropdown(e.target.value.length > 0);
+                }}
+                onFocus={() => { if(searchQuery.length > 0) setShowSearchDropdown(true); }}
+                onBlur={() => setTimeout(() => setShowSearchDropdown(false), 200)}
+                style={{ background: 'transparent', border: 'none', color: 'white', marginLeft: '0.5rem', outline: 'none', fontSize: '0.8rem', width: '120px', transition: 'width 0.3s ease' }}
+                onMouseEnter={(e) => e.target.style.width = '180px'}
+                onMouseLeave={(e) => { if(searchQuery === '') e.target.style.width = '120px' }}
+              />
+            </div>
+
+            {/* Search Dropdown */}
+            {showSearchDropdown && (
+              <div style={{ position: 'absolute', top: 'calc(100% + 0.5rem)', right: 0, width: '300px', background: 'var(--card-bg)', borderRadius: '0.75rem', border: '1px solid var(--card-border)', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', zIndex: 50, maxHeight: '350px', overflowY: 'auto' }}>
+                <div style={{ padding: '0.75rem', borderBottom: '1px solid var(--card-border)', fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-muted)' }}>Search Results</div>
+                {filteredNavItems.length > 0 ? (
+                  <div style={{ padding: '0.5rem' }}>
+                    {filteredNavItems.map(item => (
+                      <div 
+                        key={item.id} 
+                        onClick={() => { setActiveTab(item.id); setShowSearchDropdown(false); setSearchQuery(''); }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', cursor: 'pointer', borderRadius: '0.5rem', color: 'var(--text-main)', transition: 'background 0.2s' }}
+                        onMouseEnter={(e) => e.currentTarget.style.background = 'var(--icon-bg)'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                      >
+                        <item.icon size={16} color={item.color} />
+                        <span style={{ fontSize: '0.85rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem' }}>No modules found</div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* 🔔 Notification Bell */}
+          <div style={{ position: 'relative' }}>
+            <button
+              onClick={() => setShowNotifications(!showNotifications)}
+              style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', position: 'relative', transition: 'all 0.2s' }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+            >
+              <Bell size={16} />
+              {unreadCount > 0 && (
+                <span style={{ position: 'absolute', top: '-4px', right: '-4px', background: '#ef4444', color: 'white', fontSize: '0.65rem', fontWeight: 'bold', width: '16px', height: '16px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #151b27' }}>
+                  {unreadCount}
+                </span>
+              )}
+            </button>
+
+            {/* Notification Dropdown */}
+            {showNotifications && (
+              <div style={{ position: 'absolute', top: 'calc(100% + 0.5rem)', right: 0, width: '320px', background: 'var(--card-bg)', borderRadius: '0.75rem', border: '1px solid var(--card-border)', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', zIndex: 50 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', borderBottom: '1px solid var(--card-border)' }}>
+                  <span style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-main)' }}>Notifications</span>
+                  {unreadCount > 0 && (
+                    <button onClick={() => setNotifications(notifications.map(n => ({...n, unread: false})))} style={{ background: 'none', border: 'none', color: '#2563eb', fontSize: '0.75rem', cursor: 'pointer', fontWeight: '600' }}>Mark all read</button>
+                  )}
+                </div>
+                <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
+                  {notifications.map(n => (
+                    <div key={n.id} style={{ padding: '1rem', borderBottom: '1px solid var(--card-border)', background: n.unread ? 'var(--icon-bg)' : 'transparent' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                        <span style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          {n.unread && <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#3b82f6' }}></span>}
+                          {n.title}
+                        </span>
+                        <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{n.time}</span>
+                      </div>
+                      <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-muted)', paddingLeft: n.unread ? '1.25rem' : '0' }}>{n.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* 🌙 Dark Mode Toggle */}
           <button
@@ -353,7 +450,7 @@ export default function Dashboard() {
         )}
 
         {/* Sidebar */}
-        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`} style={{ 
+        <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''} ${isSidebarCollapsed ? 'collapsed' : ''}`} style={{ 
           height: '100%',
           display: 'flex', 
           flexDirection: 'column', 
@@ -386,7 +483,7 @@ export default function Dashboard() {
             }}>
               <UserCheck size={18} />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
+            <div className="hide-on-collapse" style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
               <span className="notranslate" translate="no" style={{ fontSize: '0.7rem', fontWeight: '800', color: '#d946ef', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 AI OPERATIVE COMMANDER
               </span>
@@ -394,6 +491,24 @@ export default function Dashboard() {
                 K.A.V.A.C.H. HUB ONLINE
               </span>
             </div>
+            <button
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#3b82f6',
+                cursor: 'pointer',
+                padding: '0.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginLeft: 'auto'
+              }}
+              title="Toggle Sidebar"
+            >
+              {isSidebarCollapsed ? <PanelLeftOpen size={20} /> : <PanelLeftClose size={20} />}
+            </button>
+
           </div>
 
           {/* Scrollable Nav Area */}
@@ -402,7 +517,7 @@ export default function Dashboard() {
               const isEducationActive = expandedSections.Education || navItems.filter(i => i.category === 'Education').some(i => i.id === activeTab);
               const isOperationsActive = expandedSections.Operations || navItems.filter(i => i.category === 'Operations').some(i => i.id === activeTab);
               const isAdministrativeActive = expandedSections.Administrative || navItems.filter(i => i.category === 'Administrative').some(i => i.id === activeTab);
-
+              
               return (
                 <>
                   {/* General Tab (Home) */}
@@ -410,6 +525,7 @@ export default function Dashboard() {
                     <div
                       key={item.id}
                       className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+                        title={item.label}
                       onClick={() => handleTabChange(item.id)}
                       style={{
                           background: activeTab === item.id ? 'rgba(37, 99, 235, 0.06)' : 'transparent',
@@ -448,21 +564,18 @@ export default function Dashboard() {
                         }}>
                         <item.icon size={16} strokeWidth={2} />
                       </div>
-                      <span style={{
-                        fontWeight: activeTab === item.id ? '700' : '600',
-                        fontSize: '0.9rem',
-                        transition: 'color 0.3s ease'
-                      }}>
-                        {item.label}
-                      </span>
+                      <span className="hide-on-collapse" style={{ fontWeight: activeTab === item.id ? '700' : '600', fontSize: '0.9rem', transition: 'color 0.3s ease' }}>{item.label}</span>
                     </div>
                   ))}
 
                   {/* Group 1: Education */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <div 
+                      className="group-header"
+                      title="Education & Skill Upgradation"
                       onClick={() => toggleSection('Education')}
-                      style={{ 
+                      style={
+                        { 
                         fontSize: '0.9rem', 
                         fontWeight: '800', 
                         color: '#2563eb', 
@@ -499,7 +612,7 @@ export default function Dashboard() {
                         }}>
                           <GraduationCap size={18} />
                         </div>
-                        <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>Education & IT Capacity</span>
+                        <span className="hide-on-collapse" style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>Education & IT Capacity</span>
                       </div>
                       <ChevronDown size={18} style={{ transform: expandedSections.Education ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#2563eb' }} />
                     </div>
@@ -507,6 +620,7 @@ export default function Dashboard() {
                       <div
                         key={item.id}
                         className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+                        title={item.label}
                         onClick={() => handleTabChange(item.id)}
                         style={{
                           marginLeft: '0.75rem',
@@ -546,13 +660,7 @@ export default function Dashboard() {
                         }}>
                           <item.icon size={16} strokeWidth={2} />
                         </div>
-                        <span style={{
-                          fontWeight: activeTab === item.id ? '700' : '600',
-                          fontSize: '0.9rem',
-                          transition: 'color 0.3s ease'
-                        }}>
-                          {item.label}
-                        </span>
+                        <span className="hide-on-collapse" style={{ fontWeight: activeTab === item.id ? '700' : '600', fontSize: '0.9rem', transition: 'color 0.3s ease' }}>{item.label}</span>
                       </div>
                     ))}
                   </div>
@@ -560,8 +668,11 @@ export default function Dashboard() {
                   {/* Group 2: Operations */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <div 
+                      className="group-header"
+                      title="AI & Operations Command"
                       onClick={() => toggleSection('Operations')}
-                      style={{ 
+                      style={
+                        { 
                         fontSize: '0.9rem', 
                         fontWeight: '800', 
                         color: '#0d9488', 
@@ -598,7 +709,7 @@ export default function Dashboard() {
                         }}>
                           <BrainCircuit size={18} />
                         </div>
-                        <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>AI & Operations Command</span>
+                        <span className="hide-on-collapse" style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>AI & Operations Command</span>
                       </div>
                       <ChevronDown size={18} style={{ transform: expandedSections.Operations ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#0d9488' }} />
                     </div>
@@ -606,6 +717,7 @@ export default function Dashboard() {
                       <div
                         key={item.id}
                         className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+                        title={item.label}
                         onClick={() => handleTabChange(item.id)}
                         style={{
                           marginLeft: '0.75rem',
@@ -645,13 +757,7 @@ export default function Dashboard() {
                         }}>
                           <item.icon size={16} strokeWidth={2} />
                         </div>
-                        <span style={{
-                          fontWeight: activeTab === item.id ? '700' : '600',
-                          fontSize: '0.9rem',
-                          transition: 'color 0.3s ease'
-                        }}>
-                          {item.label}
-                        </span>
+                        <span className="hide-on-collapse" style={{ fontWeight: activeTab === item.id ? '700' : '600', fontSize: '0.9rem', transition: 'color 0.3s ease' }}>{item.label}</span>
                       </div>
                     ))}
                   </div>
@@ -659,8 +765,11 @@ export default function Dashboard() {
                   {/* Group 3: Administrative */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <div 
+                      className="group-header"
+                      title="Administrative & Field Levels"
                       onClick={() => toggleSection('Administrative')}
-                      style={{ 
+                      style={
+                        { 
                         fontSize: '0.9rem', 
                         fontWeight: '800', 
                         color: '#dc2626', 
@@ -697,7 +806,7 @@ export default function Dashboard() {
                         }}>
                           <Building2 size={18} />
                         </div>
-                        <span style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>Administrative & Field Levels</span>
+                        <span className="hide-on-collapse" style={{ textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.9rem' }}>Administrative & Field Levels</span>
                       </div>
                       <ChevronDown size={18} style={{ transform: expandedSections.Administrative ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s', color: '#dc2626' }} />
                     </div>
@@ -705,6 +814,7 @@ export default function Dashboard() {
                       <div
                         key={item.id}
                         className={`sidebar-nav-item ${activeTab === item.id ? 'active' : ''}`}
+                        title={item.label}
                         onClick={() => handleTabChange(item.id)}
                         style={{
                           marginLeft: '0.75rem',
@@ -744,17 +854,12 @@ export default function Dashboard() {
                         }}>
                           <item.icon size={16} strokeWidth={2} />
                         </div>
-                        <span style={{
-                          fontWeight: activeTab === item.id ? '700' : '600',
-                          fontSize: '0.9rem',
-                          transition: 'color 0.3s ease'
-                        }}>
-                          {item.label}
-                        </span>
+                        <span className="hide-on-collapse" style={{ fontWeight: activeTab === item.id ? '700' : '600', fontSize: '0.9rem', transition: 'color 0.3s ease' }}>{item.label}</span>
                       </div>
                     ))}
                   </div>
-                </>
+
+                  </>
               );
             })()}
           </div>
@@ -781,6 +886,8 @@ export default function Dashboard() {
           {activeTab === 'masterclass' && <SoftwareMasterclassDashboard resetTrigger={resetTriggers['masterclass']} />}
           {activeTab === 'mlops' && <MLOpsDashboard resetTrigger={resetTriggers['mlops']} />}
           {activeTab === 'advanced-ai' && <AdvancedAICyberDashboard />}
+          {activeTab === 'analytics' && <AnalyticsDashboard />}
+          {activeTab === 'devops' && <PlaceholderView title="DevOps (CI/CD & Automation)" />}
         </main>
       </div>
 
