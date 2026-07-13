@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  BookOpen, BrainCircuit, Target, Database, Wrench, Calculator,
-  Code, Network, Cpu, Camera, MessageSquare, Sparkles,
-  Activity, BarChart, Rocket, Server, Settings, ShieldCheck,
-  Layout, Medal, CheckCircle, GraduationCap
-} from 'lucide-react';
+import { BookOpen, BrainCircuit, Target, Database, Wrench, Calculator, Code, Network, Cpu, Camera, MessageSquare, Sparkles, Activity, BarChart, Rocket, Server, Settings, ShieldCheck, Layout, Medal, CheckCircle, GraduationCap, Layers } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 import ModuleDetail from './ModuleDetail';
 
@@ -139,9 +134,15 @@ export default function AICourseDashboard() {
       icon: Layout,
       color: '#f97316',
       items: ['Project Planning', 'Architecture Design', 'UI/UX Design', 'Frontend & Backend', 'Database Design', 'Testing', 'Deployment', 'Maintenance']
+    },
+    {
+      id: 19,
+      title: 'Module 19: Full-Stack AI Engineering (Enterprise Track)',
+      icon: Layers,
+      color: '#eab308',
+      items: ['Version Control (Git/GitHub)', 'Agile & Scrum (Teamwork)', 'Big Data (Spark/Kafka)', 'System Design & Microservices', 'Recommender Systems', 'Frontend UI (React/Streamlit)', 'Cloud Architecture (AWS/GCP)']
     }
   ];
-
   const capstoneProjects = [
     'AI Chatbot', 'AI Meeting Assistant', 'AI Investigation Platform',
     'AI Command & Control Center', 'Face Recognition System',

@@ -6,8 +6,10 @@ import {
   UserCheck, LineChart, BrainCircuit, Clock4,
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
-  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home, ShieldCheck
+  Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home, ShieldCheck, Cloud, MapPin
 } from 'lucide-react';
+import EthicsDashboard from './EthicsDashboard';
+import GovernanceDashboard from './GovernanceDashboard';
 import './index.css';
 import ProjectTracker from './ProjectTracker';
 import AllMembers from './AllMembers';
@@ -138,7 +140,18 @@ export default function Dashboard() {
     { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit, color: '#f59e0b', category: 'Operations' },
     { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield, color: '#ef4444', category: 'Administrative' },
     { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#0ea5e9', category: 'Administrative' },
-    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: '#64748b', category: 'Administrative' }
+    { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: '#64748b', category: 'Administrative' },
+    // ---- New universal topics ----
+    { id: 'devops', label: 'DevOps (CI/CD & Automation)', icon: Code, color: '#10b981', category: 'Special' },
+    { id: 'security', label: 'Security & Compliance', icon: ShieldCheck, color: '#ef4444', category: 'Special' },
+    { id: 'analytics', label: 'Analytics & Dashboard', icon: MapPin, color: '#3b82f6', category: 'Special' },
+    { id: 'collaboration', label: 'Collaboration Hub', icon: Users, color: '#8b5cf6', category: 'Special' },
+    { id: 'testing', label: 'Testing Frameworks', icon: CheckCircle, color: '#f59e0b', category: 'Special' },
+    { id: 'documentation', label: 'Documentation (OpenAPI)', icon: FileText, color: '#06b6d4', category: 'Special' },
+    { id: 'cloud-services', label: 'Cloud Services (AWS/GCP/Azure)', icon: Cloud, color: '#6366f1', category: 'Special' },
+    { id: 'performance', label: 'Performance Tuning', icon: Activity, color: '#d97706', category: 'Special' },
+    { id: 'roadmap', label: 'Product Roadmap', icon: Briefcase, color: '#64748b', category: 'Special' },
+    { id: 'feedback', label: 'User Feedback', icon: UserCheck, color: '#2563eb', category: 'Special' },
   ];
 
   return (
