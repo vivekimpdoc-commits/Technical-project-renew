@@ -125,16 +125,7 @@ export default function AIWebsite() {
         stats: { "Target Audience": "SP / SSP / ASP", "Primary Goal": "Data-driven leadership", "Focus Area": "Strategic Planning", "Outcome": "Effective District Control" }
       }
     },
-    { 
-      id: 'project-ppt', title: 'Project PPT', desc: 'Learning how to present technical data to the government.', icon: Presentation, color: '#94a3b8', category: 'Administrative',
-      details: {
-        hindiSummary: "अदालत या सरकार के सामने तकनीकी सबूतों को आसानी से पेश करने की कला।",
-        realWorldImpact: "Before: Judges struggled to understand raw cyber data. After: Clear, digital presentations secure faster convictions.",
-        longDesc: "Why is this necessary? Officers often brief senior officials or courts. This module teaches how to take complex technical data and present it clearly using modern presentation software.",
-        features: ["Creating executive summaries", "Visualizing complex crime data", "Version control for legal docs", "Digital presentation skills"],
-        stats: { "Target Audience": "PROs & Investigating Officers", "Primary Goal": "Clear communication", "Focus Area": "Govt Briefings", "Outcome": "Professional Presentations" }
-      }
-    },
+
     { 
       id: 'analytics', title: 'Live Analytics & Metrics', desc: 'Educating officers on reading live performance metrics.', icon: MapPin, color: '#3b82f6', category: 'Operations',
       details: {
@@ -177,57 +168,243 @@ export default function AIWebsite() {
         </p>
 
 
-        {activeModuleDetails ? (
+        {activeModuleDetails ? (() => {
+          const mod = activeModuleDetails;
+          const d = mod.details || {};
+          return (
           <div className="ai-details-container">
-            <div className="ai-details-status">SYSTEM ONLINE & SECURE</div>
-            
-            <div className="ai-details-hologram" style={{ borderColor: activeModuleDetails.color }}>
-              <div className="ai-details-icon-wrapper" style={{ color: activeModuleDetails.color }}>
-                {activeModuleDetails.icon && <activeModuleDetails.icon size={100} strokeWidth={1} />}
-              </div>
+            <div style={{ width: '100%', maxWidth: '900px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+              <div className="ai-details-status" style={{ marginBottom: 0 }}>SYSTEM ONLINE & SECURE</div>
+              <button className="ai-back-btn" onClick={() => setActiveModuleDetails(null)}>
+                <Home size={16} /> AI Home
+              </button>
             </div>
             
-            <h2 className="ai-details-title">{activeModuleDetails.title}</h2>
-            {activeModuleDetails.details?.hindiSummary && (
-              <div className="ai-details-hindi-summary">
-                {activeModuleDetails.details.hindiSummary}
+            {/* Hero Banner */}
+            <div className="ai-details-hero" style={{ borderColor: mod.color, background: `linear-gradient(135deg, ${mod.color}22 0%, transparent 70%)` }}>
+              <div className="ai-details-icon-wrapper" style={{ color: mod.color, filter: `drop-shadow(0 0 30px ${mod.color})` }}>
+                {mod.icon && <mod.icon size={80} strokeWidth={1} />}
+              </div>
+              <div className="ai-details-hero-text">
+                <h2 className="ai-details-title">{mod.title}</h2>
+                <p className="ai-details-subtitle">{mod.desc}</p>
+                <div className="ai-details-badges">
+                  <span className="ai-badge" style={{ background: mod.color }}>{mod.category}</span>
+                  {d.stats?.["Target Audience"] && <span className="ai-badge ai-badge-outline" style={{ borderColor: mod.color, color: mod.color }}>{d.stats["Target Audience"]}</span>}
+                  {d.stats?.Duration && <span className="ai-badge ai-badge-outline" style={{ borderColor: mod.color, color: mod.color }}>{d.stats.Duration}</span>}
+                </div>
+              </div>
+            </div>
+
+            {/* Hindi Summary */}
+            {d.hindiSummary && (
+              <div className="ai-details-hindi-card">
+                <div className="ai-hindi-icon">🇮🇳</div>
+                <p>{d.hindiSummary}</p>
               </div>
             )}
-            
-            <div className="ai-details-body" style={{ '--module-color': activeModuleDetails.color }}>
-              <div className="ai-details-long-desc">
-                {activeModuleDetails.details?.longDesc || activeModuleDetails.desc}
+
+            <div className="ai-details-body" style={{ '--module-color': mod.color }}>
+
+              {/* Why This Module */}
+              <div className="ai-details-section ai-details-why">
+                <h4><Zap size={18} style={{ color: mod.color }} /> Why This Module?</h4>
+                <p className="ai-details-long-desc">{d.longDesc || mod.desc}</p>
               </div>
-              
-              <div className="ai-details-grid">
-                <div className="ai-details-section">
-                  <h4>Curriculum & Key Learnings</h4>
-                  <ul className="ai-details-features">
-                    {activeModuleDetails.details?.features?.map((feature, idx) => (
-                      <li key={idx}>{feature}</li>
-                    ))}
-                  </ul>
+
+              {/* Before / After Impact */}
+              {d.realWorldImpact && (
+                <div className="ai-details-section ai-details-impact">
+                  <h4><Activity size={18} style={{ color: mod.color }} /> Real-World Impact: Before vs After</h4>
+                  <div className="ai-impact-grid">
+                    <div className="ai-impact-card ai-impact-before">
+                      <div className="ai-impact-label">❌ BEFORE</div>
+                      <p>{d.realWorldImpact.split('After:')[0].replace('Before:', '').trim()}</p>
+                    </div>
+                    <div className="ai-impact-arrow">→</div>
+                    <div className="ai-impact-card ai-impact-after">
+                      <div className="ai-impact-label">✅ AFTER</div>
+                      <p>{d.realWorldImpact.split('After:')[1]?.trim() || ''}</p>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="ai-details-section">
-                  <h4>Educational Goals & Impact</h4>
-                  <div className="ai-details-stats">
-                    {activeModuleDetails.details?.stats && Object.entries(activeModuleDetails.details.stats).map(([key, value], idx) => (
-                      <div className="ai-stat-row" key={idx}>
+              )}
+
+              {/* Detailed Curriculum */}
+              <div className="ai-details-section ai-details-curriculum">
+                <h4><BookOpen size={18} style={{ color: mod.color }} /> Detailed Curriculum & Key Learnings</h4>
+                <div className="ai-curriculum-grid">
+                  {d.features?.map((feature, idx) => (
+                    <div className="ai-curriculum-item" key={idx} style={{ '--item-delay': `${idx * 0.1}s`, borderLeftColor: mod.color }}>
+                      <div className="ai-curriculum-number" style={{ background: mod.color }}>{String(idx + 1).padStart(2, '0')}</div>
+                      <div className="ai-curriculum-content">
+                        <h5>{feature}</h5>
+                        <p>
+                          {idx === 0 && "Foundation module — start here to build core understanding of this topic from scratch."}
+                          {idx === 1 && "Deep-dive into the technical architecture, algorithms, and data flow behind this system."}
+                          {idx === 2 && "Hands-on practical lab: build a working prototype using real-world datasets and tools."}
+                          {idx === 3 && "Deployment & operations — take your prototype live and monitor it in production environments."}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Stats Dashboard */}
+              {d.stats && (
+                <div className="ai-details-section ai-details-stats-section">
+                  <h4><Shield size={18} style={{ color: mod.color }} /> Educational Goals & Metrics</h4>
+                  <div className="ai-stats-grid">
+                    {Object.entries(d.stats).map(([key, value], idx) => (
+                      <div className="ai-stat-card" key={idx} style={{ '--stat-delay': `${idx * 0.15}s` }}>
+                        <div className="ai-stat-icon" style={{ color: mod.color }}>
+                          {idx === 0 ? <GraduationCap size={24} /> : idx === 1 ? <Zap size={24} /> : idx === 2 ? <Code size={24} /> : <BrainCircuit size={24} />}
+                        </div>
                         <span className="ai-stat-label">{key}</span>
-                        <span className="ai-stat-value">{value}</span>
+                        <span className="ai-stat-value" style={{ color: mod.color }}>{value}</span>
                       </div>
                     ))}
                   </div>
                 </div>
+              )}
+
+              {/* Learning Roadmap */}
+              <div className="ai-details-section ai-details-roadmap">
+                <h4><MapPin size={18} style={{ color: mod.color }} /> Learning Roadmap</h4>
+                <div className="ai-roadmap-timeline">
+                  {['Week 1-2: Foundation & Theory', 'Week 3-4: Hands-On Labs & Practice', 'Week 5-6: Real Project Build', 'Week 7-8: Testing & Deployment'].map((phase, idx) => (
+                    <div className="ai-roadmap-step" key={idx} style={{ '--step-delay': `${idx * 0.2}s` }}>
+                      <div className="ai-roadmap-dot" style={{ background: mod.color, boxShadow: `0 0 12px ${mod.color}` }}></div>
+                      <div className="ai-roadmap-line" style={{ background: idx < 3 ? mod.color : 'transparent' }}></div>
+                      <div className="ai-roadmap-content">
+                        <span className="ai-roadmap-phase">Phase {idx + 1}</span>
+                        <p>{phase}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              {/* Quick Start Guide */}
+              <div className="ai-details-section ai-details-quickstart">
+                <h4><Code size={18} style={{ color: mod.color }} /> Quick Start Guide</h4>
+                <div className="ai-quickstart-steps">
+                  <div className="ai-qs-step">
+                    <div className="ai-qs-num" style={{ background: mod.color }}>1</div>
+                    <div><strong>Prerequisites:</strong> Basic computer literacy, internet connection, and a modern web browser (Chrome/Edge recommended).</div>
+                  </div>
+                  <div className="ai-qs-step">
+                    <div className="ai-qs-num" style={{ background: mod.color }}>2</div>
+                    <div><strong>Access Portal:</strong> Login with your official UP Police credentials at the KARTAVYA portal to unlock all study materials.</div>
+                  </div>
+                  <div className="ai-qs-step">
+                    <div className="ai-qs-num" style={{ background: mod.color }}>3</div>
+                    <div><strong>Start Learning:</strong> Navigate to "{mod.title}" module, watch the video tutorials, read the PDF guides, and complete assignments.</div>
+                  </div>
+                  <div className="ai-qs-step">
+                    <div className="ai-qs-num" style={{ background: mod.color }}>4</div>
+                    <div><strong>Get Certified:</strong> After completing all assignments and the final assessment, download your official completion certificate.</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Code Preview (for technical modules) */}
+              {(mod.id === 'ai-course' || mod.id === 'masterclass' || mod.id === 'mlops') && (
+                <div className="ai-details-section ai-details-code">
+                  <h4><Code size={18} style={{ color: mod.color }} /> Sample Code Preview</h4>
+                  <div className="ai-code-block">
+                    <div className="ai-code-header">
+                      <span className="ai-code-dot" style={{ background: '#ef4444' }}></span>
+                      <span className="ai-code-dot" style={{ background: '#f59e0b' }}></span>
+                      <span className="ai-code-dot" style={{ background: '#10b981' }}></span>
+                      <span className="ai-code-lang">{mod.id === 'ai-course' ? 'Python / TensorFlow' : mod.id === 'masterclass' ? 'JavaScript / React' : 'Docker / YAML'}</span>
+                    </div>
+                    <pre className="ai-code-content">
+{mod.id === 'ai-course' ? `# TensorFlow: Train a simple neural network
+import tensorflow as tf
+import numpy as np
+
+# Step 1: Prepare training data
+X_train = np.array([[0], [1], [2], [3], [4]], dtype=float)
+y_train = np.array([[0], [2], [4], [6], [8]], dtype=float)
+
+# Step 2: Build the model
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(16, activation='relu', input_shape=[1]),
+    tf.keras.layers.Dense(1)
+])
+
+# Step 3: Compile & Train
+model.compile(optimizer='adam', loss='mse')
+model.fit(X_train, y_train, epochs=500, verbose=0)
+
+# Step 4: Predict
+print(model.predict([5.0]))  # Output: ~10.0` : mod.id === 'masterclass' ? `// React: Build a Dashboard Component
+import React, { useState, useEffect } from 'react';
+
+function CrimeDashboard() {
+  const [cases, setCases] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/cases')
+      .then(res => res.json())
+      .then(data => {
+        setCases(data);
+        setLoading(false);
+      });
+  }, []);
+
+  return (
+    <div className="dashboard">
+      <h1>Live Crime Dashboard</h1>
+      {loading ? <Spinner /> : (
+        <CaseTable data={cases} />
+      )}
+    </div>
+  );
+}` : `# Docker: Deploy AI Model Container
+FROM python:3.11-slim
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+EXPOSE 8080
+
+# Health check for MLOps monitoring
+HEALTHCHECK --interval=30s --timeout=5s \\
+  CMD curl -f http://localhost:8080/health || exit 1
+
+CMD ["python", "serve_model.py"]
+
+---
+# docker-compose.yml
+version: "3.8"
+services:
+  ai-model:
+    build: .
+    ports: ["8080:8080"]
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 2G`}
+                    </pre>
+                  </div>
+                </div>
+              )}
+
             </div>
             
             <button className="ai-details-close-btn" onClick={() => setActiveModuleDetails(null)}>
-              CLOSE MODULE
+              ← CLOSE MODULE & RETURN
             </button>
           </div>
-        ) : (
+          );
+        })() : (
           <div className="ai-cards-container">
             {projectModules.map((module, index) => {
 

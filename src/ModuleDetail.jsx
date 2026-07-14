@@ -49,14 +49,10 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
 
   useEffect(() => {
     if (selectedTopicName) {
-      // Reset dropdowns to ensure strict relation to new topic
       setVideoSelect("");
       setPdfSelect("");
       setLinkSelect("wiki");
-
-      // Clear video until an option is selected from the dropdown
       setUploadedVideo(null);
-
       setActiveLink(`https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(selectedTopicName)}`);
       setExternalLinkUrl(`https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(selectedTopicName)}`);
       setExternalLinkLabel('Open Wikipedia');
@@ -68,11 +64,10 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
 
     let htmlPdf = "";
 
-    // Default Introduction for when nothing is selected
     if (pdfSelect === "") {
-      const enDefaultIntro = `<p>This is the official study material and notes for <strong>${selectedTopicName}</strong>.</p><p>In this module, you will learn the core concepts, practical applications, and advanced techniques related to this topic.</p>`;
-      const hiDefaultIntro = `<p style="color: #475569;">यह <strong>${selectedTopicName}</strong> के लिए आधिकारिक अध्ययन सामग्री (Study Material) है।</p><p style="color: #475569;">इस मॉड्यूल में, आप इस विषय से संबंधित मुख्य अवधारणाओं (Core Concepts), व्यावहारिक अनुप्रयोगों (Practical Applications) और उन्नत तकनीकों (Advanced Techniques) के बारे में सीखेंगे।</p>`;
-      const defaultIntro = pdfLanguage === "en" ? enDefaultIntro : pdfLanguage === "hi" ? hiDefaultIntro : (enDefaultIntro + hiDefaultIntro);
+      const enIntro = `<p>This is the official study material and notes for <strong>${selectedTopicName}</strong>.</p><p>In this module, you will learn the core concepts, practical applications, and advanced techniques related to this topic.</p>`;
+      const hiIntro = `<p style="color: #475569;">यह <strong>${selectedTopicName}</strong> के लिए आधिकारिक अध्ययन सामग्री (Study Material) है।</p><p style="color: #475569;">इस मॉड्यूल में, आप इस विषय से संबंधित मुख्य अवधारणाओं, व्यावहारिक अनुप्रयोगों और उन्नत तकनीकों के बारे में सीखेंगे।</p>`;
+      const defaultIntro = pdfLanguage === "en" ? enIntro : pdfLanguage === "hi" ? hiIntro : (enIntro + hiIntro);
       htmlPdf = `<html><body style="font-family: sans-serif; padding: 40px; line-height: 1.6; color: #333;"><h1 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">${selectedTopicName} - Study Material</h1>${defaultIntro}<div style="margin-top: 50px; padding: 20px; background: #f1f5f9; border-left: 4px solid #3b82f6;"><em>Confidential Material - KARTAVYA Portal</em></div></body></html>`;
     } else {
       const docNameMap = {
@@ -89,7 +84,77 @@ export default function ModuleDetail({ module, onBack, isMaximized }) {
 
       let bodyContent = "";
 
+
       if (pdfSelect === "notes") {
+        // Detailed guide for notes (full educational guide)
+        const guideSections = [];
+        // 1. Overview
+        guideSections.push(`<h2 style="color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; font-size: 24px;">1. Overview of ${selectedTopicName}</h2>`);
+        guideSections.push(`<p>${selectedTopicName} is a foundational component for modern ${selectedTopicName.includes('AI') ? 'Artificial Intelligence' : 'Software Development'} solutions. This guide walks you through concepts, architecture, coding examples, testing, and deployment.</p>`);
+        // 2. Architecture & Core Concepts
+        guideSections.push(`<h2 style="color: #0f172a; border-bottom: 2px solid #e2e8f0; margin-top: 30px; padding-bottom: 10px; font-size: 24px;">2. Architecture & Core Concepts</h2>`);
+        guideSections.push(`<ul style="list-style-type: disc; margin-left: 20px; font-size: 16px; line-height: 1.6;">
+          <li>System requirements and environment setup</li>
+          <li>Data flow diagram and processing pipeline</li>
+          <li>Key algorithms and models used</li>
+        </ul>`);
+        // 3. Step‑by‑Step Implementation
+        guideSections.push(`<h2 style="color: #0f172a; border-bottom: 2px solid #e2e8f0; margin-top: 30px; padding-bottom: 10px; font-size: 24px;">3. Step‑by‑Step Implementation</h2>`);
+        guideSections.push(`<ol style="margin-left: 20px; font-size: 16px; line-height: 1.6;">
+          <li>Initialize project (npm init, create‑react‑app, or python venv)</li>
+          <li>Install core dependencies (react, tensorflow/torch, express, etc.)</li>
+          <li>Configure project structure (src/, models/, data/, tests/)</li>
+          <li>Write sample code (see code snippet below)</li>
+          <li>Run unit tests and verify output</li>
+          <li>Containerize with Docker and deploy</li>
+        </ol>`);
+        // 4. Sample Code Snippet (JS & Python)
+        guideSections.push(`<h2 style="color: #0f172a; border-bottom: 2px solid #e2e8f0; margin-top: 30px; padding-bottom: 10px; font-size: 24px;">4. Sample Code Snippet</h2>`);
+        guideSections.push(`<p>Below is a minimal AI model example (TensorFlow.js) and a simple Express server.</p>`);
+        guideSections.push(`<pre style="background:#f1f5f9; padding:15px; border-radius:8px; overflow-x:auto;">
+<code class="language-javascript">// TensorFlow.js simple linear regression
+import * as tf from '@tensorflow/tfjs';
+const xs = tf.tensor1d([0, 1, 2, 3, 4]);
+const ys = tf.tensor1d([0, 2, 4, 6, 8]);
+const model = tf.sequential();
+model.add(tf.layers.dense({units:1, inputShape:[1]}));
+model.compile({optimizer:'sgd', loss:'meanSquaredError'});
+await model.fit(xs, ys, {epochs:200});
+const pred = model.predict(tf.tensor2d([5], [1,1]));
+pred.print(); // ~10
+</code>
+</pre>`);
+        guideSections.push(`<pre style="background:#f1f5f9; padding:15px; border-radius:8px; overflow-x:auto;">
+<code class="language-javascript">// Express.js API skeleton
+const express = require('express');
+const app = express();
+app.use(express.json());
+app.get('/health', (req,res)=>res.json({status:'ok'}));
+app.listen(3000,()=>console.log('Server running on :3000'));
+</code>
+</pre>`);
+        // 5. Testing & Validation
+        guideSections.push(`<h2 style="color: #0f172a; border-bottom: 2px solid #e2e8f0; margin-top: 30px; padding-bottom: 10px; font-size: 24px;">5. Testing & Validation</h2>`);
+        guideSections.push(`<p>Write unit tests using Jest (for JS) or PyTest (for Python). Example:</p>`);
+        guideSections.push(`<pre style="background:#f1f5f9; padding:15px; border-radius:8px; overflow-x:auto;">
+<code class="language-javascript">test('model predicts ~10 for input 5', async () => {
+  const pred = await model.predict(tf.tensor2d([5], [1,1]));
+  const value = pred.dataSync()[0];
+  expect(value).toBeCloseTo(10, 1);
+});
+</code>
+</pre>`);
+        // 6. Deployment Checklist
+        guideSections.push(`<h2 style="color: #0f172a; border-bottom: 2px solid #e2e8f0; margin-top: 30px; padding-bottom: 10px; font-size: 24px;">6. Deployment Checklist</h2>`);
+        guideSections.push(`<ul style="list-style-type: disc; margin-left: 20px; font-size: 16px; line-height: 1.6;">
+          <li>Dockerfile with multi‑stage build</li>
+          <li>CI/CD pipeline (GitHub Actions) that runs lint, tests, and builds image</li>
+          <li>Configure environment variables for model paths</li>
+          <li>Deploy to cloud (AWS ECS, Azure Web Apps, or Vercel)</li>
+        </ul>`);
+        // Combine sections into bodyContent
+        bodyContent = guideSections.join('');
+
         const enIntro = `<p style="font-size: 16px; line-height: 1.8;">This document provides an in-depth understanding of <strong>${selectedTopicName}</strong>. It covers the core principles, underlying architecture, and the foundational concepts necessary to master this subject.</p>`;
         const hiIntro = `<p style="font-size: 15px; line-height: 1.8; color: #475569;">यह दस्तावेज़ <strong>${selectedTopicName}</strong> की गहन समझ प्रदान करता है। इसमें इस विषय को पूरी तरह से समझने के लिए आवश्यक मूल सिद्धांत और बुनियादी अवधारणाएं शामिल हैं।</p>`;
         const intro = pdfLanguage === "en" ? enIntro : pdfLanguage === "hi" ? hiIntro : (enIntro + hiIntro);
