@@ -7,7 +7,7 @@ import {
   CheckCircle, Medal, Radar, FileText,
   ShieldAlert, Database, Settings as SettingsIcon,
   Code, Briefcase, GitBranch, Network, GlobeLock, Landmark, Play, UserCog, BookOpen, GraduationCap, Presentation, Activity, Info, ChevronDown, Home, ShieldCheck, Cloud, MapPin,
-  Moon, Sun, Search, Bell, PanelLeftClose, PanelLeftOpen, ChevronRight
+  Moon, Sun, Search, Bell, PanelLeftClose, PanelLeftOpen, ChevronRight, Monitor
 } from 'lucide-react';
 import EthicsDashboard from './EthicsDashboard';
 import GovernanceDashboard from './GovernanceDashboard';
@@ -41,6 +41,7 @@ import AdvancedAICyberDashboard from './AdvancedAICyberDashboard';
 import Overview from './Overview';
 import ChatbotAssistant from './ChatbotAssistant';
 import AnalyticsDashboard from './AnalyticsDashboard';
+import CyberForensicsLab from './CyberForensicsLab';
 
 export default function Dashboard() {
   const navItems = [
@@ -51,6 +52,7 @@ export default function Dashboard() {
     { id: 'mlops', label: 'AI Operations - MLOps (AI ऑपरेशन्स)', icon: Activity, color: '#8b5cf6', category: 'Operations' },
     { id: 'advanced-ai', label: 'Advanced AI & Cyber Command (एडवांस्ड AI)', icon: GlobeLock, color: '#06b6d4', category: 'Operations' },
     { id: 'police-functioning', label: 'Police Functioning (AI पुलिस की कार्यप्रणाली)', icon: BrainCircuit, color: '#f59e0b', category: 'Operations' },
+    { id: 'cyber-forensics', label: 'Cyber Forensics Lab (साइबर फोरेंसिक)', icon: Monitor, color: '#10b981', category: 'Operations' },
     { id: 'thane-level', label: 'Thane Level (पुलिस थाना स्तर)', icon: Shield, color: '#ef4444', category: 'Administrative' },
     { id: 'district-level', label: 'District Level (जिला स्तर (SP/SSP कार्यालय))', icon: Building2, color: '#0ea5e9', category: 'Administrative' },
     { id: 'project-ppt', label: 'Project PPT (प्रोजेक्ट पीपीटी)', icon: Presentation, color: 'var(--text-muted)', category: 'Administrative' },
@@ -1055,6 +1057,7 @@ const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem('app
           {activeTab === 'masterclass' && <SoftwareMasterclassDashboard resetTrigger={resetTriggers['masterclass']} setSubBreadcrumb={setSubBreadcrumb} />}
           {activeTab === 'mlops' && <MLOpsDashboard resetTrigger={resetTriggers['mlops']} setSubBreadcrumb={setSubBreadcrumb} />}
           {activeTab === 'advanced-ai' && <AdvancedAICyberDashboard setSubBreadcrumb={setSubBreadcrumb} />}
+          {activeTab === 'cyber-forensics' && <CyberForensicsLab />}
           {activeTab === 'analytics' && <AnalyticsDashboard setSubBreadcrumb={setSubBreadcrumb} />}
           {activeTab === 'devops' && <PlaceholderView title="DevOps (CI/CD & Automation)" />}
         </main>

@@ -989,3 +989,277 @@
   overflow-x: auto;
   line-height: 1.5;
 }
+
+/* ── Cyber Radar Background ──────────────────────── */
+.ai-cyber-radar-container {
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, #050b14 0%, #02040a 100%);
+}
+
+.ai-radar-map-overlay {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 800px; height: 800px;
+  transform: translate(-50%, -50%) rotateX(60deg);
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  border-radius: 50%;
+}
+
+.ai-radar-sweep {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 400px; height: 400px;
+  transform-origin: 0 0;
+  background: conic-gradient(from 0deg, rgba(56, 189, 248, 0.4) 0deg, transparent 60deg);
+  animation: radarScan 4s linear infinite;
+  border-radius: 100% 0 0 0;
+}
+
+@keyframes radarScan {
+  100% { transform: rotate(360deg); }
+}
+
+.ai-radar-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotateX(60deg);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 50%;
+}
+.ring-1 { width: 300px; height: 300px; }
+.ring-2 { width: 500px; height: 500px; }
+.ring-3 { width: 700px; height: 700px; }
+
+.ai-radar-target {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ef4444;
+  animation: blinkTarget 2s infinite;
+}
+
+@keyframes blinkTarget {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+.target-1 { top: 30%; left: 40%; }
+.target-2 { top: 60%; left: 70%; animation-delay: 0.5s; }
+.target-3 { top: 70%; left: 30%; animation-delay: 1s; }
+.target-4 { top: 40%; left: 60%; animation-delay: 1.5s; }
+
+.target-label {
+  position: absolute;
+  top: -15px; left: 10px;
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #ef4444;
+  white-space: nowrap;
+}
+
+.ai-radar-center-dot {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 12px; height: 12px;
+  transform: translate(-50%, -50%);
+  background: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #38bdf8;
+}
+
+/* ── Kavach Chatbot ──────────────────────── */
+.ai-chatbot-toggle {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s;
+}
+
+.ai-chatbot-toggle:hover { transform: scale(1.1); }
+
+.ai-chatbot-badge {
+  position: absolute;
+  top: 0; right: 0;
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem; font-weight: bold;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.ai-chatbot-window {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 350px; height: 500px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-chatbot-header {
+  background: rgba(56, 189, 248, 0.1);
+  padding: 1rem;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.ai-chatbot-title {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-weight: bold; color: #38bdf8;
+}
+
+.ai-chatbot-close {
+  background: none; border: none; color: #94a3b8; cursor: pointer;
+}
+.ai-chatbot-close:hover { color: #f87171; }
+
+.ai-chatbot-messages {
+  flex: 1; padding: 1rem;
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+
+.ai-chat-bubble {
+  max-width: 80%; padding: 0.8rem 1rem;
+  border-radius: 12px; font-size: 0.9rem; line-height: 1.4;
+  display: flex; gap: 0.5rem; align-items: flex-start;
+}
+.chat-icon { flex-shrink: 0; margin-top: 2px; }
+
+.bot-bubble {
+  align-self: flex-start;
+  background: rgba(56, 189, 248, 0.15);
+  color: #e0f2fe; border-bottom-left-radius: 2px;
+}
+
+.user-bubble {
+  align-self: flex-end;
+  background: #3b82f6;
+  color: white; border-bottom-right-radius: 2px;
+}
+
+.ai-chatbot-input-area {
+  padding: 1rem; border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; gap: 0.5rem;
+}
+
+.ai-chatbot-input-area input {
+  flex: 1; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 0.5rem 1rem; color: white; outline: none;
+}
+.ai-chatbot-input-area input:focus { border-color: #38bdf8; }
+
+.ai-chatbot-input-area button {
+  background: #38bdf8; color: #0f172a; border: none;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+
+/* ── Code Sandbox ──────────────────────── */
+.ai-sandbox-container {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.ai-sandbox-actions { display: flex; gap: 0.5rem; }
+.ai-sandbox-actions button {
+  display: flex; align-items: center; gap: 0.3rem;
+  padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem;
+  font-weight: bold; cursor: pointer; border: none;
+}
+.ai-btn-primary { background: #10b981; color: white; }
+.ai-btn-primary:disabled { opacity: 0.5; }
+.ai-btn-secondary { background: rgba(255,255,255,0.1); color: #cbd5e1; }
+
+.ai-sandbox-terminal {
+  background: #000; border-radius: 8px; border: 1px solid #333; overflow: hidden;
+}
+.ai-terminal-header {
+  background: #111; padding: 0.5rem 1rem; font-size: 0.8rem; color: #888;
+  display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #222;
+}
+.ai-terminal-body {
+  padding: 1rem; font-family: monospace; font-size: 0.85rem; color: #ccc;
+  min-height: 100px; max-height: 200px; overflow-y: auto;
+}
+.ai-terminal-placeholder { color: #555; font-style: italic; }
+.ai-terminal-line { margin-bottom: 0.3rem; }
+.ai-terminal-success { color: #10b981; display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; }
+.ai-terminal-cursor { display: inline-block; animation: blink 1s step-end infinite; }
+
+/* ── Gamification Profile ──────────────────────── */
+.ai-profile-modal {
+  background: #0f172a; width: 500px; max-width: 90%;
+  border-radius: 20px; border: 1px solid #38bdf8;
+  padding: 2.5rem; position: relative; text-align: center;
+  box-shadow: 0 0 50px rgba(56,189,248,0.2);
+}
+.ai-profile-close {
+  position: absolute; top: 1rem; right: 1.5rem;
+  background: none; border: none; color: #64748b;
+  font-size: 1.5rem; cursor: pointer;
+}
+.ai-profile-modal h2 {
+  color: #f1f5f9; display: flex; align-items: center; justify-content: center;
+  gap: 0.5rem; margin-top: 0;
+}
+.ai-profile-stats {
+  display: flex; gap: 1rem; justify-content: center; margin: 2rem 0;
+}
+.ai-profile-stat-box {
+  background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px;
+  flex: 1; display: flex; flex-direction: column; gap: 0.5rem;
+}
+.stat-num { font-size: 1.5rem; font-weight: bold; color: #38bdf8; }
+.stat-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; }
+
+.ai-profile-badges {
+  display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1rem;
+}
+.ai-profile-badge {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  padding: 1rem; border-radius: 12px; width: 100px;
+}
+.ai-profile-badge.earned {
+  background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981;
+}
+.ai-profile-badge.locked {
+  background: rgba(255,255,255,0.02); border: 1px dashed #475569; color: #475569;
+}
+
+/* Speech Button */
+.ai-speech-btn {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: 0.3s;
+}
+.ai-speech-btn:hover { background: rgba(0,0,0,0.4); transform: scale(1.1); }
