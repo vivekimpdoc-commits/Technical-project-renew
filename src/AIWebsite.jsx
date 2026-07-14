@@ -14,6 +14,11 @@ import CyberRadar from './components/CyberRadar';
 import CourseViewer from './CourseViewer';
 import CertificateQuiz from './CertificateQuiz';
 import { projectModules as importedProjectModules } from './data/projectModulesDB';
+import SecureTerminal from './components/SecureTerminal';
+import LiveThreatTicker from './components/LiveThreatTicker';
+import OfficerProfile from './components/OfficerProfile';
+import { sound } from './utils/SoundEngine';
+
 
 function CodeSandbox({ code, language }) {
   const [isRunning, setIsRunning] = useState(false);
@@ -144,6 +149,7 @@ export default function AIWebsite() {
   const [activeRoadmapPhase, setActiveRoadmapPhase] = useState(null);
   const [loadingRoadmapPhase, setLoadingRoadmapPhase] = useState(null);
   const [showQuiz, setShowQuiz] = useState(false);
+  const [showTerminal, setShowTerminal] = useState(true);
   
   // Gamification state
   const [completedModules, setCompletedModules] = useState(['overview']);
@@ -153,12 +159,13 @@ export default function AIWebsite() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const synth = window.speechSynthesis;
   const handleBoxClick = (module) => {
+    sound.init(); sound.playClick();
     setLoadingModule(module.title);
     
     // Simulate AI Decryption phases
-    setTimeout(() => setTransitionText('AUTHENTICATING COMMANDER...'), 800);
-    setTimeout(() => setTransitionText('DECRYPTING NEURAL PATHWAYS...'), 1600);
-    setTimeout(() => setTransitionText('ACCESS GRANTED.'), 2400);
+    setTimeout(() => { sound.playTyping(); setTransitionText('AUTHENTICATING COMMANDER...'); }, 800);
+    setTimeout(() => { sound.playTyping(); setTransitionText('DECRYPTING NEURAL PATHWAYS...'); }, 1600);
+    setTimeout(() => { sound.playAccessGranted(); setTransitionText('ACCESS GRANTED.'); }, 2400);
 
     // Save target and navigate back
     setTimeout(() => {
@@ -168,12 +175,13 @@ export default function AIWebsite() {
   };
 
   const handleRoadmapClick = (feature) => {
+    sound.init(); sound.playClick();
     setLoadingRoadmapPhase(typeof feature === 'string' ? feature : feature.title);
     
     // Simulate AI Decryption phases
-    setTimeout(() => setTransitionText('EXTRACTING SECURE CURRICULUM...'), 800);
-    setTimeout(() => setTransitionText('DECRYPTING TECHNICAL SPECIFICATIONS...'), 1600);
-    setTimeout(() => setTransitionText('ACCESS GRANTED.'), 2400);
+    setTimeout(() => { sound.playTyping(); setTransitionText('EXTRACTING SECURE CURRICULUM...'); }, 800);
+    setTimeout(() => { sound.playTyping(); setTransitionText('DECRYPTING TECHNICAL SPECIFICATIONS...'); }, 1600);
+    setTimeout(() => { sound.playAccessGranted(); setTransitionText('ACCESS GRANTED.'); }, 2400);
 
     setTimeout(() => {
       setLoadingRoadmapPhase(null);
@@ -212,8 +220,17 @@ export default function AIWebsite() {
   // Main Project Menu Modules
   const projectModules = importedProjectModules;
 
+  if (showTerminal) {
+    return <SecureTerminal onComplete={() => setShowTerminal(false)} />;
+  }
+
+  if (showProfile) {
+    return <OfficerProfile onBack={() => setShowProfile(false)} />;
+  }
+
   return (
     <div className="ai-website-container">
+      <LiveThreatTicker />
       <CyberRadar />
 
       <nav className="ai-navbar">
@@ -303,39 +320,7 @@ export default function AIWebsite() {
         </div>
       )}
       
-      {/* Profile / Gamification Modal */}
-      {showProfile && (
-        <div className="ai-transition-overlay" style={{ zIndex: 999999 }}>
-          <div className="ai-profile-modal">
-            <button className="ai-profile-close" onClick={() => setShowProfile(false)}>X</button>
-            <h2><Award size={28} /> Commander Profile</h2>
-            <div className="ai-profile-stats">
-              <div className="ai-profile-stat-box">
-                <span className="stat-num">{completedModules.length} / {projectModules.length}</span>
-                <span className="stat-label">Modules Completed</span>
-              </div>
-              <div className="ai-profile-stat-box">
-                <span className="stat-num">Rank</span>
-                <span className="stat-label">Cyber Warrior</span>
-              </div>
-            </div>
-            <h3>Badges Earned</h3>
-            <div className="ai-profile-badges">
-              {completedModules.map(modId => (
-                <div key={modId} className="ai-profile-badge earned">
-                  <Shield size={24} />
-                  <span>{projectModules.find(m => m.id === modId)?.title.split(' ')[0]}</span>
-                </div>
-              ))}
-              <div className="ai-profile-badge locked">
-                <GlobeLock size={24} />
-                <span>Locked</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
+      {/* Profile logic moved to full screen component above */}
 
       {/* K.A.V.A.C.H. AI Chatbot Assistant */}
       <KavachChatbot />

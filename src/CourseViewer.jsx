@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, BookOpen, CheckCircle, Code, Shield, Terminal, Play, CheckCircle2, ChevronRight, Lock } from 'lucide-react';
 
 import { generateCourseMaterial } from './courseContentDB';
+import { sound } from './utils/SoundEngine';
 
 export default function CourseViewer({ courseData, onBack, onTakeQuiz }) {
   const [activeChapterIdx, setActiveChapterIdx] = useState(0);
@@ -26,7 +27,7 @@ export default function CourseViewer({ courseData, onBack, onTakeQuiz }) {
       const title = typeof currentChapter === 'string' ? currentChapter : currentChapter.title;
       const typingInterval = setInterval(() => {
         if (i < title.length) {
-          setTypedText(prev => prev + title.charAt(i));
+          setTypedText(title.substring(0, i + 1));
           i++;
         } else {
           clearInterval(typingInterval);
@@ -192,7 +193,12 @@ export default function CourseViewer({ courseData, onBack, onTakeQuiz }) {
           {/* Navigation Controls */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #334155', paddingTop: '2.5rem', paddingBottom: '4rem' }}>
             <button 
-              onClick={() => activeChapterIdx > 0 && setActiveChapterIdx(activeChapterIdx - 1)}
+              onClick={() => {
+                if (activeChapterIdx > 0) {
+                  sound.init(); sound.playClick();
+                  setActiveChapterIdx(activeChapterIdx - 1);
+                }
+              }}
               style={{ 
                 padding: '1rem 2rem', background: 'transparent', border: '1px solid #334155', color: '#94a3b8', 
                 borderRadius: '0.5rem', cursor: activeChapterIdx === 0 ? 'not-allowed' : 'pointer', fontSize: '1rem', fontWeight: 'bold',
@@ -206,7 +212,7 @@ export default function CourseViewer({ courseData, onBack, onTakeQuiz }) {
             
             {activeChapterIdx === chapters.length - 1 && completedChapters.includes(activeChapterIdx) ? (
               <button 
-                onClick={onTakeQuiz}
+                onClick={() => { sound.init(); sound.playClick(); onTakeQuiz(); }}
                 style={{ 
                   padding: '1rem 3rem', background: '#f59e0b', 
                   border: 'none', color: '#000', 
@@ -220,7 +226,7 @@ export default function CourseViewer({ courseData, onBack, onTakeQuiz }) {
               </button>
             ) : (
               <button 
-                onClick={markComplete}
+                onClick={() => { sound.init(); sound.playClick(); markComplete(); }}
                 style={{ 
                   padding: '1rem 3rem', background: completedChapters.includes(activeChapterIdx) ? '#10b981' : modColor, 
                   border: 'none', color: '#000', 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Award, CheckCircle2, XCircle, ChevronRight, User, Loader2, Download, Check } from 'lucide-react';
+import { sound } from './utils/SoundEngine';
 
 export default function CertificateQuiz({ moduleTitle, modColor, onClose }) {
   const [step, setStep] = useState('intro'); // intro -> quiz -> processing -> certificate
@@ -10,8 +11,8 @@ export default function CertificateQuiz({ moduleTitle, modColor, onClose }) {
   const [showResult, setShowResult] = useState(false);
   const [processText, setProcessText] = useState('ANALYZING RESPONSES...');
 
-  // 25 Comprehensive Questions
-  const questions = [
+  // 25 Comprehensive Questions Pool
+  const questionsPool = [
     { q: "What does FIR stand for?", options: ["First Information Report", "Final Investigation Report", "Fast Incident Response", "Federal Investigation Request"], ans: 0 },
     { q: "Under which section of the IT Act is digital evidence admissible?", options: ["Section 420", "Section 65B", "Section 144", "Section 66A"], ans: 1 },
     { q: "What is the primary purpose of a Faraday Bag?", options: ["Carrying lunch", "Blocking all wireless signals to a seized device", "Storing physical weapons", "Charging a laptop"], ans: 1 },
@@ -39,7 +40,14 @@ export default function CertificateQuiz({ moduleTitle, modColor, onClose }) {
     { q: "What is the most critical first step when seizing a computer at a crime scene?", options: ["Restart it to see if it works", "Photograph the screen and isolate it from the network", "Install an antivirus", "Change the wallpaper"], ans: 1 }
   ];
 
+  // Select 5 random questions for the quiz
+  const [questions] = useState(() => {
+    const shuffled = [...questionsPool].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 5);
+  });
+
   const handleNext = () => {
+    sound.init(); sound.playClick();
     if (selectedAnswer === questions[currentQ].ans) {
       setScore(s => s + 1);
     }
@@ -58,11 +66,21 @@ export default function CertificateQuiz({ moduleTitle, modColor, onClose }) {
 
   useEffect(() => {
     if (step === 'processing') {
-      setTimeout(() => setProcessText('ANALYZING RESULTS...'), 1000);
-      setTimeout(() => setProcessText('CALCULATING SCORE...'), 2000);
-      setTimeout(() => setStep('result'), 3000);
+      sound.init(); sound.playTyping();
+      setTimeout(() => { sound.playTyping(); setProcessText('ANALYZING RESULTS...'); }, 1000);
+      setTimeout(() => { sound.playTyping(); setProcessText('CALCULATING SCORE...'); }, 2000);
+      setTimeout(() => {
+        setStep('result');
+        // Will check score inside the next effect or just play sound here based on current score
+      }, 3000);
+    } else if (step === 'result') {
+      if (score >= Math.ceil(questions.length / 2)) {
+        sound.playAccessGranted();
+      } else {
+        sound.playError();
+      }
     }
-  }, [step]);
+  }, [step, score, questions.length]);
 
   return (
     <div style={{
@@ -166,7 +184,7 @@ export default function CertificateQuiz({ moduleTitle, modColor, onClose }) {
                 <button
                   key={idx}
                   disabled={showResult}
-                  onClick={() => setSelectedAnswer(idx)}
+                  onClick={() => { sound.init(); sound.playHover(); setSelectedAnswer(idx); }}
                   style={{
                     padding: '1.25rem 1.5rem', borderRadius: '0.75rem', background: bg, border: border,
                     color: 'white', fontSize: '1.1rem', textAlign: 'left', cursor: showResult ? 'default' : 'pointer',
@@ -223,30 +241,80 @@ export default function CertificateQuiz({ moduleTitle, modColor, onClose }) {
       {/* RESULT STEP */}
       {step === 'result' && (
         <div className="animate-fade-in" style={{
-          background: '#1e293b', border: `1px solid ${modColor}55`, borderRadius: '1.5rem',
-          padding: '3rem', width: '90%', maxWidth: '500px', textAlign: 'center',
-          boxShadow: `0 20px 50px ${modColor}22`
+          background: score >= Math.ceil(questions.length / 2) ? '#ffffff' : '#1e293b',
+          color: score >= Math.ceil(questions.length / 2) ? '#0f172a' : 'white',
+          border: score >= Math.ceil(questions.length / 2) ? `12px double #0f172a` : `1px solid ${modColor}55`,
+          borderRadius: score >= Math.ceil(questions.length / 2) ? '0' : '1.5rem',
+          padding: score >= Math.ceil(questions.length / 2) ? '4rem' : '3rem', 
+          width: '95%', maxWidth: score >= Math.ceil(questions.length / 2) ? '850px' : '500px', 
+          textAlign: 'center',
+          boxShadow: `0 20px 50px ${modColor}55`,
+          position: 'relative'
         }}>
           {score >= Math.ceil(questions.length / 2) ? (
-            <CheckCircle2 size={80} color="#10b981" style={{ margin: '0 auto 1.5rem auto' }} />
+            // === OFFICIAL CERTIFICATE UI ===
+            <div style={{ position: 'relative', zIndex: 1, border: '2px solid #cbd5e1', padding: '3rem' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.03, backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/800px-Emblem_of_India.svg.png")', backgroundPosition: 'center', backgroundSize: '50%', backgroundRepeat: 'no-repeat', zIndex: -1 }}></div>
+              
+              <h1 style={{ fontSize: '2.5rem', margin: '0 0 0.5rem 0', fontFamily: 'serif', color: '#1e293b', letterSpacing: '4px' }}>CERTIFICATE OF EXCELLENCE</h1>
+              <h3 style={{ fontSize: '1rem', color: '#64748b', letterSpacing: '2px', margin: '0 0 2rem 0', textTransform: 'uppercase' }}>UP Police Cyber Intelligence Wing</h3>
+              
+              <p style={{ fontSize: '1.2rem', color: '#334155', fontStyle: 'italic', marginBottom: '1rem' }}>This is to certify that</p>
+              <h2 style={{ fontSize: '3rem', margin: '0 0 1rem 0', color: modColor, borderBottom: '2px solid #cbd5e1', paddingBottom: '0.5rem', display: 'inline-block', fontFamily: 'cursive' }}>Officer {officerName}</h2>
+              <p style={{ fontSize: '1.2rem', color: '#334155', fontStyle: 'italic', margin: '1rem 0 2rem 0' }}>has successfully completed the advanced operational module and passed the final assessment for:</p>
+              
+              <h2 style={{ fontSize: '2rem', margin: '0 0 2.5rem 0', color: '#0f172a', fontWeight: 'bold' }}>{moduleTitle}</h2>
+              
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '3rem' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#0f172a' }}>{score} / {questions.length}</div>
+                  <div style={{ width: '150px', borderTop: '1px solid #94a3b8', margin: '0.5rem auto' }}></div>
+                  <div style={{ fontSize: '0.8rem', color: '#64748b' }}>CLEARANCE SCORE</div>
+                </div>
+                
+                <div style={{ textAlign: 'center', width: '100px', height: '100px', background: '#f59e0b', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', border: '4px double white', boxShadow: '0 0 10px rgba(0,0,0,0.2)', transform: 'rotate(-15deg)' }}>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 'bold', lineHeight: '1.2' }}>OFFICIAL<br/>SEAL</span>
+                </div>
+
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.2rem', fontFamily: 'cursive', color: '#0f172a' }}>K.A.V.A.C.H. System</div>
+                  <div style={{ width: '150px', borderTop: '1px solid #94a3b8', margin: '0.5rem auto' }}></div>
+                  <div style={{ fontSize: '0.8rem', color: '#64748b' }}>AUTHORIZED ISSUER</div>
+                </div>
+              </div>
+              
+              <button 
+                onClick={onClose}
+                style={{
+                  marginTop: '4rem', padding: '1rem 2rem', background: '#0f172a', color: 'white',
+                  border: 'none', borderRadius: '0.5rem', fontSize: '1rem', fontWeight: 'bold', cursor: 'pointer',
+                  boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+                }}
+              >
+                RETURN TO COMMAND CENTER
+              </button>
+            </div>
           ) : (
-            <XCircle size={80} color="#ef4444" style={{ margin: '0 auto 1.5rem auto' }} />
+            // === FAIL UI ===
+            <>
+              <XCircle size={80} color="#ef4444" style={{ margin: '0 auto 1.5rem auto' }} />
+              <h2 style={{ color: 'white', fontSize: '2.5rem', margin: '0 0 1rem 0' }}>{score} / {questions.length}</h2>
+              <p style={{ color: '#cbd5e1', marginBottom: '2rem', fontSize: '1.2rem', lineHeight: '1.6' }}>
+                Officer <b>{officerName}</b>, you did not meet the required threshold for <b>{moduleTitle}</b>. Please review the materials and try again.
+              </p>
+              <button 
+                onClick={onClose}
+                style={{
+                  width: '100%', padding: '1rem', borderRadius: '0.75rem',
+                  background: '#ef4444', color: 'white',
+                  border: 'none', fontSize: '1.1rem', fontWeight: 'bold', cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                Close & Retry Later
+              </button>
+            </>
           )}
-          <h2 style={{ color: 'white', fontSize: '2.5rem', margin: '0 0 1rem 0' }}>{score} / {questions.length}</h2>
-          <p style={{ color: '#cbd5e1', marginBottom: '2rem', fontSize: '1.2rem', lineHeight: '1.6' }}>
-            Officer <b>{officerName}</b>, you have completed the assessment for <b>{moduleTitle}</b>.
-          </p>
-          <button 
-            onClick={onClose}
-            style={{
-              width: '100%', padding: '1rem', borderRadius: '0.75rem',
-              background: modColor, color: 'white',
-              border: 'none', fontSize: '1.1rem', fontWeight: 'bold', cursor: 'pointer',
-              transition: 'all 0.2s', display: 'flex', justifyContent: 'center', alignItems: 'center'
-            }}
-          >
-            Close Assessment
-          </button>
         </div>
       )}
 

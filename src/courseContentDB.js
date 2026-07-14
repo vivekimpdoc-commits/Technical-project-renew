@@ -1,11 +1,144 @@
 export function generateCourseMaterial(featureName, courseId) {
   const name = typeof featureName === 'string' ? featureName.toLowerCase() : featureName.title.toLowerCase();
   
-  let coreDetails = `<strong>Theoretical Foundation:</strong> This section breaks down the core concepts of <strong>${featureName}</strong>. It covers the necessary architectural design, dependencies, and operational mandates that govern its implementation within a modern law enforcement framework.`;
+  let term1 = "Zero-Day Exploit", term1Desc = "Unpatched vulnerability leveraged before detection.";
+  let term2 = "Hash Checksum", term2Desc = "Cryptographic verification to ensure absolute data integrity.";
+  let term3 = "Node Mapping", term3Desc = "Tracing digital footprints across decentralized IP grids.";
   
-  let practicalDetails = `<strong>Practical Execution:</strong> Officers utilize specialized software environments to execute the tasks outlined in <strong>${featureName}</strong>. This involves setting up secure sandboxes, integrating with internal databases (like CCTNS), and executing commands while maintaining strict digital audit logs.`;
+  let arsenal1 = "Wireshark", arsenal2 = "Nmap Core", arsenal3 = "EnCase Forensics", arsenal4 = "Burp Suite";
   
-  let advancedDetails = `<strong>Case Study & Pro-Tips:</strong> In recent multi-state operations, mastery of <strong>${featureName}</strong> proved pivotal in overcoming traditional roadblocks. <br/><br/><em>Pro-Tip:</em> Always ensure you maintain an uninterrupted chain of custody and document all digital footprints when applying these techniques in the field.`;
+  let terminalCmd = "nmap -sV -O target_ip --script=vuln";
+  let terminalOut1 = "> Extracting packet headers... [OK]";
+  let terminalOut2 = "> Mapping network topology... [OK]";
+  let terminalOut3 = "> WARNING: Open port 443 detected. Initiating deeper trace.";
+  
+  let targetProfile = "Syndicate 'Red-Node'";
+  let resolutionTime = "48.5 Hours";
+
+  switch (courseId) {
+    case 'cloud-police':
+       term1 = "VPC Peering"; term1Desc = "Connecting separate virtual networks securely.";
+       term2 = "S3 Bucket Leaks"; term2Desc = "Unsecured cloud storage exposing sensitive police data.";
+       term3 = "IAM Roles"; term3Desc = "Identity and Access Management for strict permission control.";
+       arsenal1 = "AWS CLI"; arsenal2 = "CloudTrail"; arsenal3 = "Terraform"; arsenal4 = "ScoutSuite";
+       terminalCmd = "aws ec2 describe-instances --region ap-south-1";
+       terminalOut1 = "> Authenticating IAM Role... [OK]";
+       terminalOut2 = "> Fetching metadata from AP-SOUTH-1... [OK]";
+       terminalOut3 = "> EXPOSED: Port 22 open to 0.0.0.0/0 on Instance i-0abcd1234";
+       targetProfile = "Cloud-Ransomware Group";
+       resolutionTime = "12.4 Hours";
+       break;
+    case 'excel-mastery':
+       term1 = "VLOOKUP / XLOOKUP"; term1Desc = "Cross-referencing suspect phone numbers across massive CDR dumps.";
+       term2 = "Pivot Tables"; term2Desc = "Summarizing raw data to find locational patterns and frequent contacts.";
+       term3 = "Conditional Formatting"; term3Desc = "Highlighting overlapping geospatial coordinates automatically.";
+       arsenal1 = "MS Excel Pro"; arsenal2 = "Power Query"; arsenal3 = "CSV Parser"; arsenal4 = "Python Pandas";
+       terminalCmd = "IMPORT DATA FROM sql_server_cctns.db --TABLE cdr_logs";
+       terminalOut1 = "> Loading 4.5 Million Rows... [OK]";
+       terminalOut2 = "> Normalizing Timestamp Formats... [OK]";
+       terminalOut3 = "> MATCH FOUND: Number 98765XXXXX active near Crime Scene.";
+       targetProfile = "Telecom Fraud Ring";
+       resolutionTime = "3.2 Hours";
+       break;
+    case 'legal-tech':
+       term1 = "Section 65B (IEA)"; term1Desc = "Certification required to make electronic records admissible in court.";
+       term2 = "Chain of Custody"; term2Desc = "Chronological documentation of evidence handling to avoid tampering claims.";
+       term3 = "BNS 2023 Provisions"; term3Desc = "New criminal laws applicable to digital extortion and fraud.";
+       arsenal1 = "Hash Calculator"; arsenal2 = "Write Blockers"; arsenal3 = "Evidence Bags"; arsenal4 = "CCTNS Portal";
+       terminalCmd = "certutil -hashfile suspect_laptop_image.dd SHA256";
+       terminalOut1 = "> Calculating cryptographic hash... [OK]";
+       terminalOut2 = "> SHA256: 8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4";
+       terminalOut3 = "> Hash locked and injected into Section 65B certificate.";
+       targetProfile = "Defense Attorney Rebuttal";
+       resolutionTime = "Pre-Trial Prep";
+       break;
+    case 'mlops':
+       term1 = "Model Drift"; term1Desc = "When an AI model's accuracy degrades over time due to changing crime patterns.";
+       term2 = "CI/CD Pipelines"; term2Desc = "Continuous integration to push updated AI models to field officer apps without downtime.";
+       term3 = "Data Annotation"; term3Desc = "Labeling CCTV footage so the AI learns to recognize specific weapons or vehicles.";
+       arsenal1 = "Docker"; arsenal2 = "Kubernetes"; arsenal3 = "TensorFlow"; arsenal4 = "GitLab CI";
+       terminalCmd = "kubectl apply -f ai-deployment.yaml --namespace=police-prod";
+       terminalOut1 = "> Pulling latest facial-recognition-v2 image... [OK]";
+       terminalOut2 = "> Starting 5 replica pods across UP zones... [OK]";
+       terminalOut3 = "> AI Model successfully deployed. Zero downtime achieved.";
+       targetProfile = "System Downtime & Legacy Tech";
+       resolutionTime = "14 Minutes";
+       break;
+    case 'hardware-network':
+       term1 = "Subnet Masking"; term1Desc = "Dividing a network into two or more networks for secure Thana operations.";
+       term2 = "MAC Spoofing"; term2Desc = "Changing a factory-assigned MAC address to bypass network filters.";
+       term3 = "Packet Loss"; term3Desc = "Data failing to reach its destination, causing CCTV feed stuttering.";
+       arsenal1 = "Crimping Tool"; arsenal2 = "LAN Tester"; arsenal3 = "Router Admin"; arsenal4 = "Ping Sweep";
+       terminalCmd = "tracert 10.20.30.1 (Police HQ Server)";
+       terminalOut1 = "> 1  <1 ms  <1 ms  <1 ms  192.168.1.1 (Local Thana Router)";
+       terminalOut2 = "> 2  Request timed out.";
+       terminalOut3 = "> ALERT: Node failure at ISP level. Rerouting via secondary VPN tunnel.";
+       targetProfile = "Network Outage at HQ";
+       resolutionTime = "45 Minutes";
+       break;
+  }
+
+  let coreDetails = `
+    <div style="margin-bottom: 1.5rem;">
+      <strong style="color: #38bdf8; font-size: 1.2rem; letter-spacing: 1px;">[+] SYSTEM ARCHITECTURE</strong><br/>
+      <div style="margin-top: 0.5rem; color: #cbd5e1;">This section breaks down the core structural framework of <strong>${featureName}</strong>. It dictates the necessary dependencies, protocol handshakes, and operational mandates governing its integration within the UP Police tech grid.</div>
+    </div>
+    <div style="background: #020617; padding: 1.5rem; border-left: 3px solid #38bdf8; border-radius: 0.5rem; box-shadow: inset 0 0 20px rgba(56,189,248,0.05);">
+      <strong style="color: #94a3b8; font-size: 0.9rem; letter-spacing: 1px;">KEY TERMINOLOGIES:</strong>
+      <ul style="margin: 0.8rem 0 0 1.2rem; padding: 0; color: #cbd5e1; line-height: 1.8;">
+        <li><span style="color: #38bdf8; font-weight: bold;">${term1}:</span> ${term1Desc}</li>
+        <li><span style="color: #38bdf8; font-weight: bold;">${term2}:</span> ${term2Desc}</li>
+        <li><span style="color: #38bdf8; font-weight: bold;">${term3}:</span> ${term3Desc}</li>
+      </ul>
+    </div>
+  `;
+  
+  let practicalDetails = `
+    <div style="margin-bottom: 1.5rem;">
+      <strong style="color: #10b981; font-size: 1.2rem; letter-spacing: 1px;">[+] TACTICAL EXECUTION (SOP)</strong><br/>
+      <div style="margin-top: 0.5rem; color: #cbd5e1;">Officers must utilize specialized software environments to execute <strong>${featureName}</strong>. Strict compliance with CCTNS sandbox isolation is mandatory.</div>
+    </div>
+    <div style="margin-bottom: 1.5rem;">
+      <strong style="color: #94a3b8; font-size: 0.9rem; letter-spacing: 1px;">REQUIRED ARSENAL:</strong>
+      <div style="display: flex; gap: 0.8rem; margin-top: 0.8rem; flex-wrap: wrap;">
+        <span style="background: #1e293b; color: #38bdf8; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; border: 1px solid #334155;">${arsenal1}</span>
+        <span style="background: #1e293b; color: #38bdf8; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; border: 1px solid #334155;">${arsenal2}</span>
+        <span style="background: #1e293b; color: #38bdf8; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; border: 1px solid #334155;">${arsenal3}</span>
+        <span style="background: #1e293b; color: #38bdf8; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; border: 1px solid #334155;">${arsenal4}</span>
+      </div>
+    </div>
+    <div style="background: #000; padding: 1.5rem; border-radius: 0.5rem; font-family: 'Courier New', monospace; border: 1px solid #334155; position: relative;">
+      <div style="position: absolute; top: 0; left: 0; background: #334155; color: white; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 0.5rem 0 0.5rem 0;">ROOT TERMINAL</div>
+      <div style="color: #64748b; margin-top: 0.5rem; margin-bottom: 0.8rem;">// INITIALIZE SECURE SEQUENCE</div>
+      <div style="color: #10b981; margin-bottom: 0.3rem;">root@kavach:~# ${terminalCmd}</div>
+      <div style="color: #38bdf8; margin-bottom: 0.3rem;">${terminalOut1}</div>
+      <div style="color: #38bdf8; margin-bottom: 0.3rem;">${terminalOut2}</div>
+      <div style="color: #f59e0b;">${terminalOut3}</div>
+    </div>
+  `;
+  
+  let advancedDetails = `
+    <div style="margin-bottom: 1.5rem;">
+      <strong style="color: #f59e0b; font-size: 1.2rem; letter-spacing: 1px;">[+] HIGH-PROFILE OPERATION REVIEW</strong><br/>
+      <div style="margin-top: 0.5rem; color: #cbd5e1;">In a recent multi-state intercept, mastery of <strong>${featureName}</strong> proved pivotal in bypassing traditional investigative roadblocks and resolving critical operations.</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+      <div style="background: #020617; padding: 1rem 1.5rem; border: 1px solid #1e293b; border-radius: 0.5rem; border-bottom: 2px solid #ef4444;">
+        <div style="font-size: 0.75rem; color: #64748b; letter-spacing: 1px; margin-bottom: 0.3rem;">TARGET PROFILE</div>
+        <div style="color: #fca5a5; font-weight: bold; font-size: 1.1rem;">${targetProfile}</div>
+      </div>
+      <div style="background: #020617; padding: 1rem 1.5rem; border: 1px solid #1e293b; border-radius: 0.5rem; border-bottom: 2px solid #10b981;">
+        <div style="font-size: 0.75rem; color: #64748b; letter-spacing: 1px; margin-bottom: 0.3rem;">RESOLUTION METRIC</div>
+        <div style="color: #10b981; font-weight: bold; font-size: 1.1rem;">${resolutionTime}</div>
+      </div>
+    </div>
+    <div style="background: #1e293b; padding: 1.5rem; border-left: 4px solid #f59e0b; border-radius: 0 0.5rem 0.5rem 0;">
+      <strong style="color: #cbd5e1; font-size: 0.95rem; letter-spacing: 1px;">AFTER-ACTION REPORT (AAR):</strong><br/>
+      <div style="color: #94a3b8; font-size: 0.95rem; margin-top: 0.8rem; line-height: 1.7;">
+        Maintaining an uninterrupted chain of custody and logging all digital footprints was critical. Proper execution of the established SOPs ensured complete operational success and admissibility in subsequent administrative/legal reviews.
+      </div>
+    </div>
+  `;
 
   // === OSINT MASTERY DETAILED STEPS ===
   if (courseId === 'osint-mastery') {
