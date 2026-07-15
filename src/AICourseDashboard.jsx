@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import { BookOpen, BrainCircuit, Target, Database, Wrench, Calculator, Code, Network, Cpu, Camera, MessageSquare, Sparkles, Activity, BarChart, Rocket, Server, Settings, ShieldCheck, Layout, Medal, CheckCircle, GraduationCap, Layers } from 'lucide-react';
 import './ThaneLevelDashboard.css';
 import ModuleDetail from './ModuleDetail';
+import CapstoneViewer from './components/CapstoneViewer';
+import RequirementViewer from './components/RequirementViewer';
+import { sound } from './utils/SoundEngine';
 
 export default function AICourseDashboard({ setSubBreadcrumb }) {
   const [activeTab, setActiveTab] = useState('modules');
+  const [activeCapstone, setActiveCapstone] = useState(null);
+  const [activeRequirement, setActiveRequirement] = useState(null);
   const [selectedModuleId, setSelectedModuleId] = useState(null);
   const [expandedDashboardCard, setExpandedDashboardCard] = useState(null);
   const [isPopupMaximized, setIsPopupMaximized] = useState(false);
 
   React.useEffect(() => {
     if (!setSubBreadcrumb) return;
-    
+
     let crumbs = [];
     if (selectedModuleId) {
       const mod = courseModules.find(m => m.id === selectedModuleId);
@@ -157,10 +162,10 @@ export default function AICourseDashboard({ setSubBreadcrumb }) {
     }
   ];
   const capstoneProjects = [
-    'AI Chatbot', 'AI Meeting Assistant', 'AI Investigation Platform',
-    'AI Command & Control Center', 'Face Recognition System',
-    'Document Intelligence System', 'Predictive Analytics Dashboard',
-    'Generative AI Assistant', 'Smart Policing AI Platform', 'Autonomous AI Agent System'
+    'K.A.V.A.C.H. Neural Assistant', 'Tactical Intel Summarizer', 'Digital Evidence Correlation Engine',
+    'C4I Operations Matrix', 'Real-Time Biometric Tracking Grid',
+    'Automated FIR & Legal OCR System', 'Geospatial Crime Forecasting Engine',
+    'Dynamic SOP & Strategy AI', 'Autonomous Law Enforcement Grid', 'Self-Executing Cyber Sentinels'
   ];
 
   const requirements = [
@@ -370,14 +375,21 @@ export default function AICourseDashboard({ setSubBreadcrumb }) {
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
             {capstoneProjects.map((project, index) => (
-              <div key={index} style={{
-                background: '#fffbeb', color: '#d97706', padding: '1rem 1.25rem',
-                borderRadius: '0.75rem', fontSize: '1.1rem', fontWeight: '600',
-                border: '1px solid #fde68a', display: 'flex', alignItems: 'center', gap: '0.75rem',
-                boxShadow: '0 2px 5px rgba(0,0,0,0.02)'
-              }}>
+              <button
+                key={index}
+                onClick={() => { sound.init(); sound.playClick(); setActiveCapstone(project); }}
+                style={{
+                  background: '#fffbeb', color: '#d97706', padding: '1.25rem 1.5rem',
+                  borderRadius: '0.75rem', fontSize: '1.1rem', fontWeight: '600',
+                  border: '1px solid #fde68a', display: 'flex', alignItems: 'center', gap: '0.75rem',
+                  boxShadow: '0 4px 10px rgba(0,0,0,0.05)', cursor: 'pointer', transition: 'all 0.2s',
+                  textAlign: 'left'
+                }}
+                onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 15px rgba(245, 158, 11, 0.2)'; sound.playHover(); }}
+                onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 10px rgba(0,0,0,0.05)'; }}
+              >
                 <Sparkles size={20} color="#f59e0b" /> {project}
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -388,16 +400,29 @@ export default function AICourseDashboard({ setSubBreadcrumb }) {
           <h3 style={{ fontSize: '1.75rem', color: 'var(--text-main)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <CheckCircle size={28} color="#10b981" /> मुख्य आवश्यकताएँ (Requirements)
           </h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
             {requirements.map((req, index) => (
-              <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', fontSize: '1.1rem', fontWeight: '600', padding: '1rem', background: 'var(--icon-bg)', borderRadius: '0.75rem', border: '1px solid var(--card-border)' }}>
+              <button 
+                key={index} 
+                onClick={() => { sound.init(); sound.playClick(); setActiveRequirement(req); }}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', fontSize: '1.1rem', fontWeight: '600', padding: '1.25rem', background: 'var(--icon-bg)', borderRadius: '0.75rem', border: '1px solid var(--card-border)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', boxShadow: '0 4px 10px rgba(0,0,0,0.02)' }}
+                onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = '#10b981'; sound.playHover(); }}
+                onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'var(--card-border)'; }}
+              >
                 <CheckCircle size={24} color="#10b981" /> {req}
-              </li>
+              </button>
             ))}
-          </ul>
+          </div>
         </div>
       )}
 
+      {activeCapstone && (
+        <CapstoneViewer projectName={activeCapstone} onClose={() => setActiveCapstone(null)} />
+      )}
+
+      {activeRequirement && (
+        <RequirementViewer requirementName={activeRequirement} onClose={() => setActiveRequirement(null)} />
+      )}
     </div>
   );
 }
